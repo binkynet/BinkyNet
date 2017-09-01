@@ -35,9 +35,11 @@ type WorkerEnvironment struct {
 		UserName string `json:"user,omitempty"`
 		// MQTT password for authentication
 		Password string `json:"password,omitempty"`
-		// Name of MQTT topic the local worker should listen on for its runtime control messages
-		ControlTopic string `json:"control-topic"`
-		// Name of MQTT topic the local worker should publish event data on
-		DataTopic string `json:"data-topic"`
+		// Prefix for topics used in the binkynet MQTT protocol.
+		TopicPrefix string `json:"topic-prefix"`
 	} `json:"mqtt"`
+	Manager struct {
+		// Endpoint (URL) used to reach the Binky NetManager.
+		Endpoint string `json:"endpoint"`
+	}
 }
