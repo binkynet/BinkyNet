@@ -6,6 +6,9 @@ import (
 
 // LocalConfiguration holds the configuration of a single local worker.
 type LocalConfiguration struct {
+	// Alias is the name used to address this worker in MQ messages.
+	// If not set, the worker ID is used.
+	Alias string `json:"alias,omitempty"`
 	// List of devices attached to the local worker
 	Devices []HWDevice `json:"devices,omitempty"`
 	// List of real world objects controlled by the local worker

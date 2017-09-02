@@ -1,4 +1,5 @@
 {
+    "alias": "test1",
     "devices": [{
         "id": "io1",
         "address": "0x20",
