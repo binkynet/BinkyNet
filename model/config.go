@@ -12,7 +12,7 @@ type LocalConfiguration struct {
 	// List of devices attached to the local worker
 	Devices []HWDevice `json:"devices,omitempty"`
 	// List of real world objects controlled by the local worker
-	Objects []Object `json:"object,omitempty"`
+	Objects []Object `json:"objects,omitempty"`
 }
 
 // DeviceByID returns the device with given ID.
