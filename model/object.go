@@ -17,9 +17,9 @@ type Object struct {
 type ObjectType string
 
 const (
-	ObjectTypeBinaryFeedback ObjectType = "binary-feedback"
-	ObjectTypeBinaryOutput   ObjectType = "binary-output"
-	ObjectTypeServoSwitch    ObjectType = "servo-switch"
+	ObjectTypeBinarySensor ObjectType = "binary-sensor"
+	ObjectTypeBinaryOutput ObjectType = "binary-output"
+	ObjectTypeServoSwitch  ObjectType = "servo-switch"
 )
 
 // ObjectTypeInfo holds builtin information for a type of objects.
@@ -29,16 +29,16 @@ type ObjectTypeInfo struct {
 }
 
 const (
-	PinNameFeedback = "feedback"
-	PinNameOutput   = "output"
-	PinNameServo    = "servo"
+	PinNameSensor = "sensor"
+	PinNameOutput = "output"
+	PinNameServo  = "servo"
 )
 
 var (
 	objectTypeInfos = []ObjectTypeInfo{
 		ObjectTypeInfo{
-			Type:     ObjectTypeBinaryFeedback,
-			PinNames: []string{PinNameFeedback},
+			Type:     ObjectTypeBinarySensor,
+			PinNames: []string{PinNameSensor},
 		},
 		ObjectTypeInfo{
 			Type:     ObjectTypeBinaryOutput,
