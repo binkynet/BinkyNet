@@ -84,6 +84,18 @@ func cmdSetRun(cmd *cobra.Command, args []string) {
 		topic := path.Join(mqttOptions.topicPrefix, msg.TopicSuffix())
 		err = mqs.Publish(ctx, msg, topic, mqtt.QosAsLeastOnce)
 		cliLog.Debug().Interface("msg", msg).Msg("Published message")
+	case "switch":
+		swDirValue := mq.SwitchDirection(setOptions.value)
+		if err := swDirValue.Validate(); err != nil {
+			cliLog.Fatal().Msg("Invalid value.")
+		}
+		msg := mq.SwitchRequest{
+			Address:   setOptions.address,
+			Direction: swDirValue,
+		}
+		topic := path.Join(mqttOptions.topicPrefix, msg.TopicSuffix())
+		err = mqs.Publish(ctx, msg, topic, mqtt.QosAsLeastOnce)
+		cliLog.Debug().Interface("msg", msg).Msg("Published message")
 	default:
 		cliLog.Fatal().Msgf("Unknown type '%s'", setOptions.what)
 	}
