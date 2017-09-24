@@ -1,5 +1,7 @@
 package mq
 
+import "fmt"
+
 // MessageBase contains fields included in all messages
 type MessageBase struct {
 	// ID of the sender of the message
@@ -95,6 +97,22 @@ func (l BinarySensorFeedback) TopicSuffix() string {
 	return "binary-sensor-feedback"
 }
 
+type SwitchDirection string
+
+const (
+	SwitchDirectionStraight = SwitchDirection("straight")
+	SwitchDirectionOff      = SwitchDirection("off")
+)
+
+func (s SwitchDirection) Validate() error {
+	switch string(s) {
+	case "straight", "off":
+		return nil
+	default:
+		return fmt.Errorf("unknown switch direction '%s'", string(s))
+	}
+}
+
 // SwitchRequest is send by controlling application to track
 // to control the value of a binary output.
 type SwitchRequest struct {
@@ -102,10 +120,10 @@ type SwitchRequest struct {
 	// Address (module/local)
 	Address string `json:"address"`
 	// Direction of the switch "straight|off"
-	Direction string `json:"direction"`
+	Direction SwitchDirection `json:"direction"`
 }
 
-// TopicSuffix returns the suffix for topic name used by BinaryOutputRequest messages.
+// TopicSuffix returns the suffix for topic name used by SwitchRequest messages.
 func (l SwitchRequest) TopicSuffix() string {
 	return "switch"
 }
@@ -116,7 +134,7 @@ type SwitchFeedback struct {
 	// Address (module/local)
 	Address string `json:"address"`
 	// Direction of the switch "straight|off"
-	Direction string `json:"direction"`
+	Direction SwitchDirection `json:"direction"`
 }
 
 // TopicSuffix returns the suffix for topic name used by BinaryOutputFeedback messages.
