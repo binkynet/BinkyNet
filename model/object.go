@@ -20,33 +20,45 @@ const (
 	ObjectTypeBinarySensor ObjectType = "binary-sensor"
 	ObjectTypeBinaryOutput ObjectType = "binary-output"
 	ObjectTypeServoSwitch  ObjectType = "servo-switch"
+	ObjectTypeRelaySwitch  ObjectType = "relay-switch"
 )
 
 // ObjectTypeInfo holds builtin information for a type of objects.
 type ObjectTypeInfo struct {
-	Type     ObjectType
-	PinNames []string
+	Type        ObjectType
+	Description string
+	PinNames    []string
 }
 
 const (
-	PinNameSensor = "sensor"
-	PinNameOutput = "output"
-	PinNameServo  = "servo"
+	PinNameSensor        = "sensor"
+	PinNameOutput        = "output"
+	PinNameServo         = "servo"
+	PinNameStraightRelay = "straight-relay"
+	PinNameOffRelay      = "off-relay"
 )
 
 var (
 	objectTypeInfos = []ObjectTypeInfo{
 		ObjectTypeInfo{
-			Type:     ObjectTypeBinarySensor,
-			PinNames: []string{PinNameSensor},
+			Type:        ObjectTypeBinarySensor,
+			Description: "Single bit input sensor",
+			PinNames:    []string{PinNameSensor},
 		},
 		ObjectTypeInfo{
-			Type:     ObjectTypeBinaryOutput,
-			PinNames: []string{PinNameOutput},
+			Type:        ObjectTypeBinaryOutput,
+			Description: "Single bit output",
+			PinNames:    []string{PinNameOutput},
 		},
 		ObjectTypeInfo{
-			Type:     ObjectTypeServoSwitch,
-			PinNames: []string{PinNameServo},
+			Type:        ObjectTypeServoSwitch,
+			Description: "Left or right switch driven by a single servo with optional phase switching relays",
+			PinNames:    []string{PinNameServo},
+		},
+		ObjectTypeInfo{
+			Type:        ObjectTypeRelaySwitch,
+			Description: "Left or right switch driven by 2 relays",
+			PinNames:    []string{PinNameStraightRelay, PinNameOffRelay},
 		},
 	}
 )
