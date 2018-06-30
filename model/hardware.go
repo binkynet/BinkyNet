@@ -17,14 +17,15 @@ type HWDevice struct {
 type HWDeviceType string
 
 const (
-	HWDeviceTypeMCP23017 = "mcp23017"
+	HWDeviceTypeMCP23017 = "mcp23017" // General Purpose I/O
+	HWDeviceTypePCA9685  = "pca9685"  // PWM
 )
 
 // Validate the given type, returning nil on ok,
 // or an error upon validation issues.
 func (t HWDeviceType) Validate() error {
 	switch t {
-	case HWDeviceTypeMCP23017:
+	case HWDeviceTypeMCP23017, HWDeviceTypePCA9685:
 		return nil
 	default:
 		return errors.Wrapf(ValidationError, "invalid device type '%s'", string(t))
