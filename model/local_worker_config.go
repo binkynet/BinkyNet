@@ -10,21 +10,21 @@ type LocalWorkerConfig struct {
 	// If not set, the worker ID is used.
 	Alias string `json:"alias,omitempty"`
 	// List of devices attached to the local worker
-	Devices map[string]HWDevice `json:"devices,omitempty"`
+	Devices map[DeviceID]Device `json:"devices,omitempty"`
 	// List of real world objects controlled by the local worker
-	Objects map[string]Object `json:"objects,omitempty"`
+	Objects map[ObjectID]Object `json:"objects,omitempty"`
 }
 
 // DeviceByID returns the device with given ID.
 // Return false if not found.
-func (c LocalWorkerConfig) DeviceByID(id string) (HWDevice, bool) {
+func (c LocalWorkerConfig) DeviceByID(id DeviceID) (Device, bool) {
 	result, found := c.Devices[id]
 	return result, found
 }
 
 // ObjectByID returns the object with given ID.
 // Return false if not found.
-func (c LocalWorkerConfig) ObjectByID(id string) (Object, bool) {
+func (c LocalWorkerConfig) ObjectByID(id ObjectID) (Object, bool) {
 	result, found := c.Objects[id]
 	return result, found
 }

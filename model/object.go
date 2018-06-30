@@ -2,6 +2,9 @@ package model
 
 import "github.com/pkg/errors"
 
+// ObjectID is a strongly typed identifier of an object.
+type ObjectID string
+
 // Object holds the base info for each type of real world object.
 type Object struct {
 	// Type of object
@@ -128,7 +131,7 @@ func (t ObjectType) TypeInfo() ObjectTypeInfo {
 
 // Validate the given configuration, returning nil on ok,
 // or an error upon validation issues.
-func (o Object) Validate(id string) error {
+func (o Object) Validate(id ObjectID) error {
 	if err := o.Type.Validate(); err != nil {
 		return errors.Wrapf(ValidationError, "Error in Type of '%s': %s", id, err.Error())
 	}
@@ -141,6 +144,12 @@ func (o Object) Validate(id string) error {
 		}
 		if cInfo.PinCount != len(pins) {
 			return errors.Wrapf(ValidationError, "Object '%s' has an unexpected number of pins for connection '%s'. Got %d, expected %d", id, name, len(pins), cInfo.PinCount)
+		}
+		// Validate pins
+		for idx, p := range pins {
+			if p.Index == 0 {
+				return errors.Wrapf(ValidationError, "Object '%s' has an invalid index at position %d of the connection named '%s'", id, idx, name)
+			}
 		}
 	}
 	// Look for missing connections
