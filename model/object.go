@@ -63,13 +63,13 @@ type ObjectConnectionInfo struct {
 type ConnectionName string
 
 const (
-	ConnectionNameSensor          ConnectionName = "sensor"
-	ConnectionNameOutput          ConnectionName = "output"
-	ConnectionNameServo           ConnectionName = "servo"
-	ConnectionNameStraightRelay   ConnectionName = "straight-relay"
-	ConnectionNameOffRelay        ConnectionName = "off-relay"
-	ConnectionNamePhaseLeftRelay  ConnectionName = "phase-left-relay"
-	ConnectionNamePhaseRightRelay ConnectionName = "phase-right-relay"
+	ConnectionNameSensor             ConnectionName = "sensor"
+	ConnectionNameOutput             ConnectionName = "output"
+	ConnectionNameServo              ConnectionName = "servo"
+	ConnectionNameStraightRelay      ConnectionName = "straight-relay"
+	ConnectionNameOffRelay           ConnectionName = "off-relay"
+	ConnectionNamePhaseStraightRelay ConnectionName = "phase-straight-relay"
+	ConnectionNamePhaseOffRelay      ConnectionName = "phase-off-relay"
 )
 
 var (
@@ -93,8 +93,8 @@ var (
 			Description: "Left or right switch driven by a single servo with optional phase switching relays",
 			Connections: []ObjectConnectionInfo{
 				ObjectConnectionInfo{Name: ConnectionNameServo, Required: true, PinCount: 1},
-				ObjectConnectionInfo{Name: ConnectionNamePhaseLeftRelay, Required: false, PinCount: 1},
-				ObjectConnectionInfo{Name: ConnectionNamePhaseRightRelay, Required: false, PinCount: 1},
+				ObjectConnectionInfo{Name: ConnectionNamePhaseStraightRelay, Required: false, PinCount: 1},
+				ObjectConnectionInfo{Name: ConnectionNamePhaseOffRelay, Required: false, PinCount: 1},
 			},
 		},
 		ObjectTypeInfo{
