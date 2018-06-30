@@ -13,7 +13,7 @@ type MessageBase struct {
 type LocRequest struct {
 	MessageBase
 	// Address (module/local)
-	Address string `json:"address"`
+	Address ObjectAddress `json:"address"`
 	// Speed in steps
 	Speed int `json:"speed"`
 	// Maximum speed steps of this loc
@@ -59,7 +59,7 @@ func (l PowerFeedback) TopicSuffix() string {
 type BinaryOutputRequest struct {
 	MessageBase
 	// Address (module/local)
-	Address string `json:"address"`
+	Address ObjectAddress `json:"address"`
 	// Value of the binary output on/off
 	Value bool `json:"value"`
 }
@@ -73,7 +73,7 @@ func (l BinaryOutputRequest) TopicSuffix() string {
 type BinaryOutputFeedback struct {
 	MessageBase
 	// Address (module/local)
-	Address string `json:"address"`
+	Address ObjectAddress `json:"address"`
 	// Value of the binary output on/off
 	Value bool `json:"value"`
 }
@@ -87,7 +87,7 @@ func (l BinaryOutputFeedback) TopicSuffix() string {
 type BinarySensorFeedback struct {
 	MessageBase
 	// Address (module/local)
-	Address string `json:"address"`
+	Address ObjectAddress `json:"address"`
 	// Value of the binary sensor on/off
 	Value bool `json:"value"`
 }
@@ -118,7 +118,7 @@ func (s SwitchDirection) Validate() error {
 type SwitchRequest struct {
 	MessageBase
 	// Address (module/local)
-	Address string `json:"address"`
+	Address ObjectAddress `json:"address"`
 	// Direction of the switch "straight|off"
 	Direction SwitchDirection `json:"direction"`
 }
@@ -132,7 +132,7 @@ func (l SwitchRequest) TopicSuffix() string {
 type SwitchFeedback struct {
 	MessageBase
 	// Address (module/local)
-	Address string `json:"address"`
+	Address ObjectAddress `json:"address"`
 	// Direction of the switch "straight|off"
 	Direction SwitchDirection `json:"direction"`
 }

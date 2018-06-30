@@ -78,7 +78,7 @@ func cmdSetRun(cmd *cobra.Command, args []string) {
 			cliLog.Fatal().Msg("Invalid value.")
 		}
 		msg := mq.BinaryOutputRequest{
-			Address: setOptions.address,
+			Address: mq.ObjectAddress(setOptions.address),
 			Value:   boolValue,
 		}
 		topic := path.Join(mqttOptions.topicPrefix, msg.TopicSuffix())
@@ -90,7 +90,7 @@ func cmdSetRun(cmd *cobra.Command, args []string) {
 			cliLog.Fatal().Msg("Invalid value.")
 		}
 		msg := mq.SwitchRequest{
-			Address:   setOptions.address,
+			Address:   mq.ObjectAddress(setOptions.address),
 			Direction: swDirValue,
 		}
 		topic := path.Join(mqttOptions.topicPrefix, msg.TopicSuffix())
