@@ -23,7 +23,7 @@ import (
 	"github.com/binkynet/BinkyNet/cli/mqtt"
 	_ "github.com/binkynet/BinkyNet/discovery"
 	_ "github.com/binkynet/BinkyNet/model"
-	_ "github.com/binkynet/BinkyNet/mq"
+	_ "github.com/binkynet/BinkyNet/mqp"
 )
 
 const (

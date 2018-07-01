@@ -16,7 +16,6 @@ package main
 
 import (
 	"context"
-	"path"
 	"strconv"
 
 	"github.com/spf13/cobra"
@@ -24,13 +23,36 @@ import (
 	"github.com/binkynet/BinkyNet/cli/mqtt"
 	_ "github.com/binkynet/BinkyNet/discovery"
 	_ "github.com/binkynet/BinkyNet/model"
-	"github.com/binkynet/BinkyNet/mq"
+	"github.com/binkynet/BinkyNet/mqp"
 )
 
 var (
 	cmdSet = &cobra.Command{
 		Use: "set",
-		Run: cmdSetRun,
+		Run: func(cmd *cobra.Command, args []string) {
+			cmd.Usage()
+		},
+		PersistentPreRun: func(cmd *cobra.Command, args []string) {
+			if setOptions.address == "" && len(args) > 0 {
+				setOptions.address = args[0]
+				args = args[1:]
+			}
+			if setOptions.value == "" && len(args) > 0 {
+				setOptions.value = args[0]
+				args = args[1:]
+			}
+			if setOptions.address == "" {
+				cliLog.Fatal().Msg("Address missing")
+			}
+		},
+	}
+	cmdSetBinary = &cobra.Command{
+		Use: "binary",
+		Run: cmdSetBinaryRun,
+	}
+	cmdSetSwitch = &cobra.Command{
+		Use: "switch",
+		Run: cmdSetSwitchRun,
 	}
 
 	setOptions struct {
@@ -42,65 +64,57 @@ var (
 
 func init() {
 	cmdMain.AddCommand(cmdSet)
+	cmdSet.AddCommand(cmdSetBinary)
+	cmdSet.AddCommand(cmdSetSwitch)
 
-	f := cmdSet.Flags()
-	f.StringVarP(&setOptions.what, "type", "t", "", "Type of object to set")
+	f := cmdSet.PersistentFlags()
 	f.StringVarP(&setOptions.address, "address", "a", "", "Address of object")
 	f.StringVarP(&setOptions.value, "value", "v", "", "Value to set")
 }
 
-func cmdSetRun(cmd *cobra.Command, args []string) {
-	if setOptions.what == "" && len(args) > 0 {
-		setOptions.what = args[0]
-		args = args[1:]
-	}
-	if setOptions.address == "" && len(args) > 0 {
-		setOptions.address = args[0]
-		args = args[1:]
-	}
-	if setOptions.value == "" && len(args) > 0 {
-		setOptions.value = args[0]
-		args = args[1:]
-	}
-
+func cmdSetPublishMessage(msg mqp.Message) {
 	// Check address
-	if setOptions.address == "" {
-		cliLog.Fatal().Msg("Address missing")
+	workerID, _, err := mqp.SplitAddress(mqp.ObjectAddress(setOptions.address))
+	if err != nil {
+		cliLog.Fatal().Err(err).Str("address", setOptions.address).Msg("Invalid address.")
 	}
 
 	mqs := mustMQTTService()
 	ctx := context.Background()
-	var err error
-	switch setOptions.what {
-	case "binary-output":
-		boolValue, err := strconv.ParseBool(setOptions.value)
-		if err != nil {
-			cliLog.Fatal().Msg("Invalid value.")
-		}
-		msg := mq.BinaryOutputRequest{
-			Address: mq.ObjectAddress(setOptions.address),
-			Value:   boolValue,
-		}
-		topic := path.Join(mqttOptions.topicPrefix, msg.TopicSuffix())
-		err = mqs.Publish(ctx, msg, topic, mqtt.QosAsLeastOnce)
-		cliLog.Debug().Interface("msg", msg).Msg("Published message")
-	case "switch":
-		swDirValue := mq.SwitchDirection(setOptions.value)
-		if err := swDirValue.Validate(); err != nil {
-			cliLog.Fatal().Msg("Invalid value.")
-		}
-		msg := mq.SwitchRequest{
-			Address:   mq.ObjectAddress(setOptions.address),
-			Direction: swDirValue,
-		}
-		topic := path.Join(mqttOptions.topicPrefix, msg.TopicSuffix())
-		err = mqs.Publish(ctx, msg, topic, mqtt.QosAsLeastOnce)
-		cliLog.Debug().Interface("msg", msg).Msg("Published message")
-	default:
-		cliLog.Fatal().Msgf("Unknown type '%s'", setOptions.what)
-	}
-
-	if err != nil {
+	topic := mqp.CreateTopic(mqttOptions.topicPrefix, workerID, msg)
+	if err := mqs.Publish(ctx, msg, topic, mqtt.QosAsLeastOnce); err != nil {
 		cliLog.Fatal().Err(err).Msg("Set failed")
+	} else {
+		cliLog.Debug().Interface("msg", msg).Msg("Published message")
 	}
+}
+
+func cmdSetBinaryRun(cmd *cobra.Command, args []string) {
+	boolValue, err := strconv.ParseBool(setOptions.value)
+	if err != nil {
+		cliLog.Fatal().Msg("Invalid value.")
+	}
+	msg := mqp.BinaryMessage{
+		MessageBase: mqp.MessageBase{
+			Mode: mqp.MessageModeRequest,
+		},
+		Address: mqp.ObjectAddress(setOptions.address),
+		Value:   boolValue,
+	}
+	cmdSetPublishMessage(msg)
+}
+
+func cmdSetSwitchRun(cmd *cobra.Command, args []string) {
+	swDirValue := mqp.SwitchDirection(setOptions.value)
+	if err := swDirValue.Validate(); err != nil {
+		cliLog.Fatal().Msg("Invalid value.")
+	}
+	msg := mqp.SwitchMessage{
+		MessageBase: mqp.MessageBase{
+			Mode: mqp.MessageModeRequest,
+		},
+		Address:   mqp.ObjectAddress(setOptions.address),
+		Direction: swDirValue,
+	}
+	cmdSetPublishMessage(msg)
 }
