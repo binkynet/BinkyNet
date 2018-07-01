@@ -28,7 +28,7 @@ type Object struct {
 	Type ObjectType `json:"type"`
 	// Connections to devices used by this object
 	// The keys used in this map are specific to the type of object.
-	Connections map[ConnectionName][]DevicePin `json:"connections,omitempty"`
+	Connections map[ConnectionName]Connection `json:"connections,omitempty"`
 }
 
 // ObjectType identifies a type of real world objects.
@@ -154,16 +154,16 @@ func (o Object) Validate(id ObjectID) error {
 	}
 	typeInfo := o.Type.TypeInfo()
 	// Check configured connections
-	for name, pins := range o.Connections {
+	for name, conn := range o.Connections {
 		cInfo, found := typeInfo.ConnectionByName(name)
 		if !found {
 			return errors.Wrapf(ValidationError, "Object '%s' has an unexpected connection named '%s'", id, name)
 		}
-		if cInfo.PinCount != len(pins) {
-			return errors.Wrapf(ValidationError, "Object '%s' has an unexpected number of pins for connection '%s'. Got %d, expected %d", id, name, len(pins), cInfo.PinCount)
+		if cInfo.PinCount != len(conn.Pins) {
+			return errors.Wrapf(ValidationError, "Object '%s' has an unexpected number of pins for connection '%s'. Got %d, expected %d", id, name, len(conn.Pins), cInfo.PinCount)
 		}
 		// Validate pins
-		for idx, p := range pins {
+		for idx, p := range conn.Pins {
 			if p.Index == 0 {
 				return errors.Wrapf(ValidationError, "Object '%s' has an invalid index at position %d of the connection named '%s'", id, idx, name)
 			}

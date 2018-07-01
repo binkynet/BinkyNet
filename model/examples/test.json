@@ -10,7 +10,9 @@
         "led1": {
             "type": "binary-output",
             "connections": {
-                "output": [{"device": "io1", "index": 1}]
+                "output": {
+                    "pins": [{"device": "io1", "index": 1}]
+                }
             }
         }
     }

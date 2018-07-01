@@ -58,10 +58,10 @@ func (c LocalWorkerConfig) Validate() error {
 		if err := o.Validate(id); err != nil {
 			return maskAny(err)
 		}
-		for pinID, ps := range o.Connections {
-			for _, p := range ps {
+		for connName, conn := range o.Connections {
+			for pinIdx, p := range conn.Pins {
 				if _, found := c.DeviceByID(p.DeviceID); !found {
-					return errors.Wrapf(ValidationError, "Device '%s' not found in pin '%s' in object '%s'", p.DeviceID, pinID, id)
+					return errors.Wrapf(ValidationError, "Device '%s' not found at index %d of connection '%s' in object '%s'", p.DeviceID, pinIdx, connName, id)
 				}
 			}
 
