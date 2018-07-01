@@ -17,6 +17,8 @@
 
 package model
 
+import "strconv"
+
 // Connection from an Object to a Device.
 type Connection struct {
 	// Pins of devices to connect to
@@ -24,4 +26,38 @@ type Connection struct {
 	// Optional configuration for this connection.
 	// Keys & values are specific to the connection name.
 	Configuration map[string]string `json:"config,omitempty"`
+}
+
+// GetStringConfig returns the configuration value for the given key.
+// If not found, the given default value is returned.
+func (c Connection) GetStringConfig(key string, defValue string) string {
+	value, found := c.Configuration[key]
+	if found {
+		return value
+	}
+	return defValue
+}
+
+// GetBoolConfig returns the bool-typed configuration value for the given key.
+// If not found or not an int, the given default value is returned.
+func (c Connection) GetBoolConfig(key string, defValue bool) bool {
+	value, found := c.Configuration[key]
+	if found {
+		if tValue, err := strconv.ParseBool(value); err == nil {
+			return tValue
+		}
+	}
+	return defValue
+}
+
+// GetIntConfig returns the int-typed configuration value for the given key.
+// If not found or not an int, the given default value is returned.
+func (c Connection) GetIntConfig(key string, defValue int) int {
+	value, found := c.Configuration[key]
+	if found {
+		if tValue, err := strconv.Atoi(value); err == nil {
+			return tValue
+		}
+	}
+	return defValue
 }
