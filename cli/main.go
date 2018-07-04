@@ -16,6 +16,7 @@ package main
 
 import (
 	"os"
+	"strconv"
 
 	"github.com/rs/zerolog"
 	"github.com/spf13/cobra"
@@ -44,8 +45,11 @@ var (
 
 func init() {
 	f := cmdMain.PersistentFlags()
-	f.StringVar(&mqttOptions.Host, "mqtt-host", "mqtt.local", "Hostname of MQTT server")
-	f.IntVar(&mqttOptions.Port, "mqtt-port", 1883, "Port of MQTT server")
+
+	defMqttHost := getEnv("MQTT_HOST", "mqtt.local")
+	defMqttPort, _ := strconv.Atoi(getEnv("MQTT_PORT", "1883"))
+	f.StringVar(&mqttOptions.Host, "mqtt-host", defMqttHost, "Hostname of MQTT server")
+	f.IntVar(&mqttOptions.Port, "mqtt-port", defMqttPort, "Port of MQTT server")
 	f.StringVar(&mqttOptions.UserName, "mqtt-user", "", "Username for authentication of MQTT server")
 	f.StringVar(&mqttOptions.Password, "mqtt-password", "", "Password for authentication of MQTT server")
 	f.StringVar(&mqttOptions.ClientID, "mqtt-clientid", projectName, "Client ID for MQTT server")
@@ -66,4 +70,11 @@ func mustMQTTService() mqtt.Service {
 		cliLog.Fatal().Err(err).Msg("MQTT service creation failed")
 	}
 	return s
+}
+
+func getEnv(key string, defaultValue string) string {
+	if x := os.Getenv(key); x != "" {
+		return x
+	}
+	return defaultValue
 }
