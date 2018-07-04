@@ -77,23 +77,12 @@ func init() {
 	f.StringVarP(&setOptions.value, "value", "v", "", "Value to set")
 }
 
-func newRequestMessageBase() mqp.MessageBase {
-	return mqp.MessageBase{
-		Mode: mqp.MessageModeRequest,
-	}
-}
-
 func newRequestObjectMessageBase(address string) mqp.ObjectMessageBase {
-	return mqp.ObjectMessageBase{
-		MessageBase: newRequestMessageBase(),
-		Address:     mqp.ObjectAddress(address),
-	}
+	return mqp.NewObjectMessageBase("cli", mqp.MessageModeRequest, mqp.ObjectAddress(address))
 }
 
 func newRequestGlobalMessageBase() mqp.GlobalMessageBase {
-	return mqp.GlobalMessageBase{
-		MessageBase: newRequestMessageBase(),
-	}
+	return mqp.NewGlobalMessageBase("cli", mqp.MessageModeRequest)
 }
 
 func cmdSetPublishMessage(msg mqp.Message) {
@@ -107,7 +96,7 @@ func cmdSetPublishMessage(msg mqp.Message) {
 	ctx := context.Background()
 	var topic string
 	if msg.IsGlobal() {
-		topic = mqp.CreateGlobalTopic(mqttOptions.topicPrefix)
+		topic = mqp.CreateGlobalTopic(mqttOptions.topicPrefix, msg)
 	} else {
 		topic = mqp.CreateObjectTopic(mqttOptions.topicPrefix, workerID, msg)
 	}

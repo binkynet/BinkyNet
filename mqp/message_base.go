@@ -27,6 +27,14 @@ type MessageBase struct {
 	Mode MessageMode `json:"mode"`
 }
 
+// NewMessageBase returns a new MessageBase with given values.
+func NewMessageBase(sender string, mode MessageMode) MessageBase {
+	return MessageBase{
+		Sender: sender,
+		Mode:   mode,
+	}
+}
+
 // IsRequest returns true when the message has requested a specific state.
 func (m MessageBase) IsRequest() bool {
 	return m.Mode == MessageModeRequest
@@ -54,6 +62,14 @@ type ObjectMessageBase struct {
 	Address ObjectAddress `json:"address"`
 }
 
+// NewObjectMessageBase returns a new ObjectMessageBase with given values.
+func NewObjectMessageBase(sender string, mode MessageMode, address ObjectAddress) ObjectMessageBase {
+	return ObjectMessageBase{
+		MessageBase: NewMessageBase(sender, mode),
+		Address:     address,
+	}
+}
+
 // IsGlobal returns true when the message is sent on the global topic.
 func (m ObjectMessageBase) IsGlobal() bool {
 	return false
@@ -64,14 +80,16 @@ type GlobalMessageBase struct {
 	MessageBase
 }
 
+// NewGlobalMessageBase returns a new GlobalMessageBase with given values.
+func NewGlobalMessageBase(sender string, mode MessageMode) GlobalMessageBase {
+	return GlobalMessageBase{
+		MessageBase: NewMessageBase(sender, mode),
+	}
+}
+
 // IsGlobal returns true when the message is sent on the global topic.
 func (m GlobalMessageBase) IsGlobal() bool {
 	return true
-}
-
-// TopicSuffix returns the suffix for topic name used by the messages.
-func (m GlobalMessageBase) TopicSuffix() string {
-	return ""
 }
 
 // Message is the interface implemented by each type of message.
@@ -93,6 +111,6 @@ func CreateObjectTopic(topicPrefix, workerID string, msg Message) string {
 }
 
 // CreateGlobalTopic creates an MQTT topic for the message being send to the global topic.
-func CreateGlobalTopic(topicPrefix string) string {
-	return path.Join(topicPrefix, "global")
+func CreateGlobalTopic(topicPrefix string, msg Message) string {
+	return path.Join(topicPrefix, "global", msg.TopicSuffix())
 }

@@ -17,32 +17,26 @@
 
 package mqp
 
-// ClockMessage is used to send the actual time of the track.
-// The mode field is ignored.
+// PingMessage is send to give a "sign of live".
 //
 // The topic suffix for this type of global message is:
-//   /clock
+//   /ping
 //
-type ClockMessage struct {
+// Ping messages are expected to be sent every 30 seconds.
+type PingMessage struct {
 	GlobalMessageBase
-	// Period of day "morning|afternoon|evening|night"
-	Period string `json:"period"`
+	// Version of the Message Queue Protocol supported by the sender
+	ProtocolVersion string `json:"protocol_version"`
+	// Version of the software of the sender
+	Version string `json:"version"`
+	// Uptime of the sender in seconds
+	Uptime int `json:"uptime"`
 }
 
 // Check interface implementation
-var _ Message = ClockMessage{}
+var _ Message = PingMessage{}
 
 // TopicSuffix returns the suffix for topic name used by this message.
-func (m ClockMessage) TopicSuffix() string {
-	return "clock"
-}
-
-// IsRequest returns true when the message has requested a specific state.
-func (m ClockMessage) IsRequest() bool {
-	return true
-}
-
-// IsActual returns true when the message informs of a specific actual state.
-func (m ClockMessage) IsActual() bool {
-	return true
+func (m PingMessage) TopicSuffix() string {
+	return "ping"
 }

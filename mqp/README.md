@@ -19,7 +19,7 @@ Messages are grouped in 2 categories:
 
 Messages are send in specific topics.
 
-Global messages are send in the `<prefix>/global` topic, which is shared by
+Global messages are send in the `<prefix>/global/<message-type>` topic, which is shared by
 the `Network master` and all `Local workers`.
 
 Object messages are send in an object-type topic per `Local worker`; e.g. `<prefix>/<worker-id>/switch`.
