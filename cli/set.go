@@ -50,6 +50,10 @@ var (
 		Use: "binary",
 		Run: cmdSetBinaryRun,
 	}
+	cmdSetPower = &cobra.Command{
+		Use: "power",
+		Run: cmdSetPowerRun,
+	}
 	cmdSetSwitch = &cobra.Command{
 		Use: "switch",
 		Run: cmdSetSwitchRun,
@@ -65,11 +69,31 @@ var (
 func init() {
 	cmdMain.AddCommand(cmdSet)
 	cmdSet.AddCommand(cmdSetBinary)
+	cmdSet.AddCommand(cmdSetPower)
 	cmdSet.AddCommand(cmdSetSwitch)
 
 	f := cmdSet.PersistentFlags()
 	f.StringVarP(&setOptions.address, "address", "a", "", "Address of object")
 	f.StringVarP(&setOptions.value, "value", "v", "", "Value to set")
+}
+
+func newRequestMessageBase() mqp.MessageBase {
+	return mqp.MessageBase{
+		Mode: mqp.MessageModeRequest,
+	}
+}
+
+func newRequestObjectMessageBase(address string) mqp.ObjectMessageBase {
+	return mqp.ObjectMessageBase{
+		MessageBase: newRequestMessageBase(),
+		Address:     mqp.ObjectAddress(address),
+	}
+}
+
+func newRequestGlobalMessageBase() mqp.GlobalMessageBase {
+	return mqp.GlobalMessageBase{
+		MessageBase: newRequestMessageBase(),
+	}
 }
 
 func cmdSetPublishMessage(msg mqp.Message) {
@@ -81,7 +105,12 @@ func cmdSetPublishMessage(msg mqp.Message) {
 
 	mqs := mustMQTTService()
 	ctx := context.Background()
-	topic := mqp.CreateTopic(mqttOptions.topicPrefix, workerID, msg)
+	var topic string
+	if msg.IsGlobal() {
+		topic = mqp.CreateGlobalTopic(mqttOptions.topicPrefix)
+	} else {
+		topic = mqp.CreateObjectTopic(mqttOptions.topicPrefix, workerID, msg)
+	}
 	if err := mqs.Publish(ctx, msg, topic, mqtt.QosAsLeastOnce); err != nil {
 		cliLog.Fatal().Err(err).Msg("Set failed")
 	} else {
@@ -95,11 +124,20 @@ func cmdSetBinaryRun(cmd *cobra.Command, args []string) {
 		cliLog.Fatal().Msg("Invalid value.")
 	}
 	msg := mqp.BinaryMessage{
-		MessageBase: mqp.MessageBase{
-			Mode: mqp.MessageModeRequest,
-		},
-		Address: mqp.ObjectAddress(setOptions.address),
-		Value:   boolValue,
+		ObjectMessageBase: newRequestObjectMessageBase(setOptions.address),
+		Value:             boolValue,
+	}
+	cmdSetPublishMessage(msg)
+}
+
+func cmdSetPowerRun(cmd *cobra.Command, args []string) {
+	boolValue, err := strconv.ParseBool(setOptions.value)
+	if err != nil {
+		cliLog.Fatal().Msg("Invalid value.")
+	}
+	msg := mqp.PowerMessage{
+		GlobalMessageBase: newRequestGlobalMessageBase(),
+		Active:            boolValue,
 	}
 	cmdSetPublishMessage(msg)
 }
@@ -110,11 +148,8 @@ func cmdSetSwitchRun(cmd *cobra.Command, args []string) {
 		cliLog.Fatal().Msg("Invalid value.")
 	}
 	msg := mqp.SwitchMessage{
-		MessageBase: mqp.MessageBase{
-			Mode: mqp.MessageModeRequest,
-		},
-		Address:   mqp.ObjectAddress(setOptions.address),
-		Direction: swDirValue,
+		ObjectMessageBase: newRequestObjectMessageBase(setOptions.address),
+		Direction:         swDirValue,
 	}
 	cmdSetPublishMessage(msg)
 }

@@ -39,13 +39,18 @@ func (s SwitchDirection) Validate() error {
 
 // SwitchMessage is used to request a switch to move to a given direction
 // or report an actual state of a switch.
+//
+// The topic suffix for this type of message is:
+//   /switch
+//
 type SwitchMessage struct {
-	MessageBase
-	// Address (module/local)
-	Address ObjectAddress `json:"address"`
+	ObjectMessageBase
 	// Direction of the switch "straight|off"
 	Direction SwitchDirection `json:"direction"`
 }
+
+// Check interface implementation
+var _ Message = SwitchMessage{}
 
 // TopicSuffix returns the suffix for topic name used by SwitchRequest messages.
 func (l SwitchMessage) TopicSuffix() string {

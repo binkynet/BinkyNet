@@ -47,17 +47,52 @@ const (
 	MessageModeActual MessageMode = "actual"
 )
 
+// ObjectMessageBase contains fields included in all object messages
+type ObjectMessageBase struct {
+	MessageBase
+	// Address (module/local)
+	Address ObjectAddress `json:"address"`
+}
+
+// IsGlobal returns true when the message is sent on the global topic.
+func (m ObjectMessageBase) IsGlobal() bool {
+	return false
+}
+
+// GlobalMessageBase contains fields included in all global messages
+type GlobalMessageBase struct {
+	MessageBase
+}
+
+// IsGlobal returns true when the message is sent on the global topic.
+func (m GlobalMessageBase) IsGlobal() bool {
+	return true
+}
+
+// TopicSuffix returns the suffix for topic name used by the messages.
+func (m GlobalMessageBase) TopicSuffix() string {
+	return ""
+}
+
 // Message is the interface implemented by each type of message.
 type Message interface {
 	// TopicSuffix returns the suffix for topic name used by the message.
+	// For messages that use the global topic, this function returns an empty string.
 	TopicSuffix() string
+	// IsGlobal returns true when the message is send on the global topic.
+	IsGlobal() bool
 	// IsRequest returns true when the message has requested a specific state.
 	IsRequest() bool
 	// IsActual returns true when the message informs of a specific actual state.
 	IsActual() bool
 }
 
-// CreateTopic creates an MQTT topic for the message being send to the local worker with given ID.
-func CreateTopic(topicPrefix, workerID string, msg Message) string {
+// CreateObjectTopic creates an MQTT topic for the message being send to the local worker with given ID.
+func CreateObjectTopic(topicPrefix, workerID string, msg Message) string {
 	return path.Join(topicPrefix, workerID, msg.TopicSuffix())
+}
+
+// CreateGlobalTopic creates an MQTT topic for the message being send to the global topic.
+func CreateGlobalTopic(topicPrefix string) string {
+	return path.Join(topicPrefix, "global")
 }

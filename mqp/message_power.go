@@ -18,16 +18,13 @@
 package mqp
 
 // PowerMessage is send to control or report on the power supply to the track.
+//
+// Power messages are sent in the global topic.
 type PowerMessage struct {
-	MessageBase
+	GlobalMessageBase
 	// Activate indicates power on/off
 	Active bool `json:"active"`
 }
 
 // Check interface implementation
 var _ Message = PowerMessage{}
-
-// TopicSuffix returns the suffix for topic name used by the messages.
-func (l PowerMessage) TopicSuffix() string {
-	return "power"
-}

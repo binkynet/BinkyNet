@@ -21,10 +21,12 @@ package mqp
 // - request to set the state of a binary output
 // - confirm the actual state of a binary output
 // - report the actual state of a binary sensor
+//
+// The topic suffix for this type of message is:
+//   /binary
+//
 type BinaryMessage struct {
-	MessageBase
-	// Address (module/local)
-	Address ObjectAddress `json:"address"`
+	ObjectMessageBase
 	// Value of the binary on/off
 	Value bool `json:"value"`
 }

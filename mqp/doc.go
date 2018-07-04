@@ -15,25 +15,6 @@
 // Author Ewout Prangsma
 //
 
+// Package mqp contains the message definition of the Message Queue Protocol.
+//
 package mqp
-
-// ClockMessage is used to send the actual time of the track.
-// The mode field is ignored.
-type ClockMessage struct {
-	GlobalMessageBase
-	// Period of day "morning|afternoon|evening|night"
-	Period string `json:"period"`
-}
-
-// Check interface implementation
-var _ Message = ClockMessage{}
-
-// IsRequest returns true when the message has requested a specific state.
-func (m ClockMessage) IsRequest() bool {
-	return true
-}
-
-// IsActual returns true when the message informs of a specific actual state.
-func (m ClockMessage) IsActual() bool {
-	return true
-}

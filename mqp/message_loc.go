@@ -19,9 +19,7 @@ package mqp
 
 // LocMessage is used to control the speed, direction & functions of a loc.
 type LocMessage struct {
-	MessageBase
-	// Address (module/local)
-	Address ObjectAddress `json:"address"`
+	ObjectMessageBase
 	// Speed in steps
 	Speed int `json:"speed"`
 	// Maximum speed steps of this loc
