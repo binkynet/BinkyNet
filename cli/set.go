@@ -93,6 +93,9 @@ func cmdSetPublishMessage(msg mqp.Message) {
 	}
 
 	mqs := mustMQTTService()
+	defer func() {
+		mqs.Close()
+	}()
 	ctx := context.Background()
 	var topic string
 	if msg.IsGlobal() {
