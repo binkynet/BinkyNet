@@ -15,6 +15,8 @@
 package main
 
 import (
+	"fmt"
+	"math/rand"
 	"os"
 	"strconv"
 
@@ -48,11 +50,12 @@ func init() {
 
 	defMqttHost := getEnv("MQTT_HOST", "mqtt.local")
 	defMqttPort, _ := strconv.Atoi(getEnv("MQTT_PORT", "1883"))
+	defClientID := fmt.Sprintf("%s-%d", projectName, rand.Int())
 	f.StringVar(&mqttOptions.Host, "mqtt-host", defMqttHost, "Hostname of MQTT server")
 	f.IntVar(&mqttOptions.Port, "mqtt-port", defMqttPort, "Port of MQTT server")
 	f.StringVar(&mqttOptions.UserName, "mqtt-user", "", "Username for authentication of MQTT server")
 	f.StringVar(&mqttOptions.Password, "mqtt-password", "", "Password for authentication of MQTT server")
-	f.StringVar(&mqttOptions.ClientID, "mqtt-clientid", projectName, "Client ID for MQTT server")
+	f.StringVar(&mqttOptions.ClientID, "mqtt-clientid", defClientID, "Client ID for MQTT server")
 	f.StringVar(&mqttOptions.topicPrefix, "topic-prefix", "", "Prefix for MQTT topics")
 }
 

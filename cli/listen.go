@@ -86,12 +86,15 @@ func cmdListenForMessages(msgBuilder func() interface{}) {
 			} else {
 				topic = mqp.CreateObjectTopic(mqttOptions.topicPrefix, workerID, msg)
 			}
-			subscr, err := mqs.Subscribe(ctx, topic, mqtt.QosAsLeastOnce)
+			subscr, err := mqs.Subscribe(ctx, topic, mqtt.QosDefault)
 			if err != nil {
 				cliLog.Fatal().Err(err).Msg("Subscribe failed")
 			}
+			defer subscr.Close()
+			cliLog.Info().Msgf("Listening on %s", topic)
 			for {
 				msgI := msgBuilder()
+				cliLog.Info().Msgf("Next on %s", topic)
 				msgID, err := subscr.NextMsg(ctx, &msgI)
 				if err != nil {
 					cliLog.Fatal().Err(err).Msg("NextMsg failed")

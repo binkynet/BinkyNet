@@ -78,15 +78,19 @@ type Subscription interface {
 // NewService instantiates a new MQTT service.
 func NewService(config Config, logger zerolog.Logger) (Service, error) {
 	return &service{
-		Config: config,
+		Config:      config,
+		logger:      logger,
+		topicQueues: make(map[string]chan paho.Message),
 	}, nil
 }
 
 type service struct {
 	Config
-	mutex     sync.Mutex
-	client    paho.Client
-	connected bool
+	mutex       sync.Mutex
+	client      paho.Client
+	connected   bool
+	logger      zerolog.Logger
+	topicQueues map[string]chan paho.Message
 }
 
 const (
@@ -122,8 +126,16 @@ func (s *service) connect() error {
 	addr := net.JoinHostPort(s.Host, strconv.Itoa(s.Port))
 	opts := paho.NewClientOptions()
 	opts.AddBroker(addr)
+	opts.SetDefaultPublishHandler(s.defaultMessageHandler)
 	opts.SetClientID(s.ClientID)
 	opts.SetCleanSession(false)
+	opts.SetKeepAlive(time.Second * 5)
+	opts.SetOnConnectHandler(func(paho.Client) {
+		s.logger.Debug().Msg("MQTT connected")
+	})
+	opts.SetConnectionLostHandler(func(c paho.Client, err error) {
+		s.logger.Debug().Err(err).Msg("MQTT connection lost")
+	})
 	client := paho.NewClient(opts)
 	token := client.Connect()
 	if !token.WaitTimeout(connectTimeout) {
@@ -166,38 +178,92 @@ func (s *service) Publish(ctx context.Context, msg interface{}, topic string, qo
 // Subscribe to a topic
 func (s *service) Subscribe(ctx context.Context, topic string, qos byte) (Subscription, error) {
 	result := &subscription{
-		client: s.client,
-		topic:  topic,
-		queue:  make(chan paho.Message, 32),
+		s:     s,
+		topic: topic,
 	}
 	if err := s.connect(); err != nil {
 		return nil, maskAny(err)
 	}
-	token := s.client.Subscribe(topic, qos, result.messageHandler)
+	s.ensureTopicQueue(topic)
+	token := s.client.Subscribe(topic, qos, nil)
 	if !token.WaitTimeout(subscribeTimeout) {
+		s.closeTopicQueue(topic)
 		return nil, maskAny(TimeoutError)
 	}
 	if err := token.Error(); err != nil {
+		s.closeTopicQueue(topic)
 		return nil, maskAny(err)
 	}
 	return result, nil
 }
 
-type subscription struct {
-	client paho.Client
-	topic  string
-	queue  chan paho.Message
+// Decode message and put in queue
+func (s *service) defaultMessageHandler(c paho.Client, msg paho.Message) {
+	s.mutex.Lock()
+	queue, found := s.topicQueues[msg.Topic()]
+	s.mutex.Unlock()
+	if found {
+		select {
+		case queue <- msg:
+			// We encoded the message
+		default:
+			// Queue full
+			s.logger.Warn().Str("topic", msg.Topic()).Msg("Message queue full")
+		}
+	}
 }
 
-// Decode message and put in queue
-func (s *subscription) messageHandler(c paho.Client, msg paho.Message) {
-	s.queue <- msg
+// ensureTopicQueue ensures a queue with given topic name exists.
+func (s *service) ensureTopicQueue(topic string) {
+	s.mutex.Lock()
+	defer s.mutex.Unlock()
+	if _, found := s.topicQueues[topic]; !found {
+		s.topicQueues[topic] = make(chan paho.Message, 32)
+	}
+}
+
+// closeTopicQueue closes a queue with given topic name.
+func (s *service) closeTopicQueue(topic string) {
+	s.mutex.Lock()
+	defer s.mutex.Unlock()
+	if queue, found := s.topicQueues[topic]; found {
+		delete(s.topicQueues, topic)
+		close(queue)
+	}
+}
+
+// nextMsg blocks until the next message has been received.
+func (s *service) nextMsg(ctx context.Context, topic string, result interface{}) (int, error) {
+	s.mutex.Lock()
+	queue, found := s.topicQueues[topic]
+	s.mutex.Unlock()
+	if !found {
+		return 0, maskAny(SubscriptionClosedError)
+	}
+	select {
+	case <-ctx.Done():
+		// Context cancelled
+		return 0, ctx.Err()
+	case msg, ok := <-queue:
+		if !ok {
+			return 0, maskAny(SubscriptionClosedError)
+		}
+		if err := json.Unmarshal(msg.Payload(), result); err != nil {
+			return 0, maskAny(err)
+		}
+		return int(msg.MessageID()), nil
+	}
+}
+
+type subscription struct {
+	s     *service
+	topic string
 }
 
 // Unsubscribe.
 func (s *subscription) Close() error {
-	close(s.queue)
-	token := s.client.Unsubscribe(s.topic)
+	s.s.closeTopicQueue(s.topic)
+	token := s.s.client.Unsubscribe(s.topic)
 	if !token.WaitTimeout(unsubscribeTimeout) {
 		return maskAny(TimeoutError)
 	}
@@ -209,17 +275,9 @@ func (s *subscription) Close() error {
 
 // NextMsg blocks until the next message has been received.
 func (s *subscription) NextMsg(ctx context.Context, result interface{}) (int, error) {
-	select {
-	case <-ctx.Done():
-		// Context cancelled
-		return 0, ctx.Err()
-	case msg, ok := <-s.queue:
-		if !ok {
-			return 0, maskAny(SubscriptionClosedError)
-		}
-		if err := json.Unmarshal(msg.Payload(), result); err != nil {
-			return 0, maskAny(err)
-		}
-		return int(msg.MessageID()), nil
+	msgID, err := s.s.nextMsg(ctx, s.topic, result)
+	if err != nil {
+		return 0, maskAny(err)
 	}
+	return msgID, nil
 }
