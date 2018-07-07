@@ -21,10 +21,10 @@ import (
 	"github.com/rs/zerolog"
 	"github.com/spf13/cobra"
 
-	"github.com/binkynet/BinkyNet/cli/mqtt"
 	_ "github.com/binkynet/BinkyNet/discovery"
 	_ "github.com/binkynet/BinkyNet/model"
 	_ "github.com/binkynet/BinkyNet/mqp"
+	"github.com/binkynet/BinkyNet/mqtt"
 )
 
 const (
@@ -32,7 +32,7 @@ const (
 )
 
 var (
-	cliLog  = zerolog.New(os.Stdout)
+	cliLog  = zerolog.New(zerolog.ConsoleWriter{Out: os.Stdout}).With().Timestamp().Logger()
 	cmdMain = &cobra.Command{
 		Use: projectName,
 		Run: showUsage,

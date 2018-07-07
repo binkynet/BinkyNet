@@ -20,10 +20,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/binkynet/BinkyNet/cli/mqtt"
 	_ "github.com/binkynet/BinkyNet/discovery"
 	_ "github.com/binkynet/BinkyNet/model"
 	"github.com/binkynet/BinkyNet/mqp"
+	"github.com/binkynet/BinkyNet/mqtt"
 )
 
 var (

@@ -44,6 +44,8 @@ const (
 	QosAsLeastOnce = mqtt.QoS1
 	//QosExactlyOnce represents "QoS 2: Exactly once delivery".
 	QosExactlyOnce = mqtt.QoS2
+	// QosDefault is the default Qos value for BinkyNet
+	QosDefault = QosAsLeastOnce
 )
 
 type Config struct {
@@ -69,7 +71,8 @@ type Subscription interface {
 	// Unsubscribe.
 	Close() error
 	// NextMsg blocks until the next message has been received.
-	NextMsg(ctx context.Context, result interface{}) error
+	// Returns message-ID, error
+	NextMsg(ctx context.Context, result interface{}) (int, error)
 }
 
 // NewService instantiates a new MQTT service.
@@ -165,7 +168,7 @@ func (s *service) Subscribe(ctx context.Context, topic string, qos byte) (Subscr
 	result := &subscription{
 		client: s.client,
 		topic:  topic,
-		queue:  make(chan []byte, 32),
+		queue:  make(chan paho.Message, 32),
 	}
 	if err := s.connect(); err != nil {
 		return nil, maskAny(err)
@@ -183,12 +186,12 @@ func (s *service) Subscribe(ctx context.Context, topic string, qos byte) (Subscr
 type subscription struct {
 	client paho.Client
 	topic  string
-	queue  chan []byte
+	queue  chan paho.Message
 }
 
 // Decode message and put in queue
 func (s *subscription) messageHandler(c paho.Client, msg paho.Message) {
-	s.queue <- msg.Payload()
+	s.queue <- msg
 }
 
 // Unsubscribe.
@@ -205,18 +208,18 @@ func (s *subscription) Close() error {
 }
 
 // NextMsg blocks until the next message has been received.
-func (s *subscription) NextMsg(ctx context.Context, result interface{}) error {
+func (s *subscription) NextMsg(ctx context.Context, result interface{}) (int, error) {
 	select {
 	case <-ctx.Done():
 		// Context cancelled
-		return ctx.Err()
-	case encodedMsg, ok := <-s.queue:
+		return 0, ctx.Err()
+	case msg, ok := <-s.queue:
 		if !ok {
-			return maskAny(SubscriptionClosedError)
+			return 0, maskAny(SubscriptionClosedError)
 		}
-		if err := json.Unmarshal(encodedMsg, result); err != nil {
-			return maskAny(err)
+		if err := json.Unmarshal(msg.Payload(), result); err != nil {
+			return 0, maskAny(err)
 		}
-		return nil
+		return int(msg.MessageID()), nil
 	}
 }
