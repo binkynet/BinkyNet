@@ -35,6 +35,8 @@ type Device struct {
 type DeviceType string
 
 const (
+	// DeviceTypeMCP23008 is the device type of a General Purpose I/O
+	DeviceTypeMCP23008 DeviceType = "mcp23008"
 	// DeviceTypeMCP23017 is the device type of a General Purpose I/O
 	DeviceTypeMCP23017 DeviceType = "mcp23017"
 	// DeviceTypePCA9685 is the device type of a Pulse Width Modulation device
@@ -45,7 +47,7 @@ const (
 // or an error upon validation issues.
 func (t DeviceType) Validate() error {
 	switch t {
-	case DeviceTypeMCP23017, DeviceTypePCA9685:
+	case DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685:
 		return nil
 	default:
 		return errors.Wrapf(ValidationError, "invalid device type '%s'", string(t))
