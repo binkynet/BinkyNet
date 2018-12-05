@@ -16,7 +16,7 @@ BINNAME := bnet
 BIN := $(BINDIR)/$(BINNAME)
 
 GOPATH := $(GOBUILDDIR)
-GOVERSION := 1.10.3-alpine
+GOVERSION := 1.11.2-alpine
 
 ifndef GOOS
 	GOOS := $(shell go env GOOS)

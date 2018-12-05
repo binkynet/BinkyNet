@@ -153,9 +153,13 @@ func (s *service) connect() error {
 
 // Publish a JSON encoded message into a topic.
 func (s *service) Publish(ctx context.Context, msg interface{}, topic string, qos byte) error {
-	encodedMsg, err := json.Marshal(msg)
-	if err != nil {
-		return maskAny(err)
+	encodedMsg, ok := msg.([]byte)
+	if !ok {
+		var err error
+		encodedMsg, err = json.Marshal(msg)
+		if err != nil {
+			return maskAny(err)
+		}
 	}
 	if err := s.connect(); err != nil {
 		return maskAny(err)
