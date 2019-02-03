@@ -34,26 +34,9 @@ all: $(BIN)
 clean:
 	rm -Rf $(BIN) $(GOBUILDDIR)
 
-deps:
-	@${MAKE} -B -s .gobuild
-
 local:
 	@${MAKE} -B GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) $(BIN)
 
-.gobuild:
-	@mkdir -p $(ORGDIR)
-	@pulsar go path -p $(REPOPATH)
-	@GOPATH=$(GOPATH) pulsar go flatten -V $(VENDORDIR)
-
-$(BIN): .gobuild $(SOURCES)
-	docker run \
-		--rm \
-		-v $(ROOTDIR):/usr/code \
-		-e GOPATH=/usr/code/.gobuild \
-		-e GOOS=$(GOOS) \
-		-e GOARCH=$(GOARCH) \
-		-e CGO_ENABLED=0 \
-		-w /usr/code/ \
-		golang:$(GOVERSION) \
-		go build -a -ldflags "-X main.projectVersion=$(VERSION) -X main.projectBuild=$(COMMIT)" -o $(BINNAME) $(REPOPATH)/cli
+$(BIN): $(SOURCES)
+	go build -a -ldflags "-X main.projectVersion=$(VERSION) -X main.projectBuild=$(COMMIT)" -o $(BINNAME) $(REPOPATH)/cli
 
