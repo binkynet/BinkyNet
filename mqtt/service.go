@@ -139,11 +139,15 @@ func (s *service) connect() error {
 	client := paho.NewClient(opts)
 	token := client.Connect()
 	if !token.WaitTimeout(connectTimeout) {
-		client.Disconnect(0)
+		if client.IsConnected() {
+			client.Disconnect(0)
+		}
 		return maskAny(TimeoutError)
 	}
 	if err := token.Error(); err != nil {
-		client.Disconnect(0)
+		if client.IsConnected() {
+			client.Disconnect(0)
+		}
 		return maskAny(err)
 	}
 	s.client = client
