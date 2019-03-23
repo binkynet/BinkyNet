@@ -49,6 +49,7 @@ const (
 )
 
 type Config struct {
+	Secure   bool
 	Host     string
 	Port     int
 	UserName string
@@ -123,9 +124,13 @@ func (s *service) connect() error {
 		return nil
 	}
 	// Connect to the MQTT Server.
+	scheme := "tcp"
+	if s.Secure {
+		scheme = "ssl"
+	}
 	addr := net.JoinHostPort(s.Host, strconv.Itoa(s.Port))
 	opts := paho.NewClientOptions()
-	opts.AddBroker(addr)
+	opts.AddBroker(scheme + "://" + addr)
 	opts.SetDefaultPublishHandler(s.defaultMessageHandler)
 	opts.SetClientID(s.ClientID)
 	opts.SetCleanSession(false)
