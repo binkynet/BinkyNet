@@ -27,9 +27,22 @@ type LocMessage struct {
 	// Maximum speed steps of this loc
 	SpeedSteps int `json:"speedSteps"`
 	// Direction "forward|reverse"
-	Direction string `json:"direction"`
+	Direction LocDirection `json:"direction"`
 	// State of functions
 	Functions map[int]bool `json:"functions"`
+}
+
+// LocDirection is strongly typed direction of locs
+type LocDirection string
+
+// Is given direction forward?
+func (d LocDirection) IsForward() bool {
+	return d == "forward"
+}
+
+// Is given direction reverse?
+func (d LocDirection) IsReverse() bool {
+	return d == "reverse"
 }
 
 // Check interface implementation
