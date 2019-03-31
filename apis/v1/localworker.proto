@@ -17,9 +17,10 @@
 
 syntax = "proto3";
 
-package binkynet.localworker.v1;
+package binkynet.v1;
 
 option go_package = "github.com/binkynet/BinkyNet/apis/v1";
+option csharp_namespace = "BinkyNet.Apis.V1";
 
 // LocalWorkerService is served by the network master and used by
 // local workers.
