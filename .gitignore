@@ -2,3 +2,5 @@ bnet
 .gobuild
 bin
 obj
+*.user
+.vs
