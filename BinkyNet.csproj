@@ -58,8 +58,10 @@
   <ItemGroup>
     <Compile Include="apis\v1\Discovery.cs" />
     <Compile Include="apis\v1\Localworker.cs" />
+    <Compile Include="discovery\DiscoveryBroadcaster.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="discovery\api.go" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
