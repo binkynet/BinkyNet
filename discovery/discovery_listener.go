@@ -49,9 +49,9 @@ func NewNetworkMasterListener(log zerolog.Logger, cb NetworkMasterChangedCallbac
 func (l *NetworkMasterListener) Run(ctx context.Context) error {
 	addr := net.UDPAddr{
 		Port: int(api.Ports_DISCOVERY),
-		IP:   net.ParseIP("0.0.0.0"),
+		IP:   net.IPv4(0, 0, 0, 0),
 	}
-	conn, err := net.ListenUDP("udp", &addr) // code does not block here
+	conn, err := net.ListenUDP("udp4", &addr) // code does not block here
 	if err != nil {
 		return err
 	}
