@@ -21,6 +21,7 @@ import (
 	"context"
 	"net"
 	"strconv"
+	"time"
 
 	api "github.com/binkynet/BinkyNet/apis/v1"
 	"github.com/rs/zerolog"
@@ -47,6 +48,7 @@ func NewNetworkMasterListener(log zerolog.Logger, cb NetworkMasterChangedCallbac
 
 // Run the listener until the given context is canceled.
 func (l *NetworkMasterListener) Run(ctx context.Context) error {
+	updates := make(chan masterInfo)
 	addr := net.UDPAddr{
 		Port: int(api.Ports_DISCOVERY),
 		IP:   net.IPv4(0, 0, 0, 0),
@@ -55,9 +57,40 @@ func (l *NetworkMasterListener) Run(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
+	go l.listenUDP(ctx, conn, updates)
+	var lastInfo api.NetworkMasterInfo
+	for {
+		var info masterInfo
+		select {
+		case info = <-updates:
+			// Ok, got update
+		case <-time.After(time.Second * 30):
+			// No update from network master
+		case <-ctx.Done():
+			// Context canceled
+			return nil
+		}
+
+		if lastInfo.String() != info.NetworkMasterInfo.String() {
+			// Change detected
+			l.log.Info().Str("address", info.Address).Msg("Network master change detected")
+			lastInfo = info.NetworkMasterInfo
+			// Invoke callback
+			l.cb(info.NetworkMasterInfo, info.Address)
+		}
+	}
+}
+
+type masterInfo struct {
+	api.NetworkMasterInfo
+	Address string
+}
+
+// Run the listener until the given context is canceled.
+func (l *NetworkMasterListener) listenUDP(ctx context.Context, conn *net.UDPConn, updates chan masterInfo) error {
+	defer close(updates)
 	defer conn.Close()
 	data := make([]byte, 4096)
-	var lastInfo api.NetworkMasterInfo
 	for {
 		l.log.Debug().Msg("Reading...")
 		n, remoteAddr, err := conn.ReadFromUDP(data)
@@ -76,13 +109,16 @@ func (l *NetworkMasterListener) Run(ctx context.Context) error {
 				l.log.Error().Err(err).Msg("Failed to unmarshal NetworkMasterInfo message")
 				continue
 			}
-			if lastInfo.String() != msg.String() {
-				// Change detected
-				address := net.JoinHostPort(remoteAddr.IP.String(), strconv.Itoa(int(msg.GetApiPort())))
-				l.log.Info().Str("address", address).Msg("Network master change detected")
-				lastInfo = msg
-				// Invoke callback
-				l.cb(msg, address)
+			address := net.JoinHostPort(remoteAddr.IP.String(), strconv.Itoa(int(msg.GetApiPort())))
+			select {
+			case updates <- masterInfo{
+				NetworkMasterInfo: msg,
+				Address:           address,
+			}:
+				// OK
+			case <-ctx.Done():
+				// Context canceled
+				return nil
 			}
 		}
 	}
