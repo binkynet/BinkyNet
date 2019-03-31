@@ -59,7 +59,12 @@ func (l *NetworkMasterListener) Run(ctx context.Context) error {
 	data := make([]byte, 4096)
 	var lastInfo api.NetworkMasterInfo
 	for {
+		l.log.Debug().Msg("Reading...")
 		n, remoteAddr, err := conn.ReadFromUDP(data)
+		l.log.Debug().
+			Int("n", n).
+			Str("remoteAddr", remoteAddr.String()).
+			Msg("Read msg...")
 		if err != nil {
 			if ctx.Err() != nil {
 				return nil
