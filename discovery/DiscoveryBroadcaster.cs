@@ -19,13 +19,16 @@ namespace BinkyNet.Discovery
         {
             client.EnableBroadcast = true;
             var ms = new MemoryStream();
-            msg.WriteTo(new CodedOutputStream(ms));
+            using (var cos = new CodedOutputStream(ms))
+            {
+                msg.WriteTo(cos);
+            }
             msgData = ms.ToArray();
         }
 
         public void Start()
         {
-            if (ctSource != null)
+            if (ctSource == null)
             {
                 ctSource = new CancellationTokenSource();
                 startBroadcaster(ctSource.Token);
