@@ -1,0 +1,107 @@
+// Copyright 2019 Ewout Prangsma
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// Author Ewout Prangsma
+// 
+
+syntax = "proto3";
+
+package binkynet.localworker.v1;
+
+option go_package = "github.com/binkynet/BinkyNet/apis/v1";
+
+// LocalWorkerService is served by the network master and used by
+// local workers.
+service LocalWorkerService {
+  // Ping messages are send at regular intervals by local workers
+  // as a heartbeat notification, as well as providing information about
+  // versions.
+  rpc Ping(LocalWorkerInfo) returns (Empty);
+
+  // GetPowerRequests is used to get a stream of power requests from the network
+  // master.
+  rpc GetPowerRequests(PowerRequestsOptions) returns (stream Power);
+
+  // SetPowerActuals is used to send a stream of actual power statuses to 
+  // the network master.
+  rpc SetPowerActuals(stream Power) returns (Empty);
+
+  // GetLocRequests is used to get a stream of loc requests from the network
+  // master.
+  rpc GetLocRequests(LocRequestsOptions) returns (stream Loc);
+
+  // SetLocActuals is used to send a stream of actual loc statuses to 
+  // the network master.
+  rpc SetLocActuals(stream Loc) returns (Empty);
+}
+
+// Empty message
+message Empty {}
+
+// Information about the local worker
+message LocalWorkerInfo {
+  // Unique identifier of the local worker
+  string id = 1;
+  // Human readable description of the local worker
+  string description = 2;
+  // Version of the local worker in semantic versioning format.
+  // E.g. 1.0.4
+  string version = 3;
+  // Uptime of the local worker in seconds.
+  int64 uptime = 4;
+}
+
+// Request arguments for GetPowerRequests
+message PowerRequestsOptions {
+  // If set, the network master must wait for an actual Power message
+  // to confirm the state transition.
+  // If not set, the network master assumes the power state is effective directly
+  // after sending the message.
+  bool manual_confirm = 1;
+}
+
+// Power message contains the requested/actual state of the power on the track.
+message Power {
+  // Power on/off
+  bool enabled = 1;
+}
+
+// Request arguments for GetLocRequests
+message LocRequestsOptions {
+  // If set, the network master must wait for an actual Loc message
+  // to confirm the state transition.
+  // If not set, the network master assumes the power state is effective directly
+  // after sending the message.
+  bool manual_confirm = 1;
+}
+
+// Direction of locs
+enum LocDirection {
+  FORWARD = 0;
+  REVERSE = 1;
+}
+
+// Loc message is used to control the speed, direction & functions of a loc.
+message Loc {
+	// Addres of the loc
+	string address = 1;
+	// Speed in steps
+	int32 speed = 2;
+	// Maximum speed steps of this loc
+	int32 speed_steps = 3;
+	// Direction "forward|reverse"
+	LocDirection direction = 4;
+	// State of functions
+	map<int32, bool> functions = 5;
+}
