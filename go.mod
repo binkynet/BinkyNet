@@ -2,15 +2,18 @@ module github.com/binkynet/BinkyNet
 
 require (
 	github.com/eclipse/paho.mqtt.golang v1.1.1
-	github.com/golang/protobuf v1.3.1
+	github.com/golang/protobuf v1.3.2
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/rs/zerolog v1.13.0
 	github.com/spf13/cobra v0.0.3
 	github.com/spf13/pflag v1.0.3 // indirect
 	github.com/yosssi/gmq v0.0.1
-	golang.org/x/crypto v0.0.0-20190320223903-b7391e95e576 // indirect
 	golang.org/x/net v0.0.0-20190322120337-addf6b3196f6 // indirect
 	golang.org/x/sys v0.0.0-20190322080309-f49334f85ddc // indirect
-	google.golang.org/grpc v1.19.1
+	google.golang.org/grpc v1.23.0
 )
+
+replace google.golang.org/grpc => google.golang.org/grpc v1.27.1
+
+replace github.com/coreos/go-systemd/v22 => github.com/coreos/go-systemd v0.0.0-20191111152658-2d78030078ef
