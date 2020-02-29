@@ -11,7 +11,13 @@ ARG arch=amd64
 ARG TOKEN
 
 # Install required build packages
-RUN apt-get install -y git curl make sed
+RUN apt-get update -y
+RUN apt-get install -y apt-transport-https
+RUN sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+RUN sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+RUN apt-get update -y
+
+RUN apt-get install -y git curl make sed dart
 COPY --from=protoinstall /usr/local/bin/protoc /usr/local/bin/
 
 # Install go tools
@@ -23,5 +29,16 @@ RUN go get github.com/gogo/protobuf/protoc-gen-gogo && \
     go get github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger && \
     go get github.com/golang/protobuf/protoc-gen-go && \
     go get github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+
+
+# Install Dart protoc plugin
+RUN mkdir -p /dart/cache
+ENV PUB_CACHE=/dart/cache
+ENV PATH="${PATH}:/usr/lib/dart/bin:/dart/cache/bin"
+RUN pub global activate protoc_plugin
+RUN cp /dart/cache/bin/* /go/bin/
+
+RUN apt-get install -y bash
+RUN sh -c 'chsh -s /bin/bash'
 
 ENV GO111MODULE=off

@@ -74,5 +74,4 @@ $(MODVOL):
 # Generate go code for k8s types & proto files
 .PHONY: generate
 generate: $(CACHEVOL) $(MODVOL)
-	$(DOCKERENV) \
-		go generate ./...
+	$(DOCKERENV) go generate ./...

@@ -8,6 +8,8 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -20,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 func init() { proto.RegisterFile("localworker.proto", fileDescriptor_4d9116c22e0c2dd1) }
 
@@ -243,6 +245,26 @@ type LocalWorkerServiceServer interface {
 	// SetLocActuals is used to send a stream of actual loc statuses to
 	// the network master.
 	SetLocActuals(LocalWorkerService_SetLocActualsServer) error
+}
+
+// UnimplementedLocalWorkerServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedLocalWorkerServiceServer struct {
+}
+
+func (*UnimplementedLocalWorkerServiceServer) Ping(ctx context.Context, req *LocalWorkerInfo) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) GetPowerRequests(req *PowerRequestsOptions, srv LocalWorkerService_GetPowerRequestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetPowerRequests not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetPowerActuals(srv LocalWorkerService_SetPowerActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetPowerActuals not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) GetLocRequests(req *LocRequestsOptions, srv LocalWorkerService_GetLocRequestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetLocRequests not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetLocActuals(srv LocalWorkerService_SetLocActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetLocActuals not implemented")
 }
 
 func RegisterLocalWorkerServiceServer(s *grpc.Server, srv LocalWorkerServiceServer) {
