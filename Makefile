@@ -37,9 +37,9 @@ SOURCES := $(shell find . -name '*.go')
 APISOURCES := $(shell find apis -name '*.proto')
 APIGENSOURCES := $(shell find apis -name '*.go')
 
-.PHONY: all clean deps
+.PHONY: all clean deps compile
 
-all: $(BIN)
+all: compile
 
 clean:
 	rm -Rf $(BIN) $(GOBUILDDIR)
@@ -47,8 +47,8 @@ clean:
 local:
 	@${MAKE} -B GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) $(BIN)
 
-$(BIN): $(SOURCES)
-	go build -a -ldflags "-X main.projectVersion=$(VERSION) -X main.projectBuild=$(COMMIT)" -o $(BINNAME) $(REPOPATH)/cli
+compile: $(SOURCES)
+	go build ./...
 
 # Build docker builder image
 .PHONY: build-image
