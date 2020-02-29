@@ -1,0 +1,46 @@
+// Copyright 2020 Ewout Prangsma
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// Author Ewout Prangsma
+// 
+
+syntax = "proto3";
+
+package binkynet.v1;
+
+option go_package = "github.com/binkynet/BinkyNet/apis/v1";
+option csharp_namespace = "BinkyNet.Apis.V1";
+
+import "types.proto";
+
+// CommandStationService is served by individual command stations to enable 
+// access to it without a network master.
+service CommandStationService {
+  // GetInfo returns information from the command station.
+  rpc GetInfo(Empty) returns (CommandStationInfo);
+
+  // SetPower is used to set the power status of the command station.
+  rpc SetPower(Power) returns (Empty);
+
+  // GetPowerActuals is used to request a stream of actual power statuses from
+  // the command station to the client.
+  rpc GetPowerActuals(Empty) returns (stream Power);
+
+  // SetLoc is used to request a loc status from the client to the command station.
+  rpc SetLoc(Loc) returns (Empty);
+
+  // GetLocActuals is used to send a stream of actual loc statuses from
+  // the command station to the client.
+  rpc GetLocActuals(Empty) returns (stream Loc);
+}
