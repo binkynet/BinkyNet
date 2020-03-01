@@ -1,0 +1,14 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "binky_net",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    }
+  ],
+  "generated": "2020-03-01T09:48:15.128876Z",
+  "generator": "pub",
+  "generatorVersion": "2.7.1"
+}
