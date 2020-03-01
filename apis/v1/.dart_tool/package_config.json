@@ -5,10 +5,10 @@
       "name": "binky_net",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.7"
+      "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-03-01T09:48:15.128876Z",
+  "generated": "2020-03-01T09:57:02.507379Z",
   "generator": "pub",
   "generatorVersion": "2.7.1"
 }

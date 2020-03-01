@@ -1,2 +1,4 @@
 name: binky_net
 description: BinkyNet API definitions
+environment:
+  sdk: ">=2.1.0 <3.0.0"
