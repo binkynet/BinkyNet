@@ -26,6 +26,7 @@ import "types.proto";
 
 // CommandStationService is served by individual command stations to enable 
 // access to it without a network master.
+// Command stations make themselves available in mDNS under service type "_cs._binkynet._tcp".
 service CommandStationService {
   // GetInfo returns information from the command station.
   rpc GetInfo(Empty) returns (CommandStationInfo);

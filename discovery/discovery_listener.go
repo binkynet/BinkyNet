@@ -19,12 +19,13 @@ package discovery
 
 import (
 	"context"
-	"net"
 	"strconv"
-	"time"
+	"strings"
+
+	"github.com/grandcat/zeroconf"
+	"github.com/rs/zerolog"
 
 	api "github.com/binkynet/BinkyNet/apis/v1"
-	"github.com/rs/zerolog"
 )
 
 // NetworkMasterListener is a service that listens for discovery broadcasts
@@ -48,78 +49,67 @@ func NewNetworkMasterListener(log zerolog.Logger, cb NetworkMasterChangedCallbac
 
 // Run the listener until the given context is canceled.
 func (l *NetworkMasterListener) Run(ctx context.Context) error {
-	updates := make(chan masterInfo)
-	addr := net.UDPAddr{
-		Port: int(api.Ports_DISCOVERY),
-		IP:   net.IPv4(0, 0, 0, 0),
-	}
-	conn, err := net.ListenUDP("udp4", &addr) // code does not block here
+	// Discover all services on the network (e.g. _workstation._tcp)
+	log := l.log
+	resolver, err := zeroconf.NewResolver(nil)
 	if err != nil {
+		log.Debug().Err(err).Msg("NewResolver failed")
 		return err
 	}
-	go l.listenUDP(ctx, conn, updates)
-	var lastInfo api.NetworkMasterInfo
-	for {
-		var info masterInfo
-		select {
-		case info = <-updates:
-			// Ok, got update
-		case <-time.After(time.Second * 30):
-			// No update from network master
-		case <-ctx.Done():
-			// Context canceled
-			return nil
-		}
 
-		if lastInfo.String() != info.NetworkMasterInfo.String() {
-			// Change detected
-			l.log.Info().Str("address", info.Address).Msg("Network master change detected")
-			lastInfo = info.NetworkMasterInfo
-			// Invoke callback
-			l.cb(info.NetworkMasterInfo, info.Address)
+	entries := make(chan *zeroconf.ServiceEntry)
+	go func(results <-chan *zeroconf.ServiceEntry) {
+		var lastInfo api.NetworkMasterInfo
+		var lastAddr string
+		for entry := range results {
+			info, addr, err := parseServiceInfo(entry)
+			if err != nil {
+				log.Debug().Err(err).Msg("Failed to parse service entry")
+			} else {
+				if info.String() != lastInfo.String() || addr != lastAddr {
+					lastInfo = *info
+					lastAddr = addr
+					l.log.Info().Str("address", lastAddr).Msg("Network master change detected")
+					l.cb(lastInfo, lastAddr)
+				}
+			}
 		}
+	}(entries)
+
+	if err := resolver.Browse(ctx, "_nm._binkynet._tcp", "local.", entries); err != nil {
+		log.Debug().Err(err).Msg("Browse failed")
+		return err
 	}
+	<-ctx.Done()
+	return nil
 }
 
-type masterInfo struct {
-	api.NetworkMasterInfo
-	Address string
-}
-
-// Run the listener until the given context is canceled.
-func (l *NetworkMasterListener) listenUDP(ctx context.Context, conn *net.UDPConn, updates chan masterInfo) error {
-	defer close(updates)
-	defer conn.Close()
-	data := make([]byte, 4096)
-	for {
-		l.log.Debug().Msg("Reading...")
-		n, remoteAddr, err := conn.ReadFromUDP(data)
-		l.log.Debug().
-			Int("n", n).
-			Str("remoteAddr", remoteAddr.String()).
-			Msg("Read msg...")
-		if err != nil {
-			if ctx.Err() != nil {
-				return nil
-			}
-			l.log.Error().Err(err).Msg("Failed to read")
-		} else {
-			var msg api.NetworkMasterInfo
-			if err := msg.Unmarshal(data[:n]); err != nil {
-				l.log.Error().Err(err).Msg("Failed to unmarshal NetworkMasterInfo message")
-				continue
-			}
-			address := net.JoinHostPort(remoteAddr.IP.String(), strconv.Itoa(int(msg.GetApiPort())))
-			select {
-			case updates <- masterInfo{
-				NetworkMasterInfo: msg,
-				Address:           address,
-			}:
-				// OK
-			case <-ctx.Done():
-				// Context canceled
-				return nil
+func parseServiceInfo(se *zeroconf.ServiceEntry) (*api.NetworkMasterInfo, string, error) {
+	result := &api.NetworkMasterInfo{
+		ApiPort: int32(se.Port),
+		Secure:  true,
+	}
+	apiAddress := se.HostName
+	if len(se.AddrIPv4) > 0 {
+		apiAddress = se.AddrIPv4[0].String()
+	} else if len(se.AddrIPv6) > 0 {
+		apiAddress = se.AddrIPv6[0].String()
+	}
+	for _, t := range se.Text {
+		parts := strings.SplitN(t, "=", 2)
+		if len(parts) != 2 {
+			continue
+		}
+		switch parts[0] {
+		case "version":
+			result.Version = parts[1]
+		case "apiversion":
+			result.ApiVersion = parts[1]
+		case "secure":
+			if b, err := strconv.ParseBool(parts[1]); err == nil {
+				result.Secure = b
 			}
 		}
 	}
+	return result, apiAddress, nil
 }

@@ -26,6 +26,7 @@ import "types.proto";
 
 // LocalWorkerService is served by the network master and used by
 // local workers.
+// Network masters make themselves available in mDNS under service type "_nm._binkynet._tcp".
 service LocalWorkerService {
   // Ping messages are send at regular intervals by local workers
   // as a heartbeat notification, as well as providing information about
