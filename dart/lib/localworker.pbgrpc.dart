@@ -13,31 +13,31 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'types.pb.dart' as $0;
 export 'localworker.pb.dart';
 
-class LocalWorkerServiceClient extends $grpc.Client {
+class LocalWorkerControlServiceClient extends $grpc.Client {
   static final _$ping = $grpc.ClientMethod<$0.LocalWorkerInfo, $0.Empty>(
-      '/binkynet.v1.LocalWorkerService/Ping',
+      '/binkynet.v1.LocalWorkerControlService/Ping',
       ($0.LocalWorkerInfo value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$getPowerRequests =
       $grpc.ClientMethod<$0.PowerRequestsOptions, $0.Power>(
-          '/binkynet.v1.LocalWorkerService/GetPowerRequests',
+          '/binkynet.v1.LocalWorkerControlService/GetPowerRequests',
           ($0.PowerRequestsOptions value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.Power.fromBuffer(value));
   static final _$setPowerActuals = $grpc.ClientMethod<$0.Power, $0.Empty>(
-      '/binkynet.v1.LocalWorkerService/SetPowerActuals',
+      '/binkynet.v1.LocalWorkerControlService/SetPowerActuals',
       ($0.Power value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$getLocRequests =
       $grpc.ClientMethod<$0.LocRequestsOptions, $0.Loc>(
-          '/binkynet.v1.LocalWorkerService/GetLocRequests',
+          '/binkynet.v1.LocalWorkerControlService/GetLocRequests',
           ($0.LocRequestsOptions value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.Loc.fromBuffer(value));
   static final _$setLocActuals = $grpc.ClientMethod<$0.Loc, $0.Empty>(
-      '/binkynet.v1.LocalWorkerService/SetLocActuals',
+      '/binkynet.v1.LocalWorkerControlService/SetLocActuals',
       ($0.Loc value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
 
-  LocalWorkerServiceClient($grpc.ClientChannel channel,
+  LocalWorkerControlServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions options})
       : super(channel, options: options);
 
@@ -79,10 +79,10 @@ class LocalWorkerServiceClient extends $grpc.Client {
   }
 }
 
-abstract class LocalWorkerServiceBase extends $grpc.Service {
-  $core.String get $name => 'binkynet.v1.LocalWorkerService';
+abstract class LocalWorkerControlServiceBase extends $grpc.Service {
+  $core.String get $name => 'binkynet.v1.LocalWorkerControlService';
 
-  LocalWorkerServiceBase() {
+  LocalWorkerControlServiceBase() {
     $addMethod($grpc.ServiceMethod<$0.LocalWorkerInfo, $0.Empty>(
         'Ping',
         ping_Pre,

@@ -24,10 +24,10 @@ option csharp_namespace = "BinkyNet.Apis.V1";
 
 import "types.proto";
 
-// LocalWorkerService is served by the network master and used by
+// LocalWorkerControlService is served by the network master and used by
 // local workers.
-// Network masters make themselves available in mDNS under service type "_nm._binkynet._tcp".
-service LocalWorkerService {
+// Network masters make themselves available in mDNS under service type "_lwc._binkynet._tcp".
+service LocalWorkerControlService {
   // Ping messages are send at regular intervals by local workers
   // as a heartbeat notification, as well as providing information about
   // versions.

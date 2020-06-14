@@ -27,25 +27,25 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 func init() { proto.RegisterFile("localworker.proto", fileDescriptor_4d9116c22e0c2dd1) }
 
 var fileDescriptor_4d9116c22e0c2dd1 = []byte{
-	// 278 bytes of a gzipped FileDescriptorProto
+	// 285 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xcc, 0xc9, 0x4f, 0x4e,
 	0xcc, 0x29, 0xcf, 0x2f, 0xca, 0x4e, 0x2d, 0xd2, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4e,
 	0xca, 0xcc, 0xcb, 0xae, 0xcc, 0x4b, 0x2d, 0xd1, 0x2b, 0x33, 0x94, 0xe2, 0x2e, 0xa9, 0x2c, 0x48,
-	0x2d, 0x86, 0xc8, 0x18, 0xdd, 0x60, 0xe2, 0x12, 0xf2, 0x01, 0xa9, 0x0f, 0x07, 0xab, 0x0f, 0x4e,
-	0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0x15, 0xb2, 0xe0, 0x62, 0x09, 0xc8, 0xcc, 0x4b, 0x17, 0x92, 0xd1,
-	0x43, 0xd2, 0xa9, 0x87, 0xa4, 0xd0, 0x33, 0x2f, 0x2d, 0x5f, 0x4a, 0x08, 0x45, 0xd6, 0x35, 0xb7,
-	0xa0, 0xa4, 0x52, 0xc8, 0x9b, 0x4b, 0xc0, 0x3d, 0xb5, 0x24, 0x20, 0xbf, 0x3c, 0xb5, 0x28, 0x28,
-	0xb5, 0xb0, 0x34, 0xb5, 0xb8, 0xa4, 0x58, 0x48, 0x11, 0x45, 0x1d, 0x8a, 0x9c, 0x7f, 0x41, 0x49,
-	0x66, 0x7e, 0x5e, 0x31, 0x9a, 0x51, 0x60, 0x25, 0x06, 0x8c, 0x42, 0xd6, 0x5c, 0xfc, 0xc1, 0x50,
-	0xc3, 0x1c, 0x93, 0x4b, 0x4a, 0x13, 0x73, 0x8a, 0x85, 0xb0, 0x28, 0xc4, 0xe6, 0x0e, 0x0d, 0x46,
-	0x21, 0x57, 0x2e, 0x3e, 0xf7, 0xd4, 0x12, 0x9f, 0xfc, 0x64, 0xb8, 0x3b, 0xe4, 0xd1, 0x7d, 0x83,
-	0xee, 0x0a, 0x01, 0x74, 0x05, 0x06, 0x8c, 0x42, 0xe6, 0x5c, 0xbc, 0xc1, 0x60, 0x63, 0x60, 0x2e,
-	0xc0, 0x50, 0x84, 0xdd, 0x7e, 0x27, 0xcf, 0x13, 0x8f, 0xe4, 0x18, 0x2f, 0x3c, 0x92, 0x63, 0x7c,
-	0xf0, 0x48, 0x8e, 0x71, 0xc6, 0x63, 0x39, 0x86, 0x28, 0x95, 0xf4, 0xcc, 0x92, 0x8c, 0xd2, 0x24,
-	0xbd, 0xe4, 0xfc, 0x5c, 0x7d, 0x98, 0x0e, 0x7d, 0x27, 0x10, 0xc3, 0x2f, 0xb5, 0x44, 0x3f, 0xb1,
-	0x20, 0xb3, 0x58, 0xbf, 0xcc, 0x70, 0x15, 0x93, 0x00, 0x4c, 0x48, 0xcf, 0xb1, 0x20, 0xb3, 0x58,
-	0x2f, 0xcc, 0x30, 0x89, 0x0d, 0x1c, 0x59, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x16, 0x85,
-	0xf5, 0x28, 0xdb, 0x01, 0x00, 0x00,
+	0x2d, 0x86, 0xc8, 0x18, 0xdd, 0x67, 0xe2, 0x92, 0xf4, 0x01, 0xa9, 0x0f, 0x07, 0xab, 0x77, 0xce,
+	0xcf, 0x2b, 0x29, 0xca, 0xcf, 0x09, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0x15, 0xb2, 0xe0, 0x62,
+	0x09, 0xc8, 0xcc, 0x4b, 0x17, 0x92, 0xd1, 0x43, 0x32, 0x40, 0x0f, 0x49, 0xbd, 0x67, 0x5e, 0x5a,
+	0xbe, 0x94, 0x10, 0x8a, 0xac, 0x6b, 0x6e, 0x41, 0x49, 0xa5, 0x90, 0x37, 0x97, 0x80, 0x7b, 0x6a,
+	0x49, 0x40, 0x7e, 0x79, 0x6a, 0x51, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x49, 0xb1, 0x90, 0x22,
+	0x8a, 0x3a, 0x14, 0x39, 0xff, 0x82, 0x92, 0xcc, 0xfc, 0xbc, 0x62, 0x34, 0xa3, 0xc0, 0x4a, 0x0c,
+	0x18, 0x85, 0xac, 0xb9, 0xf8, 0x83, 0xa1, 0x86, 0x39, 0x26, 0x97, 0x94, 0x26, 0xe6, 0x14, 0x0b,
+	0x61, 0x51, 0x88, 0xcd, 0x1d, 0x1a, 0x8c, 0x42, 0xae, 0x5c, 0x7c, 0xee, 0xa9, 0x25, 0x3e, 0xf9,
+	0xc9, 0x70, 0x77, 0xc8, 0xa3, 0xfb, 0x06, 0xdd, 0x15, 0x02, 0xe8, 0x0a, 0x0c, 0x18, 0x85, 0xcc,
+	0xb9, 0x78, 0x83, 0xc1, 0xc6, 0xc0, 0x5c, 0x80, 0xa1, 0x08, 0xbb, 0xfd, 0x4e, 0x9e, 0x27, 0x1e,
+	0xc9, 0x31, 0x5e, 0x78, 0x24, 0xc7, 0xf8, 0xe0, 0x91, 0x1c, 0xe3, 0x8c, 0xc7, 0x72, 0x0c, 0x51,
+	0x2a, 0xe9, 0x99, 0x25, 0x19, 0xa5, 0x49, 0x7a, 0xc9, 0xf9, 0xb9, 0xfa, 0x30, 0x1d, 0xfa, 0x4e,
+	0x20, 0x86, 0x5f, 0x6a, 0x89, 0x7e, 0x62, 0x41, 0x66, 0xb1, 0x7e, 0x99, 0xe1, 0x2a, 0x26, 0x01,
+	0x98, 0x90, 0x9e, 0x63, 0x41, 0x66, 0xb1, 0x5e, 0x98, 0x61, 0x12, 0x1b, 0x38, 0xce, 0x8c, 0x01,
+	0x01, 0x00, 0x00, 0xff, 0xff, 0xc9, 0x3e, 0xe9, 0xfe, 0xe2, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -56,51 +56,51 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// LocalWorkerServiceClient is the client API for LocalWorkerService service.
+// LocalWorkerControlServiceClient is the client API for LocalWorkerControlService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type LocalWorkerServiceClient interface {
+type LocalWorkerControlServiceClient interface {
 	// Ping messages are send at regular intervals by local workers
 	// as a heartbeat notification, as well as providing information about
 	// versions.
 	Ping(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (*Empty, error)
 	// GetPowerRequests is used to get a stream of power requests from the network
 	// master.
-	GetPowerRequests(ctx context.Context, in *PowerRequestsOptions, opts ...grpc.CallOption) (LocalWorkerService_GetPowerRequestsClient, error)
+	GetPowerRequests(ctx context.Context, in *PowerRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetPowerRequestsClient, error)
 	// SetPowerActuals is used to send a stream of actual power statuses to
 	// the network master.
-	SetPowerActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetPowerActualsClient, error)
+	SetPowerActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetPowerActualsClient, error)
 	// GetLocRequests is used to get a stream of loc requests from the network
 	// master.
-	GetLocRequests(ctx context.Context, in *LocRequestsOptions, opts ...grpc.CallOption) (LocalWorkerService_GetLocRequestsClient, error)
+	GetLocRequests(ctx context.Context, in *LocRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetLocRequestsClient, error)
 	// SetLocActuals is used to send a stream of actual loc statuses to
 	// the network master.
-	SetLocActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetLocActualsClient, error)
+	SetLocActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetLocActualsClient, error)
 }
 
-type localWorkerServiceClient struct {
+type localWorkerControlServiceClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewLocalWorkerServiceClient(cc *grpc.ClientConn) LocalWorkerServiceClient {
-	return &localWorkerServiceClient{cc}
+func NewLocalWorkerControlServiceClient(cc *grpc.ClientConn) LocalWorkerControlServiceClient {
+	return &localWorkerControlServiceClient{cc}
 }
 
-func (c *localWorkerServiceClient) Ping(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (*Empty, error) {
+func (c *localWorkerControlServiceClient) Ping(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerService/Ping", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerControlService/Ping", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *localWorkerServiceClient) GetPowerRequests(ctx context.Context, in *PowerRequestsOptions, opts ...grpc.CallOption) (LocalWorkerService_GetPowerRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[0], "/binkynet.v1.LocalWorkerService/GetPowerRequests", opts...)
+func (c *localWorkerControlServiceClient) GetPowerRequests(ctx context.Context, in *PowerRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetPowerRequestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[0], "/binkynet.v1.LocalWorkerControlService/GetPowerRequests", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &localWorkerServiceGetPowerRequestsClient{stream}
+	x := &localWorkerControlServiceGetPowerRequestsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -110,16 +110,16 @@ func (c *localWorkerServiceClient) GetPowerRequests(ctx context.Context, in *Pow
 	return x, nil
 }
 
-type LocalWorkerService_GetPowerRequestsClient interface {
+type LocalWorkerControlService_GetPowerRequestsClient interface {
 	Recv() (*Power, error)
 	grpc.ClientStream
 }
 
-type localWorkerServiceGetPowerRequestsClient struct {
+type localWorkerControlServiceGetPowerRequestsClient struct {
 	grpc.ClientStream
 }
 
-func (x *localWorkerServiceGetPowerRequestsClient) Recv() (*Power, error) {
+func (x *localWorkerControlServiceGetPowerRequestsClient) Recv() (*Power, error) {
 	m := new(Power)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -127,30 +127,30 @@ func (x *localWorkerServiceGetPowerRequestsClient) Recv() (*Power, error) {
 	return m, nil
 }
 
-func (c *localWorkerServiceClient) SetPowerActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetPowerActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[1], "/binkynet.v1.LocalWorkerService/SetPowerActuals", opts...)
+func (c *localWorkerControlServiceClient) SetPowerActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetPowerActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[1], "/binkynet.v1.LocalWorkerControlService/SetPowerActuals", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &localWorkerServiceSetPowerActualsClient{stream}
+	x := &localWorkerControlServiceSetPowerActualsClient{stream}
 	return x, nil
 }
 
-type LocalWorkerService_SetPowerActualsClient interface {
+type LocalWorkerControlService_SetPowerActualsClient interface {
 	Send(*Power) error
 	CloseAndRecv() (*Empty, error)
 	grpc.ClientStream
 }
 
-type localWorkerServiceSetPowerActualsClient struct {
+type localWorkerControlServiceSetPowerActualsClient struct {
 	grpc.ClientStream
 }
 
-func (x *localWorkerServiceSetPowerActualsClient) Send(m *Power) error {
+func (x *localWorkerControlServiceSetPowerActualsClient) Send(m *Power) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *localWorkerServiceSetPowerActualsClient) CloseAndRecv() (*Empty, error) {
+func (x *localWorkerControlServiceSetPowerActualsClient) CloseAndRecv() (*Empty, error) {
 	if err := x.ClientStream.CloseSend(); err != nil {
 		return nil, err
 	}
@@ -161,12 +161,12 @@ func (x *localWorkerServiceSetPowerActualsClient) CloseAndRecv() (*Empty, error)
 	return m, nil
 }
 
-func (c *localWorkerServiceClient) GetLocRequests(ctx context.Context, in *LocRequestsOptions, opts ...grpc.CallOption) (LocalWorkerService_GetLocRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[2], "/binkynet.v1.LocalWorkerService/GetLocRequests", opts...)
+func (c *localWorkerControlServiceClient) GetLocRequests(ctx context.Context, in *LocRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetLocRequestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[2], "/binkynet.v1.LocalWorkerControlService/GetLocRequests", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &localWorkerServiceGetLocRequestsClient{stream}
+	x := &localWorkerControlServiceGetLocRequestsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -176,16 +176,16 @@ func (c *localWorkerServiceClient) GetLocRequests(ctx context.Context, in *LocRe
 	return x, nil
 }
 
-type LocalWorkerService_GetLocRequestsClient interface {
+type LocalWorkerControlService_GetLocRequestsClient interface {
 	Recv() (*Loc, error)
 	grpc.ClientStream
 }
 
-type localWorkerServiceGetLocRequestsClient struct {
+type localWorkerControlServiceGetLocRequestsClient struct {
 	grpc.ClientStream
 }
 
-func (x *localWorkerServiceGetLocRequestsClient) Recv() (*Loc, error) {
+func (x *localWorkerControlServiceGetLocRequestsClient) Recv() (*Loc, error) {
 	m := new(Loc)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -193,30 +193,30 @@ func (x *localWorkerServiceGetLocRequestsClient) Recv() (*Loc, error) {
 	return m, nil
 }
 
-func (c *localWorkerServiceClient) SetLocActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetLocActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[3], "/binkynet.v1.LocalWorkerService/SetLocActuals", opts...)
+func (c *localWorkerControlServiceClient) SetLocActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetLocActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[3], "/binkynet.v1.LocalWorkerControlService/SetLocActuals", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &localWorkerServiceSetLocActualsClient{stream}
+	x := &localWorkerControlServiceSetLocActualsClient{stream}
 	return x, nil
 }
 
-type LocalWorkerService_SetLocActualsClient interface {
+type LocalWorkerControlService_SetLocActualsClient interface {
 	Send(*Loc) error
 	CloseAndRecv() (*Empty, error)
 	grpc.ClientStream
 }
 
-type localWorkerServiceSetLocActualsClient struct {
+type localWorkerControlServiceSetLocActualsClient struct {
 	grpc.ClientStream
 }
 
-func (x *localWorkerServiceSetLocActualsClient) Send(m *Loc) error {
+func (x *localWorkerControlServiceSetLocActualsClient) Send(m *Loc) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *localWorkerServiceSetLocActualsClient) CloseAndRecv() (*Empty, error) {
+func (x *localWorkerControlServiceSetLocActualsClient) CloseAndRecv() (*Empty, error) {
 	if err := x.ClientStream.CloseSend(); err != nil {
 		return nil, err
 	}
@@ -227,108 +227,108 @@ func (x *localWorkerServiceSetLocActualsClient) CloseAndRecv() (*Empty, error) {
 	return m, nil
 }
 
-// LocalWorkerServiceServer is the server API for LocalWorkerService service.
-type LocalWorkerServiceServer interface {
+// LocalWorkerControlServiceServer is the server API for LocalWorkerControlService service.
+type LocalWorkerControlServiceServer interface {
 	// Ping messages are send at regular intervals by local workers
 	// as a heartbeat notification, as well as providing information about
 	// versions.
 	Ping(context.Context, *LocalWorkerInfo) (*Empty, error)
 	// GetPowerRequests is used to get a stream of power requests from the network
 	// master.
-	GetPowerRequests(*PowerRequestsOptions, LocalWorkerService_GetPowerRequestsServer) error
+	GetPowerRequests(*PowerRequestsOptions, LocalWorkerControlService_GetPowerRequestsServer) error
 	// SetPowerActuals is used to send a stream of actual power statuses to
 	// the network master.
-	SetPowerActuals(LocalWorkerService_SetPowerActualsServer) error
+	SetPowerActuals(LocalWorkerControlService_SetPowerActualsServer) error
 	// GetLocRequests is used to get a stream of loc requests from the network
 	// master.
-	GetLocRequests(*LocRequestsOptions, LocalWorkerService_GetLocRequestsServer) error
+	GetLocRequests(*LocRequestsOptions, LocalWorkerControlService_GetLocRequestsServer) error
 	// SetLocActuals is used to send a stream of actual loc statuses to
 	// the network master.
-	SetLocActuals(LocalWorkerService_SetLocActualsServer) error
+	SetLocActuals(LocalWorkerControlService_SetLocActualsServer) error
 }
 
-// UnimplementedLocalWorkerServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedLocalWorkerServiceServer struct {
+// UnimplementedLocalWorkerControlServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedLocalWorkerControlServiceServer struct {
 }
 
-func (*UnimplementedLocalWorkerServiceServer) Ping(ctx context.Context, req *LocalWorkerInfo) (*Empty, error) {
+func (*UnimplementedLocalWorkerControlServiceServer) Ping(ctx context.Context, req *LocalWorkerInfo) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
-func (*UnimplementedLocalWorkerServiceServer) GetPowerRequests(req *PowerRequestsOptions, srv LocalWorkerService_GetPowerRequestsServer) error {
+func (*UnimplementedLocalWorkerControlServiceServer) GetPowerRequests(req *PowerRequestsOptions, srv LocalWorkerControlService_GetPowerRequestsServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetPowerRequests not implemented")
 }
-func (*UnimplementedLocalWorkerServiceServer) SetPowerActuals(srv LocalWorkerService_SetPowerActualsServer) error {
+func (*UnimplementedLocalWorkerControlServiceServer) SetPowerActuals(srv LocalWorkerControlService_SetPowerActualsServer) error {
 	return status.Errorf(codes.Unimplemented, "method SetPowerActuals not implemented")
 }
-func (*UnimplementedLocalWorkerServiceServer) GetLocRequests(req *LocRequestsOptions, srv LocalWorkerService_GetLocRequestsServer) error {
+func (*UnimplementedLocalWorkerControlServiceServer) GetLocRequests(req *LocRequestsOptions, srv LocalWorkerControlService_GetLocRequestsServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetLocRequests not implemented")
 }
-func (*UnimplementedLocalWorkerServiceServer) SetLocActuals(srv LocalWorkerService_SetLocActualsServer) error {
+func (*UnimplementedLocalWorkerControlServiceServer) SetLocActuals(srv LocalWorkerControlService_SetLocActualsServer) error {
 	return status.Errorf(codes.Unimplemented, "method SetLocActuals not implemented")
 }
 
-func RegisterLocalWorkerServiceServer(s *grpc.Server, srv LocalWorkerServiceServer) {
-	s.RegisterService(&_LocalWorkerService_serviceDesc, srv)
+func RegisterLocalWorkerControlServiceServer(s *grpc.Server, srv LocalWorkerControlServiceServer) {
+	s.RegisterService(&_LocalWorkerControlService_serviceDesc, srv)
 }
 
-func _LocalWorkerService_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _LocalWorkerControlService_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(LocalWorkerInfo)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LocalWorkerServiceServer).Ping(ctx, in)
+		return srv.(LocalWorkerControlServiceServer).Ping(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/binkynet.v1.LocalWorkerService/Ping",
+		FullMethod: "/binkynet.v1.LocalWorkerControlService/Ping",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LocalWorkerServiceServer).Ping(ctx, req.(*LocalWorkerInfo))
+		return srv.(LocalWorkerControlServiceServer).Ping(ctx, req.(*LocalWorkerInfo))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LocalWorkerService_GetPowerRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _LocalWorkerControlService_GetPowerRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(PowerRequestsOptions)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LocalWorkerServiceServer).GetPowerRequests(m, &localWorkerServiceGetPowerRequestsServer{stream})
+	return srv.(LocalWorkerControlServiceServer).GetPowerRequests(m, &localWorkerControlServiceGetPowerRequestsServer{stream})
 }
 
-type LocalWorkerService_GetPowerRequestsServer interface {
+type LocalWorkerControlService_GetPowerRequestsServer interface {
 	Send(*Power) error
 	grpc.ServerStream
 }
 
-type localWorkerServiceGetPowerRequestsServer struct {
+type localWorkerControlServiceGetPowerRequestsServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerServiceGetPowerRequestsServer) Send(m *Power) error {
+func (x *localWorkerControlServiceGetPowerRequestsServer) Send(m *Power) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _LocalWorkerService_SetPowerActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LocalWorkerServiceServer).SetPowerActuals(&localWorkerServiceSetPowerActualsServer{stream})
+func _LocalWorkerControlService_SetPowerActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerControlServiceServer).SetPowerActuals(&localWorkerControlServiceSetPowerActualsServer{stream})
 }
 
-type LocalWorkerService_SetPowerActualsServer interface {
+type LocalWorkerControlService_SetPowerActualsServer interface {
 	SendAndClose(*Empty) error
 	Recv() (*Power, error)
 	grpc.ServerStream
 }
 
-type localWorkerServiceSetPowerActualsServer struct {
+type localWorkerControlServiceSetPowerActualsServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerServiceSetPowerActualsServer) SendAndClose(m *Empty) error {
+func (x *localWorkerControlServiceSetPowerActualsServer) SendAndClose(m *Empty) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *localWorkerServiceSetPowerActualsServer) Recv() (*Power, error) {
+func (x *localWorkerControlServiceSetPowerActualsServer) Recv() (*Power, error) {
 	m := new(Power)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -336,46 +336,46 @@ func (x *localWorkerServiceSetPowerActualsServer) Recv() (*Power, error) {
 	return m, nil
 }
 
-func _LocalWorkerService_GetLocRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _LocalWorkerControlService_GetLocRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(LocRequestsOptions)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LocalWorkerServiceServer).GetLocRequests(m, &localWorkerServiceGetLocRequestsServer{stream})
+	return srv.(LocalWorkerControlServiceServer).GetLocRequests(m, &localWorkerControlServiceGetLocRequestsServer{stream})
 }
 
-type LocalWorkerService_GetLocRequestsServer interface {
+type LocalWorkerControlService_GetLocRequestsServer interface {
 	Send(*Loc) error
 	grpc.ServerStream
 }
 
-type localWorkerServiceGetLocRequestsServer struct {
+type localWorkerControlServiceGetLocRequestsServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerServiceGetLocRequestsServer) Send(m *Loc) error {
+func (x *localWorkerControlServiceGetLocRequestsServer) Send(m *Loc) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _LocalWorkerService_SetLocActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LocalWorkerServiceServer).SetLocActuals(&localWorkerServiceSetLocActualsServer{stream})
+func _LocalWorkerControlService_SetLocActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerControlServiceServer).SetLocActuals(&localWorkerControlServiceSetLocActualsServer{stream})
 }
 
-type LocalWorkerService_SetLocActualsServer interface {
+type LocalWorkerControlService_SetLocActualsServer interface {
 	SendAndClose(*Empty) error
 	Recv() (*Loc, error)
 	grpc.ServerStream
 }
 
-type localWorkerServiceSetLocActualsServer struct {
+type localWorkerControlServiceSetLocActualsServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerServiceSetLocActualsServer) SendAndClose(m *Empty) error {
+func (x *localWorkerControlServiceSetLocActualsServer) SendAndClose(m *Empty) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *localWorkerServiceSetLocActualsServer) Recv() (*Loc, error) {
+func (x *localWorkerControlServiceSetLocActualsServer) Recv() (*Loc, error) {
 	m := new(Loc)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -383,34 +383,34 @@ func (x *localWorkerServiceSetLocActualsServer) Recv() (*Loc, error) {
 	return m, nil
 }
 
-var _LocalWorkerService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "binkynet.v1.LocalWorkerService",
-	HandlerType: (*LocalWorkerServiceServer)(nil),
+var _LocalWorkerControlService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "binkynet.v1.LocalWorkerControlService",
+	HandlerType: (*LocalWorkerControlServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Ping",
-			Handler:    _LocalWorkerService_Ping_Handler,
+			Handler:    _LocalWorkerControlService_Ping_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "GetPowerRequests",
-			Handler:       _LocalWorkerService_GetPowerRequests_Handler,
+			Handler:       _LocalWorkerControlService_GetPowerRequests_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "SetPowerActuals",
-			Handler:       _LocalWorkerService_SetPowerActuals_Handler,
+			Handler:       _LocalWorkerControlService_SetPowerActuals_Handler,
 			ClientStreams: true,
 		},
 		{
 			StreamName:    "GetLocRequests",
-			Handler:       _LocalWorkerService_GetLocRequests_Handler,
+			Handler:       _LocalWorkerControlService_GetLocRequests_Handler,
 			ServerStreams: true,
 		},
 		{
 			StreamName:    "SetLocActuals",
-			Handler:       _LocalWorkerService_SetLocActuals_Handler,
+			Handler:       _LocalWorkerControlService_SetLocActuals_Handler,
 			ClientStreams: true,
 		},
 	},
