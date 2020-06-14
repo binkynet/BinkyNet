@@ -17,33 +17,28 @@
 
 syntax = "proto3";
 
-// Discovery of network master by local workers.
-
 package binkynet.v1;
 
 option go_package = "github.com/binkynet/BinkyNet/apis/v1";
 option csharp_namespace = "BinkyNet.Apis.V1";
 
-// Port number constants
-enum Ports {
-  NOTUSED = 0;
-  // Port of UDB discovery broadcasts.
-  DISCOVERY = 9243;
-}
-
-// NetworkMasterInfo messages are frequently broadcasted as UDP packets
-// by the network master.
-message NetworkMasterInfo {
-  // API version of the network master.
+// ServiceInfo is used to standardize service description information.
+message ServiceInfo {
+  // API version of the service.
   // Currently v1.
+  // This is mapped to text field "api_version" in the zeroconf service entry.
   string api_version = 1;
-  // Version of the network master in semantic versioning format.
+  // Version of the component providing the service in semantic versioning format.
   // E.g. 1.0.4
+  // This is mapped to text field "version" in the zeroconf service entry.
   string version = 2;
-  // Port number on which the network master is serving all API services.
-  // Note: Address of the network master is found by inspecting the sender address
-  // of the UDP packet.
+  // Port number on which the service is offered.
+  // This is mapped to the standard port field of the zeroconf service entry.
   int32 api_port = 3;
+  // Address (hostname / IP address) of the service.
+  // This is mapped to the standard hostname + address fields of the zeroconf service entry.
+  string api_address = 4;
   // If set, the API is served over TLS.
-  bool secure = 4;
+  // This is mapped to text field "secure" in the zeroconf service entry.
+  bool secure = 5;
 }

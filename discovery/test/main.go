@@ -14,10 +14,10 @@ var (
 )
 
 func main() {
-	nmListener := discovery.NewNetworkMasterListener(log, onChange)
+	nmListener := discovery.NewServiceListener(log, api.ServiceTypeLogProvider, true, onChange)
 	nmListener.Run(context.Background())
 }
 
-func onChange(info api.NetworkMasterInfo, apiAddress string) {
+func onChange(info api.ServiceInfo) {
 
 }

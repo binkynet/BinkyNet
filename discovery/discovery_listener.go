@@ -19,8 +19,6 @@ package discovery
 
 import (
 	"context"
-	"strconv"
-	"strings"
 
 	"github.com/grandcat/zeroconf"
 	"github.com/rs/zerolog"
@@ -28,29 +26,34 @@ import (
 	api "github.com/binkynet/BinkyNet/apis/v1"
 )
 
-// NetworkMasterListener is a service that listens for discovery broadcasts
-// by the network master.
-type NetworkMasterListener struct {
-	log zerolog.Logger
-	cb  NetworkMasterChangedCallback
+// ServiceListener is a service that listens for service registrations for
+// a specific type of service.
+type ServiceListener struct {
+	log         zerolog.Logger
+	serviceType string
+	all         bool
+	cb          ServiceChangedCallback
 }
 
-// NetworkMasterChangedCallback is type for callbacks when network change
+// ServiceChangedCallback is type for callbacks a service change
 // has been detected.
-type NetworkMasterChangedCallback func(info api.NetworkMasterInfo, apiAddress string)
+type ServiceChangedCallback func(info api.ServiceInfo)
 
-// NewNetworkMasterListener creates and initializes a NetworkMasterListener.
-func NewNetworkMasterListener(log zerolog.Logger, cb NetworkMasterChangedCallback) *NetworkMasterListener {
-	return &NetworkMasterListener{
-		log: log,
-		cb:  cb,
+// NewServiceListener creates and initializes a ServiceListener.
+// If all is false, only changes in service info are reported.
+// If all is true, all service info messages are reported.
+func NewServiceListener(log zerolog.Logger, serviceType string, all bool, cb ServiceChangedCallback) *ServiceListener {
+	return &ServiceListener{
+		log:         log,
+		serviceType: serviceType,
+		all:         all,
+		cb:          cb,
 	}
 }
 
 // Run the listener until the given context is canceled.
-func (l *NetworkMasterListener) Run(ctx context.Context) error {
-	// Discover all services on the network (e.g. _workstation._tcp)
-	log := l.log
+func (l *ServiceListener) Run(ctx context.Context) error {
+	log := l.log.With().Str("serviceType", l.serviceType).Logger()
 	resolver, err := zeroconf.NewResolver(nil)
 	if err != nil {
 		log.Debug().Err(err).Msg("NewResolver failed")
@@ -59,57 +62,27 @@ func (l *NetworkMasterListener) Run(ctx context.Context) error {
 
 	entries := make(chan *zeroconf.ServiceEntry)
 	go func(results <-chan *zeroconf.ServiceEntry) {
-		var lastInfo api.NetworkMasterInfo
-		var lastAddr string
+		var lastInfo api.ServiceInfo
 		for entry := range results {
-			info, addr, err := parseServiceInfo(entry)
+			info, err := api.ParseServiceInfo(entry)
 			if err != nil {
 				log.Debug().Err(err).Msg("Failed to parse service entry")
 			} else {
-				if info.String() != lastInfo.String() || addr != lastAddr {
+				if l.all || info.String() != lastInfo.String() {
 					lastInfo = *info
-					lastAddr = addr
-					l.log.Info().Str("address", lastAddr).Msg("Network master change detected")
-					l.cb(lastInfo, lastAddr)
+					l.log.Info().
+						Str("address", info.GetApiAddress()).
+						Msg("Service change detected")
+					l.cb(lastInfo)
 				}
 			}
 		}
 	}(entries)
 
-	if err := resolver.Browse(ctx, "_nm._binkynet._tcp", "local.", entries); err != nil {
+	if err := resolver.Browse(ctx, l.serviceType, "local.", entries); err != nil {
 		log.Debug().Err(err).Msg("Browse failed")
 		return err
 	}
 	<-ctx.Done()
 	return nil
-}
-
-func parseServiceInfo(se *zeroconf.ServiceEntry) (*api.NetworkMasterInfo, string, error) {
-	result := &api.NetworkMasterInfo{
-		ApiPort: int32(se.Port),
-		Secure:  true,
-	}
-	apiAddress := se.HostName
-	if len(se.AddrIPv4) > 0 {
-		apiAddress = se.AddrIPv4[0].String()
-	} else if len(se.AddrIPv6) > 0 {
-		apiAddress = se.AddrIPv6[0].String()
-	}
-	for _, t := range se.Text {
-		parts := strings.SplitN(t, "=", 2)
-		if len(parts) != 2 {
-			continue
-		}
-		switch parts[0] {
-		case "version":
-			result.Version = parts[1]
-		case "apiversion":
-			result.ApiVersion = parts[1]
-		case "secure":
-			if b, err := strconv.ParseBool(parts[1]); err == nil {
-				result.Secure = b
-			}
-		}
-	}
-	return result, apiAddress, nil
 }

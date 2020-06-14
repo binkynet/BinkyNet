@@ -22,65 +22,42 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Port number constants
-type Ports int32
-
-const (
-	Ports_NOTUSED Ports = 0
-	// Port of UDB discovery broadcasts.
-	Ports_DISCOVERY Ports = 9243
-)
-
-var Ports_name = map[int32]string{
-	0:    "NOTUSED",
-	9243: "DISCOVERY",
-}
-
-var Ports_value = map[string]int32{
-	"NOTUSED":   0,
-	"DISCOVERY": 9243,
-}
-
-func (x Ports) String() string {
-	return proto.EnumName(Ports_name, int32(x))
-}
-
-func (Ports) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_1e7ff60feb39c8d0, []int{0}
-}
-
-// NetworkMasterInfo messages are frequently broadcasted as UDP packets
-// by the network master.
-type NetworkMasterInfo struct {
-	// API version of the network master.
+// ServiceInfo is used to standardize service description information.
+type ServiceInfo struct {
+	// API version of the service.
 	// Currently v1.
+	// This is mapped to text field "api_version" in the zeroconf service entry.
 	ApiVersion string `protobuf:"bytes,1,opt,name=api_version,json=apiVersion,proto3" json:"api_version,omitempty"`
-	// Version of the network master in semantic versioning format.
+	// Version of the component providing the service in semantic versioning format.
 	// E.g. 1.0.4
+	// This is mapped to text field "version" in the zeroconf service entry.
 	Version string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
-	// Port number on which the network master is serving all API services.
-	// Note: Address of the network master is found by inspecting the sender address
-	// of the UDP packet.
+	// Port number on which the service is offered.
+	// This is mapped to the standard port field of the zeroconf service entry.
 	ApiPort int32 `protobuf:"varint,3,opt,name=api_port,json=apiPort,proto3" json:"api_port,omitempty"`
+	// Address (hostname / IP address) of the service.
+	// This is mapped to the standard hostname + address fields of the zeroconf service entry.
+	ApiAddress string `protobuf:"bytes,4,opt,name=api_address,json=apiAddress,proto3" json:"api_address,omitempty"`
 	// If set, the API is served over TLS.
-	Secure               bool     `protobuf:"varint,4,opt,name=secure,proto3" json:"secure,omitempty"`
+	// This is mapped to text field "secure" in the zeroconf service entry.
+	Secure               bool     `protobuf:"varint,5,opt,name=secure,proto3" json:"secure,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *NetworkMasterInfo) Reset()         { *m = NetworkMasterInfo{} }
-func (m *NetworkMasterInfo) String() string { return proto.CompactTextString(m) }
-func (*NetworkMasterInfo) ProtoMessage()    {}
-func (*NetworkMasterInfo) Descriptor() ([]byte, []int) {
+func (m *ServiceInfo) Reset()         { *m = ServiceInfo{} }
+func (m *ServiceInfo) String() string { return proto.CompactTextString(m) }
+func (*ServiceInfo) ProtoMessage()    {}
+func (*ServiceInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1e7ff60feb39c8d0, []int{0}
 }
-func (m *NetworkMasterInfo) XXX_Unmarshal(b []byte) error {
+func (m *ServiceInfo) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *NetworkMasterInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *ServiceInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_NetworkMasterInfo.Marshal(b, m, deterministic)
+		return xxx_messageInfo_ServiceInfo.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -90,40 +67,47 @@ func (m *NetworkMasterInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return b[:n], nil
 	}
 }
-func (m *NetworkMasterInfo) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_NetworkMasterInfo.Merge(m, src)
+func (m *ServiceInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ServiceInfo.Merge(m, src)
 }
-func (m *NetworkMasterInfo) XXX_Size() int {
+func (m *ServiceInfo) XXX_Size() int {
 	return m.Size()
 }
-func (m *NetworkMasterInfo) XXX_DiscardUnknown() {
-	xxx_messageInfo_NetworkMasterInfo.DiscardUnknown(m)
+func (m *ServiceInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_ServiceInfo.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_NetworkMasterInfo proto.InternalMessageInfo
+var xxx_messageInfo_ServiceInfo proto.InternalMessageInfo
 
-func (m *NetworkMasterInfo) GetApiVersion() string {
+func (m *ServiceInfo) GetApiVersion() string {
 	if m != nil {
 		return m.ApiVersion
 	}
 	return ""
 }
 
-func (m *NetworkMasterInfo) GetVersion() string {
+func (m *ServiceInfo) GetVersion() string {
 	if m != nil {
 		return m.Version
 	}
 	return ""
 }
 
-func (m *NetworkMasterInfo) GetApiPort() int32 {
+func (m *ServiceInfo) GetApiPort() int32 {
 	if m != nil {
 		return m.ApiPort
 	}
 	return 0
 }
 
-func (m *NetworkMasterInfo) GetSecure() bool {
+func (m *ServiceInfo) GetApiAddress() string {
+	if m != nil {
+		return m.ApiAddress
+	}
+	return ""
+}
+
+func (m *ServiceInfo) GetSecure() bool {
 	if m != nil {
 		return m.Secure
 	}
@@ -131,34 +115,31 @@ func (m *NetworkMasterInfo) GetSecure() bool {
 }
 
 func init() {
-	proto.RegisterEnum("binkynet.v1.Ports", Ports_name, Ports_value)
-	proto.RegisterType((*NetworkMasterInfo)(nil), "binkynet.v1.NetworkMasterInfo")
+	proto.RegisterType((*ServiceInfo)(nil), "binkynet.v1.ServiceInfo")
 }
 
 func init() { proto.RegisterFile("discovery.proto", fileDescriptor_1e7ff60feb39c8d0) }
 
 var fileDescriptor_1e7ff60feb39c8d0 = []byte{
-	// 263 bytes of a gzipped FileDescriptorProto
+	// 237 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4f, 0xc9, 0x2c, 0x4e,
 	0xce, 0x2f, 0x4b, 0x2d, 0xaa, 0xd4, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4e, 0xca, 0xcc,
-	0xcb, 0xae, 0xcc, 0x4b, 0x2d, 0xd1, 0x2b, 0x33, 0x54, 0x6a, 0x64, 0xe4, 0x12, 0xf4, 0x4b, 0x2d,
-	0x29, 0xcf, 0x2f, 0xca, 0xf6, 0x4d, 0x2c, 0x2e, 0x49, 0x2d, 0xf2, 0xcc, 0x4b, 0xcb, 0x17, 0x92,
-	0xe7, 0xe2, 0x4e, 0x2c, 0xc8, 0x8c, 0x2f, 0x4b, 0x2d, 0x2a, 0xce, 0xcc, 0xcf, 0x93, 0x60, 0x54,
-	0x60, 0xd4, 0xe0, 0x0c, 0xe2, 0x4a, 0x2c, 0xc8, 0x0c, 0x83, 0x88, 0x08, 0x49, 0x70, 0xb1, 0xc3,
-	0x24, 0x99, 0xc0, 0x92, 0x30, 0xae, 0x90, 0x24, 0x17, 0x07, 0x48, 0x6b, 0x41, 0x7e, 0x51, 0x89,
-	0x04, 0xb3, 0x02, 0xa3, 0x06, 0x6b, 0x10, 0x7b, 0x62, 0x41, 0x66, 0x40, 0x7e, 0x51, 0x89, 0x90,
-	0x18, 0x17, 0x5b, 0x71, 0x6a, 0x72, 0x69, 0x51, 0xaa, 0x04, 0x8b, 0x02, 0xa3, 0x06, 0x47, 0x10,
-	0x94, 0xa7, 0xa5, 0xc2, 0xc5, 0x0a, 0x92, 0x2f, 0x16, 0xe2, 0xe6, 0x62, 0xf7, 0xf3, 0x0f, 0x09,
-	0x0d, 0x76, 0x75, 0x11, 0x60, 0x10, 0xe2, 0xe3, 0xe2, 0x74, 0xf1, 0x0c, 0x76, 0xf6, 0x0f, 0x73,
-	0x0d, 0x8a, 0x14, 0x98, 0xed, 0xe1, 0xe4, 0x79, 0xe2, 0x91, 0x1c, 0xe3, 0x85, 0x47, 0x72, 0x8c,
-	0x0f, 0x1e, 0xc9, 0x31, 0xce, 0x78, 0x2c, 0xc7, 0x10, 0xa5, 0x92, 0x9e, 0x59, 0x92, 0x51, 0x9a,
-	0xa4, 0x97, 0x9c, 0x9f, 0xab, 0x0f, 0xf3, 0x93, 0xbe, 0x13, 0x88, 0xe1, 0x97, 0x5a, 0xa2, 0x9f,
-	0x58, 0x90, 0x59, 0xac, 0x5f, 0x66, 0xb8, 0x8a, 0x49, 0x00, 0x26, 0xa4, 0xe7, 0x58, 0x90, 0x59,
-	0xac, 0x17, 0x66, 0x98, 0xc4, 0x06, 0x0e, 0x08, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xc7,
-	0x05, 0x5d, 0xc8, 0x1b, 0x01, 0x00, 0x00,
+	0xcb, 0xae, 0xcc, 0x4b, 0x2d, 0xd1, 0x2b, 0x33, 0x54, 0x9a, 0xc3, 0xc8, 0xc5, 0x1d, 0x9c, 0x5a,
+	0x54, 0x96, 0x99, 0x9c, 0xea, 0x99, 0x97, 0x96, 0x2f, 0x24, 0xcf, 0xc5, 0x9d, 0x58, 0x90, 0x19,
+	0x5f, 0x96, 0x5a, 0x54, 0x9c, 0x99, 0x9f, 0x27, 0xc1, 0xa8, 0xc0, 0xa8, 0xc1, 0x19, 0xc4, 0x95,
+	0x58, 0x90, 0x19, 0x06, 0x11, 0x11, 0x92, 0xe0, 0x62, 0x87, 0x49, 0x32, 0x81, 0x25, 0x61, 0x5c,
+	0x21, 0x49, 0x2e, 0x0e, 0x90, 0xd6, 0x82, 0xfc, 0xa2, 0x12, 0x09, 0x66, 0x05, 0x46, 0x0d, 0xd6,
+	0x20, 0xf6, 0xc4, 0x82, 0xcc, 0x80, 0xfc, 0xa2, 0x12, 0x98, 0xa9, 0x89, 0x29, 0x29, 0x45, 0xa9,
+	0xc5, 0xc5, 0x12, 0x2c, 0x70, 0x53, 0x1d, 0x21, 0x22, 0x42, 0x62, 0x5c, 0x6c, 0xc5, 0xa9, 0xc9,
+	0xa5, 0x45, 0xa9, 0x12, 0xac, 0x0a, 0x8c, 0x1a, 0x1c, 0x41, 0x50, 0x9e, 0x93, 0xe7, 0x89, 0x47,
+	0x72, 0x8c, 0x17, 0x1e, 0xc9, 0x31, 0x3e, 0x78, 0x24, 0xc7, 0x38, 0xe3, 0xb1, 0x1c, 0x43, 0x94,
+	0x4a, 0x7a, 0x66, 0x49, 0x46, 0x69, 0x92, 0x5e, 0x72, 0x7e, 0xae, 0x3e, 0xcc, 0x23, 0xfa, 0x4e,
+	0x20, 0x86, 0x5f, 0x6a, 0x89, 0x7e, 0x62, 0x41, 0x66, 0xb1, 0x7e, 0x99, 0xe1, 0x2a, 0x26, 0x01,
+	0x98, 0x90, 0x9e, 0x63, 0x41, 0x66, 0xb1, 0x5e, 0x98, 0x61, 0x12, 0x1b, 0xd8, 0xf7, 0xc6, 0x80,
+	0x00, 0x00, 0x00, 0xff, 0xff, 0x50, 0x91, 0xe5, 0xcb, 0x10, 0x01, 0x00, 0x00,
 }
 
-func (m *NetworkMasterInfo) Marshal() (dAtA []byte, err error) {
+func (m *ServiceInfo) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -168,12 +149,12 @@ func (m *NetworkMasterInfo) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *NetworkMasterInfo) MarshalTo(dAtA []byte) (int, error) {
+func (m *ServiceInfo) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *NetworkMasterInfo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *ServiceInfo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -190,7 +171,14 @@ func (m *NetworkMasterInfo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 			dAtA[i] = 0
 		}
 		i--
-		dAtA[i] = 0x20
+		dAtA[i] = 0x28
+	}
+	if len(m.ApiAddress) > 0 {
+		i -= len(m.ApiAddress)
+		copy(dAtA[i:], m.ApiAddress)
+		i = encodeVarintDiscovery(dAtA, i, uint64(len(m.ApiAddress)))
+		i--
+		dAtA[i] = 0x22
 	}
 	if m.ApiPort != 0 {
 		i = encodeVarintDiscovery(dAtA, i, uint64(m.ApiPort))
@@ -225,7 +213,7 @@ func encodeVarintDiscovery(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *NetworkMasterInfo) Size() (n int) {
+func (m *ServiceInfo) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -242,6 +230,10 @@ func (m *NetworkMasterInfo) Size() (n int) {
 	if m.ApiPort != 0 {
 		n += 1 + sovDiscovery(uint64(m.ApiPort))
 	}
+	l = len(m.ApiAddress)
+	if l > 0 {
+		n += 1 + l + sovDiscovery(uint64(l))
+	}
 	if m.Secure {
 		n += 2
 	}
@@ -257,7 +249,7 @@ func sovDiscovery(x uint64) (n int) {
 func sozDiscovery(x uint64) (n int) {
 	return sovDiscovery(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *NetworkMasterInfo) Unmarshal(dAtA []byte) error {
+func (m *ServiceInfo) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -280,10 +272,10 @@ func (m *NetworkMasterInfo) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: NetworkMasterInfo: wiretype end group for non-group")
+			return fmt.Errorf("proto: ServiceInfo: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: NetworkMasterInfo: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: ServiceInfo: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -370,6 +362,38 @@ func (m *NetworkMasterInfo) Unmarshal(dAtA []byte) error {
 				}
 			}
 		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ApiAddress", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowDiscovery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthDiscovery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthDiscovery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ApiAddress = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 5:
 			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Secure", wireType)
 			}

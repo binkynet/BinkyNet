@@ -9,31 +9,30 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-export 'discovery.pbenum.dart';
-
-class NetworkMasterInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('NetworkMasterInfo', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+class ServiceInfo extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ServiceInfo', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..aOS(1, 'apiVersion')
     ..aOS(2, 'version')
     ..a<$core.int>(3, 'apiPort', $pb.PbFieldType.O3)
-    ..aOB(4, 'secure')
+    ..aOS(4, 'apiAddress')
+    ..aOB(5, 'secure')
     ..hasRequiredFields = false
   ;
 
-  NetworkMasterInfo._() : super();
-  factory NetworkMasterInfo() => create();
-  factory NetworkMasterInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory NetworkMasterInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  NetworkMasterInfo clone() => NetworkMasterInfo()..mergeFromMessage(this);
-  NetworkMasterInfo copyWith(void Function(NetworkMasterInfo) updates) => super.copyWith((message) => updates(message as NetworkMasterInfo));
+  ServiceInfo._() : super();
+  factory ServiceInfo() => create();
+  factory ServiceInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ServiceInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ServiceInfo clone() => ServiceInfo()..mergeFromMessage(this);
+  ServiceInfo copyWith(void Function(ServiceInfo) updates) => super.copyWith((message) => updates(message as ServiceInfo));
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static NetworkMasterInfo create() => NetworkMasterInfo._();
-  NetworkMasterInfo createEmptyInstance() => create();
-  static $pb.PbList<NetworkMasterInfo> createRepeated() => $pb.PbList<NetworkMasterInfo>();
+  static ServiceInfo create() => ServiceInfo._();
+  ServiceInfo createEmptyInstance() => create();
+  static $pb.PbList<ServiceInfo> createRepeated() => $pb.PbList<ServiceInfo>();
   @$core.pragma('dart2js:noInline')
-  static NetworkMasterInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<NetworkMasterInfo>(create);
-  static NetworkMasterInfo _defaultInstance;
+  static ServiceInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ServiceInfo>(create);
+  static ServiceInfo _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get apiVersion => $_getSZ(0);
@@ -63,12 +62,21 @@ class NetworkMasterInfo extends $pb.GeneratedMessage {
   void clearApiPort() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.bool get secure => $_getBF(3);
+  $core.String get apiAddress => $_getSZ(3);
   @$pb.TagNumber(4)
-  set secure($core.bool v) { $_setBool(3, v); }
+  set apiAddress($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasSecure() => $_has(3);
+  $core.bool hasApiAddress() => $_has(3);
   @$pb.TagNumber(4)
-  void clearSecure() => clearField(4);
+  void clearApiAddress() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.bool get secure => $_getBF(4);
+  @$pb.TagNumber(5)
+  set secure($core.bool v) { $_setBool(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasSecure() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearSecure() => clearField(5);
 }
 
