@@ -33,6 +33,9 @@ service LocalWorkerControlService {
   // versions.
   rpc Ping(LocalWorkerInfo) returns (Empty);
 
+  // GetConfig is used to fetch the configuration for a local worker.
+  rpc GetConfig(LocalWorkerInfo) returns (stream LocalWorkerConfig);
+
   // GetPowerRequests is used to get a stream of power requests from the network
   // master.
   rpc GetPowerRequests(PowerRequestsOptions) returns (stream Power);

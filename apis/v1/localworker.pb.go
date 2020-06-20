@@ -27,25 +27,27 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 func init() { proto.RegisterFile("localworker.proto", fileDescriptor_4d9116c22e0c2dd1) }
 
 var fileDescriptor_4d9116c22e0c2dd1 = []byte{
-	// 285 bytes of a gzipped FileDescriptorProto
+	// 306 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xcc, 0xc9, 0x4f, 0x4e,
 	0xcc, 0x29, 0xcf, 0x2f, 0xca, 0x4e, 0x2d, 0xd2, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4e,
 	0xca, 0xcc, 0xcb, 0xae, 0xcc, 0x4b, 0x2d, 0xd1, 0x2b, 0x33, 0x94, 0xe2, 0x2e, 0xa9, 0x2c, 0x48,
-	0x2d, 0x86, 0xc8, 0x18, 0xdd, 0x67, 0xe2, 0x92, 0xf4, 0x01, 0xa9, 0x0f, 0x07, 0xab, 0x77, 0xce,
+	0x2d, 0x86, 0xc8, 0x18, 0xad, 0x61, 0xe6, 0x92, 0xf4, 0x01, 0xa9, 0x0f, 0x07, 0xab, 0x77, 0xce,
 	0xcf, 0x2b, 0x29, 0xca, 0xcf, 0x09, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0x15, 0xb2, 0xe0, 0x62,
 	0x09, 0xc8, 0xcc, 0x4b, 0x17, 0x92, 0xd1, 0x43, 0x32, 0x40, 0x0f, 0x49, 0xbd, 0x67, 0x5e, 0x5a,
-	0xbe, 0x94, 0x10, 0x8a, 0xac, 0x6b, 0x6e, 0x41, 0x49, 0xa5, 0x90, 0x37, 0x97, 0x80, 0x7b, 0x6a,
-	0x49, 0x40, 0x7e, 0x79, 0x6a, 0x51, 0x50, 0x6a, 0x61, 0x69, 0x6a, 0x71, 0x49, 0xb1, 0x90, 0x22,
-	0x8a, 0x3a, 0x14, 0x39, 0xff, 0x82, 0x92, 0xcc, 0xfc, 0xbc, 0x62, 0x34, 0xa3, 0xc0, 0x4a, 0x0c,
-	0x18, 0x85, 0xac, 0xb9, 0xf8, 0x83, 0xa1, 0x86, 0x39, 0x26, 0x97, 0x94, 0x26, 0xe6, 0x14, 0x0b,
-	0x61, 0x51, 0x88, 0xcd, 0x1d, 0x1a, 0x8c, 0x42, 0xae, 0x5c, 0x7c, 0xee, 0xa9, 0x25, 0x3e, 0xf9,
-	0xc9, 0x70, 0x77, 0xc8, 0xa3, 0xfb, 0x06, 0xdd, 0x15, 0x02, 0xe8, 0x0a, 0x0c, 0x18, 0x85, 0xcc,
-	0xb9, 0x78, 0x83, 0xc1, 0xc6, 0xc0, 0x5c, 0x80, 0xa1, 0x08, 0xbb, 0xfd, 0x4e, 0x9e, 0x27, 0x1e,
-	0xc9, 0x31, 0x5e, 0x78, 0x24, 0xc7, 0xf8, 0xe0, 0x91, 0x1c, 0xe3, 0x8c, 0xc7, 0x72, 0x0c, 0x51,
-	0x2a, 0xe9, 0x99, 0x25, 0x19, 0xa5, 0x49, 0x7a, 0xc9, 0xf9, 0xb9, 0xfa, 0x30, 0x1d, 0xfa, 0x4e,
-	0x20, 0x86, 0x5f, 0x6a, 0x89, 0x7e, 0x62, 0x41, 0x66, 0xb1, 0x7e, 0x99, 0xe1, 0x2a, 0x26, 0x01,
-	0x98, 0x90, 0x9e, 0x63, 0x41, 0x66, 0xb1, 0x5e, 0x98, 0x61, 0x12, 0x1b, 0x38, 0xce, 0x8c, 0x01,
-	0x01, 0x00, 0x00, 0xff, 0xff, 0xc9, 0x3e, 0xe9, 0xfe, 0xe2, 0x01, 0x00, 0x00,
+	0xbe, 0x94, 0x10, 0x8a, 0xac, 0x6b, 0x6e, 0x41, 0x49, 0xa5, 0x90, 0x37, 0x17, 0xa7, 0x7b, 0x6a,
+	0x89, 0x73, 0x7e, 0x5e, 0x5a, 0x26, 0x21, 0xed, 0x72, 0xb8, 0x64, 0x21, 0xba, 0x0d, 0x18, 0x85,
+	0xbc, 0xb9, 0x04, 0xdc, 0x53, 0x4b, 0x02, 0xf2, 0xcb, 0x53, 0x8b, 0x82, 0x52, 0x0b, 0x4b, 0x53,
+	0x8b, 0x4b, 0x8a, 0x85, 0x14, 0x51, 0x74, 0xa1, 0xc8, 0xf9, 0x17, 0x94, 0x64, 0xe6, 0xe7, 0x15,
+	0xa3, 0xb9, 0x0b, 0xac, 0xc4, 0x80, 0x51, 0xc8, 0x9a, 0x8b, 0x3f, 0x18, 0x6a, 0x98, 0x63, 0x72,
+	0x49, 0x69, 0x62, 0x4e, 0xb1, 0x10, 0x16, 0x85, 0xd8, 0x3c, 0xa5, 0xc1, 0x28, 0xe4, 0xca, 0xc5,
+	0xe7, 0x9e, 0x5a, 0xe2, 0x93, 0x9f, 0x0c, 0x77, 0x87, 0x3c, 0xba, 0xeb, 0xd1, 0x5d, 0x21, 0x80,
+	0xae, 0xc0, 0x80, 0x51, 0xc8, 0x9c, 0x8b, 0x37, 0x18, 0x6c, 0x0c, 0xcc, 0x05, 0x18, 0x8a, 0xb0,
+	0xdb, 0xef, 0xe4, 0x79, 0xe2, 0x91, 0x1c, 0xe3, 0x85, 0x47, 0x72, 0x8c, 0x0f, 0x1e, 0xc9, 0x31,
+	0xce, 0x78, 0x2c, 0xc7, 0x10, 0xa5, 0x92, 0x9e, 0x59, 0x92, 0x51, 0x9a, 0xa4, 0x97, 0x9c, 0x9f,
+	0xab, 0x0f, 0xd3, 0xa1, 0xef, 0x04, 0x62, 0xf8, 0xa5, 0x96, 0xe8, 0x27, 0x16, 0x64, 0x16, 0xeb,
+	0x97, 0x19, 0xae, 0x62, 0x12, 0x80, 0x09, 0xe9, 0x39, 0x16, 0x64, 0x16, 0xeb, 0x85, 0x19, 0x26,
+	0xb1, 0x81, 0x13, 0x80, 0x31, 0x20, 0x00, 0x00, 0xff, 0xff, 0xa3, 0x25, 0x8f, 0xb8, 0x2f, 0x02,
+	0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -64,6 +66,8 @@ type LocalWorkerControlServiceClient interface {
 	// as a heartbeat notification, as well as providing information about
 	// versions.
 	Ping(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (*Empty, error)
+	// GetConfig is used to fetch the configuration for a local worker.
+	GetConfig(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (LocalWorkerControlService_GetConfigClient, error)
 	// GetPowerRequests is used to get a stream of power requests from the network
 	// master.
 	GetPowerRequests(ctx context.Context, in *PowerRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetPowerRequestsClient, error)
@@ -95,8 +99,40 @@ func (c *localWorkerControlServiceClient) Ping(ctx context.Context, in *LocalWor
 	return out, nil
 }
 
+func (c *localWorkerControlServiceClient) GetConfig(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (LocalWorkerControlService_GetConfigClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[0], "/binkynet.v1.LocalWorkerControlService/GetConfig", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerControlServiceGetConfigClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type LocalWorkerControlService_GetConfigClient interface {
+	Recv() (*LocalWorkerConfig, error)
+	grpc.ClientStream
+}
+
+type localWorkerControlServiceGetConfigClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerControlServiceGetConfigClient) Recv() (*LocalWorkerConfig, error) {
+	m := new(LocalWorkerConfig)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 func (c *localWorkerControlServiceClient) GetPowerRequests(ctx context.Context, in *PowerRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetPowerRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[0], "/binkynet.v1.LocalWorkerControlService/GetPowerRequests", opts...)
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[1], "/binkynet.v1.LocalWorkerControlService/GetPowerRequests", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -128,7 +164,7 @@ func (x *localWorkerControlServiceGetPowerRequestsClient) Recv() (*Power, error)
 }
 
 func (c *localWorkerControlServiceClient) SetPowerActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetPowerActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[1], "/binkynet.v1.LocalWorkerControlService/SetPowerActuals", opts...)
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[2], "/binkynet.v1.LocalWorkerControlService/SetPowerActuals", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -162,7 +198,7 @@ func (x *localWorkerControlServiceSetPowerActualsClient) CloseAndRecv() (*Empty,
 }
 
 func (c *localWorkerControlServiceClient) GetLocRequests(ctx context.Context, in *LocRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetLocRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[2], "/binkynet.v1.LocalWorkerControlService/GetLocRequests", opts...)
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[3], "/binkynet.v1.LocalWorkerControlService/GetLocRequests", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -194,7 +230,7 @@ func (x *localWorkerControlServiceGetLocRequestsClient) Recv() (*Loc, error) {
 }
 
 func (c *localWorkerControlServiceClient) SetLocActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetLocActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[3], "/binkynet.v1.LocalWorkerControlService/SetLocActuals", opts...)
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[4], "/binkynet.v1.LocalWorkerControlService/SetLocActuals", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -233,6 +269,8 @@ type LocalWorkerControlServiceServer interface {
 	// as a heartbeat notification, as well as providing information about
 	// versions.
 	Ping(context.Context, *LocalWorkerInfo) (*Empty, error)
+	// GetConfig is used to fetch the configuration for a local worker.
+	GetConfig(*LocalWorkerInfo, LocalWorkerControlService_GetConfigServer) error
 	// GetPowerRequests is used to get a stream of power requests from the network
 	// master.
 	GetPowerRequests(*PowerRequestsOptions, LocalWorkerControlService_GetPowerRequestsServer) error
@@ -253,6 +291,9 @@ type UnimplementedLocalWorkerControlServiceServer struct {
 
 func (*UnimplementedLocalWorkerControlServiceServer) Ping(ctx context.Context, req *LocalWorkerInfo) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
+func (*UnimplementedLocalWorkerControlServiceServer) GetConfig(req *LocalWorkerInfo, srv LocalWorkerControlService_GetConfigServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetConfig not implemented")
 }
 func (*UnimplementedLocalWorkerControlServiceServer) GetPowerRequests(req *PowerRequestsOptions, srv LocalWorkerControlService_GetPowerRequestsServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetPowerRequests not implemented")
@@ -287,6 +328,27 @@ func _LocalWorkerControlService_Ping_Handler(srv interface{}, ctx context.Contex
 		return srv.(LocalWorkerControlServiceServer).Ping(ctx, req.(*LocalWorkerInfo))
 	}
 	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalWorkerControlService_GetConfig_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(LocalWorkerInfo)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(LocalWorkerControlServiceServer).GetConfig(m, &localWorkerControlServiceGetConfigServer{stream})
+}
+
+type LocalWorkerControlService_GetConfigServer interface {
+	Send(*LocalWorkerConfig) error
+	grpc.ServerStream
+}
+
+type localWorkerControlServiceGetConfigServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerControlServiceGetConfigServer) Send(m *LocalWorkerConfig) error {
+	return x.ServerStream.SendMsg(m)
 }
 
 func _LocalWorkerControlService_GetPowerRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
@@ -393,6 +455,11 @@ var _LocalWorkerControlService_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "GetConfig",
+			Handler:       _LocalWorkerControlService_GetConfig_Handler,
+			ServerStreams: true,
+		},
 		{
 			StreamName:    "GetPowerRequests",
 			Handler:       _LocalWorkerControlService_GetPowerRequests_Handler,

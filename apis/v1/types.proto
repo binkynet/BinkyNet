@@ -19,6 +19,8 @@ syntax = "proto3";
 
 package binkynet.v1;
 
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
 option go_package = "github.com/binkynet/BinkyNet/apis/v1";
 option csharp_namespace = "BinkyNet.Apis.V1";
 
@@ -93,4 +95,56 @@ message Loc {
 	LocDirection direction = 4;
 	// State of functions
 	map<int32, bool> functions = 5;
+}
+
+// Device represents a hardware device such as a I2C chip.
+message Device {
+  // ID of the device
+  string id = 1 [(gogoproto.customtype) = "DeviceID", (gogoproto.nullable) = false];
+  // Type of the device.
+  // See devicetypes.go
+  string type = 2 [(gogoproto.customtype) = "DeviceType", (gogoproto.nullable) = false];
+  // Logical address of the device on the local worker.
+  string address = 3;
+}
+
+// Object represents a logical object on the railway such as a switch.
+message Object {
+  // ID of the object
+  string id = 1 [(gogoproto.customtype) = "ObjectID", (gogoproto.nullable) = false];
+  // Type of the object.
+  // See objectypes.go
+  string type = 2 [(gogoproto.customtype) = "ObjectType", (gogoproto.nullable) = false];
+	// Connections to devices used by this object
+	// The keys used in this map are specific to the type of object.
+  repeated Connection connections = 3;
+}
+
+// Connection from an Object to a Device.
+message Connection {
+  // Key is specific to the type of device.
+  string key = 1 [(gogoproto.customtype) = "ConnectionName", (gogoproto.nullable) = false];
+	// Pins of devices to connect to
+	repeated DevicePin pins = 2;
+	// Optional configuration for this connection.
+	// Keys & values are specific to the connection name.
+	map<string, string> configuration = 3;
+}
+
+// DevicePin identifies a hardware device and an index within that hardware address.
+message DevicePin {
+	// Unique identifier of the device that this connection refers to.
+  string device_id = 1 [(gogoproto.customtype) = "DeviceID", (gogoproto.nullable) = false];
+  // Index on the device (1...)
+  uint64 device_index = 2 [(gogoproto.customtype) = "DeviceIndex", (gogoproto.nullable) = false];
+}
+
+// Configuration for a local worker
+message LocalWorkerConfig {
+  // Human readable alias for this local worker.
+  string alias = 1;
+  // List of devices that must be configured on this local worker.
+  repeated Device devices = 2;
+	// List of real world objects controlled by the local worker
+  repeated Object objects = 3;
 }

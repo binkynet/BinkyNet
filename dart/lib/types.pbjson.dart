@@ -79,3 +79,57 @@ const Loc_FunctionsEntry$json = const {
   '7': const {'7': true},
 };
 
+const Device$json = const {
+  '1': 'Device',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'id'},
+    const {'1': 'type', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'type'},
+    const {'1': 'address', '3': 3, '4': 1, '5': 9, '10': 'address'},
+  ],
+};
+
+const Object$json = const {
+  '1': 'Object',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'id'},
+    const {'1': 'type', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'type'},
+    const {'1': 'connections', '3': 3, '4': 3, '5': 11, '6': '.binkynet.v1.Connection', '10': 'connections'},
+  ],
+};
+
+const Connection$json = const {
+  '1': 'Connection',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'key'},
+    const {'1': 'pins', '3': 2, '4': 3, '5': 11, '6': '.binkynet.v1.DevicePin', '10': 'pins'},
+    const {'1': 'configuration', '3': 3, '4': 3, '5': 11, '6': '.binkynet.v1.Connection.ConfigurationEntry', '10': 'configuration'},
+  ],
+  '3': const [Connection_ConfigurationEntry$json],
+};
+
+const Connection_ConfigurationEntry$json = const {
+  '1': 'ConfigurationEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+const DevicePin$json = const {
+  '1': 'DevicePin',
+  '2': const [
+    const {'1': 'device_id', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'deviceId'},
+    const {'1': 'device_index', '3': 2, '4': 1, '5': 4, '8': const {}, '10': 'deviceIndex'},
+  ],
+};
+
+const LocalWorkerConfig$json = const {
+  '1': 'LocalWorkerConfig',
+  '2': const [
+    const {'1': 'alias', '3': 1, '4': 1, '5': 9, '10': 'alias'},
+    const {'1': 'devices', '3': 2, '4': 3, '5': 11, '6': '.binkynet.v1.Device', '10': 'devices'},
+    const {'1': 'objects', '3': 3, '4': 3, '5': 11, '6': '.binkynet.v1.Object', '10': 'objects'},
+  ],
+};
+

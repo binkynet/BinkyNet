@@ -315,3 +315,218 @@ class Loc extends $pb.GeneratedMessage {
   $core.Map<$core.int, $core.bool> get functions => $_getMap(4);
 }
 
+class Device extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Device', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, 'id')
+    ..aOS(2, 'type')
+    ..aOS(3, 'address')
+    ..hasRequiredFields = false
+  ;
+
+  Device._() : super();
+  factory Device() => create();
+  factory Device.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Device.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Device clone() => Device()..mergeFromMessage(this);
+  Device copyWith(void Function(Device) updates) => super.copyWith((message) => updates(message as Device));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Device create() => Device._();
+  Device createEmptyInstance() => create();
+  static $pb.PbList<Device> createRepeated() => $pb.PbList<Device>();
+  @$core.pragma('dart2js:noInline')
+  static Device getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Device>(create);
+  static Device _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get type => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set type($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearType() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get address => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set address($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasAddress() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAddress() => clearField(3);
+}
+
+class Object extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Object', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, 'id')
+    ..aOS(2, 'type')
+    ..pc<Connection>(3, 'connections', $pb.PbFieldType.PM, subBuilder: Connection.create)
+    ..hasRequiredFields = false
+  ;
+
+  Object._() : super();
+  factory Object() => create();
+  factory Object.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Object.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Object clone() => Object()..mergeFromMessage(this);
+  Object copyWith(void Function(Object) updates) => super.copyWith((message) => updates(message as Object));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Object create() => Object._();
+  Object createEmptyInstance() => create();
+  static $pb.PbList<Object> createRepeated() => $pb.PbList<Object>();
+  @$core.pragma('dart2js:noInline')
+  static Object getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Object>(create);
+  static Object _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get type => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set type($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearType() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<Connection> get connections => $_getList(2);
+}
+
+class Connection extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Connection', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, 'key')
+    ..pc<DevicePin>(2, 'pins', $pb.PbFieldType.PM, subBuilder: DevicePin.create)
+    ..m<$core.String, $core.String>(3, 'configuration', entryClassName: 'Connection.ConfigurationEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('binkynet.v1'))
+    ..hasRequiredFields = false
+  ;
+
+  Connection._() : super();
+  factory Connection() => create();
+  factory Connection.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Connection.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Connection clone() => Connection()..mergeFromMessage(this);
+  Connection copyWith(void Function(Connection) updates) => super.copyWith((message) => updates(message as Connection));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Connection create() => Connection._();
+  Connection createEmptyInstance() => create();
+  static $pb.PbList<Connection> createRepeated() => $pb.PbList<Connection>();
+  @$core.pragma('dart2js:noInline')
+  static Connection getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Connection>(create);
+  static Connection _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get key => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set key($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearKey() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<DevicePin> get pins => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.Map<$core.String, $core.String> get configuration => $_getMap(2);
+}
+
+class DevicePin extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('DevicePin', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, 'deviceId')
+    ..a<$fixnum.Int64>(2, 'deviceIndex', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false
+  ;
+
+  DevicePin._() : super();
+  factory DevicePin() => create();
+  factory DevicePin.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DevicePin.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  DevicePin clone() => DevicePin()..mergeFromMessage(this);
+  DevicePin copyWith(void Function(DevicePin) updates) => super.copyWith((message) => updates(message as DevicePin));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DevicePin create() => DevicePin._();
+  DevicePin createEmptyInstance() => create();
+  static $pb.PbList<DevicePin> createRepeated() => $pb.PbList<DevicePin>();
+  @$core.pragma('dart2js:noInline')
+  static DevicePin getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DevicePin>(create);
+  static DevicePin _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get deviceId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set deviceId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDeviceId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDeviceId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get deviceIndex => $_getI64(1);
+  @$pb.TagNumber(2)
+  set deviceIndex($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDeviceIndex() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDeviceIndex() => clearField(2);
+}
+
+class LocalWorkerConfig extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LocalWorkerConfig', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, 'alias')
+    ..pc<Device>(2, 'devices', $pb.PbFieldType.PM, subBuilder: Device.create)
+    ..pc<Object>(3, 'objects', $pb.PbFieldType.PM, subBuilder: Object.create)
+    ..hasRequiredFields = false
+  ;
+
+  LocalWorkerConfig._() : super();
+  factory LocalWorkerConfig() => create();
+  factory LocalWorkerConfig.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LocalWorkerConfig.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  LocalWorkerConfig clone() => LocalWorkerConfig()..mergeFromMessage(this);
+  LocalWorkerConfig copyWith(void Function(LocalWorkerConfig) updates) => super.copyWith((message) => updates(message as LocalWorkerConfig));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static LocalWorkerConfig create() => LocalWorkerConfig._();
+  LocalWorkerConfig createEmptyInstance() => create();
+  static $pb.PbList<LocalWorkerConfig> createRepeated() => $pb.PbList<LocalWorkerConfig>();
+  @$core.pragma('dart2js:noInline')
+  static LocalWorkerConfig getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LocalWorkerConfig>(create);
+  static LocalWorkerConfig _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get alias => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set alias($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAlias() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAlias() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<Device> get devices => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<Object> get objects => $_getList(2);
+}
+
