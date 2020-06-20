@@ -19,6 +19,7 @@ package v1
 
 const (
 	ServiceTypeCommandStation     = "_cs._binkynet._tcp"
-	ServiceTypeLocalWorkerControl = "_lwc._binkynet._tcp"
+	ServiceTypeLocalWorkerControl = "_lwctrl._binkynet._tcp"
+	ServiceTypeLocalWorkerConfig  = "_lwcfg._binkynet._tcp"
 	ServiceTypeLogProvider        = "_lp._binkynet._tcp"
 )

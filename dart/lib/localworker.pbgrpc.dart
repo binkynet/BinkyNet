@@ -13,17 +13,54 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'types.pb.dart' as $0;
 export 'localworker.pb.dart';
 
+class LocalWorkerConfigServiceClient extends $grpc.Client {
+  static final _$getConfig =
+      $grpc.ClientMethod<$0.LocalWorkerInfo, $0.LocalWorkerConfig>(
+          '/binkynet.v1.LocalWorkerConfigService/GetConfig',
+          ($0.LocalWorkerInfo value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.LocalWorkerConfig.fromBuffer(value));
+
+  LocalWorkerConfigServiceClient($grpc.ClientChannel channel,
+      {$grpc.CallOptions options})
+      : super(channel, options: options);
+
+  $grpc.ResponseStream<$0.LocalWorkerConfig> getConfig(
+      $0.LocalWorkerInfo request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$getConfig, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseStream(call);
+  }
+}
+
+abstract class LocalWorkerConfigServiceBase extends $grpc.Service {
+  $core.String get $name => 'binkynet.v1.LocalWorkerConfigService';
+
+  LocalWorkerConfigServiceBase() {
+    $addMethod($grpc.ServiceMethod<$0.LocalWorkerInfo, $0.LocalWorkerConfig>(
+        'GetConfig',
+        getConfig_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $0.LocalWorkerInfo.fromBuffer(value),
+        ($0.LocalWorkerConfig value) => value.writeToBuffer()));
+  }
+
+  $async.Stream<$0.LocalWorkerConfig> getConfig_Pre($grpc.ServiceCall call,
+      $async.Future<$0.LocalWorkerInfo> request) async* {
+    yield* getConfig(call, await request);
+  }
+
+  $async.Stream<$0.LocalWorkerConfig> getConfig(
+      $grpc.ServiceCall call, $0.LocalWorkerInfo request);
+}
+
 class LocalWorkerControlServiceClient extends $grpc.Client {
   static final _$ping = $grpc.ClientMethod<$0.LocalWorkerInfo, $0.Empty>(
       '/binkynet.v1.LocalWorkerControlService/Ping',
       ($0.LocalWorkerInfo value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$getConfig =
-      $grpc.ClientMethod<$0.LocalWorkerInfo, $0.LocalWorkerConfig>(
-          '/binkynet.v1.LocalWorkerControlService/GetConfig',
-          ($0.LocalWorkerInfo value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $0.LocalWorkerConfig.fromBuffer(value));
   static final _$getPowerRequests =
       $grpc.ClientMethod<$0.PowerRequestsOptions, $0.Power>(
           '/binkynet.v1.LocalWorkerControlService/GetPowerRequests',
@@ -52,14 +89,6 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
     final call = $createCall(_$ping, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
-  }
-
-  $grpc.ResponseStream<$0.LocalWorkerConfig> getConfig(
-      $0.LocalWorkerInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$getConfig, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseStream(call);
   }
 
   $grpc.ResponseStream<$0.Power> getPowerRequests(
@@ -104,13 +133,6 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.LocalWorkerInfo.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.LocalWorkerInfo, $0.LocalWorkerConfig>(
-        'GetConfig',
-        getConfig_Pre,
-        false,
-        true,
-        ($core.List<$core.int> value) => $0.LocalWorkerInfo.fromBuffer(value),
-        ($0.LocalWorkerConfig value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.PowerRequestsOptions, $0.Power>(
         'GetPowerRequests',
         getPowerRequests_Pre,
@@ -148,11 +170,6 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
     return ping(call, await request);
   }
 
-  $async.Stream<$0.LocalWorkerConfig> getConfig_Pre($grpc.ServiceCall call,
-      $async.Future<$0.LocalWorkerInfo> request) async* {
-    yield* getConfig(call, await request);
-  }
-
   $async.Stream<$0.Power> getPowerRequests_Pre($grpc.ServiceCall call,
       $async.Future<$0.PowerRequestsOptions> request) async* {
     yield* getPowerRequests(call, await request);
@@ -164,8 +181,6 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
   }
 
   $async.Future<$0.Empty> ping(
-      $grpc.ServiceCall call, $0.LocalWorkerInfo request);
-  $async.Stream<$0.LocalWorkerConfig> getConfig(
       $grpc.ServiceCall call, $0.LocalWorkerInfo request);
   $async.Stream<$0.Power> getPowerRequests(
       $grpc.ServiceCall call, $0.PowerRequestsOptions request);
