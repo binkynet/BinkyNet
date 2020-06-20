@@ -15,16 +15,16 @@
 // Author Ewout Prangsma
 //
 
-package model
+package v1
 
-// DeviceIndex is an address local to a device.
-// Range 1..
-type DeviceIndex uint
-
-// DevicePin identifies a hardware device and an index within that hardware address.
-type DevicePin struct {
-	// Unique identifier of the device that this connection refers to.
-	DeviceID DeviceID `json:"device"`
-	// Index on the device (1...)
-	Index DeviceIndex `json:"index"`
+// Validate the given configuration, returning nil on ok,
+// or an error upon validation issues.
+func (d Device) Validate() error {
+	if err := d.Type.Validate(); err != nil {
+		return InvalidArgument("Error in Type of '%s': %s", d.Id, err.Error())
+	}
+	if d.Address == "" {
+		return InvalidArgument("Address of '%s' is empty", d.Id)
+	}
+	return nil
 }

@@ -136,7 +136,7 @@ message DevicePin {
 	// Unique identifier of the device that this connection refers to.
   string device_id = 1 [(gogoproto.customtype) = "DeviceID", (gogoproto.nullable) = false];
   // Index on the device (1...)
-  uint64 device_index = 2 [(gogoproto.customtype) = "DeviceIndex", (gogoproto.nullable) = false];
+  uint64 index = 2 [(gogoproto.customtype) = "DeviceIndex", (gogoproto.nullable) = false];
 }
 
 // Configuration for a local worker

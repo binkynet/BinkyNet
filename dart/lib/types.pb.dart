@@ -453,7 +453,7 @@ class Connection extends $pb.GeneratedMessage {
 class DevicePin extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('DevicePin', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..aOS(1, 'deviceId')
-    ..a<$fixnum.Int64>(2, 'deviceIndex', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(2, 'index', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false
   ;
 
@@ -482,13 +482,13 @@ class DevicePin extends $pb.GeneratedMessage {
   void clearDeviceId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $fixnum.Int64 get deviceIndex => $_getI64(1);
+  $fixnum.Int64 get index => $_getI64(1);
   @$pb.TagNumber(2)
-  set deviceIndex($fixnum.Int64 v) { $_setInt64(1, v); }
+  set index($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasDeviceIndex() => $_has(1);
+  $core.bool hasIndex() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDeviceIndex() => clearField(2);
+  void clearIndex() => clearField(2);
 }
 
 class LocalWorkerConfig extends $pb.GeneratedMessage {

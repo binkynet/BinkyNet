@@ -120,7 +120,7 @@ const DevicePin$json = const {
   '1': 'DevicePin',
   '2': const [
     const {'1': 'device_id', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'deviceId'},
-    const {'1': 'device_index', '3': 2, '4': 1, '5': 4, '8': const {}, '10': 'deviceIndex'},
+    const {'1': 'index', '3': 2, '4': 1, '5': 4, '8': const {}, '10': 'index'},
   ],
 };
 

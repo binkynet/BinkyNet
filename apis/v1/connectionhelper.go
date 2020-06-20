@@ -15,18 +15,9 @@
 // Author Ewout Prangsma
 //
 
-package model
+package v1
 
 import "strconv"
-
-// Connection from an Object to a Device.
-type Connection struct {
-	// Pins of devices to connect to
-	Pins []DevicePin `json:"pins,omitempty"`
-	// Optional configuration for this connection.
-	// Keys & values are specific to the connection name.
-	Configuration map[string]string `json:"config,omitempty"`
-}
 
 // GetStringConfig returns the configuration value for the given key.
 // If not found, the given default value is returned.
