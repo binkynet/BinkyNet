@@ -79,7 +79,7 @@ const LocRequestsOptions$json = const {
 const Loc$json = const {
   '1': 'Loc',
   '2': const [
-    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'address'},
     const {'1': 'speed', '3': 2, '4': 1, '5': 5, '10': 'speed'},
     const {'1': 'speed_steps', '3': 3, '4': 1, '5': 5, '10': 'speedSteps'},
     const {'1': 'direction', '3': 4, '4': 1, '5': 14, '6': '.binkynet.v1.LocDirection', '10': 'direction'},
@@ -100,7 +100,7 @@ const Loc_FunctionsEntry$json = const {
 const Sensor$json = const {
   '1': 'Sensor',
   '2': const [
-    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'address'},
     const {'1': 'value', '3': 2, '4': 1, '5': 5, '10': 'value'},
   ],
 };
@@ -115,7 +115,7 @@ const OutputRequestsOptions$json = const {
 const Output$json = const {
   '1': 'Output',
   '2': const [
-    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'address'},
     const {'1': 'value', '3': 2, '4': 1, '5': 5, '10': 'value'},
   ],
 };
@@ -130,7 +130,7 @@ const SwitchRequestsOptions$json = const {
 const Switch$json = const {
   '1': 'Switch',
   '2': const [
-    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'address'},
     const {'1': 'direction', '3': 2, '4': 1, '5': 14, '6': '.binkynet.v1.SwitchDirection', '10': 'direction'},
   ],
 };

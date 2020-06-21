@@ -86,7 +86,7 @@ enum LocDirection {
 // Loc message is used to control the speed, direction & functions of a loc.
 message Loc {
 	// Addres of the loc
-	string address = 1;
+	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
 	// Speed in steps
 	int32 speed = 2;
 	// Maximum speed steps of this loc
@@ -100,7 +100,7 @@ message Loc {
 // Sensor captures the current value of a sensor
 message Sensor {
 	// Addres of the sensor
-	string address = 1;
+	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
 	// Current value of the sensor
 	int32 value = 2;
 }
@@ -117,7 +117,7 @@ message OutputRequestsOptions {
 // Output is used to control a generic output device. E.g. a light.
 message Output {
 	// Addres of the output
-	string address = 1;
+	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
 	// Requested/current value of the output
 	int32 value = 2;
 }
@@ -140,7 +140,7 @@ enum SwitchDirection {
 // Switch is used to control a generic switch.
 message Switch {
 	// Addres of the switch
-	string address = 1;
+	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
 	// Requested/current direction of the switch
 	SwitchDirection direction = 2;
 }
