@@ -27,27 +27,33 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 func init() { proto.RegisterFile("localworker.proto", fileDescriptor_4d9116c22e0c2dd1) }
 
 var fileDescriptor_4d9116c22e0c2dd1 = []byte{
-	// 312 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xcc, 0xc9, 0x4f, 0x4e,
-	0xcc, 0x29, 0xcf, 0x2f, 0xca, 0x4e, 0x2d, 0xd2, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4e,
-	0xca, 0xcc, 0xcb, 0xae, 0xcc, 0x4b, 0x2d, 0xd1, 0x2b, 0x33, 0x94, 0xe2, 0x2e, 0xa9, 0x2c, 0x48,
-	0x2d, 0x86, 0xc8, 0x18, 0xa5, 0x73, 0x49, 0xf8, 0x80, 0x94, 0x87, 0x83, 0x95, 0x3b, 0xe7, 0xe7,
-	0xa5, 0x65, 0xa6, 0x07, 0xa7, 0x16, 0x95, 0x65, 0x26, 0xa7, 0x0a, 0x79, 0x73, 0x71, 0xba, 0xa7,
-	0x96, 0x40, 0xc4, 0x84, 0x64, 0xf4, 0x90, 0xcc, 0xd0, 0x43, 0xd2, 0xe3, 0x99, 0x97, 0x96, 0x2f,
-	0x25, 0x87, 0x4b, 0x16, 0xa2, 0xdb, 0x80, 0xd1, 0xe8, 0x3e, 0x13, 0x97, 0x24, 0xaa, 0x78, 0x49,
-	0x51, 0x7e, 0x0e, 0xcc, 0x2a, 0x0b, 0x2e, 0x96, 0x80, 0xcc, 0x3c, 0x42, 0xb6, 0x08, 0xa1, 0xc8,
-	0xba, 0xe6, 0x16, 0x94, 0x54, 0x0a, 0x79, 0x73, 0x09, 0xb8, 0xa7, 0x96, 0x04, 0xe4, 0x97, 0xa7,
-	0x16, 0x05, 0xa5, 0x16, 0x96, 0xa6, 0x16, 0x97, 0x14, 0x0b, 0x29, 0xa2, 0xa8, 0x43, 0x91, 0xf3,
-	0x2f, 0x28, 0xc9, 0xcc, 0xcf, 0x2b, 0x46, 0x33, 0x0a, 0xac, 0xc4, 0x80, 0x51, 0xc8, 0x9a, 0x8b,
-	0x3f, 0x18, 0x6a, 0x98, 0x63, 0x72, 0x49, 0x69, 0x62, 0x4e, 0xb1, 0x10, 0x16, 0x85, 0xd8, 0xdc,
-	0xa1, 0xc1, 0x28, 0xe4, 0xca, 0xc5, 0xe7, 0x9e, 0x5a, 0xe2, 0x93, 0x9f, 0x0c, 0x77, 0x87, 0x3c,
-	0xba, 0x6f, 0xd0, 0x5d, 0x21, 0x80, 0xae, 0xc0, 0x80, 0x51, 0xc8, 0x9c, 0x8b, 0x37, 0x18, 0x6c,
-	0x0c, 0xcc, 0x05, 0x18, 0x8a, 0xb0, 0xdb, 0xef, 0xe4, 0x79, 0xe2, 0x91, 0x1c, 0xe3, 0x85, 0x47,
-	0x72, 0x8c, 0x0f, 0x1e, 0xc9, 0x31, 0xce, 0x78, 0x2c, 0xc7, 0x10, 0xa5, 0x92, 0x9e, 0x59, 0x92,
-	0x51, 0x9a, 0xa4, 0x97, 0x9c, 0x9f, 0xab, 0x0f, 0xd3, 0xa1, 0xef, 0x04, 0x62, 0xf8, 0xa5, 0x96,
-	0xe8, 0x27, 0x16, 0x64, 0x16, 0xeb, 0x97, 0x19, 0xae, 0x62, 0x12, 0x80, 0x09, 0xe9, 0x39, 0x16,
-	0x64, 0x16, 0xeb, 0x85, 0x19, 0x26, 0xb1, 0x81, 0x13, 0x87, 0x31, 0x20, 0x00, 0x00, 0xff, 0xff,
-	0x53, 0xb3, 0xf3, 0x5d, 0x4b, 0x02, 0x00, 0x00,
+	// 405 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x93, 0xd1, 0x4a, 0xe3, 0x40,
+	0x14, 0x86, 0x77, 0x96, 0xdd, 0x65, 0x77, 0xca, 0xee, 0xa6, 0xd3, 0x9b, 0xdd, 0x22, 0x11, 0xc5,
+	0x0b, 0xaf, 0x92, 0xb4, 0x0a, 0x0a, 0xe2, 0x45, 0x2b, 0x25, 0x94, 0x96, 0xb6, 0x18, 0x50, 0xf0,
+	0xae, 0x0d, 0xd3, 0x76, 0x68, 0x9a, 0x89, 0x99, 0x93, 0x96, 0xbe, 0x89, 0xcf, 0xe0, 0x93, 0x78,
+	0xe9, 0x23, 0x48, 0x7d, 0x03, 0x9f, 0x40, 0x9a, 0x31, 0xa1, 0x13, 0x13, 0xbd, 0xcb, 0xcc, 0xff,
+	0x9d, 0x73, 0xbe, 0x13, 0x18, 0x5c, 0xf6, 0xb8, 0x3b, 0xf4, 0x96, 0x3c, 0x9c, 0xd1, 0xd0, 0x08,
+	0x42, 0x0e, 0x9c, 0x94, 0x46, 0xcc, 0x9f, 0xad, 0x7c, 0x0a, 0xc6, 0xa2, 0x56, 0x2d, 0xc1, 0x2a,
+	0xa0, 0x42, 0x26, 0xf5, 0x09, 0xfe, 0xd7, 0xdd, 0xe0, 0xd7, 0x31, 0x7e, 0xc1, 0xfd, 0x31, 0x9b,
+	0x38, 0x34, 0x5c, 0x30, 0x97, 0x92, 0x0e, 0xfe, 0x65, 0x53, 0x90, 0x77, 0x64, 0xc7, 0xd8, 0xea,
+	0x61, 0x6c, 0xd5, 0xb4, 0xfd, 0x31, 0xaf, 0xea, 0x45, 0xa9, 0xac, 0xb6, 0x50, 0xfd, 0xe5, 0x3b,
+	0xfe, 0xaf, 0xde, 0x43, 0xc8, 0xbd, 0x64, 0xd4, 0x29, 0xfe, 0x36, 0x60, 0xfe, 0x67, 0x53, 0x88,
+	0x92, 0xb6, 0xe6, 0x01, 0xac, 0x48, 0x07, 0x6b, 0x36, 0x85, 0x01, 0x5f, 0xd2, 0xf0, 0x92, 0xde,
+	0x46, 0x54, 0x80, 0x20, 0x7b, 0x0a, 0xa7, 0x64, 0xfd, 0x00, 0x18, 0xf7, 0x45, 0xa6, 0x55, 0x8c,
+	0x58, 0x88, 0x9c, 0xe1, 0xbf, 0xce, 0x5b, 0xb3, 0x86, 0x0b, 0xd1, 0xd0, 0x13, 0x24, 0x07, 0xcc,
+	0xf3, 0x38, 0x44, 0xa4, 0x85, 0xff, 0xd8, 0x14, 0xba, 0xdc, 0x4d, 0x3d, 0x76, 0xb3, 0xdb, 0x64,
+	0x2d, 0xb4, 0x2c, 0x60, 0x21, 0x72, 0x82, 0x7f, 0x3b, 0x71, 0x9b, 0xc4, 0xe0, 0x1d, 0x54, 0x30,
+	0xff, 0x1c, 0x6b, 0x0e, 0x05, 0x87, 0xfa, 0x82, 0xa7, 0xf6, 0x15, 0x85, 0x94, 0x59, 0x41, 0x79,
+	0x0f, 0x97, 0x6d, 0x0a, 0xfd, 0x08, 0x82, 0x08, 0xd2, 0x0d, 0xf6, 0x15, 0x54, 0x0d, 0x93, 0x25,
+	0x2a, 0x39, 0x8c, 0x95, 0xe8, 0xc8, 0x63, 0xbe, 0x8e, 0xcc, 0x3e, 0xd4, 0x71, 0x96, 0x0c, 0xdc,
+	0x69, 0x81, 0x8e, 0x1a, 0xe6, 0xeb, 0x48, 0x26, 0xd5, 0x91, 0xc7, 0x82, 0xbf, 0x13, 0x67, 0x05,
+	0x3a, 0xc7, 0xf8, 0xe7, 0xe6, 0x2d, 0x78, 0xdc, 0x9d, 0x91, 0x1c, 0x22, 0x53, 0x15, 0x73, 0x16,
+	0x6a, 0xb6, 0x1f, 0xd6, 0x3a, 0x7a, 0x5c, 0xeb, 0xe8, 0x69, 0xad, 0xa3, 0xbb, 0x67, 0xfd, 0xcb,
+	0xcd, 0xc1, 0x84, 0xc1, 0x34, 0x1a, 0x19, 0x2e, 0x9f, 0x9b, 0x49, 0x85, 0xd9, 0xdc, 0x7c, 0xf4,
+	0x28, 0x98, 0xc3, 0x80, 0x09, 0x73, 0x51, 0xbb, 0xff, 0xaa, 0x25, 0x57, 0x46, 0x23, 0x60, 0xc2,
+	0xb8, 0xaa, 0x8d, 0x7e, 0xc4, 0xef, 0xf5, 0xe8, 0x35, 0x00, 0x00, 0xff, 0xff, 0x35, 0xc6, 0x68,
+	0x1b, 0xde, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -179,6 +185,24 @@ type LocalWorkerControlServiceClient interface {
 	// SetLocActuals is used to send a stream of actual loc statuses to
 	// the network master.
 	SetLocActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetLocActualsClient, error)
+	// SetSensorActuals is used to send a stream of actual sensor statuses to
+	// the network master.
+	SetSensorActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetSensorActualsClient, error)
+	// GetOutputRequests is used to get a stream of output requests from the network
+	// master.
+	GetOutputRequests(ctx context.Context, in *OutputRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetOutputRequestsClient, error)
+	// SetOutputActuals is used to send a stream of actual output statuses to
+	// the network master.
+	SetOutputActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetOutputActualsClient, error)
+	// GetSwitchRequests is used to get a stream of switch requests from the network
+	// master.
+	GetSwitchRequests(ctx context.Context, in *SwitchRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetSwitchRequestsClient, error)
+	// SetSwitchActuals is used to send a stream of actual switch statuses to
+	// the network master.
+	SetSwitchActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetSwitchActualsClient, error)
+	// GetClock is used to get a stream of switch current time of day from the network
+	// master.
+	GetClock(ctx context.Context, in *Empty, opts ...grpc.CallOption) (LocalWorkerControlService_GetClockClient, error)
 }
 
 type localWorkerControlServiceClient struct {
@@ -330,6 +354,204 @@ func (x *localWorkerControlServiceSetLocActualsClient) CloseAndRecv() (*Empty, e
 	return m, nil
 }
 
+func (c *localWorkerControlServiceClient) SetSensorActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetSensorActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[4], "/binkynet.v1.LocalWorkerControlService/SetSensorActuals", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerControlServiceSetSensorActualsClient{stream}
+	return x, nil
+}
+
+type LocalWorkerControlService_SetSensorActualsClient interface {
+	Send(*Sensor) error
+	CloseAndRecv() (*Empty, error)
+	grpc.ClientStream
+}
+
+type localWorkerControlServiceSetSensorActualsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerControlServiceSetSensorActualsClient) Send(m *Sensor) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *localWorkerControlServiceSetSensorActualsClient) CloseAndRecv() (*Empty, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(Empty)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerControlServiceClient) GetOutputRequests(ctx context.Context, in *OutputRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetOutputRequestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[5], "/binkynet.v1.LocalWorkerControlService/GetOutputRequests", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerControlServiceGetOutputRequestsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type LocalWorkerControlService_GetOutputRequestsClient interface {
+	Recv() (*Output, error)
+	grpc.ClientStream
+}
+
+type localWorkerControlServiceGetOutputRequestsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerControlServiceGetOutputRequestsClient) Recv() (*Output, error) {
+	m := new(Output)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerControlServiceClient) SetOutputActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetOutputActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[6], "/binkynet.v1.LocalWorkerControlService/SetOutputActuals", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerControlServiceSetOutputActualsClient{stream}
+	return x, nil
+}
+
+type LocalWorkerControlService_SetOutputActualsClient interface {
+	Send(*Output) error
+	CloseAndRecv() (*Empty, error)
+	grpc.ClientStream
+}
+
+type localWorkerControlServiceSetOutputActualsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerControlServiceSetOutputActualsClient) Send(m *Output) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *localWorkerControlServiceSetOutputActualsClient) CloseAndRecv() (*Empty, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(Empty)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerControlServiceClient) GetSwitchRequests(ctx context.Context, in *SwitchRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetSwitchRequestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[7], "/binkynet.v1.LocalWorkerControlService/GetSwitchRequests", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerControlServiceGetSwitchRequestsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type LocalWorkerControlService_GetSwitchRequestsClient interface {
+	Recv() (*Switch, error)
+	grpc.ClientStream
+}
+
+type localWorkerControlServiceGetSwitchRequestsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerControlServiceGetSwitchRequestsClient) Recv() (*Switch, error) {
+	m := new(Switch)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerControlServiceClient) SetSwitchActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetSwitchActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[8], "/binkynet.v1.LocalWorkerControlService/SetSwitchActuals", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerControlServiceSetSwitchActualsClient{stream}
+	return x, nil
+}
+
+type LocalWorkerControlService_SetSwitchActualsClient interface {
+	Send(*Switch) error
+	CloseAndRecv() (*Empty, error)
+	grpc.ClientStream
+}
+
+type localWorkerControlServiceSetSwitchActualsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerControlServiceSetSwitchActualsClient) Send(m *Switch) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *localWorkerControlServiceSetSwitchActualsClient) CloseAndRecv() (*Empty, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(Empty)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerControlServiceClient) GetClock(ctx context.Context, in *Empty, opts ...grpc.CallOption) (LocalWorkerControlService_GetClockClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[9], "/binkynet.v1.LocalWorkerControlService/GetClock", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerControlServiceGetClockClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type LocalWorkerControlService_GetClockClient interface {
+	Recv() (*Clock, error)
+	grpc.ClientStream
+}
+
+type localWorkerControlServiceGetClockClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerControlServiceGetClockClient) Recv() (*Clock, error) {
+	m := new(Clock)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // LocalWorkerControlServiceServer is the server API for LocalWorkerControlService service.
 type LocalWorkerControlServiceServer interface {
 	// Ping messages are send at regular intervals by local workers
@@ -348,6 +570,24 @@ type LocalWorkerControlServiceServer interface {
 	// SetLocActuals is used to send a stream of actual loc statuses to
 	// the network master.
 	SetLocActuals(LocalWorkerControlService_SetLocActualsServer) error
+	// SetSensorActuals is used to send a stream of actual sensor statuses to
+	// the network master.
+	SetSensorActuals(LocalWorkerControlService_SetSensorActualsServer) error
+	// GetOutputRequests is used to get a stream of output requests from the network
+	// master.
+	GetOutputRequests(*OutputRequestsOptions, LocalWorkerControlService_GetOutputRequestsServer) error
+	// SetOutputActuals is used to send a stream of actual output statuses to
+	// the network master.
+	SetOutputActuals(LocalWorkerControlService_SetOutputActualsServer) error
+	// GetSwitchRequests is used to get a stream of switch requests from the network
+	// master.
+	GetSwitchRequests(*SwitchRequestsOptions, LocalWorkerControlService_GetSwitchRequestsServer) error
+	// SetSwitchActuals is used to send a stream of actual switch statuses to
+	// the network master.
+	SetSwitchActuals(LocalWorkerControlService_SetSwitchActualsServer) error
+	// GetClock is used to get a stream of switch current time of day from the network
+	// master.
+	GetClock(*Empty, LocalWorkerControlService_GetClockServer) error
 }
 
 // UnimplementedLocalWorkerControlServiceServer can be embedded to have forward compatible implementations.
@@ -368,6 +608,24 @@ func (*UnimplementedLocalWorkerControlServiceServer) GetLocRequests(req *LocRequ
 }
 func (*UnimplementedLocalWorkerControlServiceServer) SetLocActuals(srv LocalWorkerControlService_SetLocActualsServer) error {
 	return status.Errorf(codes.Unimplemented, "method SetLocActuals not implemented")
+}
+func (*UnimplementedLocalWorkerControlServiceServer) SetSensorActuals(srv LocalWorkerControlService_SetSensorActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetSensorActuals not implemented")
+}
+func (*UnimplementedLocalWorkerControlServiceServer) GetOutputRequests(req *OutputRequestsOptions, srv LocalWorkerControlService_GetOutputRequestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetOutputRequests not implemented")
+}
+func (*UnimplementedLocalWorkerControlServiceServer) SetOutputActuals(srv LocalWorkerControlService_SetOutputActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetOutputActuals not implemented")
+}
+func (*UnimplementedLocalWorkerControlServiceServer) GetSwitchRequests(req *SwitchRequestsOptions, srv LocalWorkerControlService_GetSwitchRequestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetSwitchRequests not implemented")
+}
+func (*UnimplementedLocalWorkerControlServiceServer) SetSwitchActuals(srv LocalWorkerControlService_SetSwitchActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetSwitchActuals not implemented")
+}
+func (*UnimplementedLocalWorkerControlServiceServer) GetClock(req *Empty, srv LocalWorkerControlService_GetClockServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetClock not implemented")
 }
 
 func RegisterLocalWorkerControlServiceServer(s *grpc.Server, srv LocalWorkerControlServiceServer) {
@@ -486,6 +744,147 @@ func (x *localWorkerControlServiceSetLocActualsServer) Recv() (*Loc, error) {
 	return m, nil
 }
 
+func _LocalWorkerControlService_SetSensorActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerControlServiceServer).SetSensorActuals(&localWorkerControlServiceSetSensorActualsServer{stream})
+}
+
+type LocalWorkerControlService_SetSensorActualsServer interface {
+	SendAndClose(*Empty) error
+	Recv() (*Sensor, error)
+	grpc.ServerStream
+}
+
+type localWorkerControlServiceSetSensorActualsServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerControlServiceSetSensorActualsServer) SendAndClose(m *Empty) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *localWorkerControlServiceSetSensorActualsServer) Recv() (*Sensor, error) {
+	m := new(Sensor)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func _LocalWorkerControlService_GetOutputRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(OutputRequestsOptions)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(LocalWorkerControlServiceServer).GetOutputRequests(m, &localWorkerControlServiceGetOutputRequestsServer{stream})
+}
+
+type LocalWorkerControlService_GetOutputRequestsServer interface {
+	Send(*Output) error
+	grpc.ServerStream
+}
+
+type localWorkerControlServiceGetOutputRequestsServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerControlServiceGetOutputRequestsServer) Send(m *Output) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _LocalWorkerControlService_SetOutputActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerControlServiceServer).SetOutputActuals(&localWorkerControlServiceSetOutputActualsServer{stream})
+}
+
+type LocalWorkerControlService_SetOutputActualsServer interface {
+	SendAndClose(*Empty) error
+	Recv() (*Output, error)
+	grpc.ServerStream
+}
+
+type localWorkerControlServiceSetOutputActualsServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerControlServiceSetOutputActualsServer) SendAndClose(m *Empty) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *localWorkerControlServiceSetOutputActualsServer) Recv() (*Output, error) {
+	m := new(Output)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func _LocalWorkerControlService_GetSwitchRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SwitchRequestsOptions)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(LocalWorkerControlServiceServer).GetSwitchRequests(m, &localWorkerControlServiceGetSwitchRequestsServer{stream})
+}
+
+type LocalWorkerControlService_GetSwitchRequestsServer interface {
+	Send(*Switch) error
+	grpc.ServerStream
+}
+
+type localWorkerControlServiceGetSwitchRequestsServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerControlServiceGetSwitchRequestsServer) Send(m *Switch) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _LocalWorkerControlService_SetSwitchActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerControlServiceServer).SetSwitchActuals(&localWorkerControlServiceSetSwitchActualsServer{stream})
+}
+
+type LocalWorkerControlService_SetSwitchActualsServer interface {
+	SendAndClose(*Empty) error
+	Recv() (*Switch, error)
+	grpc.ServerStream
+}
+
+type localWorkerControlServiceSetSwitchActualsServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerControlServiceSetSwitchActualsServer) SendAndClose(m *Empty) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *localWorkerControlServiceSetSwitchActualsServer) Recv() (*Switch, error) {
+	m := new(Switch)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func _LocalWorkerControlService_GetClock_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Empty)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(LocalWorkerControlServiceServer).GetClock(m, &localWorkerControlServiceGetClockServer{stream})
+}
+
+type LocalWorkerControlService_GetClockServer interface {
+	Send(*Clock) error
+	grpc.ServerStream
+}
+
+type localWorkerControlServiceGetClockServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerControlServiceGetClockServer) Send(m *Clock) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 var _LocalWorkerControlService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "binkynet.v1.LocalWorkerControlService",
 	HandlerType: (*LocalWorkerControlServiceServer)(nil),
@@ -515,6 +914,36 @@ var _LocalWorkerControlService_serviceDesc = grpc.ServiceDesc{
 			StreamName:    "SetLocActuals",
 			Handler:       _LocalWorkerControlService_SetLocActuals_Handler,
 			ClientStreams: true,
+		},
+		{
+			StreamName:    "SetSensorActuals",
+			Handler:       _LocalWorkerControlService_SetSensorActuals_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "GetOutputRequests",
+			Handler:       _LocalWorkerControlService_GetOutputRequests_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SetOutputActuals",
+			Handler:       _LocalWorkerControlService_SetOutputActuals_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "GetSwitchRequests",
+			Handler:       _LocalWorkerControlService_GetSwitchRequests_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SetSwitchActuals",
+			Handler:       _LocalWorkerControlService_SetSwitchActuals_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "GetClock",
+			Handler:       _LocalWorkerControlService_GetClock_Handler,
+			ServerStreams: true,
 		},
 	},
 	Metadata: "localworker.proto",

@@ -13,6 +13,24 @@ const LocDirection$json = const {
   ],
 };
 
+const SwitchDirection$json = const {
+  '1': 'SwitchDirection',
+  '2': const [
+    const {'1': 'STRAIGHT', '2': 0},
+    const {'1': 'OFF', '2': 1},
+  ],
+};
+
+const TimePeriod$json = const {
+  '1': 'TimePeriod',
+  '2': const [
+    const {'1': 'MORNING', '2': 0},
+    const {'1': 'AFTERNOON', '2': 1},
+    const {'1': 'EVENING', '2': 2},
+    const {'1': 'NIGHT', '2': 3},
+  ],
+};
+
 const Empty$json = const {
   '1': 'Empty',
 };
@@ -77,6 +95,53 @@ const Loc_FunctionsEntry$json = const {
     const {'1': 'value', '3': 2, '4': 1, '5': 8, '10': 'value'},
   ],
   '7': const {'7': true},
+};
+
+const Sensor$json = const {
+  '1': 'Sensor',
+  '2': const [
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 5, '10': 'value'},
+  ],
+};
+
+const OutputRequestsOptions$json = const {
+  '1': 'OutputRequestsOptions',
+  '2': const [
+    const {'1': 'manual_confirm', '3': 1, '4': 1, '5': 8, '10': 'manualConfirm'},
+  ],
+};
+
+const Output$json = const {
+  '1': 'Output',
+  '2': const [
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 5, '10': 'value'},
+  ],
+};
+
+const SwitchRequestsOptions$json = const {
+  '1': 'SwitchRequestsOptions',
+  '2': const [
+    const {'1': 'manual_confirm', '3': 1, '4': 1, '5': 8, '10': 'manualConfirm'},
+  ],
+};
+
+const Switch$json = const {
+  '1': 'Switch',
+  '2': const [
+    const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'direction', '3': 2, '4': 1, '5': 14, '6': '.binkynet.v1.SwitchDirection', '10': 'direction'},
+  ],
+};
+
+const Clock$json = const {
+  '1': 'Clock',
+  '2': const [
+    const {'1': 'period', '3': 1, '4': 1, '5': 14, '6': '.binkynet.v1.TimePeriod', '10': 'period'},
+    const {'1': 'hours', '3': 2, '4': 1, '5': 5, '10': 'hours'},
+    const {'1': 'minutes', '3': 3, '4': 1, '5': 5, '10': 'minutes'},
+  ],
 };
 
 const Device$json = const {

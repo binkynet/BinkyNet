@@ -79,6 +79,32 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
       '/binkynet.v1.LocalWorkerControlService/SetLocActuals',
       ($0.Loc value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$setSensorActuals = $grpc.ClientMethod<$0.Sensor, $0.Empty>(
+      '/binkynet.v1.LocalWorkerControlService/SetSensorActuals',
+      ($0.Sensor value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$getOutputRequests =
+      $grpc.ClientMethod<$0.OutputRequestsOptions, $0.Output>(
+          '/binkynet.v1.LocalWorkerControlService/GetOutputRequests',
+          ($0.OutputRequestsOptions value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Output.fromBuffer(value));
+  static final _$setOutputActuals = $grpc.ClientMethod<$0.Output, $0.Empty>(
+      '/binkynet.v1.LocalWorkerControlService/SetOutputActuals',
+      ($0.Output value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$getSwitchRequests =
+      $grpc.ClientMethod<$0.SwitchRequestsOptions, $0.Switch>(
+          '/binkynet.v1.LocalWorkerControlService/GetSwitchRequests',
+          ($0.SwitchRequestsOptions value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Switch.fromBuffer(value));
+  static final _$setSwitchActuals = $grpc.ClientMethod<$0.Switch, $0.Empty>(
+      '/binkynet.v1.LocalWorkerControlService/SetSwitchActuals',
+      ($0.Switch value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$getClock = $grpc.ClientMethod<$0.Empty, $0.Clock>(
+      '/binkynet.v1.LocalWorkerControlService/GetClock',
+      ($0.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Clock.fromBuffer(value));
 
   LocalWorkerControlServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions options})
@@ -119,6 +145,52 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
       {$grpc.CallOptions options}) {
     final call = $createCall(_$setLocActuals, request, options: options);
     return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> setSensorActuals(
+      $async.Stream<$0.Sensor> request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$setSensorActuals, request, options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseStream<$0.Output> getOutputRequests(
+      $0.OutputRequestsOptions request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getOutputRequests, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseStream(call);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> setOutputActuals(
+      $async.Stream<$0.Output> request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$setOutputActuals, request, options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseStream<$0.Switch> getSwitchRequests(
+      $0.SwitchRequestsOptions request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getSwitchRequests, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseStream(call);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> setSwitchActuals(
+      $async.Stream<$0.Switch> request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$setSwitchActuals, request, options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseStream<$0.Clock> getClock($0.Empty request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$getClock, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseStream(call);
   }
 }
 
@@ -163,6 +235,50 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Loc.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Sensor, $0.Empty>(
+        'SetSensorActuals',
+        setSensorActuals,
+        true,
+        false,
+        ($core.List<$core.int> value) => $0.Sensor.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.OutputRequestsOptions, $0.Output>(
+        'GetOutputRequests',
+        getOutputRequests_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) =>
+            $0.OutputRequestsOptions.fromBuffer(value),
+        ($0.Output value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Output, $0.Empty>(
+        'SetOutputActuals',
+        setOutputActuals,
+        true,
+        false,
+        ($core.List<$core.int> value) => $0.Output.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.SwitchRequestsOptions, $0.Switch>(
+        'GetSwitchRequests',
+        getSwitchRequests_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) =>
+            $0.SwitchRequestsOptions.fromBuffer(value),
+        ($0.Switch value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Switch, $0.Empty>(
+        'SetSwitchActuals',
+        setSwitchActuals,
+        true,
+        false,
+        ($core.List<$core.int> value) => $0.Switch.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $0.Clock>(
+        'GetClock',
+        getClock_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($0.Clock value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Empty> ping_Pre(
@@ -180,6 +296,21 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
     yield* getLocRequests(call, await request);
   }
 
+  $async.Stream<$0.Output> getOutputRequests_Pre($grpc.ServiceCall call,
+      $async.Future<$0.OutputRequestsOptions> request) async* {
+    yield* getOutputRequests(call, await request);
+  }
+
+  $async.Stream<$0.Switch> getSwitchRequests_Pre($grpc.ServiceCall call,
+      $async.Future<$0.SwitchRequestsOptions> request) async* {
+    yield* getSwitchRequests(call, await request);
+  }
+
+  $async.Stream<$0.Clock> getClock_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async* {
+    yield* getClock(call, await request);
+  }
+
   $async.Future<$0.Empty> ping(
       $grpc.ServiceCall call, $0.LocalWorkerInfo request);
   $async.Stream<$0.Power> getPowerRequests(
@@ -190,4 +321,15 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.LocRequestsOptions request);
   $async.Future<$0.Empty> setLocActuals(
       $grpc.ServiceCall call, $async.Stream<$0.Loc> request);
+  $async.Future<$0.Empty> setSensorActuals(
+      $grpc.ServiceCall call, $async.Stream<$0.Sensor> request);
+  $async.Stream<$0.Output> getOutputRequests(
+      $grpc.ServiceCall call, $0.OutputRequestsOptions request);
+  $async.Future<$0.Empty> setOutputActuals(
+      $grpc.ServiceCall call, $async.Stream<$0.Output> request);
+  $async.Stream<$0.Switch> getSwitchRequests(
+      $grpc.ServiceCall call, $0.SwitchRequestsOptions request);
+  $async.Future<$0.Empty> setSwitchActuals(
+      $grpc.ServiceCall call, $async.Stream<$0.Switch> request);
+  $async.Stream<$0.Clock> getClock($grpc.ServiceCall call, $0.Empty request);
 }

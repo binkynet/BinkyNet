@@ -72,7 +72,7 @@ message Power {
 message LocRequestsOptions {
   // If set, the network master must wait for an actual Loc message
   // to confirm the state transition.
-  // If not set, the network master assumes the power state is effective directly
+  // If not set, the network master assumes the state is effective directly
   // after sending the message.
   bool manual_confirm = 1;
 }
@@ -95,6 +95,72 @@ message Loc {
 	LocDirection direction = 4;
 	// State of functions
 	map<int32, bool> functions = 5;
+}
+
+// Sensor captures the current value of a sensor
+message Sensor {
+	// Addres of the sensor
+	string address = 1;
+	// Current value of the sensor
+	int32 value = 2;
+}
+
+// Request arguments for GetOutputRequests
+message OutputRequestsOptions {
+  // If set, the network master must wait for an actual Output message
+  // to confirm the state transition.
+  // If not set, the network master assumes the state is effective directly
+  // after sending the message.
+  bool manual_confirm = 1;
+}
+
+// Output is used to control a generic output device. E.g. a light.
+message Output {
+	// Addres of the output
+	string address = 1;
+	// Requested/current value of the output
+	int32 value = 2;
+}
+
+// Request arguments for GetSwitchRequests
+message SwitchRequestsOptions {
+  // If set, the network master must wait for an actual Output message
+  // to confirm the state transition.
+  // If not set, the network master assumes the state is effective directly
+  // after sending the message.
+  bool manual_confirm = 1;
+}
+
+// Direction of switches
+enum SwitchDirection {
+  STRAIGHT = 0;
+  OFF = 1;
+}
+
+// Switch is used to control a generic switch.
+message Switch {
+	// Addres of the switch
+	string address = 1;
+	// Requested/current direction of the switch
+	SwitchDirection direction = 2;
+}
+
+// TimePeriod indicates time of day in 4 periods.
+enum TimePeriod {
+  MORNING = 0;
+  AFTERNOON = 1;
+  EVENING = 2;
+  NIGHT = 3;
+}
+
+// Clock is used to identity global time.
+message Clock {
+  // Current time period.
+  TimePeriod period = 1;
+  // Current hours (0..23)
+  int32 hours = 2;
+  // Current minutes (0..59)
+  int32 minutes = 3;
 }
 
 // Device represents a hardware device such as a I2C chip.
