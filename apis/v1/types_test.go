@@ -25,6 +25,20 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestDevice(t *testing.T) {
+	v1 := Device{
+		Id:      "io1",
+		Address: "0x20",
+		Type:    DeviceTypeMCP23017,
+	}
+	encoded := `{ "id": "io1", "address": "0x20", "type": "mcp23017" }`
+	var v2 Device
+	err := json.Unmarshal([]byte(encoded), &v2)
+	require.NoError(t, err)
+
+	assert.Equal(t, v1, v2)
+}
+
 func TestDevicePin(t *testing.T) {
 	v1 := DevicePin{
 		DeviceId: "foo",
@@ -34,6 +48,30 @@ func TestDevicePin(t *testing.T) {
 	require.NoError(t, err)
 	var v2 DevicePin
 	err = json.Unmarshal(encoded, &v2)
+	require.NoError(t, err)
+
+	assert.Equal(t, v1, v2)
+}
+
+func TestObject(t *testing.T) {
+	v1 := Object{
+		Id:   "led1",
+		Type: ObjectTypeBinaryOutput,
+		Connections: []*Connection{
+			{
+				Key: "output",
+				Pins: []*DevicePin{
+					{
+						DeviceId: "io1",
+						Index:    9,
+					},
+				},
+			},
+		},
+	}
+	encoded := `{ "id": "led1", "type": "binary-output", "connections": [{ "key": "output", "pins": [{ "device": "io1", "index": 9 }] }] }`
+	var v2 Object
+	err := json.Unmarshal([]byte(encoded), &v2)
 	require.NoError(t, err)
 
 	assert.Equal(t, v1, v2)
