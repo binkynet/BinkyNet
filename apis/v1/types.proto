@@ -200,7 +200,7 @@ message Connection {
 // DevicePin identifies a hardware device and an index within that hardware address.
 message DevicePin {
 	// Unique identifier of the device that this connection refers to.
-  string device_id = 1 [(gogoproto.customtype) = "DeviceID", (gogoproto.nullable) = false];
+  string device_id = 1 [(gogoproto.customtype) = "DeviceID", (gogoproto.nullable) = false, (gogoproto.jsontag) = "device"];
   // Index on the device (1...)
   uint64 index = 2 [(gogoproto.customtype) = "DeviceIndex", (gogoproto.nullable) = false];
 }
