@@ -8,6 +8,7 @@ require (
 	github.com/grandcat/zeroconf v1.0.0
 	github.com/pkg/errors v0.9.1
 	github.com/rs/zerolog v1.18.0
+	github.com/stretchr/testify v1.6.1
 	google.golang.org/grpc v1.27.1
 )
 

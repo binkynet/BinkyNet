@@ -51,7 +51,8 @@ func (c LocalWorkerConfig) Validate() error {
 		if err := o.Validate(); err != nil {
 			return err
 		}
-		for connName, conn := range o.Connections {
+		for _, conn := range o.Connections {
+			connName := conn.Key
 			for pinIdx, p := range conn.Pins {
 				if _, found := c.DeviceByID(p.DeviceId); !found {
 					return InvalidArgument("Device '%s' not found at index %d of connection '%s' in object '%s'", p.DeviceId, pinIdx, connName, o.Id)
