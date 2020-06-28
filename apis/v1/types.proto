@@ -62,8 +62,16 @@ message PowerRequestsOptions {
   bool manual_confirm = 1;
 }
 
-// Power message contains the requested/actual state of the power on the track.
+// Power message contains the requested & actual state of the power on the track.
 message Power {
+  // Requested power state 
+  PowerState request = 1;
+  // Actual power state
+  PowerState actual = 2;
+}
+
+// PowerState message contains the requested/actual state of the power on the track.
+message PowerState {
   // Power on/off
   bool enabled = 1;
 }
@@ -83,26 +91,40 @@ enum LocDirection {
   REVERSE = 1;
 }
 
-// Loc message is used to control the speed, direction & functions of a loc.
+// Loc message is used to request/report the speed, direction & functions of a loc.
 message Loc {
 	// Addres of the loc
-	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
-	// Speed in steps
-	int32 speed = 2;
-	// Maximum speed steps of this loc
-	int32 speed_steps = 3;
-	// Direction "forward|reverse"
-	LocDirection direction = 4;
-	// State of functions
-	map<int32, bool> functions = 5;
+  string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
+  // Requested state of the loc
+  LocState request = 2;
+  // Actual state of the loc
+  LocState actual = 3;
 }
 
-// Sensor captures the current value of a sensor
+// LocState message is used to request/report the speed, direction & functions of a loc.
+message LocState {
+	// Speed in steps
+	int32 speed = 1;
+	// Maximum speed steps of this loc
+	int32 speed_steps = 2;
+	// Direction "forward|reverse"
+	LocDirection direction = 3;
+	// State of functions
+	map<int32, bool> functions = 4;
+}
+
+// Sensor captures the current value of a sensor with specified address
 message Sensor {
 	// Addres of the sensor
-	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
+  string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
+  // Current state of the sensor
+  SensorState actual = 2;
+}
+
+// SensorState captures the current value of a sensor
+message SensorState {
 	// Current value of the sensor
-	int32 value = 2;
+	int32 value = 1;
 }
 
 // Request arguments for GetOutputRequests
@@ -118,8 +140,16 @@ message OutputRequestsOptions {
 message Output {
 	// Addres of the output
 	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
-	// Requested/current value of the output
-	int32 value = 2;
+  // Requested state of the output
+  OutputState request = 2;
+  // Actual state of the output
+  OutputState actual = 3;
+}
+
+// OutputState is used to request/report the state of a generic output device. E.g. a light.
+message OutputState {
+	// Value of the output
+	int32 value = 1;
 }
 
 // Request arguments for GetSwitchRequests
@@ -137,12 +167,20 @@ enum SwitchDirection {
   OFF = 1;
 }
 
-// Switch is used to control a generic switch.
+// Switch is used to request/report the state of a generic switch.
 message Switch {
 	// Addres of the switch
 	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
+  // Requested state of the switch
+  SwitchState request = 2;
+  // Actual state of the switch
+  SwitchState actual = 3;
+}
+
+// SwitchState describe the requested/actual state of a generic switch.
+message SwitchState {
 	// Requested/current direction of the switch
-	SwitchDirection direction = 2;
+	SwitchDirection direction = 1;
 }
 
 // TimePeriod indicates time of day in 4 periods.

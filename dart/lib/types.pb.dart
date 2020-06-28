@@ -190,7 +190,8 @@ class PowerRequestsOptions extends $pb.GeneratedMessage {
 
 class Power extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Power', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
-    ..aOB(1, 'enabled')
+    ..aOM<PowerState>(1, 'request', subBuilder: PowerState.create)
+    ..aOM<PowerState>(2, 'actual', subBuilder: PowerState.create)
     ..hasRequiredFields = false
   ;
 
@@ -208,6 +209,50 @@ class Power extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static Power getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Power>(create);
   static Power _defaultInstance;
+
+  @$pb.TagNumber(1)
+  PowerState get request => $_getN(0);
+  @$pb.TagNumber(1)
+  set request(PowerState v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRequest() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRequest() => clearField(1);
+  @$pb.TagNumber(1)
+  PowerState ensureRequest() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  PowerState get actual => $_getN(1);
+  @$pb.TagNumber(2)
+  set actual(PowerState v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasActual() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearActual() => clearField(2);
+  @$pb.TagNumber(2)
+  PowerState ensureActual() => $_ensure(1);
+}
+
+class PowerState extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('PowerState', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..aOB(1, 'enabled')
+    ..hasRequiredFields = false
+  ;
+
+  PowerState._() : super();
+  factory PowerState() => create();
+  factory PowerState.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PowerState.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  PowerState clone() => PowerState()..mergeFromMessage(this);
+  PowerState copyWith(void Function(PowerState) updates) => super.copyWith((message) => updates(message as PowerState));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static PowerState create() => PowerState._();
+  PowerState createEmptyInstance() => create();
+  static $pb.PbList<PowerState> createRepeated() => $pb.PbList<PowerState>();
+  @$core.pragma('dart2js:noInline')
+  static PowerState getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PowerState>(create);
+  static PowerState _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get enabled => $_getBF(0);
@@ -253,10 +298,8 @@ class LocRequestsOptions extends $pb.GeneratedMessage {
 class Loc extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Loc', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..aOS(1, 'address')
-    ..a<$core.int>(2, 'speed', $pb.PbFieldType.O3)
-    ..a<$core.int>(3, 'speedSteps', $pb.PbFieldType.O3)
-    ..e<LocDirection>(4, 'direction', $pb.PbFieldType.OE, defaultOrMaker: LocDirection.FORWARD, valueOf: LocDirection.valueOf, enumValues: LocDirection.values)
-    ..m<$core.int, $core.bool>(5, 'functions', entryClassName: 'Loc.FunctionsEntry', keyFieldType: $pb.PbFieldType.O3, valueFieldType: $pb.PbFieldType.OB, packageName: const $pb.PackageName('binkynet.v1'))
+    ..aOM<LocState>(2, 'request', subBuilder: LocState.create)
+    ..aOM<LocState>(3, 'actual', subBuilder: LocState.create)
     ..hasRequiredFields = false
   ;
 
@@ -285,40 +328,87 @@ class Loc extends $pb.GeneratedMessage {
   void clearAddress() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get speed => $_getIZ(1);
+  LocState get request => $_getN(1);
   @$pb.TagNumber(2)
-  set speed($core.int v) { $_setSignedInt32(1, v); }
+  set request(LocState v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasSpeed() => $_has(1);
+  $core.bool hasRequest() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSpeed() => clearField(2);
+  void clearRequest() => clearField(2);
+  @$pb.TagNumber(2)
+  LocState ensureRequest() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $core.int get speedSteps => $_getIZ(2);
+  LocState get actual => $_getN(2);
   @$pb.TagNumber(3)
-  set speedSteps($core.int v) { $_setSignedInt32(2, v); }
+  set actual(LocState v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSpeedSteps() => $_has(2);
+  $core.bool hasActual() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSpeedSteps() => clearField(3);
+  void clearActual() => clearField(3);
+  @$pb.TagNumber(3)
+  LocState ensureActual() => $_ensure(2);
+}
+
+class LocState extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LocState', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, 'speed', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, 'speedSteps', $pb.PbFieldType.O3)
+    ..e<LocDirection>(3, 'direction', $pb.PbFieldType.OE, defaultOrMaker: LocDirection.FORWARD, valueOf: LocDirection.valueOf, enumValues: LocDirection.values)
+    ..m<$core.int, $core.bool>(4, 'functions', entryClassName: 'LocState.FunctionsEntry', keyFieldType: $pb.PbFieldType.O3, valueFieldType: $pb.PbFieldType.OB, packageName: const $pb.PackageName('binkynet.v1'))
+    ..hasRequiredFields = false
+  ;
+
+  LocState._() : super();
+  factory LocState() => create();
+  factory LocState.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LocState.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  LocState clone() => LocState()..mergeFromMessage(this);
+  LocState copyWith(void Function(LocState) updates) => super.copyWith((message) => updates(message as LocState));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static LocState create() => LocState._();
+  LocState createEmptyInstance() => create();
+  static $pb.PbList<LocState> createRepeated() => $pb.PbList<LocState>();
+  @$core.pragma('dart2js:noInline')
+  static LocState getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LocState>(create);
+  static LocState _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get speed => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set speed($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasSpeed() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSpeed() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get speedSteps => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set speedSteps($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasSpeedSteps() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSpeedSteps() => clearField(2);
+
+  @$pb.TagNumber(3)
+  LocDirection get direction => $_getN(2);
+  @$pb.TagNumber(3)
+  set direction(LocDirection v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasDirection() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDirection() => clearField(3);
 
   @$pb.TagNumber(4)
-  LocDirection get direction => $_getN(3);
-  @$pb.TagNumber(4)
-  set direction(LocDirection v) { setField(4, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasDirection() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearDirection() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.Map<$core.int, $core.bool> get functions => $_getMap(4);
+  $core.Map<$core.int, $core.bool> get functions => $_getMap(3);
 }
 
 class Sensor extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Sensor', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..aOS(1, 'address')
-    ..a<$core.int>(2, 'value', $pb.PbFieldType.O3)
+    ..aOM<SensorState>(2, 'actual', subBuilder: SensorState.create)
     ..hasRequiredFields = false
   ;
 
@@ -347,13 +437,46 @@ class Sensor extends $pb.GeneratedMessage {
   void clearAddress() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get value => $_getIZ(1);
+  SensorState get actual => $_getN(1);
   @$pb.TagNumber(2)
-  set value($core.int v) { $_setSignedInt32(1, v); }
+  set actual(SensorState v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasValue() => $_has(1);
+  $core.bool hasActual() => $_has(1);
   @$pb.TagNumber(2)
-  void clearValue() => clearField(2);
+  void clearActual() => clearField(2);
+  @$pb.TagNumber(2)
+  SensorState ensureActual() => $_ensure(1);
+}
+
+class SensorState extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('SensorState', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, 'value', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  SensorState._() : super();
+  factory SensorState() => create();
+  factory SensorState.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SensorState.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  SensorState clone() => SensorState()..mergeFromMessage(this);
+  SensorState copyWith(void Function(SensorState) updates) => super.copyWith((message) => updates(message as SensorState));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SensorState create() => SensorState._();
+  SensorState createEmptyInstance() => create();
+  static $pb.PbList<SensorState> createRepeated() => $pb.PbList<SensorState>();
+  @$core.pragma('dart2js:noInline')
+  static SensorState getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SensorState>(create);
+  static SensorState _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get value => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set value($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasValue() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearValue() => clearField(1);
 }
 
 class OutputRequestsOptions extends $pb.GeneratedMessage {
@@ -390,7 +513,8 @@ class OutputRequestsOptions extends $pb.GeneratedMessage {
 class Output extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Output', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..aOS(1, 'address')
-    ..a<$core.int>(2, 'value', $pb.PbFieldType.O3)
+    ..aOM<OutputState>(2, 'request', subBuilder: OutputState.create)
+    ..aOM<OutputState>(3, 'actual', subBuilder: OutputState.create)
     ..hasRequiredFields = false
   ;
 
@@ -419,13 +543,57 @@ class Output extends $pb.GeneratedMessage {
   void clearAddress() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get value => $_getIZ(1);
+  OutputState get request => $_getN(1);
   @$pb.TagNumber(2)
-  set value($core.int v) { $_setSignedInt32(1, v); }
+  set request(OutputState v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasValue() => $_has(1);
+  $core.bool hasRequest() => $_has(1);
   @$pb.TagNumber(2)
-  void clearValue() => clearField(2);
+  void clearRequest() => clearField(2);
+  @$pb.TagNumber(2)
+  OutputState ensureRequest() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  OutputState get actual => $_getN(2);
+  @$pb.TagNumber(3)
+  set actual(OutputState v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasActual() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearActual() => clearField(3);
+  @$pb.TagNumber(3)
+  OutputState ensureActual() => $_ensure(2);
+}
+
+class OutputState extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('OutputState', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, 'value', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  OutputState._() : super();
+  factory OutputState() => create();
+  factory OutputState.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory OutputState.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  OutputState clone() => OutputState()..mergeFromMessage(this);
+  OutputState copyWith(void Function(OutputState) updates) => super.copyWith((message) => updates(message as OutputState));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static OutputState create() => OutputState._();
+  OutputState createEmptyInstance() => create();
+  static $pb.PbList<OutputState> createRepeated() => $pb.PbList<OutputState>();
+  @$core.pragma('dart2js:noInline')
+  static OutputState getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OutputState>(create);
+  static OutputState _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get value => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set value($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasValue() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearValue() => clearField(1);
 }
 
 class SwitchRequestsOptions extends $pb.GeneratedMessage {
@@ -462,7 +630,8 @@ class SwitchRequestsOptions extends $pb.GeneratedMessage {
 class Switch extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Switch', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..aOS(1, 'address')
-    ..e<SwitchDirection>(2, 'direction', $pb.PbFieldType.OE, defaultOrMaker: SwitchDirection.STRAIGHT, valueOf: SwitchDirection.valueOf, enumValues: SwitchDirection.values)
+    ..aOM<SwitchState>(2, 'request', subBuilder: SwitchState.create)
+    ..aOM<SwitchState>(3, 'actual', subBuilder: SwitchState.create)
     ..hasRequiredFields = false
   ;
 
@@ -491,13 +660,57 @@ class Switch extends $pb.GeneratedMessage {
   void clearAddress() => clearField(1);
 
   @$pb.TagNumber(2)
-  SwitchDirection get direction => $_getN(1);
+  SwitchState get request => $_getN(1);
   @$pb.TagNumber(2)
-  set direction(SwitchDirection v) { setField(2, v); }
+  set request(SwitchState v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasDirection() => $_has(1);
+  $core.bool hasRequest() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDirection() => clearField(2);
+  void clearRequest() => clearField(2);
+  @$pb.TagNumber(2)
+  SwitchState ensureRequest() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  SwitchState get actual => $_getN(2);
+  @$pb.TagNumber(3)
+  set actual(SwitchState v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasActual() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearActual() => clearField(3);
+  @$pb.TagNumber(3)
+  SwitchState ensureActual() => $_ensure(2);
+}
+
+class SwitchState extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('SwitchState', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..e<SwitchDirection>(1, 'direction', $pb.PbFieldType.OE, defaultOrMaker: SwitchDirection.STRAIGHT, valueOf: SwitchDirection.valueOf, enumValues: SwitchDirection.values)
+    ..hasRequiredFields = false
+  ;
+
+  SwitchState._() : super();
+  factory SwitchState() => create();
+  factory SwitchState.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SwitchState.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  SwitchState clone() => SwitchState()..mergeFromMessage(this);
+  SwitchState copyWith(void Function(SwitchState) updates) => super.copyWith((message) => updates(message as SwitchState));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SwitchState create() => SwitchState._();
+  SwitchState createEmptyInstance() => create();
+  static $pb.PbList<SwitchState> createRepeated() => $pb.PbList<SwitchState>();
+  @$core.pragma('dart2js:noInline')
+  static SwitchState getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SwitchState>(create);
+  static SwitchState _defaultInstance;
+
+  @$pb.TagNumber(1)
+  SwitchDirection get direction => $_getN(0);
+  @$pb.TagNumber(1)
+  set direction(SwitchDirection v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDirection() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDirection() => clearField(1);
 }
 
 class Clock extends $pb.GeneratedMessage {

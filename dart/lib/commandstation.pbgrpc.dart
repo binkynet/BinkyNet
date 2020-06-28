@@ -18,14 +18,14 @@ class CommandStationServiceClient extends $grpc.Client {
       '/binkynet.v1.CommandStationService/GetInfo',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.CommandStationInfo.fromBuffer(value));
-  static final _$setPower = $grpc.ClientMethod<$0.Power, $0.Empty>(
+  static final _$setPower = $grpc.ClientMethod<$0.PowerState, $0.Empty>(
       '/binkynet.v1.CommandStationService/SetPower',
-      ($0.Power value) => value.writeToBuffer(),
+      ($0.PowerState value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$getPowerActuals = $grpc.ClientMethod<$0.Empty, $0.Power>(
+  static final _$getPowerActuals = $grpc.ClientMethod<$0.Empty, $0.PowerState>(
       '/binkynet.v1.CommandStationService/GetPowerActuals',
       ($0.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.Power.fromBuffer(value));
+      ($core.List<$core.int> value) => $0.PowerState.fromBuffer(value));
   static final _$setLoc = $grpc.ClientMethod<$0.Loc, $0.Empty>(
       '/binkynet.v1.CommandStationService/SetLoc',
       ($0.Loc value) => value.writeToBuffer(),
@@ -46,14 +46,14 @@ class CommandStationServiceClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseFuture<$0.Empty> setPower($0.Power request,
+  $grpc.ResponseFuture<$0.Empty> setPower($0.PowerState request,
       {$grpc.CallOptions options}) {
     final call = $createCall(_$setPower, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseStream<$0.Power> getPowerActuals($0.Empty request,
+  $grpc.ResponseStream<$0.PowerState> getPowerActuals($0.Empty request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$getPowerActuals, $async.Stream.fromIterable([request]),
@@ -88,20 +88,20 @@ abstract class CommandStationServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($0.CommandStationInfo value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.Power, $0.Empty>(
+    $addMethod($grpc.ServiceMethod<$0.PowerState, $0.Empty>(
         'SetPower',
         setPower_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.Power.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.PowerState.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.Empty, $0.Power>(
+    $addMethod($grpc.ServiceMethod<$0.Empty, $0.PowerState>(
         'GetPowerActuals',
         getPowerActuals_Pre,
         false,
         true,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
-        ($0.Power value) => value.writeToBuffer()));
+        ($0.PowerState value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Loc, $0.Empty>(
         'SetLoc',
         setLoc_Pre,
@@ -124,11 +124,11 @@ abstract class CommandStationServiceBase extends $grpc.Service {
   }
 
   $async.Future<$0.Empty> setPower_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.Power> request) async {
+      $grpc.ServiceCall call, $async.Future<$0.PowerState> request) async {
     return setPower(call, await request);
   }
 
-  $async.Stream<$0.Power> getPowerActuals_Pre(
+  $async.Stream<$0.PowerState> getPowerActuals_Pre(
       $grpc.ServiceCall call, $async.Future<$0.Empty> request) async* {
     yield* getPowerActuals(call, await request);
   }
@@ -145,8 +145,9 @@ abstract class CommandStationServiceBase extends $grpc.Service {
 
   $async.Future<$0.CommandStationInfo> getInfo(
       $grpc.ServiceCall call, $0.Empty request);
-  $async.Future<$0.Empty> setPower($grpc.ServiceCall call, $0.Power request);
-  $async.Stream<$0.Power> getPowerActuals(
+  $async.Future<$0.Empty> setPower(
+      $grpc.ServiceCall call, $0.PowerState request);
+  $async.Stream<$0.PowerState> getPowerActuals(
       $grpc.ServiceCall call, $0.Empty request);
   $async.Future<$0.Empty> setLoc($grpc.ServiceCall call, $0.Loc request);
   $async.Stream<$0.Loc> getLocActuals($grpc.ServiceCall call, $0.Empty request);

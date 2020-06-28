@@ -65,6 +65,14 @@ const PowerRequestsOptions$json = const {
 const Power$json = const {
   '1': 'Power',
   '2': const [
+    const {'1': 'request', '3': 1, '4': 1, '5': 11, '6': '.binkynet.v1.PowerState', '10': 'request'},
+    const {'1': 'actual', '3': 2, '4': 1, '5': 11, '6': '.binkynet.v1.PowerState', '10': 'actual'},
+  ],
+};
+
+const PowerState$json = const {
+  '1': 'PowerState',
+  '2': const [
     const {'1': 'enabled', '3': 1, '4': 1, '5': 8, '10': 'enabled'},
   ],
 };
@@ -80,15 +88,23 @@ const Loc$json = const {
   '1': 'Loc',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'address'},
-    const {'1': 'speed', '3': 2, '4': 1, '5': 5, '10': 'speed'},
-    const {'1': 'speed_steps', '3': 3, '4': 1, '5': 5, '10': 'speedSteps'},
-    const {'1': 'direction', '3': 4, '4': 1, '5': 14, '6': '.binkynet.v1.LocDirection', '10': 'direction'},
-    const {'1': 'functions', '3': 5, '4': 3, '5': 11, '6': '.binkynet.v1.Loc.FunctionsEntry', '10': 'functions'},
+    const {'1': 'request', '3': 2, '4': 1, '5': 11, '6': '.binkynet.v1.LocState', '10': 'request'},
+    const {'1': 'actual', '3': 3, '4': 1, '5': 11, '6': '.binkynet.v1.LocState', '10': 'actual'},
   ],
-  '3': const [Loc_FunctionsEntry$json],
 };
 
-const Loc_FunctionsEntry$json = const {
+const LocState$json = const {
+  '1': 'LocState',
+  '2': const [
+    const {'1': 'speed', '3': 1, '4': 1, '5': 5, '10': 'speed'},
+    const {'1': 'speed_steps', '3': 2, '4': 1, '5': 5, '10': 'speedSteps'},
+    const {'1': 'direction', '3': 3, '4': 1, '5': 14, '6': '.binkynet.v1.LocDirection', '10': 'direction'},
+    const {'1': 'functions', '3': 4, '4': 3, '5': 11, '6': '.binkynet.v1.LocState.FunctionsEntry', '10': 'functions'},
+  ],
+  '3': const [LocState_FunctionsEntry$json],
+};
+
+const LocState_FunctionsEntry$json = const {
   '1': 'FunctionsEntry',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 5, '10': 'key'},
@@ -101,7 +117,14 @@ const Sensor$json = const {
   '1': 'Sensor',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'address'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 5, '10': 'value'},
+    const {'1': 'actual', '3': 2, '4': 1, '5': 11, '6': '.binkynet.v1.SensorState', '10': 'actual'},
+  ],
+};
+
+const SensorState$json = const {
+  '1': 'SensorState',
+  '2': const [
+    const {'1': 'value', '3': 1, '4': 1, '5': 5, '10': 'value'},
   ],
 };
 
@@ -116,7 +139,15 @@ const Output$json = const {
   '1': 'Output',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'address'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 5, '10': 'value'},
+    const {'1': 'request', '3': 2, '4': 1, '5': 11, '6': '.binkynet.v1.OutputState', '10': 'request'},
+    const {'1': 'actual', '3': 3, '4': 1, '5': 11, '6': '.binkynet.v1.OutputState', '10': 'actual'},
+  ],
+};
+
+const OutputState$json = const {
+  '1': 'OutputState',
+  '2': const [
+    const {'1': 'value', '3': 1, '4': 1, '5': 5, '10': 'value'},
   ],
 };
 
@@ -131,7 +162,15 @@ const Switch$json = const {
   '1': 'Switch',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'address'},
-    const {'1': 'direction', '3': 2, '4': 1, '5': 14, '6': '.binkynet.v1.SwitchDirection', '10': 'direction'},
+    const {'1': 'request', '3': 2, '4': 1, '5': 11, '6': '.binkynet.v1.SwitchState', '10': 'request'},
+    const {'1': 'actual', '3': 3, '4': 1, '5': 11, '6': '.binkynet.v1.SwitchState', '10': 'actual'},
+  ],
+};
+
+const SwitchState$json = const {
+  '1': 'SwitchState',
+  '2': const [
+    const {'1': 'direction', '3': 1, '4': 1, '5': 14, '6': '.binkynet.v1.SwitchDirection', '10': 'direction'},
   ],
 };
 

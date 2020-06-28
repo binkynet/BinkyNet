@@ -62,13 +62,13 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
       ($0.LocalWorkerInfo value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$getPowerRequests =
-      $grpc.ClientMethod<$0.PowerRequestsOptions, $0.Power>(
+      $grpc.ClientMethod<$0.PowerRequestsOptions, $0.PowerState>(
           '/binkynet.v1.LocalWorkerControlService/GetPowerRequests',
           ($0.PowerRequestsOptions value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $0.Power.fromBuffer(value));
-  static final _$setPowerActuals = $grpc.ClientMethod<$0.Power, $0.Empty>(
+          ($core.List<$core.int> value) => $0.PowerState.fromBuffer(value));
+  static final _$setPowerActuals = $grpc.ClientMethod<$0.PowerState, $0.Empty>(
       '/binkynet.v1.LocalWorkerControlService/SetPowerActuals',
-      ($0.Power value) => value.writeToBuffer(),
+      ($0.PowerState value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$getLocRequests =
       $grpc.ClientMethod<$0.LocRequestsOptions, $0.Loc>(
@@ -117,7 +117,7 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
     return $grpc.ResponseFuture(call);
   }
 
-  $grpc.ResponseStream<$0.Power> getPowerRequests(
+  $grpc.ResponseStream<$0.PowerState> getPowerRequests(
       $0.PowerRequestsOptions request,
       {$grpc.CallOptions options}) {
     final call = $createCall(
@@ -127,7 +127,7 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
   }
 
   $grpc.ResponseFuture<$0.Empty> setPowerActuals(
-      $async.Stream<$0.Power> request,
+      $async.Stream<$0.PowerState> request,
       {$grpc.CallOptions options}) {
     final call = $createCall(_$setPowerActuals, request, options: options);
     return $grpc.ResponseFuture(call);
@@ -205,20 +205,20 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.LocalWorkerInfo.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.PowerRequestsOptions, $0.Power>(
+    $addMethod($grpc.ServiceMethod<$0.PowerRequestsOptions, $0.PowerState>(
         'GetPowerRequests',
         getPowerRequests_Pre,
         false,
         true,
         ($core.List<$core.int> value) =>
             $0.PowerRequestsOptions.fromBuffer(value),
-        ($0.Power value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.Power, $0.Empty>(
+        ($0.PowerState value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.PowerState, $0.Empty>(
         'SetPowerActuals',
         setPowerActuals,
         true,
         false,
-        ($core.List<$core.int> value) => $0.Power.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.PowerState.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.LocRequestsOptions, $0.Loc>(
         'GetLocRequests',
@@ -286,7 +286,7 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
     return ping(call, await request);
   }
 
-  $async.Stream<$0.Power> getPowerRequests_Pre($grpc.ServiceCall call,
+  $async.Stream<$0.PowerState> getPowerRequests_Pre($grpc.ServiceCall call,
       $async.Future<$0.PowerRequestsOptions> request) async* {
     yield* getPowerRequests(call, await request);
   }
@@ -313,10 +313,10 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
 
   $async.Future<$0.Empty> ping(
       $grpc.ServiceCall call, $0.LocalWorkerInfo request);
-  $async.Stream<$0.Power> getPowerRequests(
+  $async.Stream<$0.PowerState> getPowerRequests(
       $grpc.ServiceCall call, $0.PowerRequestsOptions request);
   $async.Future<$0.Empty> setPowerActuals(
-      $grpc.ServiceCall call, $async.Stream<$0.Power> request);
+      $grpc.ServiceCall call, $async.Stream<$0.PowerState> request);
   $async.Stream<$0.Loc> getLocRequests(
       $grpc.ServiceCall call, $0.LocRequestsOptions request);
   $async.Future<$0.Empty> setLocActuals(

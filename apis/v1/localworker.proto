@@ -43,18 +43,20 @@ service LocalWorkerControlService {
 
   // GetPowerRequests is used to get a stream of power requests from the network
   // master.
-  rpc GetPowerRequests(PowerRequestsOptions) returns (stream Power);
+  rpc GetPowerRequests(PowerRequestsOptions) returns (stream PowerState);
 
   // SetPowerActuals is used to send a stream of actual power statuses to 
   // the network master.
-  rpc SetPowerActuals(stream Power) returns (Empty);
+  rpc SetPowerActuals(stream PowerState) returns (Empty);
 
   // GetLocRequests is used to get a stream of loc requests from the network
   // master.
+  // Note: Loc.actual field is not set.
   rpc GetLocRequests(LocRequestsOptions) returns (stream Loc);
 
   // SetLocActuals is used to send a stream of actual loc statuses to 
   // the network master.
+  // Note: Loc.request field must be set to the latest request.
   rpc SetLocActuals(stream Loc) returns (Empty);
 
   // SetSensorActuals is used to send a stream of actual sensor statuses to 
