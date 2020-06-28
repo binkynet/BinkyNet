@@ -17,5 +17,5 @@
 
 package v1
 
-//go:generate protoc -I .:../../:../../vendor/:../../vendor/googleapis/:../../vendor/github.com/gogo/protobuf/protobuf/ --gofast_out=Mgithub.com/golang/protobuf/ptypes/timestamp/timestamp.proto=github.com/gogo/protobuf/types,plugins=grpc,paths=source_relative:. ./discovery.proto ./commandstation.proto ./localworker.proto ./logprovider.proto ./types.proto
+//go:generate protoc -I .:../../:../../vendor/:../../vendor/googleapis/:../../vendor/github.com/gogo/protobuf/protobuf/ --gofast_out=Mgithub.com/golang/protobuf/ptypes/timestamp/timestamp.proto=github.com/gogo/protobuf/types,plugins=grpc,paths=source_relative:. ./discovery.proto ./commandstation.proto ./localworker.proto ./logprovider.proto ./network.proto ./types.proto
 //go:generate protoc -I .:../../:../../vendor/:../../vendor/googleapis/:../../vendor/github.com/gogo/protobuf/protobuf/ --dart_out=grpc:../../dart/lib/ ./discovery.proto ./commandstation.proto ./localworker.proto ./logprovider.proto ./network.proto ./types.proto
