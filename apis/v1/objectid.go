@@ -1,4 +1,4 @@
-// Copyright 2018 Ewout Prangsma
+// Copyright 2020 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,13 +15,7 @@
 // Author Ewout Prangsma
 //
 
-package model
+package v1
 
-import (
-	"github.com/pkg/errors"
-)
-
-var (
-	ValidationError = errors.New("validation failed")
-	maskAny         = errors.WithStack
-)
+// ObjectID is a strongly typed identifier of an object.
+type ObjectID string

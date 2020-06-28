@@ -1,4 +1,4 @@
-// Copyright 2018 Ewout Prangsma
+// Copyright 2020 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
 // Author Ewout Prangsma
 //
 
-package mqp
+package v1
 
 import (
-	"fmt"
+	fmt "fmt"
 	"strings"
 )
 

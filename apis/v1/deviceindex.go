@@ -1,4 +1,4 @@
-// Copyright 2018 Ewout Prangsma
+// Copyright 2020 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
 // Author Ewout Prangsma
 //
 
-// Package mqp contains the message definition of the Message Queue Protocol.
-//
-package mqp
+package v1
+
+// DeviceIndex is an address local to a device.
+// Range 1..
+type DeviceIndex uint

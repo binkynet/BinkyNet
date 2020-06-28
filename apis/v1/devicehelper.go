@@ -15,23 +15,16 @@
 // Author Ewout Prangsma
 //
 
-package mqp
+package v1
 
-// PowerMessage is send to control or report on the power supply to the track.
-//
-// The topic suffix for this type of global message is:
-//   /power
-//
-type PowerMessage struct {
-	GlobalMessageBase
-	// Activate indicates power on/off
-	Active bool `json:"active"`
-}
-
-// Check interface implementation
-var _ Message = PowerMessage{}
-
-// TopicSuffix returns the suffix for topic name used by this message.
-func (m PowerMessage) TopicSuffix() string {
-	return "power"
+// Validate the given configuration, returning nil on ok,
+// or an error upon validation issues.
+func (d Device) Validate() error {
+	if err := d.Type.Validate(); err != nil {
+		return InvalidArgument("Error in Type of '%s': %s", d.Id, err.Error())
+	}
+	if d.Address == "" {
+		return InvalidArgument("Address of '%s' is empty", d.Id)
+	}
+	return nil
 }

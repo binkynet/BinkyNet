@@ -17,10 +17,15 @@
 
 package v1
 
+// ConnectionName is a strongly typed well known know of a connection of an object type.
+type ConnectionName string
+
 const (
-	ServiceTypeCommandStation     = "_cs._binkynet._tcp"
-	ServiceTypeLocalWorkerControl = "_lwctrl._binkynet._tcp"
-	ServiceTypeLocalWorkerConfig  = "_lwcfg._binkynet._tcp"
-	ServiceTypeLogProvider        = "_lp._binkynet._tcp"
-	ServiceTypeNetworkControl     = "_nwctrl._binkynet._tcp"
+	ConnectionNameSensor             ConnectionName = "sensor"
+	ConnectionNameOutput             ConnectionName = "output"
+	ConnectionNameServo              ConnectionName = "servo"
+	ConnectionNameStraightRelay      ConnectionName = "straight-relay"
+	ConnectionNameOffRelay           ConnectionName = "off-relay"
+	ConnectionNamePhaseStraightRelay ConnectionName = "phase-straight-relay"
+	ConnectionNamePhaseOffRelay      ConnectionName = "phase-off-relay"
 )

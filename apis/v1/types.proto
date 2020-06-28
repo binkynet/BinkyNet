@@ -19,6 +19,8 @@ syntax = "proto3";
 
 package binkynet.v1;
 
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
 option go_package = "github.com/binkynet/BinkyNet/apis/v1";
 option csharp_namespace = "BinkyNet.Apis.V1";
 
@@ -60,8 +62,16 @@ message PowerRequestsOptions {
   bool manual_confirm = 1;
 }
 
-// Power message contains the requested/actual state of the power on the track.
+// Power message contains the requested & actual state of the power on the track.
 message Power {
+  // Requested power state 
+  PowerState request = 1;
+  // Actual power state
+  PowerState actual = 2;
+}
+
+// PowerState message contains the requested/actual state of the power on the track.
+message PowerState {
   // Power on/off
   bool enabled = 1;
 }
@@ -70,7 +80,7 @@ message Power {
 message LocRequestsOptions {
   // If set, the network master must wait for an actual Loc message
   // to confirm the state transition.
-  // If not set, the network master assumes the power state is effective directly
+  // If not set, the network master assumes the state is effective directly
   // after sending the message.
   bool manual_confirm = 1;
 }
@@ -81,16 +91,164 @@ enum LocDirection {
   REVERSE = 1;
 }
 
-// Loc message is used to control the speed, direction & functions of a loc.
+// Loc message is used to request/report the speed, direction & functions of a loc.
 message Loc {
 	// Addres of the loc
-	string address = 1;
+  string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
+  // Requested state of the loc
+  LocState request = 2;
+  // Actual state of the loc
+  LocState actual = 3;
+}
+
+// LocState message is used to request/report the speed, direction & functions of a loc.
+message LocState {
 	// Speed in steps
-	int32 speed = 2;
+	int32 speed = 1;
 	// Maximum speed steps of this loc
-	int32 speed_steps = 3;
+	int32 speed_steps = 2;
 	// Direction "forward|reverse"
-	LocDirection direction = 4;
+	LocDirection direction = 3;
 	// State of functions
-	map<int32, bool> functions = 5;
+	map<int32, bool> functions = 4;
+}
+
+// Sensor captures the current value of a sensor with specified address
+message Sensor {
+	// Addres of the sensor
+  string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
+  // Current state of the sensor
+  SensorState actual = 2;
+}
+
+// SensorState captures the current value of a sensor
+message SensorState {
+	// Current value of the sensor
+	int32 value = 1;
+}
+
+// Request arguments for GetOutputRequests
+message OutputRequestsOptions {
+  // If set, the network master must wait for an actual Output message
+  // to confirm the state transition.
+  // If not set, the network master assumes the state is effective directly
+  // after sending the message.
+  bool manual_confirm = 1;
+}
+
+// Output is used to control a generic output device. E.g. a light.
+message Output {
+	// Addres of the output
+	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
+  // Requested state of the output
+  OutputState request = 2;
+  // Actual state of the output
+  OutputState actual = 3;
+}
+
+// OutputState is used to request/report the state of a generic output device. E.g. a light.
+message OutputState {
+	// Value of the output
+	int32 value = 1;
+}
+
+// Request arguments for GetSwitchRequests
+message SwitchRequestsOptions {
+  // If set, the network master must wait for an actual Output message
+  // to confirm the state transition.
+  // If not set, the network master assumes the state is effective directly
+  // after sending the message.
+  bool manual_confirm = 1;
+}
+
+// Direction of switches
+enum SwitchDirection {
+  STRAIGHT = 0;
+  OFF = 1;
+}
+
+// Switch is used to request/report the state of a generic switch.
+message Switch {
+	// Addres of the switch
+	string address = 1 [(gogoproto.customtype) = "ObjectAddress", (gogoproto.nullable) = false];
+  // Requested state of the switch
+  SwitchState request = 2;
+  // Actual state of the switch
+  SwitchState actual = 3;
+}
+
+// SwitchState describe the requested/actual state of a generic switch.
+message SwitchState {
+	// Requested/current direction of the switch
+	SwitchDirection direction = 1;
+}
+
+// TimePeriod indicates time of day in 4 periods.
+enum TimePeriod {
+  MORNING = 0;
+  AFTERNOON = 1;
+  EVENING = 2;
+  NIGHT = 3;
+}
+
+// Clock is used to identity global time.
+message Clock {
+  // Current time period.
+  TimePeriod period = 1;
+  // Current hours (0..23)
+  int32 hours = 2;
+  // Current minutes (0..59)
+  int32 minutes = 3;
+}
+
+// Device represents a hardware device such as a I2C chip.
+message Device {
+  // ID of the device
+  string id = 1 [(gogoproto.customtype) = "DeviceID", (gogoproto.nullable) = false];
+  // Type of the device.
+  // See devicetypes.go
+  string type = 2 [(gogoproto.customtype) = "DeviceType", (gogoproto.nullable) = false];
+  // Logical address of the device on the local worker.
+  string address = 3;
+}
+
+// Object represents a logical object on the railway such as a switch.
+message Object {
+  // ID of the object
+  string id = 1 [(gogoproto.customtype) = "ObjectID", (gogoproto.nullable) = false];
+  // Type of the object.
+  // See objectypes.go
+  string type = 2 [(gogoproto.customtype) = "ObjectType", (gogoproto.nullable) = false];
+	// Connections to devices used by this object
+	// The keys used in this map are specific to the type of object.
+  repeated Connection connections = 3;
+}
+
+// Connection from an Object to a Device.
+message Connection {
+  // Key is specific to the type of device.
+  string key = 1 [(gogoproto.customtype) = "ConnectionName", (gogoproto.nullable) = false];
+	// Pins of devices to connect to
+	repeated DevicePin pins = 2;
+	// Optional configuration for this connection.
+	// Keys & values are specific to the connection name.
+	map<string, string> configuration = 3;
+}
+
+// DevicePin identifies a hardware device and an index within that hardware address.
+message DevicePin {
+	// Unique identifier of the device that this connection refers to.
+  string device_id = 1 [(gogoproto.customtype) = "DeviceID", (gogoproto.nullable) = false, (gogoproto.jsontag) = "device"];
+  // Index on the device (1...)
+  uint64 index = 2 [(gogoproto.customtype) = "DeviceIndex", (gogoproto.nullable) = false];
+}
+
+// Configuration for a local worker
+message LocalWorkerConfig {
+  // Human readable alias for this local worker.
+  string alias = 1;
+  // List of devices that must be configured on this local worker.
+  repeated Device devices = 2;
+	// List of real world objects controlled by the local worker
+  repeated Object objects = 3;
 }

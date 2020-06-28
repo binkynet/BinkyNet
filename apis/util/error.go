@@ -1,4 +1,4 @@
-// Copyright 2018 Ewout Prangsma
+// Copyright 2020 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,16 +15,12 @@
 // Author Ewout Prangsma
 //
 
-package model
+package util
 
-// DeviceIndex is an address local to a device.
-// Range 1..
-type DeviceIndex uint
+import "io"
 
-// DevicePin identifies a hardware device and an index within that hardware address.
-type DevicePin struct {
-	// Unique identifier of the device that this connection refers to.
-	DeviceID DeviceID `json:"device"`
-	// Index on the device (1...)
-	Index DeviceIndex `json:"index"`
+// IsStreamClosed returns true when the error indicates
+// a normal closing of a GRPC stream.
+func IsStreamClosed(err error) bool {
+	return err == io.EOF
 }

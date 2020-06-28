@@ -24,9 +24,17 @@ option csharp_namespace = "BinkyNet.Apis.V1";
 
 import "types.proto";
 
+// LocalWorkerConfigService is served by the network master and used by
+// local workers to fetch their configuration.
+// Network masters make themselves available in mDNS under service type "_lwcfg._binkynet._tcp".
+service LocalWorkerConfigService {
+  // GetConfig is used to fetch the configuration for a local worker.
+  rpc GetConfig(LocalWorkerInfo) returns (stream LocalWorkerConfig);
+}
+
 // LocalWorkerControlService is served by the network master and used by
 // local workers.
-// Network masters make themselves available in mDNS under service type "_lwc._binkynet._tcp".
+// Network masters make themselves available in mDNS under service type "_lwctrl._binkynet._tcp".
 service LocalWorkerControlService {
   // Ping messages are send at regular intervals by local workers
   // as a heartbeat notification, as well as providing information about
@@ -35,17 +43,43 @@ service LocalWorkerControlService {
 
   // GetPowerRequests is used to get a stream of power requests from the network
   // master.
-  rpc GetPowerRequests(PowerRequestsOptions) returns (stream Power);
+  rpc GetPowerRequests(PowerRequestsOptions) returns (stream PowerState);
 
   // SetPowerActuals is used to send a stream of actual power statuses to 
   // the network master.
-  rpc SetPowerActuals(stream Power) returns (Empty);
+  rpc SetPowerActuals(stream PowerState) returns (Empty);
 
   // GetLocRequests is used to get a stream of loc requests from the network
   // master.
+  // Note: Loc.actual field is not set.
   rpc GetLocRequests(LocRequestsOptions) returns (stream Loc);
 
   // SetLocActuals is used to send a stream of actual loc statuses to 
   // the network master.
+  // Note: Loc.request field must be set to the latest request.
   rpc SetLocActuals(stream Loc) returns (Empty);
+
+  // SetSensorActuals is used to send a stream of actual sensor statuses to 
+  // the network master.
+  rpc SetSensorActuals(stream Sensor) returns (Empty);
+
+  // GetOutputRequests is used to get a stream of output requests from the network
+  // master.
+  rpc GetOutputRequests(OutputRequestsOptions) returns (stream Output);
+
+  // SetOutputActuals is used to send a stream of actual output statuses to 
+  // the network master.
+  rpc SetOutputActuals(stream Output) returns (Empty);
+
+  // GetSwitchRequests is used to get a stream of switch requests from the network
+  // master.
+  rpc GetSwitchRequests(SwitchRequestsOptions) returns (stream Switch);
+
+  // SetSwitchActuals is used to send a stream of actual switch statuses to 
+  // the network master.
+  rpc SetSwitchActuals(stream Switch) returns (Empty);
+
+  // GetClock is used to get a stream of switch current time of day from the network
+  // master.
+  rpc GetClock(Empty) returns (stream Clock);
 }

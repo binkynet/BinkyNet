@@ -1,4 +1,4 @@
-// Copyright 2018 Ewout Prangsma
+// Copyright 2020 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,21 +15,7 @@
 // Author Ewout Prangsma
 //
 
-package model
-
-import "github.com/pkg/errors"
-
-// DeviceID is a strongly typed identifier of a device.
-type DeviceID string
-
-// Device holds configuration data for a specif hardward device.
-// Typically a hardware device is attached to a bus.
-type Device struct {
-	// Address is used to identify the device on a bus.
-	Address string `json:"address"`
-	// Type of the device
-	Type DeviceType `json:"type"`
-}
+package v1
 
 // DeviceType identifies a type of devices (typically chip name)
 type DeviceType string
@@ -50,18 +36,6 @@ func (t DeviceType) Validate() error {
 	case DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685:
 		return nil
 	default:
-		return errors.Wrapf(ValidationError, "invalid device type '%s'", string(t))
+		return InvalidArgument("invalid device type '%s'", string(t))
 	}
-}
-
-// Validate the given configuration, returning nil on ok,
-// or an error upon validation issues.
-func (d Device) Validate(id DeviceID) error {
-	if err := d.Type.Validate(); err != nil {
-		return errors.Wrapf(ValidationError, "Error in Type of '%s': %s", id, err.Error())
-	}
-	if d.Address == "" {
-		return errors.Wrapf(ValidationError, "Address of '%s' is empty", id)
-	}
-	return nil
 }

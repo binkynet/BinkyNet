@@ -15,35 +15,7 @@
 // Author Ewout Prangsma
 //
 
-package model
-
-import "github.com/pkg/errors"
-
-// ObjectID is a strongly typed identifier of an object.
-type ObjectID string
-
-// Object holds the base info for each type of real world object.
-type Object struct {
-	// Type of object
-	Type ObjectType `json:"type"`
-	// Connections to devices used by this object
-	// The keys used in this map are specific to the type of object.
-	Connections map[ConnectionName]Connection `json:"connections,omitempty"`
-}
-
-// ObjectType identifies a type of real world objects.
-type ObjectType string
-
-const (
-	// ObjectTypeBinarySensor is the object type of a single-bit on/off sensor
-	ObjectTypeBinarySensor ObjectType = "binary-sensor"
-	// ObjectTypeBinaryOutput is the object type of a single-bit on/off output
-	ObjectTypeBinaryOutput ObjectType = "binary-output"
-	// ObjectTypeServoSwitch is the object type of a servo driven switch, with an option phase switching relay.
-	ObjectTypeServoSwitch ObjectType = "servo-switch"
-	// ObjectTypeRelaySwitch is the object type of a double relay driven switch, with an option phase switching relay.
-	ObjectTypeRelaySwitch ObjectType = "relay-switch"
-)
+package v1
 
 // ObjectTypeInfo holds builtin information for a type of objects.
 type ObjectTypeInfo struct {
@@ -75,19 +47,6 @@ type ObjectConnectionInfo struct {
 	// How many device-pins are expected for this connection
 	PinCount int
 }
-
-// ConnectionName is a strongly typed well known know of a connection of an object type.
-type ConnectionName string
-
-const (
-	ConnectionNameSensor             ConnectionName = "sensor"
-	ConnectionNameOutput             ConnectionName = "output"
-	ConnectionNameServo              ConnectionName = "servo"
-	ConnectionNameStraightRelay      ConnectionName = "straight-relay"
-	ConnectionNameOffRelay           ConnectionName = "off-relay"
-	ConnectionNamePhaseStraightRelay ConnectionName = "phase-straight-relay"
-	ConnectionNamePhaseOffRelay      ConnectionName = "phase-off-relay"
-)
 
 var (
 	objectTypeInfos = []ObjectTypeInfo{
@@ -133,7 +92,7 @@ func (t ObjectType) Validate() error {
 			return nil
 		}
 	}
-	return errors.Wrapf(ValidationError, "invalid object type '%s'", string(t))
+	return InvalidArgument("invalid object type '%s'", string(t))
 }
 
 // TypeInfo returns the ObjectType information for this type of object.
@@ -146,34 +105,44 @@ func (t ObjectType) TypeInfo() ObjectTypeInfo {
 	return ObjectTypeInfo{}
 }
 
+// ConnectionByName returns the connection of the object with given name
+func (o Object) ConnectionByName(name ConnectionName) (*Connection, bool) {
+	for _, conn := range o.GetConnections() {
+		if conn.Key == name {
+			return conn, true
+		}
+	}
+	return nil, false
+}
+
 // Validate the given configuration, returning nil on ok,
 // or an error upon validation issues.
-func (o Object) Validate(id ObjectID) error {
+func (o Object) Validate() error {
 	if err := o.Type.Validate(); err != nil {
-		return errors.Wrapf(ValidationError, "Error in Type of '%s': %s", id, err.Error())
+		return InvalidArgument("Error in Type of '%s': %s", o.Id, err.Error())
 	}
 	typeInfo := o.Type.TypeInfo()
 	// Check configured connections
-	for name, conn := range o.Connections {
-		cInfo, found := typeInfo.ConnectionByName(name)
+	for _, conn := range o.Connections {
+		cInfo, found := typeInfo.ConnectionByName(conn.Key)
 		if !found {
-			return errors.Wrapf(ValidationError, "Object '%s' has an unexpected connection named '%s'", id, name)
+			return InvalidArgument("Object '%s' has an unexpected connection named '%s'", o.Id, conn.Key)
 		}
 		if cInfo.PinCount != len(conn.Pins) {
-			return errors.Wrapf(ValidationError, "Object '%s' has an unexpected number of pins for connection '%s'. Got %d, expected %d", id, name, len(conn.Pins), cInfo.PinCount)
+			return InvalidArgument("Object '%s' has an unexpected number of pins for connection '%s'. Got %d, expected %d", o.Id, conn.Key, len(conn.Pins), cInfo.PinCount)
 		}
 		// Validate pins
 		for idx, p := range conn.Pins {
 			if p.Index == 0 {
-				return errors.Wrapf(ValidationError, "Object '%s' has an invalid index at position %d of the connection named '%s'", id, idx, name)
+				return InvalidArgument("Object '%s' has an invalid index at position %d of the connection named '%s'", o.Id, idx, conn.Key)
 			}
 		}
 	}
 	// Look for missing connections
 	for _, conn := range typeInfo.Connections {
 		if conn.Required {
-			if _, found := o.Connections[conn.Name]; !found {
-				return errors.Wrapf(ValidationError, "Object '%s' lacks a required connection named '%s'", id, conn.Name)
+			if _, found := o.ConnectionByName(conn.Name); !found {
+				return InvalidArgument("Object '%s' lacks a required connection named '%s'", o.Id, conn.Name)
 			}
 		}
 	}
