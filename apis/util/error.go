@@ -1,4 +1,4 @@
-// Copyright 2018 Ewout Prangsma
+// Copyright 2020 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,23 +15,12 @@
 // Author Ewout Prangsma
 //
 
-package mqp
+package util
 
-// PowerMessage is send to control or report on the power supply to the track.
-//
-// The topic suffix for this type of global message is:
-//   /power
-//
-type PowerMessage struct {
-	GlobalMessageBase
-	// Activate indicates power on/off
-	Active bool `json:"active"`
-}
+import "io"
 
-// Check interface implementation
-var _ Message = PowerMessage{}
-
-// TopicSuffix returns the suffix for topic name used by this message.
-func (m PowerMessage) TopicSuffix() string {
-	return "power"
+// IsStreamClosed returns true when the error indicates
+// a normal closing of a GRPC stream.
+func IsStreamClosed(err error) bool {
+	return err == io.EOF
 }
