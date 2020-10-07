@@ -84,7 +84,36 @@ func RegisterServiceEntry(ctx context.Context, serviceType string, info ServiceI
 			return err
 		}
 	}
-	srv, err := zeroconf.Register(instance, serviceType, "local.", int(info.GetApiPort()), text, nil)
+
+	var ifaces []net.Interface
+	if host, found := GetServiceInfoHost(ctx); found && host != "" {
+		// Find interfaces with given IP
+		var interfaces []net.Interface
+		ifaces, err := net.Interfaces()
+		if err != nil {
+			return err
+		}
+		for _, ifi := range ifaces {
+			if (ifi.Flags & net.FlagUp) == 0 {
+				continue
+			}
+			if (ifi.Flags & net.FlagMulticast) == 0 {
+				continue
+			}
+			addrs, _ := ifi.Addrs()
+			for _, addr := range addrs {
+				if addr.String() == host {
+					interfaces = append(interfaces, ifi)
+					break
+				}
+			}
+		}
+		if len(ifaces) == 0 {
+			return fmt.Errorf("Did not find interface with address '%s'", host)
+		}
+	}
+
+	srv, err := zeroconf.Register(instance, serviceType, "local.", int(info.GetApiPort()), text, ifaces)
 	if err != nil {
 		return err
 	}
