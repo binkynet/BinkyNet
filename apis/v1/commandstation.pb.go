@@ -27,24 +27,22 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 func init() { proto.RegisterFile("commandstation.proto", fileDescriptor_2383d9124325f33a) }
 
 var fileDescriptor_2383d9124325f33a = []byte{
-	// 260 bytes of a gzipped FileDescriptorProto
+	// 229 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x49, 0xce, 0xcf, 0xcd,
 	0x4d, 0xcc, 0x4b, 0x29, 0x2e, 0x49, 0x2c, 0xc9, 0xcc, 0xcf, 0xd3, 0x2b, 0x28, 0xca, 0x2f, 0xc9,
 	0x17, 0xe2, 0x4e, 0xca, 0xcc, 0xcb, 0xae, 0xcc, 0x4b, 0x2d, 0xd1, 0x2b, 0x33, 0x94, 0xe2, 0x2e,
-	0xa9, 0x2c, 0x48, 0x2d, 0x86, 0xc8, 0x18, 0xed, 0x66, 0xe2, 0x12, 0x75, 0x86, 0x68, 0x09, 0x86,
+	0xa9, 0x2c, 0x48, 0x2d, 0x86, 0xc8, 0x18, 0x1d, 0x64, 0xe4, 0x12, 0x75, 0x86, 0x68, 0x09, 0x86,
 	0x68, 0x09, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0x15, 0xb2, 0xe3, 0x62, 0x77, 0x4f, 0x2d, 0xf1,
 	0xcc, 0x4b, 0xcb, 0x17, 0x12, 0xd2, 0x43, 0xd2, 0xaf, 0xe7, 0x9a, 0x5b, 0x50, 0x52, 0x29, 0x25,
-	0x8f, 0x22, 0x86, 0x6a, 0x04, 0x58, 0x93, 0x39, 0x17, 0x47, 0x70, 0x6a, 0x49, 0x40, 0x7e, 0x79,
-	0x6a, 0x91, 0x90, 0x38, 0x8a, 0x62, 0xb0, 0x18, 0x48, 0x69, 0xaa, 0x14, 0x16, 0x93, 0x85, 0x1c,
-	0xb8, 0xf8, 0xdd, 0xa1, 0x1a, 0x1d, 0x93, 0x4b, 0x4a, 0x13, 0x73, 0x8a, 0xb1, 0x3a, 0x00, 0x97,
-	0x99, 0x06, 0x8c, 0x42, 0x7a, 0x5c, 0x6c, 0xc1, 0xa9, 0x25, 0x3e, 0xf9, 0xc9, 0x42, 0x02, 0x28,
-	0x8a, 0x7c, 0xf2, 0x93, 0xb1, 0xda, 0x68, 0xce, 0xc5, 0xeb, 0x0e, 0x56, 0x8f, 0xcf, 0x3e, 0x0c,
-	0xa3, 0x0c, 0x18, 0x9d, 0x3c, 0x4f, 0x3c, 0x92, 0x63, 0xbc, 0xf0, 0x48, 0x8e, 0xf1, 0xc1, 0x23,
-	0x39, 0xc6, 0x19, 0x8f, 0xe5, 0x18, 0xa2, 0x54, 0xd2, 0x33, 0x4b, 0x32, 0x4a, 0x93, 0xf4, 0x92,
-	0xf3, 0x73, 0xf5, 0x61, 0xea, 0xf5, 0x9d, 0x40, 0x0c, 0xbf, 0xd4, 0x12, 0xfd, 0xc4, 0x82, 0xcc,
-	0x62, 0xfd, 0x32, 0xc3, 0x55, 0x4c, 0x02, 0x30, 0x21, 0x3d, 0xc7, 0x82, 0xcc, 0x62, 0xbd, 0x30,
-	0xc3, 0x24, 0x36, 0x70, 0x7c, 0x18, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0x83, 0x48, 0xd6, 0x7e,
-	0xc1, 0x01, 0x00, 0x00,
+	0x8f, 0x22, 0x86, 0x6a, 0x04, 0x58, 0x93, 0x05, 0x17, 0x6b, 0x40, 0x7e, 0x79, 0x6a, 0x91, 0x90,
+	0x38, 0x8a, 0x4a, 0xb0, 0x18, 0x48, 0x5d, 0xaa, 0x94, 0x10, 0xa6, 0x84, 0x06, 0xa3, 0x01, 0xa3,
+	0x90, 0x1e, 0x17, 0x8b, 0x4f, 0x7e, 0x72, 0xb1, 0x90, 0x00, 0x8a, 0xbc, 0x4f, 0x7e, 0xb2, 0x14,
+	0x86, 0x08, 0x48, 0xbd, 0x93, 0xe7, 0x89, 0x47, 0x72, 0x8c, 0x17, 0x1e, 0xc9, 0x31, 0x3e, 0x78,
+	0x24, 0xc7, 0x38, 0xe3, 0xb1, 0x1c, 0x43, 0x94, 0x4a, 0x7a, 0x66, 0x49, 0x46, 0x69, 0x92, 0x5e,
+	0x72, 0x7e, 0xae, 0x3e, 0x4c, 0x87, 0xbe, 0x13, 0x88, 0xe1, 0x97, 0x5a, 0xa2, 0x9f, 0x58, 0x90,
+	0x59, 0xac, 0x5f, 0x66, 0xb8, 0x8a, 0x49, 0x00, 0x26, 0xa4, 0xe7, 0x58, 0x90, 0x59, 0xac, 0x17,
+	0x66, 0x98, 0xc4, 0x06, 0x0e, 0x15, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x66, 0x99, 0x87,
+	0x81, 0x47, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -61,16 +59,11 @@ const _ = grpc.SupportPackageIsVersion4
 type CommandStationServiceClient interface {
 	// GetInfo returns information from the command station.
 	GetInfo(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CommandStationInfo, error)
-	// SetPower is used to set the power status of the command station.
-	SetPower(ctx context.Context, in *PowerState, opts ...grpc.CallOption) (*Empty, error)
-	// GetPowerActuals is used to request a stream of actual power statuses from
-	// the command station to the client.
-	GetPowerActuals(ctx context.Context, in *Empty, opts ...grpc.CallOption) (CommandStationService_GetPowerActualsClient, error)
-	// SetLoc is used to request a loc status from the client to the command station.
-	SetLoc(ctx context.Context, in *Loc, opts ...grpc.CallOption) (*Empty, error)
-	// GetLocActuals is used to send a stream of actual loc statuses from
-	// the command station to the client.
-	GetLocActuals(ctx context.Context, in *Empty, opts ...grpc.CallOption) (CommandStationService_GetLocActualsClient, error)
+	// Power is used to send power requests and receive power request & actual changes.
+	Power(ctx context.Context, opts ...grpc.CallOption) (CommandStationService_PowerClient, error)
+	// Locs is used to control locs and get changes in loc requests & actual state back.
+	// Note: Loc.actual on incoming objects is ignored.
+	Locs(ctx context.Context, opts ...grpc.CallOption) (CommandStationService_LocsClient, error)
 }
 
 type commandStationServiceClient struct {
@@ -90,81 +83,61 @@ func (c *commandStationServiceClient) GetInfo(ctx context.Context, in *Empty, op
 	return out, nil
 }
 
-func (c *commandStationServiceClient) SetPower(ctx context.Context, in *PowerState, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/binkynet.v1.CommandStationService/SetPower", in, out, opts...)
+func (c *commandStationServiceClient) Power(ctx context.Context, opts ...grpc.CallOption) (CommandStationService_PowerClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_CommandStationService_serviceDesc.Streams[0], "/binkynet.v1.CommandStationService/Power", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
-}
-
-func (c *commandStationServiceClient) GetPowerActuals(ctx context.Context, in *Empty, opts ...grpc.CallOption) (CommandStationService_GetPowerActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_CommandStationService_serviceDesc.Streams[0], "/binkynet.v1.CommandStationService/GetPowerActuals", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &commandStationServiceGetPowerActualsClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
+	x := &commandStationServicePowerClient{stream}
 	return x, nil
 }
 
-type CommandStationService_GetPowerActualsClient interface {
-	Recv() (*PowerState, error)
+type CommandStationService_PowerClient interface {
+	Send(*PowerState) error
+	Recv() (*Power, error)
 	grpc.ClientStream
 }
 
-type commandStationServiceGetPowerActualsClient struct {
+type commandStationServicePowerClient struct {
 	grpc.ClientStream
 }
 
-func (x *commandStationServiceGetPowerActualsClient) Recv() (*PowerState, error) {
-	m := new(PowerState)
+func (x *commandStationServicePowerClient) Send(m *PowerState) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *commandStationServicePowerClient) Recv() (*Power, error) {
+	m := new(Power)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func (c *commandStationServiceClient) SetLoc(ctx context.Context, in *Loc, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/binkynet.v1.CommandStationService/SetLoc", in, out, opts...)
+func (c *commandStationServiceClient) Locs(ctx context.Context, opts ...grpc.CallOption) (CommandStationService_LocsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_CommandStationService_serviceDesc.Streams[1], "/binkynet.v1.CommandStationService/Locs", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
-}
-
-func (c *commandStationServiceClient) GetLocActuals(ctx context.Context, in *Empty, opts ...grpc.CallOption) (CommandStationService_GetLocActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_CommandStationService_serviceDesc.Streams[1], "/binkynet.v1.CommandStationService/GetLocActuals", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &commandStationServiceGetLocActualsClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
+	x := &commandStationServiceLocsClient{stream}
 	return x, nil
 }
 
-type CommandStationService_GetLocActualsClient interface {
+type CommandStationService_LocsClient interface {
+	Send(*Loc) error
 	Recv() (*Loc, error)
 	grpc.ClientStream
 }
 
-type commandStationServiceGetLocActualsClient struct {
+type commandStationServiceLocsClient struct {
 	grpc.ClientStream
 }
 
-func (x *commandStationServiceGetLocActualsClient) Recv() (*Loc, error) {
+func (x *commandStationServiceLocsClient) Send(m *Loc) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *commandStationServiceLocsClient) Recv() (*Loc, error) {
 	m := new(Loc)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -176,16 +149,11 @@ func (x *commandStationServiceGetLocActualsClient) Recv() (*Loc, error) {
 type CommandStationServiceServer interface {
 	// GetInfo returns information from the command station.
 	GetInfo(context.Context, *Empty) (*CommandStationInfo, error)
-	// SetPower is used to set the power status of the command station.
-	SetPower(context.Context, *PowerState) (*Empty, error)
-	// GetPowerActuals is used to request a stream of actual power statuses from
-	// the command station to the client.
-	GetPowerActuals(*Empty, CommandStationService_GetPowerActualsServer) error
-	// SetLoc is used to request a loc status from the client to the command station.
-	SetLoc(context.Context, *Loc) (*Empty, error)
-	// GetLocActuals is used to send a stream of actual loc statuses from
-	// the command station to the client.
-	GetLocActuals(*Empty, CommandStationService_GetLocActualsServer) error
+	// Power is used to send power requests and receive power request & actual changes.
+	Power(CommandStationService_PowerServer) error
+	// Locs is used to control locs and get changes in loc requests & actual state back.
+	// Note: Loc.actual on incoming objects is ignored.
+	Locs(CommandStationService_LocsServer) error
 }
 
 // UnimplementedCommandStationServiceServer can be embedded to have forward compatible implementations.
@@ -195,17 +163,11 @@ type UnimplementedCommandStationServiceServer struct {
 func (*UnimplementedCommandStationServiceServer) GetInfo(ctx context.Context, req *Empty) (*CommandStationInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInfo not implemented")
 }
-func (*UnimplementedCommandStationServiceServer) SetPower(ctx context.Context, req *PowerState) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetPower not implemented")
+func (*UnimplementedCommandStationServiceServer) Power(srv CommandStationService_PowerServer) error {
+	return status.Errorf(codes.Unimplemented, "method Power not implemented")
 }
-func (*UnimplementedCommandStationServiceServer) GetPowerActuals(req *Empty, srv CommandStationService_GetPowerActualsServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetPowerActuals not implemented")
-}
-func (*UnimplementedCommandStationServiceServer) SetLoc(ctx context.Context, req *Loc) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetLoc not implemented")
-}
-func (*UnimplementedCommandStationServiceServer) GetLocActuals(req *Empty, srv CommandStationService_GetLocActualsServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetLocActuals not implemented")
+func (*UnimplementedCommandStationServiceServer) Locs(srv CommandStationService_LocsServer) error {
+	return status.Errorf(codes.Unimplemented, "method Locs not implemented")
 }
 
 func RegisterCommandStationServiceServer(s *grpc.Server, srv CommandStationServiceServer) {
@@ -230,82 +192,56 @@ func _CommandStationService_GetInfo_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CommandStationService_SetPower_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PowerState)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CommandStationServiceServer).SetPower(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/binkynet.v1.CommandStationService/SetPower",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandStationServiceServer).SetPower(ctx, req.(*PowerState))
-	}
-	return interceptor(ctx, in, info, handler)
+func _CommandStationService_Power_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(CommandStationServiceServer).Power(&commandStationServicePowerServer{stream})
 }
 
-func _CommandStationService_GetPowerActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(Empty)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(CommandStationServiceServer).GetPowerActuals(m, &commandStationServiceGetPowerActualsServer{stream})
-}
-
-type CommandStationService_GetPowerActualsServer interface {
-	Send(*PowerState) error
+type CommandStationService_PowerServer interface {
+	Send(*Power) error
+	Recv() (*PowerState, error)
 	grpc.ServerStream
 }
 
-type commandStationServiceGetPowerActualsServer struct {
+type commandStationServicePowerServer struct {
 	grpc.ServerStream
 }
 
-func (x *commandStationServiceGetPowerActualsServer) Send(m *PowerState) error {
+func (x *commandStationServicePowerServer) Send(m *Power) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _CommandStationService_SetLoc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Loc)
-	if err := dec(in); err != nil {
+func (x *commandStationServicePowerServer) Recv() (*PowerState, error) {
+	m := new(PowerState)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
-	if interceptor == nil {
-		return srv.(CommandStationServiceServer).SetLoc(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/binkynet.v1.CommandStationService/SetLoc",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandStationServiceServer).SetLoc(ctx, req.(*Loc))
-	}
-	return interceptor(ctx, in, info, handler)
+	return m, nil
 }
 
-func _CommandStationService_GetLocActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(Empty)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(CommandStationServiceServer).GetLocActuals(m, &commandStationServiceGetLocActualsServer{stream})
+func _CommandStationService_Locs_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(CommandStationServiceServer).Locs(&commandStationServiceLocsServer{stream})
 }
 
-type CommandStationService_GetLocActualsServer interface {
+type CommandStationService_LocsServer interface {
 	Send(*Loc) error
+	Recv() (*Loc, error)
 	grpc.ServerStream
 }
 
-type commandStationServiceGetLocActualsServer struct {
+type commandStationServiceLocsServer struct {
 	grpc.ServerStream
 }
 
-func (x *commandStationServiceGetLocActualsServer) Send(m *Loc) error {
+func (x *commandStationServiceLocsServer) Send(m *Loc) error {
 	return x.ServerStream.SendMsg(m)
+}
+
+func (x *commandStationServiceLocsServer) Recv() (*Loc, error) {
+	m := new(Loc)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 var _CommandStationService_serviceDesc = grpc.ServiceDesc{
@@ -316,25 +252,19 @@ var _CommandStationService_serviceDesc = grpc.ServiceDesc{
 			MethodName: "GetInfo",
 			Handler:    _CommandStationService_GetInfo_Handler,
 		},
-		{
-			MethodName: "SetPower",
-			Handler:    _CommandStationService_SetPower_Handler,
-		},
-		{
-			MethodName: "SetLoc",
-			Handler:    _CommandStationService_SetLoc_Handler,
-		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "GetPowerActuals",
-			Handler:       _CommandStationService_GetPowerActuals_Handler,
+			StreamName:    "Power",
+			Handler:       _CommandStationService_Power_Handler,
 			ServerStreams: true,
+			ClientStreams: true,
 		},
 		{
-			StreamName:    "GetLocActuals",
-			Handler:       _CommandStationService_GetLocActuals_Handler,
+			StreamName:    "Locs",
+			Handler:       _CommandStationService_Locs_Handler,
 			ServerStreams: true,
+			ClientStreams: true,
 		},
 	},
 	Metadata: "commandstation.proto",
