@@ -31,17 +31,10 @@ service CommandStationService {
   // GetInfo returns information from the command station.
   rpc GetInfo(Empty) returns (CommandStationInfo);
 
-  // SetPower is used to set the power status of the command station.
-  rpc SetPower(PowerState) returns (Empty);
+  // Power is used to send power requests and receive power request & actual changes.
+  rpc Power(stream PowerState) returns (stream binkynet.v1.Power);
 
-  // GetPowerActuals is used to request a stream of actual power statuses from
-  // the command station to the client.
-  rpc GetPowerActuals(Empty) returns (stream PowerState);
-
-  // SetLoc is used to request a loc status from the client to the command station.
-  rpc SetLoc(Loc) returns (Empty);
-
-  // GetLocActuals is used to send a stream of actual loc statuses from
-  // the command station to the client.
-  rpc GetLocActuals(Empty) returns (stream Loc);
+  // Locs is used to control locs and get changes in loc requests & actual state back.
+  // Note: Loc.actual on incoming objects is ignored.
+  rpc Locs(stream Loc) returns (stream Loc);
 }

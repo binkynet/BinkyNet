@@ -25,7 +25,7 @@ option csharp_namespace = "BinkyNet.Apis.V1";
 import "types.proto";
 
 // NetworkControlService is served by the network master and used by
-// users of the Binky Network.
+// users of the Binky Network to control the network.
 // Network masters make themselves available in mDNS under service type "_nwctrl._binkynet._tcp".
 service NetworkControlService {
   // Power is used to send power requests and receive power request & actual changes.
