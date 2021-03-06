@@ -1,4 +1,4 @@
-// Copyright 2020 Ewout Prangsma
+// Copyright 2020-2021 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,3 +30,8 @@ const (
 	// ObjectTypeRelaySwitch is the object type of a double relay driven switch, with an option phase switching relay.
 	ObjectTypeRelaySwitch ObjectType = "relay-switch"
 )
+
+// AllObjectTypes returns all possible object types.
+func AllObjectTypes() []ObjectType {
+	return []ObjectType{ObjectTypeBinarySensor, ObjectTypeBinaryOutput, ObjectTypeServoSwitch, ObjectTypeRelaySwitch}
+}

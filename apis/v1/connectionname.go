@@ -1,4 +1,4 @@
-// Copyright 2020 Ewout Prangsma
+// Copyright 2020-2021 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -29,3 +29,15 @@ const (
 	ConnectionNamePhaseStraightRelay ConnectionName = "phase-straight-relay"
 	ConnectionNamePhaseOffRelay      ConnectionName = "phase-off-relay"
 )
+
+func AllConnectionNames() []ConnectionName {
+	return []ConnectionName{
+		ConnectionNameSensor,
+		ConnectionNameOutput,
+		ConnectionNameServo,
+		ConnectionNameStraightRelay,
+		ConnectionNameOffRelay,
+		ConnectionNamePhaseStraightRelay,
+		ConnectionNamePhaseOffRelay,
+	}
+}

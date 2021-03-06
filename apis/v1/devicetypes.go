@@ -39,3 +39,8 @@ func (t DeviceType) Validate() error {
 		return InvalidArgument("invalid device type '%s'", string(t))
 	}
 }
+
+// AllDeviceTypes returns all possible device types.
+func AllDeviceTypes() []DeviceType {
+	return []DeviceType{DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685}
+}
