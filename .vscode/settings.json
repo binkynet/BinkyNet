@@ -26,5 +26,4 @@
             ""
         ]
     },
-    "go.gopath": "${workspaceRoot}/.gobuild"
 }
