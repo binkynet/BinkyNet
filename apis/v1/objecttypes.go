@@ -31,20 +31,21 @@ const (
 	ObjectTypeRelaySwitch ObjectType = "relay-switch"
 )
 
-// ExceptedConnections returns the connection names that are expected for an object
+// ExpectedConnections returns the connection names that are expected for an object
 // of given type.
-func (ot ObjectType) ExceptedConnections() []ConnectionName {
+// Returns: Required connections, Optional connections
+func (ot ObjectType) ExpectedConnections() ([]ConnectionName, []ConnectionName) {
 	switch ot {
 	case ObjectTypeBinarySensor:
-		return []ConnectionName{ConnectionNameSensor}
+		return []ConnectionName{ConnectionNameSensor}, nil
 	case ObjectTypeBinaryOutput:
-		return []ConnectionName{ConnectionNameOutput}
+		return []ConnectionName{ConnectionNameOutput}, nil
 	case ObjectTypeServoSwitch:
-		return []ConnectionName{ConnectionNameServo, ConnectionNamePhaseStraightRelay, ConnectionNamePhaseOffRelay}
+		return []ConnectionName{ConnectionNameServo}, []ConnectionName{ConnectionNamePhaseStraightRelay, ConnectionNamePhaseOffRelay}
 	case ObjectTypeRelaySwitch:
-		return []ConnectionName{ConnectionNameStraightRelay, ConnectionNameOffRelay}
+		return []ConnectionName{ConnectionNameStraightRelay, ConnectionNameOffRelay}, nil
 	default:
-		return nil
+		return nil, nil
 	}
 }
 
