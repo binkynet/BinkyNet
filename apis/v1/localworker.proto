@@ -99,6 +99,8 @@ message DiscoverRequest {
 
 // DiscoverResult is returned in a response to a discover request by the netmanager.
 message DiscoverResult {
+  // ID of local worker
+  string id = 1;
   // The addresses that were found
-  repeated string addresses = 1;
+  repeated string addresses = 2;
 }
