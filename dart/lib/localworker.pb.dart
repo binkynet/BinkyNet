@@ -11,7 +11,6 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class DiscoverRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('DiscoverRequest', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
-    ..aOS(1, 'id')
     ..hasRequiredFields = false
   ;
 
@@ -29,37 +28,28 @@ class DiscoverRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static DiscoverRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverRequest>(create);
   static DiscoverRequest _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
 }
 
-class DiscoverResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('DiscoverResponse', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+class DiscoverResult extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('DiscoverResult', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..pPS(1, 'addresses')
     ..hasRequiredFields = false
   ;
 
-  DiscoverResponse._() : super();
-  factory DiscoverResponse() => create();
-  factory DiscoverResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DiscoverResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  DiscoverResponse clone() => DiscoverResponse()..mergeFromMessage(this);
-  DiscoverResponse copyWith(void Function(DiscoverResponse) updates) => super.copyWith((message) => updates(message as DiscoverResponse));
+  DiscoverResult._() : super();
+  factory DiscoverResult() => create();
+  factory DiscoverResult.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DiscoverResult.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  DiscoverResult clone() => DiscoverResult()..mergeFromMessage(this);
+  DiscoverResult copyWith(void Function(DiscoverResult) updates) => super.copyWith((message) => updates(message as DiscoverResult));
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static DiscoverResponse create() => DiscoverResponse._();
-  DiscoverResponse createEmptyInstance() => create();
-  static $pb.PbList<DiscoverResponse> createRepeated() => $pb.PbList<DiscoverResponse>();
+  static DiscoverResult create() => DiscoverResult._();
+  DiscoverResult createEmptyInstance() => create();
+  static $pb.PbList<DiscoverResult> createRepeated() => $pb.PbList<DiscoverResult>();
   @$core.pragma('dart2js:noInline')
-  static DiscoverResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverResponse>(create);
-  static DiscoverResponse _defaultInstance;
+  static DiscoverResult getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverResult>(create);
+  static DiscoverResult _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<$core.String> get addresses => $_getList(0);

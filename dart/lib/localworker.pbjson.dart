@@ -7,13 +7,10 @@
 
 const DiscoverRequest$json = const {
   '1': 'DiscoverRequest',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-  ],
 };
 
-const DiscoverResponse$json = const {
-  '1': 'DiscoverResponse',
+const DiscoverResult$json = const {
+  '1': 'DiscoverResult',
   '2': const [
     const {'1': 'addresses', '3': 1, '4': 3, '5': 9, '10': 'addresses'},
   ],
