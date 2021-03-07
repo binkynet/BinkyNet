@@ -92,7 +92,8 @@ service LocalWorkerControlService {
 // DiscoverRequest is sent when the netmanager wants to local worker to
 // probe its locally attached devices.
 message DiscoverRequest {
-  // No fields
+  // Unique identifier of the local worker
+  string id = 1;
 }
 
 // DiscoverResponse is returned in a response to a discover request by the netmanager.

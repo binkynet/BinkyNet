@@ -11,6 +11,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class DiscoverRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('DiscoverRequest', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, 'id')
     ..hasRequiredFields = false
   ;
 
@@ -28,6 +29,15 @@ class DiscoverRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static DiscoverRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverRequest>(create);
   static DiscoverRequest _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
 }
 
 class DiscoverResponse extends $pb.GeneratedMessage {
