@@ -41,6 +41,11 @@ service LocalWorkerControlService {
   // versions.
   rpc Ping(LocalWorkerInfo) returns (Empty);
 
+  // GetDiscoverRequests is used to allow the netmanager to request a discovery by
+  // the local worker.
+  // The local worker in turn responds with a DiscoverResponse.
+  rpc GetDiscoverRequests(stream DiscoverRequest) returns (stream DiscoverResponse);
+
   // GetPowerRequests is used to get a stream of power requests from the network
   // master.
   rpc GetPowerRequests(PowerRequestsOptions) returns (stream PowerState);
@@ -83,3 +88,16 @@ service LocalWorkerControlService {
   // master.
   rpc GetClock(Empty) returns (stream Clock);
 }
+
+// DiscoverRequest is sent when the netmanager wants to local worker to
+// probe its locally attached devices.
+message DiscoverRequest {
+  // No fields
+}
+
+// DiscoverResponse is returned in a response to a discover request by the netmanager.
+message DiscoverResponse {
+  // The addresses that were found
+  repeated string addresses = 1;
+}
+

@@ -11,6 +11,7 @@ import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
 import 'types.pb.dart' as $0;
+import 'localworker.pb.dart' as $1;
 export 'localworker.pb.dart';
 
 class LocalWorkerConfigServiceClient extends $grpc.Client {
@@ -61,6 +62,12 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
       '/binkynet.v1.LocalWorkerControlService/Ping',
       ($0.LocalWorkerInfo value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$getDiscoverRequests =
+      $grpc.ClientMethod<$1.DiscoverRequest, $1.DiscoverResponse>(
+          '/binkynet.v1.LocalWorkerControlService/GetDiscoverRequests',
+          ($1.DiscoverRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.DiscoverResponse.fromBuffer(value));
   static final _$getPowerRequests =
       $grpc.ClientMethod<$0.PowerRequestsOptions, $0.PowerState>(
           '/binkynet.v1.LocalWorkerControlService/GetPowerRequests',
@@ -115,6 +122,13 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
     final call = $createCall(_$ping, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseStream<$1.DiscoverResponse> getDiscoverRequests(
+      $async.Stream<$1.DiscoverRequest> request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$getDiscoverRequests, request, options: options);
+    return $grpc.ResponseStream(call);
   }
 
   $grpc.ResponseStream<$0.PowerState> getPowerRequests(
@@ -205,6 +219,13 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.LocalWorkerInfo.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.DiscoverRequest, $1.DiscoverResponse>(
+        'GetDiscoverRequests',
+        getDiscoverRequests,
+        true,
+        true,
+        ($core.List<$core.int> value) => $1.DiscoverRequest.fromBuffer(value),
+        ($1.DiscoverResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.PowerRequestsOptions, $0.PowerState>(
         'GetPowerRequests',
         getPowerRequests_Pre,
@@ -313,6 +334,8 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
 
   $async.Future<$0.Empty> ping(
       $grpc.ServiceCall call, $0.LocalWorkerInfo request);
+  $async.Stream<$1.DiscoverResponse> getDiscoverRequests(
+      $grpc.ServiceCall call, $async.Stream<$1.DiscoverRequest> request);
   $async.Stream<$0.PowerState> getPowerRequests(
       $grpc.ServiceCall call, $0.PowerRequestsOptions request);
   $async.Future<$0.Empty> setPowerActuals(
