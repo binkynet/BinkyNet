@@ -48,7 +48,7 @@ local:
 	@${MAKE} -B GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) $(BIN)
 
 compile: $(SOURCES)
-	go build ./...
+	go build -mod=readonly ./...
 
 # Build docker builder image
 .PHONY: build-image
