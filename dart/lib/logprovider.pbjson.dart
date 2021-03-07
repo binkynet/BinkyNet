@@ -25,7 +25,7 @@ const LogEntry$json = const {
   '1': 'LogEntry',
   '2': const [
     const {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
-    const {'1': 'string', '3': 2, '4': 1, '5': 14, '6': '.binkynet.v1.LogLevel', '10': 'string'},
+    const {'1': 'level', '3': 2, '4': 1, '5': 14, '6': '.binkynet.v1.LogLevel', '10': 'level'},
   ],
 };
 

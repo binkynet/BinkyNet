@@ -47,5 +47,5 @@ message LogEntry {
   // Message of the log entry
   string message = 1;
   // Log level
-  LogLevel string = 2;
+  LogLevel level = 2;
 }

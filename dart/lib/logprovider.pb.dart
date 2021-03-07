@@ -37,7 +37,7 @@ class GetLogsRequest extends $pb.GeneratedMessage {
 class LogEntry extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('LogEntry', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..aOS(1, 'message')
-    ..e<LogLevel>(2, 'string', $pb.PbFieldType.OE, defaultOrMaker: LogLevel.TRACE, valueOf: LogLevel.valueOf, enumValues: LogLevel.values)
+    ..e<LogLevel>(2, 'level', $pb.PbFieldType.OE, defaultOrMaker: LogLevel.TRACE, valueOf: LogLevel.valueOf, enumValues: LogLevel.values)
     ..hasRequiredFields = false
   ;
 
@@ -66,12 +66,12 @@ class LogEntry extends $pb.GeneratedMessage {
   void clearMessage() => clearField(1);
 
   @$pb.TagNumber(2)
-  LogLevel get string => $_getN(1);
+  LogLevel get level => $_getN(1);
   @$pb.TagNumber(2)
-  set string(LogLevel v) { setField(2, v); }
+  set level(LogLevel v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasString() => $_has(1);
+  $core.bool hasLevel() => $_has(1);
   @$pb.TagNumber(2)
-  void clearString() => clearField(2);
+  void clearLevel() => clearField(2);
 }
 
