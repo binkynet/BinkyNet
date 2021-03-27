@@ -41,3 +41,11 @@ func AllConnectionNames() []ConnectionName {
 		ConnectionNamePhaseOffRelay,
 	}
 }
+
+// ExpectedPins returns the expected number of pins for a connection with given name
+func (name ConnectionName) ExpectedPins() int {
+	switch name {
+	default:
+		return 1
+	}
+}
