@@ -49,3 +49,15 @@ func (name ConnectionName) ExpectedPins() int {
 		return 1
 	}
 }
+
+// ExpectedConfigurations returns the configuration keys that are expected for a connection
+// with given name.
+// Returns: Required keys, Optional keys
+func (ot ConnectionName) ExpectedConfigurations() ([]ConfigKey, []ConfigKey) {
+	switch ot {
+	case ConnectionNameServo:
+		return nil, []ConfigKey{ConfigKeyServoStraight, ConfigKeyServoOff, ConfigKeyServoStep}
+	default:
+		return nil, nil
+	}
+}
