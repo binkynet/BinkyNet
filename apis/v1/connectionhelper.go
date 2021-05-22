@@ -20,35 +20,37 @@ package v1
 import "strconv"
 
 // GetStringConfig returns the configuration value for the given key.
-// If not found, the given default value is returned.
-func (c Connection) GetStringConfig(key ConfigKey, defValue string) string {
+// If not found, the default value for the key is returned.
+func (c Connection) GetStringConfig(key ConfigKey) string {
 	value, found := c.Configuration[key]
 	if found {
 		return value
 	}
-	return defValue
+	return key.DefaultValue()
 }
 
 // GetBoolConfig returns the bool-typed configuration value for the given key.
-// If not found or not an int, the given default value is returned.
-func (c Connection) GetBoolConfig(key ConfigKey, defValue bool) bool {
+// If not found or not an int, the default value for the key is returned.
+func (c Connection) GetBoolConfig(key ConfigKey) bool {
 	value, found := c.Configuration[key]
-	if found {
-		if tValue, err := strconv.ParseBool(value); err == nil {
-			return tValue
-		}
+	if !found {
+		value = key.DefaultValue()
 	}
-	return defValue
+	if tValue, err := strconv.ParseBool(value); err == nil {
+		return tValue
+	}
+	return false
 }
 
 // GetIntConfig returns the int-typed configuration value for the given key.
-// If not found or not an int, the given default value is returned.
-func (c Connection) GetIntConfig(key ConfigKey, defValue int) int {
+// If not found or not an int, the default value for the key is returned.
+func (c Connection) GetIntConfig(key ConfigKey) int {
 	value, found := c.Configuration[key]
-	if found {
-		if tValue, err := strconv.Atoi(value); err == nil {
-			return tValue
-		}
+	if !found {
+		value = key.DefaultValue()
 	}
-	return defValue
+	if tValue, err := strconv.Atoi(value); err == nil {
+		return tValue
+	}
+	return 0
 }
