@@ -1,4 +1,4 @@
-// Copyright 2018 Ewout Prangsma
+// Copyright 2018-2021 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import "strconv"
 
 // GetStringConfig returns the configuration value for the given key.
 // If not found, the given default value is returned.
-func (c Connection) GetStringConfig(key string, defValue string) string {
+func (c Connection) GetStringConfig(key ConfigKey, defValue string) string {
 	value, found := c.Configuration[key]
 	if found {
 		return value
@@ -31,7 +31,7 @@ func (c Connection) GetStringConfig(key string, defValue string) string {
 
 // GetBoolConfig returns the bool-typed configuration value for the given key.
 // If not found or not an int, the given default value is returned.
-func (c Connection) GetBoolConfig(key string, defValue bool) bool {
+func (c Connection) GetBoolConfig(key ConfigKey, defValue bool) bool {
 	value, found := c.Configuration[key]
 	if found {
 		if tValue, err := strconv.ParseBool(value); err == nil {
@@ -43,7 +43,7 @@ func (c Connection) GetBoolConfig(key string, defValue bool) bool {
 
 // GetIntConfig returns the int-typed configuration value for the given key.
 // If not found or not an int, the given default value is returned.
-func (c Connection) GetIntConfig(key string, defValue int) int {
+func (c Connection) GetIntConfig(key ConfigKey, defValue int) int {
 	value, found := c.Configuration[key]
 	if found {
 		if tValue, err := strconv.Atoi(value); err == nil {

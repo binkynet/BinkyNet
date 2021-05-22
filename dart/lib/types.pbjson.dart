@@ -206,7 +206,7 @@ const Connection$json = const {
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'key'},
     const {'1': 'pins', '3': 2, '4': 3, '5': 11, '6': '.binkynet.v1.DevicePin', '10': 'pins'},
-    const {'1': 'configuration', '3': 3, '4': 3, '5': 11, '6': '.binkynet.v1.Connection.ConfigurationEntry', '10': 'configuration'},
+    const {'1': 'configuration', '3': 3, '4': 3, '5': 11, '6': '.binkynet.v1.Connection.ConfigurationEntry', '8': const {}, '10': 'configuration'},
   ],
   '3': const [Connection_ConfigurationEntry$json],
 };

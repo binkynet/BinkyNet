@@ -232,7 +232,7 @@ message Connection {
 	repeated DevicePin pins = 2;
 	// Optional configuration for this connection.
 	// Keys & values are specific to the connection name.
-	map<string, string> configuration = 3;
+	map<string, string> configuration = 3 [(gogoproto.castkey) = "ConfigKey"];
 }
 
 // DevicePin identifies a hardware device and an index within that hardware address.
