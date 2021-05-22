@@ -49,6 +49,24 @@ func (ot ObjectType) ExpectedConnections() ([]ConnectionName, []ConnectionName) 
 	}
 }
 
+// ExpectedConfigurations returns the configuration keys that are expected for an object
+// of given type.
+// Returns: Required keys, Optional keys
+func (ot ObjectType) ExpectedConfigurations() ([]ConfigKey, []ConfigKey) {
+	switch ot {
+	case ObjectTypeBinarySensor:
+		return nil, nil
+	case ObjectTypeBinaryOutput:
+		return nil, nil
+	case ObjectTypeServoSwitch:
+		return nil, []ConfigKey{ConfigKeyServoStraight, ConfigKeyServoOff, ConfigKeyServoStep}
+	case ObjectTypeRelaySwitch:
+		return nil, nil
+	default:
+		return nil, nil
+	}
+}
+
 // AllObjectTypes returns all possible object types.
 func AllObjectTypes() []ObjectType {
 	return []ObjectType{ObjectTypeBinarySensor, ObjectTypeBinaryOutput, ObjectTypeServoSwitch, ObjectTypeRelaySwitch}
