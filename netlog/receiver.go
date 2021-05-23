@@ -18,6 +18,7 @@
 package netlog
 
 import (
+	"fmt"
 	"log"
 	"net"
 
@@ -26,7 +27,7 @@ import (
 
 // NetLogReceiver receives log messages over UDP.
 type NetLogReceiver struct {
-	conn *net.UDPConn
+	conns []*net.UDPConn
 }
 
 type NetLogMessage struct {
@@ -47,20 +48,33 @@ func NewLogReceiver(cb NetLogCallback) (*NetLogReceiver, error) {
 	if err != nil {
 		return nil, err
 	}
-	c, err := net.ListenMulticastUDP("udp", nil, addr)
+	r := &NetLogReceiver{}
+	itfs, err := net.Interfaces()
 	if err != nil {
 		return nil, err
 	}
-	c.SetReadBuffer(maxDatagramSize)
-	r := &NetLogReceiver{conn: c}
-	go r.run(cb)
+	expectedFlags := net.FlagMulticast | net.FlagUp
+	for _, itf := range itfs {
+		if itf.Flags&expectedFlags == expectedFlags {
+			fmt.Printf("Interface: %s\n", itf.Name)
+			c, err := net.ListenMulticastUDP("udp", &itf, addr)
+			if err != nil {
+				fmt.Printf("Cannot listen on %s: %s\n", itf.Name, err)
+				continue
+			}
+			c.SetReadBuffer(maxDatagramSize)
+			r.conns = append(r.conns, c)
+			go r.run(c, cb)
+
+		}
+	}
 	return r, nil
 }
 
-func (r *NetLogReceiver) run(cb NetLogCallback) {
+func (r *NetLogReceiver) run(conn *net.UDPConn, cb NetLogCallback) {
 	b := make([]byte, maxDatagramSize)
 	for {
-		n, addr, err := r.conn.ReadFromUDP(b)
+		n, addr, err := conn.ReadFromUDP(b)
 		if err != nil {
 			log.Fatal("ReadFromUDP failed:", err)
 		} else if n > 0 {
