@@ -28,6 +28,10 @@ const (
 	ConnectionNameOffRelay           ConnectionName = "off-relay"
 	ConnectionNamePhaseStraightRelay ConnectionName = "phase-straight-relay"
 	ConnectionNamePhaseOffRelay      ConnectionName = "phase-off-relay"
+	ConnectionNameRelayOutAInA       ConnectionName = "relay-out-a-in-a"
+	ConnectionNameRelayOutBInA       ConnectionName = "relay-out-b-in-a"
+	ConnectionNameRelayOutAInB       ConnectionName = "relay-out-a-in-b"
+	ConnectionNameRelayOutBInB       ConnectionName = "relay-out-b-in-b"
 )
 
 func AllConnectionNames() []ConnectionName {
@@ -39,6 +43,10 @@ func AllConnectionNames() []ConnectionName {
 		ConnectionNameOffRelay,
 		ConnectionNamePhaseStraightRelay,
 		ConnectionNamePhaseOffRelay,
+		ConnectionNameRelayOutBInA,
+		ConnectionNameRelayOutAInA,
+		ConnectionNameRelayOutAInB,
+		ConnectionNameRelayOutBInB,
 	}
 }
 

@@ -29,6 +29,8 @@ const (
 	ObjectTypeServoSwitch ObjectType = "servo-switch"
 	// ObjectTypeRelaySwitch is the object type of a double relay driven switch, with an option phase switching relay.
 	ObjectTypeRelaySwitch ObjectType = "relay-switch"
+	// ObjectTypeTrackInverter is the object type of a four relay based track power inverter.
+	ObjectTypeTrackInverter ObjectType = "track-inverter"
 )
 
 // ExpectedConnections returns the connection names that are expected for an object
@@ -44,6 +46,8 @@ func (ot ObjectType) ExpectedConnections() ([]ConnectionName, []ConnectionName) 
 		return []ConnectionName{ConnectionNameServo}, []ConnectionName{ConnectionNamePhaseStraightRelay, ConnectionNamePhaseOffRelay}
 	case ObjectTypeRelaySwitch:
 		return []ConnectionName{ConnectionNameStraightRelay, ConnectionNameOffRelay}, nil
+	case ObjectTypeTrackInverter:
+		return []ConnectionName{ConnectionNameRelayOutAInA, ConnectionNameRelayOutBInA, ConnectionNameRelayOutAInB, ConnectionNameRelayOutBInB}, nil
 	default:
 		return nil, nil
 	}
@@ -51,5 +55,5 @@ func (ot ObjectType) ExpectedConnections() ([]ConnectionName, []ConnectionName) 
 
 // AllObjectTypes returns all possible object types.
 func AllObjectTypes() []ObjectType {
-	return []ObjectType{ObjectTypeBinarySensor, ObjectTypeBinaryOutput, ObjectTypeServoSwitch, ObjectTypeRelaySwitch}
+	return []ObjectType{ObjectTypeBinarySensor, ObjectTypeBinaryOutput, ObjectTypeServoSwitch, ObjectTypeRelaySwitch, ObjectTypeTrackInverter}
 }
