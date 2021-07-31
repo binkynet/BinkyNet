@@ -68,7 +68,7 @@ func (ot ConnectionName) ExpectedConfigurations() ([]ConfigKey, []ConfigKey) {
 	case ConnectionNameOutput:
 		return nil, []ConfigKey{ConfigKeyInvert}
 	case ConnectionNameStraightRelay, ConnectionNameOffRelay:
-		return nil, []ConfigKey{ConfigKeyInvert}
+		return nil, []ConfigKey{ConfigKeyInvert, ConfigKeyPulse}
 	case ConnectionNamePhaseStraightRelay, ConnectionNamePhaseOffRelay:
 		return nil, []ConfigKey{ConfigKeyInvert}
 	case ConnectionNameRelayOutAInA, ConnectionNameRelayOutAInB, ConnectionNameRelayOutBInA, ConnectionNameRelayOutBInB:

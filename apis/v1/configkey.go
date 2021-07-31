@@ -35,6 +35,8 @@ const (
 	// ConfigKeyInvert configures the inversion setting of an i/o pin.
 	// Values are true|false|0|1.
 	ConfigKeyInvert ConfigKey = "invert"
+	// ConfigKeyPulse configures the length of the pulse (for relays) in ms.
+	ConfigKeyPulse ConfigKey = "pulse"
 )
 
 // DefaultValue returns the default value for a given configuration key.
@@ -48,6 +50,8 @@ func (key ConfigKey) DefaultValue() string {
 		return "15"
 	case ConfigKeyInvert:
 		return "false"
+	case ConfigKeyPulse:
+		return "1000"
 	default:
 		return ""
 	}
@@ -71,6 +75,14 @@ func (key ConfigKey) ValidateValue(value string) error {
 	case ConfigKeyInvert:
 		if _, err := strconv.ParseBool(value); err != nil {
 			return fmt.Errorf("not a boolean")
+		}
+	case ConfigKeyPulse:
+		if x, err := strconv.Atoi(value); err != nil {
+			return fmt.Errorf("not a valid number")
+		} else if x <= 0 {
+			return fmt.Errorf("too small")
+		} else if x > 5000 {
+			return fmt.Errorf("too large")
 		}
 	}
 	return nil
