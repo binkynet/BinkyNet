@@ -32,6 +32,9 @@ const (
 	ConfigKeyServoOff ConfigKey = "off"
 	// ConfigKeyServoStep configures the step size for a servo transition from "straight" to "off" position.
 	ConfigKeyServoStep ConfigKey = "step"
+	// ConfigKeyInvert configures the inversion setting of an i/o pin.
+	// Values are true|false|0|1.
+	ConfigKeyInvert ConfigKey = "invert"
 )
 
 // DefaultValue returns the default value for a given configuration key.
@@ -43,6 +46,8 @@ func (key ConfigKey) DefaultValue() string {
 		return "400"
 	case ConfigKeyServoStep:
 		return "15"
+	case ConfigKeyInvert:
+		return "false"
 	default:
 		return ""
 	}
@@ -63,6 +68,10 @@ func (key ConfigKey) ValidateValue(value string) error {
 		} else if x > 900 {
 			return fmt.Errorf("too large")
 		}
+	case ConfigKeyInvert:
+		if _, err := strconv.ParseBool(value); err != nil {
+			return fmt.Errorf("not a boolean")
+		}
 	}
 	return nil
 }
@@ -72,5 +81,6 @@ func AllConfigKeys() []ConfigKey {
 		ConfigKeyServoStraight,
 		ConfigKeyServoOff,
 		ConfigKeyServoStep,
+		ConfigKeyInvert,
 	}
 }

@@ -63,6 +63,16 @@ func (name ConnectionName) ExpectedPins() int {
 // Returns: Required keys, Optional keys
 func (ot ConnectionName) ExpectedConfigurations() ([]ConfigKey, []ConfigKey) {
 	switch ot {
+	case ConnectionNameSensor:
+		return nil, []ConfigKey{ConfigKeyInvert}
+	case ConnectionNameOutput:
+		return nil, []ConfigKey{ConfigKeyInvert}
+	case ConnectionNameStraightRelay, ConnectionNameOffRelay:
+		return nil, []ConfigKey{ConfigKeyInvert}
+	case ConnectionNamePhaseStraightRelay, ConnectionNamePhaseOffRelay:
+		return nil, []ConfigKey{ConfigKeyInvert}
+	case ConnectionNameRelayOutAInA, ConnectionNameRelayOutAInB, ConnectionNameRelayOutBInA, ConnectionNameRelayOutBInB:
+		return nil, []ConfigKey{ConfigKeyInvert}
 	case ConnectionNameServo:
 		return nil, []ConfigKey{ConfigKeyServoStraight, ConfigKeyServoOff, ConfigKeyServoStep}
 	default:
