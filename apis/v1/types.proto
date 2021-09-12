@@ -134,6 +134,8 @@ message OutputRequestsOptions {
   // If not set, the network master assumes the state is effective directly
   // after sending the message.
   bool manual_confirm = 1;
+  // If set, pass only output requests that match this module ID.
+  string module_id = 2;
 }
 
 // Output is used to control a generic output device. E.g. a light.
@@ -159,6 +161,8 @@ message SwitchRequestsOptions {
   // If not set, the network master assumes the state is effective directly
   // after sending the message.
   bool manual_confirm = 1;
+  // If set, pass only switch requests that match this module ID.
+  string module_id = 2;
 }
 
 // Direction of switches

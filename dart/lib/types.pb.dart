@@ -482,6 +482,7 @@ class SensorState extends $pb.GeneratedMessage {
 class OutputRequestsOptions extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('OutputRequestsOptions', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..aOB(1, 'manualConfirm')
+    ..aOS(2, 'moduleId')
     ..hasRequiredFields = false
   ;
 
@@ -508,6 +509,15 @@ class OutputRequestsOptions extends $pb.GeneratedMessage {
   $core.bool hasManualConfirm() => $_has(0);
   @$pb.TagNumber(1)
   void clearManualConfirm() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get moduleId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set moduleId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasModuleId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearModuleId() => clearField(2);
 }
 
 class Output extends $pb.GeneratedMessage {
@@ -599,6 +609,7 @@ class OutputState extends $pb.GeneratedMessage {
 class SwitchRequestsOptions extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('SwitchRequestsOptions', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
     ..aOB(1, 'manualConfirm')
+    ..aOS(2, 'moduleId')
     ..hasRequiredFields = false
   ;
 
@@ -625,6 +636,15 @@ class SwitchRequestsOptions extends $pb.GeneratedMessage {
   $core.bool hasManualConfirm() => $_has(0);
   @$pb.TagNumber(1)
   void clearManualConfirm() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get moduleId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set moduleId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasModuleId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearModuleId() => clearField(2);
 }
 
 class Switch extends $pb.GeneratedMessage {

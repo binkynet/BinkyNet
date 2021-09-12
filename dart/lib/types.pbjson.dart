@@ -132,6 +132,7 @@ const OutputRequestsOptions$json = const {
   '1': 'OutputRequestsOptions',
   '2': const [
     const {'1': 'manual_confirm', '3': 1, '4': 1, '5': 8, '10': 'manualConfirm'},
+    const {'1': 'module_id', '3': 2, '4': 1, '5': 9, '10': 'moduleId'},
   ],
 };
 
@@ -155,6 +156,7 @@ const SwitchRequestsOptions$json = const {
   '1': 'SwitchRequestsOptions',
   '2': const [
     const {'1': 'manual_confirm', '3': 1, '4': 1, '5': 8, '10': 'manualConfirm'},
+    const {'1': 'module_id', '3': 2, '4': 1, '5': 9, '10': 'moduleId'},
   ],
 };
 
