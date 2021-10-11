@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"time"
 
 	"github.com/rs/zerolog"
 )
@@ -48,7 +49,7 @@ func NewLogger() (*NetLogger, error) {
 	}
 	l := &NetLogger{
 		conn: c,
-		buf:  make(chan netLogMsg, 512),
+		buf:  make(chan netLogMsg, 64),
 	}
 	go l.run()
 	return l, nil
@@ -81,6 +82,7 @@ func (l *NetLogger) run() {
 	for msg := range l.buf {
 		buf[0] = byte(msg.Level)
 		copy(buf[1:], msg.Msg)
+		l.conn.SetWriteDeadline(time.Now().Add(time.Second / 4))
 		if _, err := l.conn.Write(buf[:1+len(msg.Msg)]); err != nil {
 			log.Printf("Write failed: %s\n", err)
 		}
