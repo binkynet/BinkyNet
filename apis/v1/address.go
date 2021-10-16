@@ -1,4 +1,4 @@
-// Copyright 2020 Ewout Prangsma
+// Copyright 2020-2021 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,6 +25,10 @@ import (
 // ObjectAddress is a strongly typed address of an object.
 // It contains <module> '/' <object-id>
 type ObjectAddress string
+
+// GlobalModuleID defines the module part of an ObjectAddress for addresses
+// that are independent of specific modules.
+const GlobalModuleID = "GLOBAL"
 
 // SplitAddress splits an address string into its components.
 func SplitAddress(input ObjectAddress) (module, local string, err error) {
