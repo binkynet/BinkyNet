@@ -43,3 +43,9 @@ func SplitAddress(input ObjectAddress) (module, local string, err error) {
 func JoinModuleLocal(module, local string) ObjectAddress {
 	return ObjectAddress(module + "/" + local)
 }
+
+// IsGlobal returns true if the given address has a global module ID.
+func (addr ObjectAddress) IsGlobal() bool {
+	module, _, _ := SplitAddress(addr)
+	return module == GlobalModuleID
+}
