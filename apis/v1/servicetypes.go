@@ -22,5 +22,6 @@ const (
 	ServiceTypeLocalWorkerControl = "_lwctrl._binkynet._tcp"
 	ServiceTypeLocalWorkerConfig  = "_lwcfg._binkynet._tcp"
 	ServiceTypeLogProvider        = "_lp._binkynet._tcp"
+	ServiceTypeLokiProvider       = "_lokip._binkynet._tcp"
 	ServiceTypeNetworkControl     = "_nwctrl._binkynet._tcp"
 )

@@ -1,3 +1,6 @@
+# github.com/afiskon/promtail-client v0.0.0-20190305142237-506f3f921e9c
+## explicit
+github.com/afiskon/promtail-client/logproto
 # github.com/cenkalti/backoff v2.2.1+incompatible
 github.com/cenkalti/backoff
 # github.com/davecgh/go-spew v1.1.0
@@ -14,6 +17,9 @@ github.com/golang/protobuf/ptypes
 github.com/golang/protobuf/ptypes/any
 github.com/golang/protobuf/ptypes/duration
 github.com/golang/protobuf/ptypes/timestamp
+# github.com/golang/snappy v0.0.4
+## explicit
+github.com/golang/snappy
 # github.com/grandcat/zeroconf v1.0.0
 ## explicit
 github.com/grandcat/zeroconf

@@ -3,8 +3,10 @@ module github.com/binkynet/BinkyNet
 go 1.15
 
 require (
+	github.com/afiskon/promtail-client v0.0.0-20190305142237-506f3f921e9c
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/protobuf v1.3.4
+	github.com/golang/snappy v0.0.4
 	github.com/grandcat/zeroconf v1.0.0
 	github.com/rs/zerolog v1.18.0
 	github.com/stretchr/testify v1.6.1
