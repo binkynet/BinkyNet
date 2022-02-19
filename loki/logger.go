@@ -48,7 +48,7 @@ type protoLogEntry struct {
 
 func NewLokiLogger(rootUrl, job string) (*LokiLogger, error) {
 	conf := &clientConfig{
-		PushURL:            strings.TrimSuffix(rootUrl, "/"+"/api/prom/push"),
+		PushURL:            strings.TrimSuffix(rootUrl, "/") + "/api/prom/push",
 		BatchWait:          time.Second * 2,
 		BatchEntriesNumber: 1024,
 		Labels:             fmt.Sprintf("{job=\"%s\"}", strconv.Quote(job)),
