@@ -20,7 +20,6 @@ package loki
 import (
 	"fmt"
 	"log"
-	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -51,7 +50,7 @@ func NewLokiLogger(rootUrl, job string) (*LokiLogger, error) {
 		PushURL:            strings.TrimSuffix(rootUrl, "/") + "/api/prom/push",
 		BatchWait:          time.Second * 2,
 		BatchEntriesNumber: 1024,
-		Labels:             fmt.Sprintf("{job=\"%s\"}", strconv.Quote(job)),
+		Labels:             fmt.Sprintf(`{job="%s"}`, job),
 	}
 	client := &LokiLogger{
 		config:  conf,
