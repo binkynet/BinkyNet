@@ -30,7 +30,7 @@ type clientConfig struct {
 	// E.g. http://localhost:3100/api/prom/push
 	PushURL string
 	// E.g. "{job=\"somejob\"}"
-	Labels             string
+	Labels             map[string]string
 	BatchWait          time.Duration
 	BatchEntriesNumber int
 }

@@ -18,16 +18,13 @@
 package loki
 
 import (
-	"fmt"
+	"encoding/json"
 	"log"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
 
-	"github.com/afiskon/promtail-client/logproto"
-	"github.com/gogo/protobuf/proto"
-	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/golang/snappy"
 	"github.com/rs/zerolog"
 )
 
@@ -35,27 +32,39 @@ import (
 type LokiLogger struct {
 	config    *clientConfig
 	quit      chan struct{}
-	entries   chan protoLogEntry
+	entries   chan logEntry
 	waitGroup sync.WaitGroup
 	client    httpClient
 }
 
-type protoLogEntry struct {
-	entry *logproto.Entry
-	level zerolog.Level
+type PushRequest struct {
+	Streams []StreamAdapter `json:"streams"`
+}
+
+type StreamAdapter struct {
+	Stream map[string]string `json:"stream"`
+	Values [][]string        `json:"values"`
+}
+
+type logEntry struct {
+	Timestamp time.Time
+	Line      string
+	Level     zerolog.Level
 }
 
 func NewLokiLogger(rootUrl, job string) (*LokiLogger, error) {
 	conf := &clientConfig{
-		PushURL:            strings.TrimSuffix(rootUrl, "/") + "/api/prom/push",
+		PushURL:            strings.TrimSuffix(rootUrl, "/") + "/loki/api/v1/push",
 		BatchWait:          time.Second * 2,
 		BatchEntriesNumber: 1024,
-		Labels:             fmt.Sprintf(`{job="%s"}`, job),
+		Labels: map[string]string{
+			"job": job,
+		},
 	}
 	client := &LokiLogger{
 		config:  conf,
 		quit:    make(chan struct{}),
-		entries: make(chan protoLogEntry, LOG_ENTRIES_CHAN_SIZE),
+		entries: make(chan logEntry, LOG_ENTRIES_CHAN_SIZE),
 		client:  httpClient{},
 	}
 
@@ -74,16 +83,11 @@ func (l *LokiLogger) Write(p []byte) (int, error) {
 
 // Write a message with given level
 func (l *LokiLogger) WriteLevel(level zerolog.Level, p []byte) (n int, err error) {
-	now := time.Now().UnixNano()
-	l.entries <- protoLogEntry{
-		entry: &logproto.Entry{
-			Timestamp: &timestamp.Timestamp{
-				Seconds: now / int64(time.Second),
-				Nanos:   int32(now % int64(time.Second)),
-			},
-			Line: string(p),
-		},
-		level: level,
+	now := time.Now()
+	l.entries <- logEntry{
+		Timestamp: now,
+		Line:      string(p),
+		Level:     level,
 	}
 	return len(p), nil
 }
@@ -94,7 +98,7 @@ func (c *LokiLogger) Shutdown() {
 }
 
 func (c *LokiLogger) run() {
-	var batch []*logproto.Entry
+	var batch [][]string
 	batchSize := 0
 	maxWait := time.NewTimer(c.config.BatchWait)
 
@@ -111,18 +115,21 @@ func (c *LokiLogger) run() {
 		case <-c.quit:
 			return
 		case entry := <-c.entries:
-			batch = append(batch, entry.entry)
+			batch = append(batch, []string{
+				strconv.FormatInt(entry.Timestamp.UnixNano(), 10),
+				entry.Line,
+			})
 			batchSize++
 			if batchSize >= c.config.BatchEntriesNumber {
 				c.send(batch)
-				batch = []*logproto.Entry{}
+				batch = nil
 				batchSize = 0
 				maxWait.Reset(c.config.BatchWait)
 			}
 		case <-maxWait.C:
 			if batchSize > 0 {
 				c.send(batch)
-				batch = []*logproto.Entry{}
+				batch = nil
 				batchSize = 0
 			}
 			maxWait.Reset(c.config.BatchWait)
@@ -130,26 +137,23 @@ func (c *LokiLogger) run() {
 	}
 }
 
-func (c *LokiLogger) send(entries []*logproto.Entry) {
-	var streams []*logproto.Stream
-	streams = append(streams, &logproto.Stream{
-		Labels:  c.config.Labels,
-		Entries: entries,
-	})
-
-	req := logproto.PushRequest{
-		Streams: streams,
+func (c *LokiLogger) send(entries [][]string) {
+	req := PushRequest{
+		Streams: []StreamAdapter{
+			{
+				Stream: c.config.Labels,
+				Values: entries,
+			},
+		},
 	}
 
-	buf, err := proto.Marshal(&req)
+	buf, err := json.Marshal(req)
 	if err != nil {
 		log.Printf("promtail.ClientProto: unable to marshal: %s\n", err)
 		return
 	}
 
-	buf = snappy.Encode(nil, buf)
-
-	resp, body, err := c.client.sendJsonReq("POST", c.config.PushURL, "application/x-protobuf", buf)
+	resp, body, err := c.client.sendJsonReq("POST", c.config.PushURL, "application/json", buf)
 	if err != nil {
 		log.Printf("promtail.ClientProto: unable to send an HTTP request: %s\n", err)
 		return
