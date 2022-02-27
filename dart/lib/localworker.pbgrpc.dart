@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: localworker.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
 
@@ -23,15 +23,16 @@ class LocalWorkerConfigServiceClient extends $grpc.Client {
               $0.LocalWorkerConfig.fromBuffer(value));
 
   LocalWorkerConfigServiceClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options})
-      : super(channel, options: options);
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseStream<$0.LocalWorkerConfig> getConfig(
       $0.LocalWorkerInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$getConfig, $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
+        _$getConfig, $async.Stream.fromIterable([request]),
         options: options);
-    return $grpc.ResponseStream(call);
   }
 }
 
@@ -119,107 +120,98 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
       ($core.List<$core.int> value) => $0.Clock.fromBuffer(value));
 
   LocalWorkerControlServiceClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options})
-      : super(channel, options: options);
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.Empty> ping($0.LocalWorkerInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$ping, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$ping, request, options: options);
   }
 
   $grpc.ResponseStream<$1.DiscoverRequest> getDiscoverRequests(
       $0.LocalWorkerInfo request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
         _$getDiscoverRequests, $async.Stream.fromIterable([request]),
         options: options);
-    return $grpc.ResponseStream(call);
   }
 
   $grpc.ResponseFuture<$0.Empty> setDiscoverResult($1.DiscoverResult request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
-        _$setDiscoverResult, $async.Stream.fromIterable([request]),
-        options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$setDiscoverResult, request, options: options);
   }
 
   $grpc.ResponseStream<$0.PowerState> getPowerRequests(
       $0.PowerRequestsOptions request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
         _$getPowerRequests, $async.Stream.fromIterable([request]),
         options: options);
-    return $grpc.ResponseStream(call);
   }
 
   $grpc.ResponseFuture<$0.Empty> setPowerActuals(
       $async.Stream<$0.PowerState> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$setPowerActuals, request, options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$setPowerActuals, request, options: options)
+        .single;
   }
 
   $grpc.ResponseStream<$0.Loc> getLocRequests($0.LocRequestsOptions request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
         _$getLocRequests, $async.Stream.fromIterable([request]),
         options: options);
-    return $grpc.ResponseStream(call);
   }
 
   $grpc.ResponseFuture<$0.Empty> setLocActuals($async.Stream<$0.Loc> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$setLocActuals, request, options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$setLocActuals, request, options: options)
+        .single;
   }
 
   $grpc.ResponseFuture<$0.Empty> setSensorActuals(
       $async.Stream<$0.Sensor> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$setSensorActuals, request, options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$setSensorActuals, request, options: options)
+        .single;
   }
 
   $grpc.ResponseStream<$0.Output> getOutputRequests(
       $0.OutputRequestsOptions request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
         _$getOutputRequests, $async.Stream.fromIterable([request]),
         options: options);
-    return $grpc.ResponseStream(call);
   }
 
   $grpc.ResponseFuture<$0.Empty> setOutputActuals(
       $async.Stream<$0.Output> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$setOutputActuals, request, options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$setOutputActuals, request, options: options)
+        .single;
   }
 
   $grpc.ResponseStream<$0.Switch> getSwitchRequests(
       $0.SwitchRequestsOptions request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
         _$getSwitchRequests, $async.Stream.fromIterable([request]),
         options: options);
-    return $grpc.ResponseStream(call);
   }
 
   $grpc.ResponseFuture<$0.Empty> setSwitchActuals(
       $async.Stream<$0.Switch> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$setSwitchActuals, request, options: options);
-    return $grpc.ResponseFuture(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$setSwitchActuals, request, options: options)
+        .single;
   }
 
   $grpc.ResponseStream<$0.Clock> getClock($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$getClock, $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
+        _$getClock, $async.Stream.fromIterable([request]),
         options: options);
-    return $grpc.ResponseStream(call);
   }
 }
 

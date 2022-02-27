@@ -48,11 +48,12 @@ local:
 	@${MAKE} -B GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) $(BIN)
 
 compile: $(SOURCES)
-	go build -mod=readonly ./...
+	go build -mod=readonly github.com/binkynet/BinkyNet
 
 # Build docker builder image
 .PHONY: build-image
 build-image:
+	docker buildx uninstall
 	docker build \
 		-t $(BUILDIMAGE) \
 		-f apis/Dockerfile.build apis 
@@ -74,4 +75,4 @@ $(MODVOL):
 # Generate go code for k8s types & proto files
 .PHONY: generate
 generate: $(CACHEVOL) $(MODVOL)
-	$(DOCKERENV) go generate ./...
+	$(DOCKERENV) go generate apis/v1/doc.go

@@ -2,15 +2,15 @@
 //  Generated code. Do not modify.
 //  source: localworker.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class DiscoverRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('DiscoverRequest', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DiscoverRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
@@ -18,8 +18,16 @@ class DiscoverRequest extends $pb.GeneratedMessage {
   factory DiscoverRequest() => create();
   factory DiscoverRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DiscoverRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   DiscoverRequest clone() => DiscoverRequest()..mergeFromMessage(this);
-  DiscoverRequest copyWith(void Function(DiscoverRequest) updates) => super.copyWith((message) => updates(message as DiscoverRequest));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DiscoverRequest copyWith(void Function(DiscoverRequest) updates) => super.copyWith((message) => updates(message as DiscoverRequest)) as DiscoverRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static DiscoverRequest create() => DiscoverRequest._();
@@ -27,22 +35,42 @@ class DiscoverRequest extends $pb.GeneratedMessage {
   static $pb.PbList<DiscoverRequest> createRepeated() => $pb.PbList<DiscoverRequest>();
   @$core.pragma('dart2js:noInline')
   static DiscoverRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverRequest>(create);
-  static DiscoverRequest _defaultInstance;
+  static DiscoverRequest? _defaultInstance;
 }
 
 class DiscoverResult extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('DiscoverResult', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
-    ..aOS(1, 'id')
-    ..pPS(2, 'addresses')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DiscoverResult', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'addresses')
     ..hasRequiredFields = false
   ;
 
   DiscoverResult._() : super();
-  factory DiscoverResult() => create();
+  factory DiscoverResult({
+    $core.String? id,
+    $core.Iterable<$core.String>? addresses,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (addresses != null) {
+      _result.addresses.addAll(addresses);
+    }
+    return _result;
+  }
   factory DiscoverResult.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DiscoverResult.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   DiscoverResult clone() => DiscoverResult()..mergeFromMessage(this);
-  DiscoverResult copyWith(void Function(DiscoverResult) updates) => super.copyWith((message) => updates(message as DiscoverResult));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DiscoverResult copyWith(void Function(DiscoverResult) updates) => super.copyWith((message) => updates(message as DiscoverResult)) as DiscoverResult; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static DiscoverResult create() => DiscoverResult._();
@@ -50,7 +78,7 @@ class DiscoverResult extends $pb.GeneratedMessage {
   static $pb.PbList<DiscoverResult> createRepeated() => $pb.PbList<DiscoverResult>();
   @$core.pragma('dart2js:noInline')
   static DiscoverResult getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverResult>(create);
-  static DiscoverResult _defaultInstance;
+  static DiscoverResult? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);

@@ -2,9 +2,13 @@
 //  Generated code. Do not modify.
 //  source: discovery.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
 
+import 'dart:core' as $core;
+import 'dart:convert' as $convert;
+import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use serviceInfoDescriptor instead')
 const ServiceInfo$json = const {
   '1': 'ServiceInfo',
   '2': const [
@@ -16,3 +20,5 @@ const ServiceInfo$json = const {
   ],
 };
 
+/// Descriptor for `ServiceInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List serviceInfoDescriptor = $convert.base64Decode('CgtTZXJ2aWNlSW5mbxIfCgthcGlfdmVyc2lvbhgBIAEoCVIKYXBpVmVyc2lvbhIYCgd2ZXJzaW9uGAIgASgJUgd2ZXJzaW9uEhkKCGFwaV9wb3J0GAMgASgFUgdhcGlQb3J0Eh8KC2FwaV9hZGRyZXNzGAQgASgJUgphcGlBZGRyZXNzEhYKBnNlY3VyZRgFIAEoCFIGc2VjdXJl');

@@ -2,8 +2,8 @@
 //  Generated code. Do not modify.
 //  source: network.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:async' as $async;
 
@@ -40,44 +40,40 @@ class NetworkControlServiceClient extends $grpc.Client {
       ($core.List<$core.int> value) => $0.Clock.fromBuffer(value));
 
   NetworkControlServiceClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions options})
-      : super(channel, options: options);
+      {$grpc.CallOptions? options,
+      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
+      : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseStream<$0.Power> power($async.Stream<$0.PowerState> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$power, request, options: options);
-    return $grpc.ResponseStream(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$power, request, options: options);
   }
 
   $grpc.ResponseStream<$0.Loc> locs($async.Stream<$0.Loc> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$locs, request, options: options);
-    return $grpc.ResponseStream(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$locs, request, options: options);
   }
 
   $grpc.ResponseStream<$0.Sensor> sensors($0.Empty request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$sensors, $async.Stream.fromIterable([request]),
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
+        _$sensors, $async.Stream.fromIterable([request]),
         options: options);
-    return $grpc.ResponseStream(call);
   }
 
   $grpc.ResponseStream<$0.Output> outputs($async.Stream<$0.Output> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$outputs, request, options: options);
-    return $grpc.ResponseStream(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$outputs, request, options: options);
   }
 
   $grpc.ResponseStream<$0.Switch> switches($async.Stream<$0.Switch> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$switches, request, options: options);
-    return $grpc.ResponseStream(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$switches, request, options: options);
   }
 
   $grpc.ResponseStream<$0.Clock> clock($async.Stream<$0.Clock> request,
-      {$grpc.CallOptions options}) {
-    final call = $createCall(_$clock, request, options: options);
-    return $grpc.ResponseStream(call);
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$clock, request, options: options);
   }
 }
 

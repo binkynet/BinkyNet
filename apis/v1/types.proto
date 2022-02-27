@@ -255,4 +255,6 @@ message LocalWorkerConfig {
   repeated Device devices = 2;
 	// List of real world objects controlled by the local worker
   repeated Object objects = 3;
+  // Timestamp of network manager in seconds since 1970.
+  int64 unixtime = 4;
 }

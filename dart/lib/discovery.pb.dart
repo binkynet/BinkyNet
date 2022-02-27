@@ -2,29 +2,61 @@
 //  Generated code. Do not modify.
 //  source: discovery.proto
 //
-// @dart = 2.3
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
+// @dart = 2.12
+// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class ServiceInfo extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ServiceInfo', package: const $pb.PackageName('binkynet.v1'), createEmptyInstance: create)
-    ..aOS(1, 'apiVersion')
-    ..aOS(2, 'version')
-    ..a<$core.int>(3, 'apiPort', $pb.PbFieldType.O3)
-    ..aOS(4, 'apiAddress')
-    ..aOB(5, 'secure')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ServiceInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'apiVersion')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'apiPort', $pb.PbFieldType.O3)
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'apiAddress')
+    ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'secure')
     ..hasRequiredFields = false
   ;
 
   ServiceInfo._() : super();
-  factory ServiceInfo() => create();
+  factory ServiceInfo({
+    $core.String? apiVersion,
+    $core.String? version,
+    $core.int? apiPort,
+    $core.String? apiAddress,
+    $core.bool? secure,
+  }) {
+    final _result = create();
+    if (apiVersion != null) {
+      _result.apiVersion = apiVersion;
+    }
+    if (version != null) {
+      _result.version = version;
+    }
+    if (apiPort != null) {
+      _result.apiPort = apiPort;
+    }
+    if (apiAddress != null) {
+      _result.apiAddress = apiAddress;
+    }
+    if (secure != null) {
+      _result.secure = secure;
+    }
+    return _result;
+  }
   factory ServiceInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ServiceInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
   ServiceInfo clone() => ServiceInfo()..mergeFromMessage(this);
-  ServiceInfo copyWith(void Function(ServiceInfo) updates) => super.copyWith((message) => updates(message as ServiceInfo));
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ServiceInfo copyWith(void Function(ServiceInfo) updates) => super.copyWith((message) => updates(message as ServiceInfo)) as ServiceInfo; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ServiceInfo create() => ServiceInfo._();
@@ -32,7 +64,7 @@ class ServiceInfo extends $pb.GeneratedMessage {
   static $pb.PbList<ServiceInfo> createRepeated() => $pb.PbList<ServiceInfo>();
   @$core.pragma('dart2js:noInline')
   static ServiceInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ServiceInfo>(create);
-  static ServiceInfo _defaultInstance;
+  static ServiceInfo? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get apiVersion => $_getSZ(0);
