@@ -23,7 +23,6 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"sync/atomic"
 	"time"
 
 	"github.com/rs/zerolog"
@@ -102,7 +101,7 @@ func (c *LokiLogger) Shutdown() {
 
 // Set the timeoffset in seconds
 func (c *LokiLogger) SetTimeoffset(timeOffset int64) {
-	atomic.StoreInt64(&c.timeOffset, timeOffset)
+	c.timeOffset = timeOffset
 }
 
 func (c *LokiLogger) run() {
@@ -123,9 +122,10 @@ func (c *LokiLogger) run() {
 		case <-c.quit:
 			return
 		case entry := <-c.entries:
-			timeOffset := atomic.LoadInt64(&c.timeOffset)
 			ts := entry.Timestamp
-			ts = ts.Add(time.Second * time.Duration(timeOffset))
+			if timeOffset := c.timeOffset; timeOffset != 0 {
+				ts = ts.Add(time.Second * time.Duration(timeOffset))
+			}
 			batch = append(batch, []string{
 				strconv.FormatInt(ts.UnixNano(), 10),
 				entry.Line,
