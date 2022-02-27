@@ -23,6 +23,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/rs/zerolog"
@@ -30,11 +31,12 @@ import (
 
 // LokiLogger send log messages towards Loki.
 type LokiLogger struct {
-	config    *clientConfig
-	quit      chan struct{}
-	entries   chan logEntry
-	waitGroup sync.WaitGroup
-	client    httpClient
+	config     *clientConfig
+	quit       chan struct{}
+	entries    chan logEntry
+	waitGroup  sync.WaitGroup
+	client     httpClient
+	timeOffset int64
 }
 
 type PushRequest struct {
@@ -52,7 +54,7 @@ type logEntry struct {
 	Level     zerolog.Level
 }
 
-func NewLokiLogger(rootUrl, job string) (*LokiLogger, error) {
+func NewLokiLogger(rootUrl, job string, timeOffset int64) (*LokiLogger, error) {
 	conf := &clientConfig{
 		PushURL:            strings.TrimSuffix(rootUrl, "/") + "/loki/api/v1/push",
 		BatchWait:          time.Second * 2,
@@ -62,10 +64,11 @@ func NewLokiLogger(rootUrl, job string) (*LokiLogger, error) {
 		},
 	}
 	client := &LokiLogger{
-		config:  conf,
-		quit:    make(chan struct{}),
-		entries: make(chan logEntry, LOG_ENTRIES_CHAN_SIZE),
-		client:  httpClient{},
+		config:     conf,
+		quit:       make(chan struct{}),
+		entries:    make(chan logEntry, LOG_ENTRIES_CHAN_SIZE),
+		client:     httpClient{},
+		timeOffset: timeOffset,
 	}
 
 	client.waitGroup.Add(1)
@@ -97,6 +100,11 @@ func (c *LokiLogger) Shutdown() {
 	c.waitGroup.Wait()
 }
 
+// Set the timeoffset in seconds
+func (c *LokiLogger) SetTimeoffset(timeOffset int64) {
+	atomic.StoreInt64(&c.timeOffset, timeOffset)
+}
+
 func (c *LokiLogger) run() {
 	var batch [][]string
 	batchSize := 0
@@ -115,8 +123,11 @@ func (c *LokiLogger) run() {
 		case <-c.quit:
 			return
 		case entry := <-c.entries:
+			timeOffset := atomic.LoadInt64(&c.timeOffset)
+			ts := entry.Timestamp
+			ts = ts.Add(time.Second * time.Duration(timeOffset))
 			batch = append(batch, []string{
-				strconv.FormatInt(entry.Timestamp.UnixNano(), 10),
+				strconv.FormatInt(ts.UnixNano(), 10),
 				entry.Line,
 			})
 			batchSize++
