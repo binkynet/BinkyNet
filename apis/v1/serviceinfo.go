@@ -87,6 +87,11 @@ func RegisterServiceEntry(ctx context.Context, serviceType string, info ServiceI
 
 	var ifaces []net.Interface
 	if host, found := GetServiceInfoHost(ctx); found && host != "" {
+		// Parse host
+		ip := net.ParseIP(host)
+		if ip == nil {
+			return fmt.Errorf("Failed to parse host '%s'", host)
+		}
 		// Find interfaces with given IP
 		var selectedIFaces []net.Interface
 		allInterfaces, err := net.Interfaces()
@@ -102,6 +107,7 @@ func RegisterServiceEntry(ctx context.Context, serviceType string, info ServiceI
 			}
 			addrs, _ := ifi.Addrs()
 			for _, addr := range addrs {
+				fmt.Println(addr.String())
 				if addr.String() == host {
 					selectedIFaces = append(selectedIFaces, ifi)
 					break
