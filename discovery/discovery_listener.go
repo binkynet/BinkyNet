@@ -71,7 +71,10 @@ func (l *ServiceListener) Run(ctx context.Context) error {
 				if l.all || info.String() != lastInfo.String() {
 					lastInfo = *info
 					l.log.Info().
+						Str("service", entry.Service).
 						Str("address", info.GetApiAddress()).
+						Int32("port", info.GetApiPort()).
+						Str("version", info.GetApiVersion()).
 						Msg("Service change detected")
 					l.cb(lastInfo)
 				}

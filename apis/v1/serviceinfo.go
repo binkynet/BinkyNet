@@ -88,12 +88,12 @@ func RegisterServiceEntry(ctx context.Context, serviceType string, info ServiceI
 	var ifaces []net.Interface
 	if host, found := GetServiceInfoHost(ctx); found && host != "" {
 		// Find interfaces with given IP
-		var interfaces []net.Interface
-		ifaces, err := net.Interfaces()
+		var selectedIFaces []net.Interface
+		allInterfaces, err := net.Interfaces()
 		if err != nil {
 			return err
 		}
-		for _, ifi := range ifaces {
+		for _, ifi := range allInterfaces {
 			if (ifi.Flags & net.FlagUp) == 0 {
 				continue
 			}
@@ -103,14 +103,15 @@ func RegisterServiceEntry(ctx context.Context, serviceType string, info ServiceI
 			addrs, _ := ifi.Addrs()
 			for _, addr := range addrs {
 				if addr.String() == host {
-					interfaces = append(interfaces, ifi)
+					selectedIFaces = append(selectedIFaces, ifi)
 					break
 				}
 			}
 		}
-		if len(ifaces) == 0 {
+		if len(selectedIFaces) == 0 {
 			return fmt.Errorf("Did not find interface with address '%s'", host)
 		}
+		ifaces = selectedIFaces
 	}
 
 	srv, err := zeroconf.Register(instance, serviceType, "local.", int(info.GetApiPort()), text, ifaces)
