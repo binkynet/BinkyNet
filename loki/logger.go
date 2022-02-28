@@ -18,8 +18,11 @@
 package loki
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"log"
+	"sort"
 	"strconv"
 	"strings"
 	"sync"
@@ -128,7 +131,7 @@ func (c *LokiLogger) run() {
 			}
 			batch = append(batch, []string{
 				strconv.FormatInt(ts.UnixNano(), 10),
-				entry.Line,
+				formatEntry(entry.Line),
 			})
 			batchSize++
 			if batchSize >= c.config.BatchEntriesNumber {
@@ -174,4 +177,56 @@ func (c *LokiLogger) send(entries [][]string) {
 		log.Printf("promtail.ClientProto: Unexpected HTTP status code: %d, message: %s\n", resp.StatusCode, body)
 		return
 	}
+}
+
+func formatEntry(line string) string {
+	var evt map[string]interface{}
+	d := json.NewDecoder(strings.NewReader(line))
+	d.UseNumber()
+	if err := d.Decode(&evt); err != nil {
+		log.Printf("LokiLogger: Failed to parse log entry '%s': %s\n", line, err)
+		return line
+	}
+	var buf bytes.Buffer
+	if v, ok := evt[zerolog.MessageFieldName]; ok {
+		buf.WriteString(fmt.Sprintf("%s", v))
+	}
+	keys := make([]string, 0, len(evt))
+	for k := range evt {
+		switch k {
+		case zerolog.MessageFieldName, zerolog.TimestampFieldName, zerolog.LevelFieldName:
+			// Skip
+		default:
+			keys = append(keys, k)
+		}
+	}
+	sort.Strings(keys)
+	for _, k := range keys {
+		buf.WriteByte(' ')
+		buf.WriteString(k)
+		buf.WriteByte('=')
+		v := evt[k]
+		switch tv := v.(type) {
+		case string:
+			if needsQuote(tv) {
+				buf.WriteString(strconv.Quote(tv))
+			} else {
+				buf.WriteString(tv)
+			}
+		default:
+			b, _ := json.Marshal(v)
+			buf.Write(b)
+		}
+	}
+	return buf.String()
+}
+
+// needsQuote returns true when the string s should be quoted in output.
+func needsQuote(s string) bool {
+	for i := range s {
+		if s[i] < 0x20 || s[i] > 0x7e || s[i] == ' ' || s[i] == '\\' || s[i] == '"' {
+			return true
+		}
+	}
+	return false
 }
