@@ -28,6 +28,25 @@ import "types.proto";
 // users of the Binky Network to control the network.
 // Network masters make themselves available in mDNS under service type "_nwctrl._binkynet._tcp".
 service NetworkControlService {
+  rpc SetPowerRequest(PowerState) returns (Empty);
+  rpc SetPowerActual(PowerState) returns (Empty);
+  rpc WatchPower(WatchOptions) returns (stream binkynet.v1.Power);
+
+  rpc SetLocRequest(Loc) returns (Empty);
+  rpc SetLocActual(Loc) returns (Empty);
+  rpc WatchLocs(WatchOptions) returns (stream Loc);
+
+  rpc SetSensorActual(Sensor) returns (Empty);
+  rpc WatchSensors(WatchOptions) returns (stream Sensor);
+
+  rpc SetOutputRequest(Output) returns (Empty);
+  rpc SetOutputActual(Output) returns (Empty);
+  rpc WatchOutputs(WatchOptions) returns (stream Output);
+
+  rpc SetSwitchRequest(Switch) returns (Empty);
+  rpc SetSwitchActual(Switch) returns (Empty);
+  rpc WatchSwitches(WatchOptions) returns (stream Switch);
+
   // Power is used to send power requests and receive power request & actual changes.
   rpc Power(stream PowerState) returns (stream binkynet.v1.Power);
 
@@ -48,4 +67,13 @@ service NetworkControlService {
 
   // Clock is used to send clock requests and receive clock changes.
   rpc Clock(stream binkynet.v1.Clock) returns (stream binkynet.v1.Clock);
+}
+
+message WatchOptions {
+  // If set, send changes in request state
+  bool watch_request_changes = 1;
+  // If set, send changes in actual state
+  bool watch_actual_changes = 2;
+  // If set, send changes related to this and global module only
+  string module_id = 3;
 }

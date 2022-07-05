@@ -8,3 +8,15 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use watchOptionsDescriptor instead')
+const WatchOptions$json = const {
+  '1': 'WatchOptions',
+  '2': const [
+    const {'1': 'watch_request_changes', '3': 1, '4': 1, '5': 8, '10': 'watchRequestChanges'},
+    const {'1': 'watch_actual_changes', '3': 2, '4': 1, '5': 8, '10': 'watchActualChanges'},
+    const {'1': 'module_id', '3': 3, '4': 1, '5': 9, '10': 'moduleId'},
+  ],
+};
+
+/// Descriptor for `WatchOptions`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List watchOptionsDescriptor = $convert.base64Decode('CgxXYXRjaE9wdGlvbnMSMgoVd2F0Y2hfcmVxdWVzdF9jaGFuZ2VzGAEgASgIUhN3YXRjaFJlcXVlc3RDaGFuZ2VzEjAKFHdhdGNoX2FjdHVhbF9jaGFuZ2VzGAIgASgIUhJ3YXRjaEFjdHVhbENoYW5nZXMSGwoJbW9kdWxlX2lkGAMgASgJUghtb2R1bGVJZA==');
