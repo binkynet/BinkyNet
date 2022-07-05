@@ -138,6 +138,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uptime')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configHash')
     ..hasRequiredFields = false
   ;
 
@@ -147,6 +148,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.String? description,
     $core.String? version,
     $fixnum.Int64? uptime,
+    $core.String? configHash,
   }) {
     final _result = create();
     if (id != null) {
@@ -160,6 +162,9 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (uptime != null) {
       _result.uptime = uptime;
+    }
+    if (configHash != null) {
+      _result.configHash = configHash;
     }
     return _result;
   }
@@ -219,6 +224,15 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
   $core.bool hasUptime() => $_has(3);
   @$pb.TagNumber(4)
   void clearUptime() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get configHash => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set configHash($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasConfigHash() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearConfigHash() => clearField(5);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {
@@ -1422,6 +1436,7 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     ..pc<Device>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'devices', $pb.PbFieldType.PM, subBuilder: Device.create)
     ..pc<Object>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'objects', $pb.PbFieldType.PM, subBuilder: Object.create)
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unixtime')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
     ..hasRequiredFields = false
   ;
 
@@ -1431,6 +1446,7 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     $core.Iterable<Device>? devices,
     $core.Iterable<Object>? objects,
     $fixnum.Int64? unixtime,
+    $core.String? hash,
   }) {
     final _result = create();
     if (alias != null) {
@@ -1444,6 +1460,9 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     }
     if (unixtime != null) {
       _result.unixtime = unixtime;
+    }
+    if (hash != null) {
+      _result.hash = hash;
     }
     return _result;
   }
@@ -1491,5 +1510,93 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
   $core.bool hasUnixtime() => $_has(3);
   @$pb.TagNumber(4)
   void clearUnixtime() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get hash => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set hash($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasHash() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearHash() => clearField(5);
+}
+
+class LocalWorker extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LocalWorker', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOM<LocalWorkerConfig>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'request', subBuilder: LocalWorkerConfig.create)
+    ..aOM<LocalWorkerInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'actual', subBuilder: LocalWorkerInfo.create)
+    ..hasRequiredFields = false
+  ;
+
+  LocalWorker._() : super();
+  factory LocalWorker({
+    $core.String? id,
+    LocalWorkerConfig? request,
+    LocalWorkerInfo? actual,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (request != null) {
+      _result.request = request;
+    }
+    if (actual != null) {
+      _result.actual = actual;
+    }
+    return _result;
+  }
+  factory LocalWorker.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LocalWorker.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LocalWorker clone() => LocalWorker()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LocalWorker copyWith(void Function(LocalWorker) updates) => super.copyWith((message) => updates(message as LocalWorker)) as LocalWorker; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static LocalWorker create() => LocalWorker._();
+  LocalWorker createEmptyInstance() => create();
+  static $pb.PbList<LocalWorker> createRepeated() => $pb.PbList<LocalWorker>();
+  @$core.pragma('dart2js:noInline')
+  static LocalWorker getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LocalWorker>(create);
+  static LocalWorker? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  LocalWorkerConfig get request => $_getN(1);
+  @$pb.TagNumber(2)
+  set request(LocalWorkerConfig v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRequest() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRequest() => clearField(2);
+  @$pb.TagNumber(2)
+  LocalWorkerConfig ensureRequest() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  LocalWorkerInfo get actual => $_getN(2);
+  @$pb.TagNumber(3)
+  set actual(LocalWorkerInfo v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasActual() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearActual() => clearField(3);
+  @$pb.TagNumber(3)
+  LocalWorkerInfo ensureActual() => $_ensure(2);
 }
 

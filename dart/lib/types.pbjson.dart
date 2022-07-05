@@ -71,11 +71,12 @@ const LocalWorkerInfo$json = const {
     const {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
     const {'1': 'version', '3': 3, '4': 1, '5': 9, '10': 'version'},
     const {'1': 'uptime', '3': 4, '4': 1, '5': 3, '10': 'uptime'},
+    const {'1': 'config_hash', '3': 5, '4': 1, '5': 9, '10': 'configHash'},
   ],
 };
 
 /// Descriptor for `LocalWorkerInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List localWorkerInfoDescriptor = $convert.base64Decode('Cg9Mb2NhbFdvcmtlckluZm8SDgoCaWQYASABKAlSAmlkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIYCgd2ZXJzaW9uGAMgASgJUgd2ZXJzaW9uEhYKBnVwdGltZRgEIAEoA1IGdXB0aW1l');
+final $typed_data.Uint8List localWorkerInfoDescriptor = $convert.base64Decode('Cg9Mb2NhbFdvcmtlckluZm8SDgoCaWQYASABKAlSAmlkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIYCgd2ZXJzaW9uGAMgASgJUgd2ZXJzaW9uEhYKBnVwdGltZRgEIAEoA1IGdXB0aW1lEh8KC2NvbmZpZ19oYXNoGAUgASgJUgpjb25maWdIYXNo');
 @$core.Deprecated('Use powerRequestsOptionsDescriptor instead')
 const PowerRequestsOptions$json = const {
   '1': 'PowerRequestsOptions',
@@ -318,8 +319,21 @@ const LocalWorkerConfig$json = const {
     const {'1': 'devices', '3': 2, '4': 3, '5': 11, '6': '.binkynet.v1.Device', '10': 'devices'},
     const {'1': 'objects', '3': 3, '4': 3, '5': 11, '6': '.binkynet.v1.Object', '10': 'objects'},
     const {'1': 'unixtime', '3': 4, '4': 1, '5': 3, '10': 'unixtime'},
+    const {'1': 'hash', '3': 5, '4': 1, '5': 9, '10': 'hash'},
   ],
 };
 
 /// Descriptor for `LocalWorkerConfig`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List localWorkerConfigDescriptor = $convert.base64Decode('ChFMb2NhbFdvcmtlckNvbmZpZxIUCgVhbGlhcxgBIAEoCVIFYWxpYXMSLQoHZGV2aWNlcxgCIAMoCzITLmJpbmt5bmV0LnYxLkRldmljZVIHZGV2aWNlcxItCgdvYmplY3RzGAMgAygLMhMuYmlua3luZXQudjEuT2JqZWN0UgdvYmplY3RzEhoKCHVuaXh0aW1lGAQgASgDUgh1bml4dGltZQ==');
+final $typed_data.Uint8List localWorkerConfigDescriptor = $convert.base64Decode('ChFMb2NhbFdvcmtlckNvbmZpZxIUCgVhbGlhcxgBIAEoCVIFYWxpYXMSLQoHZGV2aWNlcxgCIAMoCzITLmJpbmt5bmV0LnYxLkRldmljZVIHZGV2aWNlcxItCgdvYmplY3RzGAMgAygLMhMuYmlua3luZXQudjEuT2JqZWN0UgdvYmplY3RzEhoKCHVuaXh0aW1lGAQgASgDUgh1bml4dGltZRISCgRoYXNoGAUgASgJUgRoYXNo');
+@$core.Deprecated('Use localWorkerDescriptor instead')
+const LocalWorker$json = const {
+  '1': 'LocalWorker',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'request', '3': 2, '4': 1, '5': 11, '6': '.binkynet.v1.LocalWorkerConfig', '10': 'request'},
+    const {'1': 'actual', '3': 3, '4': 1, '5': 11, '6': '.binkynet.v1.LocalWorkerInfo', '10': 'actual'},
+  ],
+};
+
+/// Descriptor for `LocalWorker`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List localWorkerDescriptor = $convert.base64Decode('CgtMb2NhbFdvcmtlchIOCgJpZBgBIAEoCVICaWQSOAoHcmVxdWVzdBgCIAEoCzIeLmJpbmt5bmV0LnYxLkxvY2FsV29ya2VyQ29uZmlnUgdyZXF1ZXN0EjQKBmFjdHVhbBgDIAEoCzIcLmJpbmt5bmV0LnYxLkxvY2FsV29ya2VySW5mb1IGYWN0dWFs');

@@ -15,6 +15,21 @@ import 'network.pb.dart' as $3;
 export 'network.pb.dart';
 
 class NetworkControlServiceClient extends $grpc.Client {
+  static final _$setLocalWorkerRequest =
+      $grpc.ClientMethod<$0.LocalWorker, $0.Empty>(
+          '/binkynet.v1.NetworkControlService/SetLocalWorkerRequest',
+          ($0.LocalWorker value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$setLocalWorkerActual =
+      $grpc.ClientMethod<$0.LocalWorker, $0.Empty>(
+          '/binkynet.v1.NetworkControlService/SetLocalWorkerActual',
+          ($0.LocalWorker value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$watchLocalWorkers =
+      $grpc.ClientMethod<$3.WatchOptions, $0.LocalWorker>(
+          '/binkynet.v1.NetworkControlService/WatchLocalWorkers',
+          ($3.WatchOptions value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.LocalWorker.fromBuffer(value));
   static final _$setPowerRequest = $grpc.ClientMethod<$0.PowerState, $0.Empty>(
       '/binkynet.v1.NetworkControlService/SetPowerRequest',
       ($0.PowerState value) => value.writeToBuffer(),
@@ -71,6 +86,14 @@ class NetworkControlServiceClient extends $grpc.Client {
       '/binkynet.v1.NetworkControlService/WatchSwitches',
       ($3.WatchOptions value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Switch.fromBuffer(value));
+  static final _$setClockActual = $grpc.ClientMethod<$0.Clock, $0.Empty>(
+      '/binkynet.v1.NetworkControlService/SetClockActual',
+      ($0.Clock value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$watchClock = $grpc.ClientMethod<$3.WatchOptions, $0.Clock>(
+      '/binkynet.v1.NetworkControlService/WatchClock',
+      ($3.WatchOptions value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Clock.fromBuffer(value));
   static final _$power = $grpc.ClientMethod<$0.PowerState, $0.Power>(
       '/binkynet.v1.NetworkControlService/Power',
       ($0.PowerState value) => value.writeToBuffer(),
@@ -100,6 +123,24 @@ class NetworkControlServiceClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
+
+  $grpc.ResponseFuture<$0.Empty> setLocalWorkerRequest($0.LocalWorker request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$setLocalWorkerRequest, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> setLocalWorkerActual($0.LocalWorker request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$setLocalWorkerActual, request, options: options);
+  }
+
+  $grpc.ResponseStream<$0.LocalWorker> watchLocalWorkers(
+      $3.WatchOptions request,
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
+        _$watchLocalWorkers, $async.Stream.fromIterable([request]),
+        options: options);
+  }
 
   $grpc.ResponseFuture<$0.Empty> setPowerRequest($0.PowerState request,
       {$grpc.CallOptions? options}) {
@@ -181,6 +222,18 @@ class NetworkControlServiceClient extends $grpc.Client {
         options: options);
   }
 
+  $grpc.ResponseFuture<$0.Empty> setClockActual($0.Clock request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$setClockActual, request, options: options);
+  }
+
+  $grpc.ResponseStream<$0.Clock> watchClock($3.WatchOptions request,
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
+        _$watchClock, $async.Stream.fromIterable([request]),
+        options: options);
+  }
+
   $grpc.ResponseStream<$0.Power> power($async.Stream<$0.PowerState> request,
       {$grpc.CallOptions? options}) {
     return $createStreamingCall(_$power, request, options: options);
@@ -218,6 +271,27 @@ abstract class NetworkControlServiceBase extends $grpc.Service {
   $core.String get $name => 'binkynet.v1.NetworkControlService';
 
   NetworkControlServiceBase() {
+    $addMethod($grpc.ServiceMethod<$0.LocalWorker, $0.Empty>(
+        'SetLocalWorkerRequest',
+        setLocalWorkerRequest_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.LocalWorker.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.LocalWorker, $0.Empty>(
+        'SetLocalWorkerActual',
+        setLocalWorkerActual_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.LocalWorker.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.WatchOptions, $0.LocalWorker>(
+        'WatchLocalWorkers',
+        watchLocalWorkers_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $3.WatchOptions.fromBuffer(value),
+        ($0.LocalWorker value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.PowerState, $0.Empty>(
         'SetPowerRequest',
         setPowerRequest_Pre,
@@ -316,6 +390,20 @@ abstract class NetworkControlServiceBase extends $grpc.Service {
         true,
         ($core.List<$core.int> value) => $3.WatchOptions.fromBuffer(value),
         ($0.Switch value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Clock, $0.Empty>(
+        'SetClockActual',
+        setClockActual_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Clock.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.WatchOptions, $0.Clock>(
+        'WatchClock',
+        watchClock_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $3.WatchOptions.fromBuffer(value),
+        ($0.Clock value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.PowerState, $0.Power>(
         'Power',
         power,
@@ -358,6 +446,21 @@ abstract class NetworkControlServiceBase extends $grpc.Service {
         true,
         ($core.List<$core.int> value) => $0.Clock.fromBuffer(value),
         ($0.Clock value) => value.writeToBuffer()));
+  }
+
+  $async.Future<$0.Empty> setLocalWorkerRequest_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.LocalWorker> request) async {
+    return setLocalWorkerRequest(call, await request);
+  }
+
+  $async.Future<$0.Empty> setLocalWorkerActual_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.LocalWorker> request) async {
+    return setLocalWorkerActual(call, await request);
+  }
+
+  $async.Stream<$0.LocalWorker> watchLocalWorkers_Pre(
+      $grpc.ServiceCall call, $async.Future<$3.WatchOptions> request) async* {
+    yield* watchLocalWorkers(call, await request);
   }
 
   $async.Future<$0.Empty> setPowerRequest_Pre(
@@ -430,11 +533,27 @@ abstract class NetworkControlServiceBase extends $grpc.Service {
     yield* watchSwitches(call, await request);
   }
 
+  $async.Future<$0.Empty> setClockActual_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Clock> request) async {
+    return setClockActual(call, await request);
+  }
+
+  $async.Stream<$0.Clock> watchClock_Pre(
+      $grpc.ServiceCall call, $async.Future<$3.WatchOptions> request) async* {
+    yield* watchClock(call, await request);
+  }
+
   $async.Stream<$0.Sensor> sensors_Pre(
       $grpc.ServiceCall call, $async.Future<$0.Empty> request) async* {
     yield* sensors(call, await request);
   }
 
+  $async.Future<$0.Empty> setLocalWorkerRequest(
+      $grpc.ServiceCall call, $0.LocalWorker request);
+  $async.Future<$0.Empty> setLocalWorkerActual(
+      $grpc.ServiceCall call, $0.LocalWorker request);
+  $async.Stream<$0.LocalWorker> watchLocalWorkers(
+      $grpc.ServiceCall call, $3.WatchOptions request);
   $async.Future<$0.Empty> setPowerRequest(
       $grpc.ServiceCall call, $0.PowerState request);
   $async.Future<$0.Empty> setPowerActual(
@@ -460,6 +579,10 @@ abstract class NetworkControlServiceBase extends $grpc.Service {
   $async.Future<$0.Empty> setSwitchActual(
       $grpc.ServiceCall call, $0.Switch request);
   $async.Stream<$0.Switch> watchSwitches(
+      $grpc.ServiceCall call, $3.WatchOptions request);
+  $async.Future<$0.Empty> setClockActual(
+      $grpc.ServiceCall call, $0.Clock request);
+  $async.Stream<$0.Clock> watchClock(
       $grpc.ServiceCall call, $3.WatchOptions request);
   $async.Stream<$0.Power> power(
       $grpc.ServiceCall call, $async.Stream<$0.PowerState> request);

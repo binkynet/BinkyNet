@@ -51,6 +51,8 @@ message LocalWorkerInfo {
   string version = 3;
   // Uptime of the local worker in seconds.
   int64 uptime = 4;
+  // Hash of the current configuration
+  string config_hash = 5;
 }
 
 // Request arguments for GetPowerRequests
@@ -257,4 +259,16 @@ message LocalWorkerConfig {
   repeated Object objects = 3;
   // Timestamp of network manager in seconds since 1970.
   int64 unixtime = 4;
+  // Hash of the configuration (excluding unixtime)
+  string hash = 5;
+}
+
+// Requested & actual state of a local worker
+message LocalWorker {
+  // Unique identifier of the local worker
+  string id = 1;
+  // Requested configuration of the local worker
+  LocalWorkerConfig request = 2;
+  // Actual state of the local worker 
+  LocalWorkerInfo actual = 3;
 }
