@@ -8,21 +8,63 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use discoverRequestDescriptor instead')
-const DiscoverRequest$json = const {
-  '1': 'DiscoverRequest',
+@$core.Deprecated('Use describeRequestDescriptor instead')
+const DescribeRequest$json = const {
+  '1': 'DescribeRequest',
 };
 
-/// Descriptor for `DiscoverRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List discoverRequestDescriptor = $convert.base64Decode('Cg9EaXNjb3ZlclJlcXVlc3Q=');
-@$core.Deprecated('Use discoverResultDescriptor instead')
-const DiscoverResult$json = const {
-  '1': 'DiscoverResult',
+/// Descriptor for `DescribeRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List describeRequestDescriptor = $convert.base64Decode('Cg9EZXNjcmliZVJlcXVlc3Q=');
+@$core.Deprecated('Use discoverDevicesRequestDescriptor instead')
+const DiscoverDevicesRequest$json = const {
+  '1': 'DiscoverDevicesRequest',
+};
+
+/// Descriptor for `DiscoverDevicesRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List discoverDevicesRequestDescriptor = $convert.base64Decode('ChZEaXNjb3ZlckRldmljZXNSZXF1ZXN0');
+@$core.Deprecated('Use discoverDevicesResultDescriptor instead')
+const DiscoverDevicesResult$json = const {
+  '1': 'DiscoverDevicesResult',
   '2': const [
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {'1': 'addresses', '3': 2, '4': 3, '5': 9, '10': 'addresses'},
   ],
 };
 
-/// Descriptor for `DiscoverResult`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List discoverResultDescriptor = $convert.base64Decode('Cg5EaXNjb3ZlclJlc3VsdBIOCgJpZBgBIAEoCVICaWQSHAoJYWRkcmVzc2VzGAIgAygJUglhZGRyZXNzZXM=');
+/// Descriptor for `DiscoverDevicesResult`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List discoverDevicesResultDescriptor = $convert.base64Decode('ChVEaXNjb3ZlckRldmljZXNSZXN1bHQSDgoCaWQYASABKAlSAmlkEhwKCWFkZHJlc3NlcxgCIAMoCVIJYWRkcmVzc2Vz');
+@$core.Deprecated('Use getPowerActualsRequestDescriptor instead')
+const GetPowerActualsRequest$json = const {
+  '1': 'GetPowerActualsRequest',
+};
+
+/// Descriptor for `GetPowerActualsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getPowerActualsRequestDescriptor = $convert.base64Decode('ChZHZXRQb3dlckFjdHVhbHNSZXF1ZXN0');
+@$core.Deprecated('Use getLocActualsRequestDescriptor instead')
+const GetLocActualsRequest$json = const {
+  '1': 'GetLocActualsRequest',
+};
+
+/// Descriptor for `GetLocActualsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getLocActualsRequestDescriptor = $convert.base64Decode('ChRHZXRMb2NBY3R1YWxzUmVxdWVzdA==');
+@$core.Deprecated('Use getSensorActualsRequestDescriptor instead')
+const GetSensorActualsRequest$json = const {
+  '1': 'GetSensorActualsRequest',
+};
+
+/// Descriptor for `GetSensorActualsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getSensorActualsRequestDescriptor = $convert.base64Decode('ChdHZXRTZW5zb3JBY3R1YWxzUmVxdWVzdA==');
+@$core.Deprecated('Use getOutputActualsRequestDescriptor instead')
+const GetOutputActualsRequest$json = const {
+  '1': 'GetOutputActualsRequest',
+};
+
+/// Descriptor for `GetOutputActualsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getOutputActualsRequestDescriptor = $convert.base64Decode('ChdHZXRPdXRwdXRBY3R1YWxzUmVxdWVzdA==');
+@$core.Deprecated('Use getSwitchActualsRequestDescriptor instead')
+const GetSwitchActualsRequest$json = const {
+  '1': 'GetSwitchActualsRequest',
+};
+
+/// Descriptor for `GetSwitchActualsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getSwitchActualsRequestDescriptor = $convert.base64Decode('ChdHZXRTd2l0Y2hBY3R1YWxzUmVxdWVzdA==');

@@ -24,83 +24,97 @@ option csharp_namespace = "BinkyNet.Apis.V1";
 
 import "types.proto";
 
-// LocalWorkerConfigService is served by the network master and used by
-// local workers to fetch their configuration.
-// Network masters make themselves available in mDNS under service type "_lwcfg._binkynet._tcp".
-service LocalWorkerConfigService {
-  // GetConfig is used to fetch the configuration for a local worker.
-  rpc GetConfig(LocalWorkerInfo) returns (stream LocalWorkerConfig);
-}
+// LocalWorkerService is served by each local worker and used by
+// the network controller to push configuration & state.
+// Local workers make themselves available in mDNS under service type "_lw._binkynet._tcp".
+service LocalWorkerService {
+  // Describe is used to fetch the a stream if identyable information of a local worker.
+  rpc Describe(DescribeRequest) returns (stream LocalWorkerInfo);
+  // Configure is used to configure a local worker.
+  rpc Configure(LocalWorkerConfig) returns (Empty);
 
-// LocalWorkerControlService is served by the network master and used by
-// local workers.
-// Network masters make themselves available in mDNS under service type "_lwctrl._binkynet._tcp".
-service LocalWorkerControlService {
-  // Ping messages are send at regular intervals by local workers
-  // as a heartbeat notification, as well as providing information about
-  // versions.
-  rpc Ping(LocalWorkerInfo) returns (Empty);
-
-  // GetDiscoverRequests is used to allow the netmanager to request a discovery by
+  // DiscoverDevices is used by the netmanager to request a discovery by
   // the local worker.
-  // The local worker in turn responds with a SetDiscoverResult call.
-  rpc GetDiscoverRequests(LocalWorkerInfo) returns (stream DiscoverRequest);
+  // The local worker in turn responds the found devices.
+  rpc DiscoverDevices(DiscoverDevicesRequest) returns (DiscoverDevicesResult);
 
-  // SetDiscoverResult is called by the local worker in response to discover requests.
-  rpc SetDiscoverResult(DiscoverResult) returns (Empty);
+  // SetPowerRequests is used to change the power state of the local worker.
+  rpc SetPowerRequests(stream PowerState) returns (Empty);
+  // GetPowerActuals is used to fetch a stream of actual power statuses 
+  // from the local workers, to the network master.
+  rpc GetPowerActuals(GetPowerActualsRequest) returns (stream PowerState);
 
-  // GetPowerRequests is used to get a stream of power requests from the network
-  // master.
-  rpc GetPowerRequests(PowerRequestsOptions) returns (stream PowerState);
-
-  // SetPowerActuals is used to send a stream of actual power statuses to 
-  // the network master.
-  rpc SetPowerActuals(stream PowerState) returns (Empty);
-
-  // GetLocRequests is used to get a stream of loc requests from the network
-  // master.
+  // SetLocRequests is used to send a stream of loc requests from the network
+  // master to the local worker.
   // Note: Loc.actual field is not set.
-  rpc GetLocRequests(LocRequestsOptions) returns (stream Loc);
-
-  // SetLocActuals is used to send a stream of actual loc statuses to 
-  // the network master.
+  rpc SetLocRequests(stream Loc) returns (Empty);
+  // GetLocActuals is used to send a stream of actual loc statuses from
+  // the local worker to the network master.
   // Note: Loc.request field must be set to the latest request.
-  rpc SetLocActuals(stream Loc) returns (Empty);
+  rpc GetLocActuals(GetLocActualsRequest) returns (stream Loc);
 
-  // SetSensorActuals is used to send a stream of actual sensor statuses to 
-  // the network master.
-  rpc SetSensorActuals(stream Sensor) returns (Empty);
+  // GetSensorActuals is used to send a stream of actual sensor statuses
+  // from the local worker to the network master.
+  rpc GetSensorActuals(GetSensorActualsRequest) returns (stream Sensor);
 
-  // GetOutputRequests is used to get a stream of output requests from the network
-  // master.
-  rpc GetOutputRequests(OutputRequestsOptions) returns (stream Output);
+  // SetOutputRequests is used to get a stream of output requests from the network
+  // master to the local worker.
+  rpc SetOutputRequests(stream Output) returns (Empty);
+  // GetOutputActuals is used to send a stream of actual output statuses from
+  // the local worker to the network master.
+  rpc GetOutputActuals(GetOutputActualsRequest) returns (stream Output);
 
-  // SetOutputActuals is used to send a stream of actual output statuses to 
-  // the network master.
-  rpc SetOutputActuals(stream Output) returns (Empty);
+  // SetSwitchRequests is used to get a stream of switch requests from the network
+  // master to the local worker.
+  rpc SetSwitchRequests(stream Switch) returns (Empty);
+  // GetSwitchActuals is used to send a stream of actual switch statuses from
+  // the local worker to the network master.
+  rpc GetSwitchActuals(GetSwitchActualsRequest) returns (stream Switch);
 
-  // GetSwitchRequests is used to get a stream of switch requests from the network
-  // master.
-  rpc GetSwitchRequests(SwitchRequestsOptions) returns (stream Switch);
-
-  // SetSwitchActuals is used to send a stream of actual switch statuses to 
-  // the network master.
-  rpc SetSwitchActuals(stream Switch) returns (Empty);
-
-  // GetClock is used to get a stream of switch current time of day from the network
-  // master.
-  rpc GetClock(Empty) returns (stream Clock);
+  // SetClock is used to send a stream of current time of day from the network
+  // master to the local worker.
+  rpc SetClock(stream Clock) returns (Empty);
 }
 
-// DiscoverRequest is sent when the netmanager wants to local worker to
+// Arguments of Describe request.
+message DescribeRequest {
+  // Nothing yet
+}
+
+// DiscoverDevicesRequest is sent when the netmanager wants to local worker to
 // probe its locally attached devices.
-message DiscoverRequest {
+message DiscoverDevicesRequest {
 }
 
-// DiscoverResult is returned in a response to a discover request by the netmanager.
-message DiscoverResult {
+// DiscoverDevicesResult is returned in a response to a discover request by the netmanager.
+message DiscoverDevicesResult {
   // ID of local worker
   string id = 1;
   // The addresses that were found
   repeated string addresses = 2;
+}
+
+// Request arguments for GetPowerActuals
+message GetPowerActualsRequest {
+  // Empty
+}
+
+// Request arguments for GetLocActuals
+message GetLocActualsRequest {
+  // Empty
+}
+
+// Request arguments for GetSensorActuals
+message GetSensorActualsRequest {
+  // Empty
+}
+
+// Request arguments for GetOutputActuals
+message GetOutputActualsRequest {
+  // Empty
+}
+
+// Request arguments for GetSwitchActuals
+message GetSwitchActualsRequest {
+  // Empty
 }

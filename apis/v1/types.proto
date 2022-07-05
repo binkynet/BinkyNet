@@ -51,6 +51,8 @@ message LocalWorkerInfo {
   string version = 3;
   // Uptime of the local worker in seconds.
   int64 uptime = 4;
+  // Hash of the current configuration
+  string config_hash = 5;
 }
 
 // Request arguments for GetPowerRequests
@@ -249,12 +251,14 @@ message DevicePin {
 
 // Configuration for a local worker
 message LocalWorkerConfig {
+  // Hash of the configuration
+  string hash = 1;
   // Human readable alias for this local worker.
-  string alias = 1;
+  string alias = 2;
   // List of devices that must be configured on this local worker.
-  repeated Device devices = 2;
+  repeated Device devices = 3;
 	// List of real world objects controlled by the local worker
-  repeated Object objects = 3;
+  repeated Object objects = 4;
   // Timestamp of network manager in seconds since 1970.
-  int64 unixtime = 4;
+  int64 unixtime = 5;
 }

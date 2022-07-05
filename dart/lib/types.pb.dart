@@ -138,6 +138,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uptime')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configHash')
     ..hasRequiredFields = false
   ;
 
@@ -147,6 +148,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.String? description,
     $core.String? version,
     $fixnum.Int64? uptime,
+    $core.String? configHash,
   }) {
     final _result = create();
     if (id != null) {
@@ -160,6 +162,9 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (uptime != null) {
       _result.uptime = uptime;
+    }
+    if (configHash != null) {
+      _result.configHash = configHash;
     }
     return _result;
   }
@@ -219,6 +224,15 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
   $core.bool hasUptime() => $_has(3);
   @$pb.TagNumber(4)
   void clearUptime() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get configHash => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set configHash($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasConfigHash() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearConfigHash() => clearField(5);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {
@@ -1418,21 +1432,26 @@ class DevicePin extends $pb.GeneratedMessage {
 
 class LocalWorkerConfig extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LocalWorkerConfig', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'alias')
-    ..pc<Device>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'devices', $pb.PbFieldType.PM, subBuilder: Device.create)
-    ..pc<Object>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'objects', $pb.PbFieldType.PM, subBuilder: Object.create)
-    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unixtime')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'alias')
+    ..pc<Device>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'devices', $pb.PbFieldType.PM, subBuilder: Device.create)
+    ..pc<Object>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'objects', $pb.PbFieldType.PM, subBuilder: Object.create)
+    ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unixtime')
     ..hasRequiredFields = false
   ;
 
   LocalWorkerConfig._() : super();
   factory LocalWorkerConfig({
+    $core.String? hash,
     $core.String? alias,
     $core.Iterable<Device>? devices,
     $core.Iterable<Object>? objects,
     $fixnum.Int64? unixtime,
   }) {
     final _result = create();
+    if (hash != null) {
+      _result.hash = hash;
+    }
     if (alias != null) {
       _result.alias = alias;
     }
@@ -1469,27 +1488,36 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
   static LocalWorkerConfig? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get alias => $_getSZ(0);
+  $core.String get hash => $_getSZ(0);
   @$pb.TagNumber(1)
-  set alias($core.String v) { $_setString(0, v); }
+  set hash($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasAlias() => $_has(0);
+  $core.bool hasHash() => $_has(0);
   @$pb.TagNumber(1)
-  void clearAlias() => clearField(1);
+  void clearHash() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<Device> get devices => $_getList(1);
+  $core.String get alias => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set alias($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasAlias() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAlias() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<Object> get objects => $_getList(2);
+  $core.List<Device> get devices => $_getList(2);
 
   @$pb.TagNumber(4)
-  $fixnum.Int64 get unixtime => $_getI64(3);
-  @$pb.TagNumber(4)
-  set unixtime($fixnum.Int64 v) { $_setInt64(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasUnixtime() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearUnixtime() => clearField(4);
+  $core.List<Object> get objects => $_getList(3);
+
+  @$pb.TagNumber(5)
+  $fixnum.Int64 get unixtime => $_getI64(4);
+  @$pb.TagNumber(5)
+  set unixtime($fixnum.Int64 v) { $_setInt64(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasUnixtime() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearUnixtime() => clearField(5);
 }
 

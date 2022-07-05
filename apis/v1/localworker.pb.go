@@ -26,26 +26,25 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// DiscoverRequest is sent when the netmanager wants to local worker to
-// probe its locally attached devices.
-type DiscoverRequest struct {
+// Arguments of Describe request.
+type DescribeRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *DiscoverRequest) Reset()         { *m = DiscoverRequest{} }
-func (m *DiscoverRequest) String() string { return proto.CompactTextString(m) }
-func (*DiscoverRequest) ProtoMessage()    {}
-func (*DiscoverRequest) Descriptor() ([]byte, []int) {
+func (m *DescribeRequest) Reset()         { *m = DescribeRequest{} }
+func (m *DescribeRequest) String() string { return proto.CompactTextString(m) }
+func (*DescribeRequest) ProtoMessage()    {}
+func (*DescribeRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4d9116c22e0c2dd1, []int{0}
 }
-func (m *DiscoverRequest) XXX_Unmarshal(b []byte) error {
+func (m *DescribeRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *DiscoverRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *DescribeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_DiscoverRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_DescribeRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -55,20 +54,61 @@ func (m *DiscoverRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return b[:n], nil
 	}
 }
-func (m *DiscoverRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DiscoverRequest.Merge(m, src)
+func (m *DescribeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DescribeRequest.Merge(m, src)
 }
-func (m *DiscoverRequest) XXX_Size() int {
+func (m *DescribeRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *DiscoverRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_DiscoverRequest.DiscardUnknown(m)
+func (m *DescribeRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DescribeRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_DiscoverRequest proto.InternalMessageInfo
+var xxx_messageInfo_DescribeRequest proto.InternalMessageInfo
 
-// DiscoverResult is returned in a response to a discover request by the netmanager.
-type DiscoverResult struct {
+// DiscoverDevicesRequest is sent when the netmanager wants to local worker to
+// probe its locally attached devices.
+type DiscoverDevicesRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DiscoverDevicesRequest) Reset()         { *m = DiscoverDevicesRequest{} }
+func (m *DiscoverDevicesRequest) String() string { return proto.CompactTextString(m) }
+func (*DiscoverDevicesRequest) ProtoMessage()    {}
+func (*DiscoverDevicesRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d9116c22e0c2dd1, []int{1}
+}
+func (m *DiscoverDevicesRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DiscoverDevicesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DiscoverDevicesRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *DiscoverDevicesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DiscoverDevicesRequest.Merge(m, src)
+}
+func (m *DiscoverDevicesRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *DiscoverDevicesRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DiscoverDevicesRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DiscoverDevicesRequest proto.InternalMessageInfo
+
+// DiscoverDevicesResult is returned in a response to a discover request by the netmanager.
+type DiscoverDevicesResult struct {
 	// ID of local worker
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// The addresses that were found
@@ -78,18 +118,18 @@ type DiscoverResult struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *DiscoverResult) Reset()         { *m = DiscoverResult{} }
-func (m *DiscoverResult) String() string { return proto.CompactTextString(m) }
-func (*DiscoverResult) ProtoMessage()    {}
-func (*DiscoverResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4d9116c22e0c2dd1, []int{1}
+func (m *DiscoverDevicesResult) Reset()         { *m = DiscoverDevicesResult{} }
+func (m *DiscoverDevicesResult) String() string { return proto.CompactTextString(m) }
+func (*DiscoverDevicesResult) ProtoMessage()    {}
+func (*DiscoverDevicesResult) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d9116c22e0c2dd1, []int{2}
 }
-func (m *DiscoverResult) XXX_Unmarshal(b []byte) error {
+func (m *DiscoverDevicesResult) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *DiscoverResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *DiscoverDevicesResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_DiscoverResult.Marshal(b, m, deterministic)
+		return xxx_messageInfo_DiscoverDevicesResult.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -99,72 +139,280 @@ func (m *DiscoverResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return b[:n], nil
 	}
 }
-func (m *DiscoverResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DiscoverResult.Merge(m, src)
+func (m *DiscoverDevicesResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DiscoverDevicesResult.Merge(m, src)
 }
-func (m *DiscoverResult) XXX_Size() int {
+func (m *DiscoverDevicesResult) XXX_Size() int {
 	return m.Size()
 }
-func (m *DiscoverResult) XXX_DiscardUnknown() {
-	xxx_messageInfo_DiscoverResult.DiscardUnknown(m)
+func (m *DiscoverDevicesResult) XXX_DiscardUnknown() {
+	xxx_messageInfo_DiscoverDevicesResult.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_DiscoverResult proto.InternalMessageInfo
+var xxx_messageInfo_DiscoverDevicesResult proto.InternalMessageInfo
 
-func (m *DiscoverResult) GetId() string {
+func (m *DiscoverDevicesResult) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-func (m *DiscoverResult) GetAddresses() []string {
+func (m *DiscoverDevicesResult) GetAddresses() []string {
 	if m != nil {
 		return m.Addresses
 	}
 	return nil
 }
 
+// Request arguments for GetPowerActuals
+type GetPowerActualsRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetPowerActualsRequest) Reset()         { *m = GetPowerActualsRequest{} }
+func (m *GetPowerActualsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetPowerActualsRequest) ProtoMessage()    {}
+func (*GetPowerActualsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d9116c22e0c2dd1, []int{3}
+}
+func (m *GetPowerActualsRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetPowerActualsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetPowerActualsRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetPowerActualsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetPowerActualsRequest.Merge(m, src)
+}
+func (m *GetPowerActualsRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetPowerActualsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetPowerActualsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetPowerActualsRequest proto.InternalMessageInfo
+
+// Request arguments for GetLocActuals
+type GetLocActualsRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetLocActualsRequest) Reset()         { *m = GetLocActualsRequest{} }
+func (m *GetLocActualsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetLocActualsRequest) ProtoMessage()    {}
+func (*GetLocActualsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d9116c22e0c2dd1, []int{4}
+}
+func (m *GetLocActualsRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetLocActualsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetLocActualsRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetLocActualsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetLocActualsRequest.Merge(m, src)
+}
+func (m *GetLocActualsRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetLocActualsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetLocActualsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetLocActualsRequest proto.InternalMessageInfo
+
+// Request arguments for GetSensorActuals
+type GetSensorActualsRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetSensorActualsRequest) Reset()         { *m = GetSensorActualsRequest{} }
+func (m *GetSensorActualsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetSensorActualsRequest) ProtoMessage()    {}
+func (*GetSensorActualsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d9116c22e0c2dd1, []int{5}
+}
+func (m *GetSensorActualsRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetSensorActualsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetSensorActualsRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetSensorActualsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetSensorActualsRequest.Merge(m, src)
+}
+func (m *GetSensorActualsRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetSensorActualsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetSensorActualsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetSensorActualsRequest proto.InternalMessageInfo
+
+// Request arguments for GetOutputActuals
+type GetOutputActualsRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetOutputActualsRequest) Reset()         { *m = GetOutputActualsRequest{} }
+func (m *GetOutputActualsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetOutputActualsRequest) ProtoMessage()    {}
+func (*GetOutputActualsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d9116c22e0c2dd1, []int{6}
+}
+func (m *GetOutputActualsRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetOutputActualsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetOutputActualsRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetOutputActualsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetOutputActualsRequest.Merge(m, src)
+}
+func (m *GetOutputActualsRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetOutputActualsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetOutputActualsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetOutputActualsRequest proto.InternalMessageInfo
+
+// Request arguments for GetSwitchActuals
+type GetSwitchActualsRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetSwitchActualsRequest) Reset()         { *m = GetSwitchActualsRequest{} }
+func (m *GetSwitchActualsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetSwitchActualsRequest) ProtoMessage()    {}
+func (*GetSwitchActualsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_4d9116c22e0c2dd1, []int{7}
+}
+func (m *GetSwitchActualsRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *GetSwitchActualsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_GetSwitchActualsRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *GetSwitchActualsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetSwitchActualsRequest.Merge(m, src)
+}
+func (m *GetSwitchActualsRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *GetSwitchActualsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetSwitchActualsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetSwitchActualsRequest proto.InternalMessageInfo
+
 func init() {
-	proto.RegisterType((*DiscoverRequest)(nil), "binkynet.v1.DiscoverRequest")
-	proto.RegisterType((*DiscoverResult)(nil), "binkynet.v1.DiscoverResult")
+	proto.RegisterType((*DescribeRequest)(nil), "binkynet.v1.DescribeRequest")
+	proto.RegisterType((*DiscoverDevicesRequest)(nil), "binkynet.v1.DiscoverDevicesRequest")
+	proto.RegisterType((*DiscoverDevicesResult)(nil), "binkynet.v1.DiscoverDevicesResult")
+	proto.RegisterType((*GetPowerActualsRequest)(nil), "binkynet.v1.GetPowerActualsRequest")
+	proto.RegisterType((*GetLocActualsRequest)(nil), "binkynet.v1.GetLocActualsRequest")
+	proto.RegisterType((*GetSensorActualsRequest)(nil), "binkynet.v1.GetSensorActualsRequest")
+	proto.RegisterType((*GetOutputActualsRequest)(nil), "binkynet.v1.GetOutputActualsRequest")
+	proto.RegisterType((*GetSwitchActualsRequest)(nil), "binkynet.v1.GetSwitchActualsRequest")
 }
 
 func init() { proto.RegisterFile("localworker.proto", fileDescriptor_4d9116c22e0c2dd1) }
 
 var fileDescriptor_4d9116c22e0c2dd1 = []byte{
-	// 487 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x94, 0xc1, 0x6e, 0xd3, 0x40,
-	0x10, 0x86, 0xd9, 0x80, 0x80, 0x4c, 0x45, 0x9a, 0x6c, 0x0e, 0x84, 0x50, 0x99, 0x12, 0x71, 0xc8,
-	0xc9, 0x71, 0x0a, 0x12, 0x5c, 0x40, 0xb4, 0xb4, 0xb2, 0x2a, 0xaa, 0x36, 0x8a, 0x25, 0x90, 0xb8,
-	0x39, 0xce, 0x34, 0x5d, 0xc5, 0xf5, 0x1a, 0xef, 0x38, 0x51, 0x9e, 0x04, 0x9e, 0x81, 0x27, 0xe1,
-	0xc8, 0x23, 0xa0, 0xf0, 0x22, 0x28, 0x36, 0x4e, 0xb3, 0xae, 0x4d, 0x6e, 0xd9, 0xf9, 0xff, 0x7f,
-	0xe6, 0x9b, 0x91, 0x62, 0x68, 0xf8, 0xd2, 0x73, 0xfd, 0xb9, 0x8c, 0xa6, 0x18, 0x99, 0x61, 0x24,
-	0x49, 0xf2, 0x9d, 0x91, 0x08, 0xa6, 0x8b, 0x00, 0xc9, 0x9c, 0xf5, 0xdb, 0x3b, 0xb4, 0x08, 0x51,
-	0xa5, 0x4a, 0xa7, 0x01, 0xbb, 0xc7, 0x42, 0x79, 0x72, 0x86, 0xd1, 0x10, 0xbf, 0xc6, 0xa8, 0xa8,
-	0xf3, 0x0e, 0x6a, 0x37, 0x25, 0x15, 0xfb, 0xc4, 0x6b, 0x50, 0x11, 0xe3, 0x16, 0xdb, 0x67, 0xdd,
-	0xea, 0xb0, 0x22, 0xc6, 0x7c, 0x0f, 0xaa, 0xee, 0x78, 0x1c, 0xa1, 0x52, 0xa8, 0x5a, 0x95, 0xfd,
-	0xbb, 0xdd, 0xea, 0xf0, 0xa6, 0x70, 0x30, 0x81, 0xd6, 0xd9, 0x8a, 0xe0, 0x73, 0x42, 0xf0, 0x41,
-	0x06, 0x97, 0x62, 0xe2, 0x60, 0x34, 0x13, 0x1e, 0xf2, 0x8f, 0x50, 0xb5, 0x91, 0xd2, 0x1a, 0xdf,
-	0x33, 0x37, 0xb0, 0xcc, 0x8d, 0xcc, 0x69, 0x70, 0x29, 0xdb, 0x46, 0x99, 0x9a, 0xa6, 0x2d, 0x76,
-	0xf0, 0xed, 0x01, 0x3c, 0xd1, 0xeb, 0x14, 0x49, 0x3f, 0x1b, 0xf5, 0x06, 0xee, 0x0d, 0x44, 0xb0,
-	0x6d, 0x0a, 0xd7, 0xd4, 0x93, 0xeb, 0x90, 0x16, 0xdc, 0x81, 0xa6, 0x8d, 0x94, 0x3b, 0x8b, 0xda,
-	0xd2, 0x48, 0x57, 0x73, 0x61, 0x8b, 0xf1, 0x63, 0x68, 0x38, 0x9b, 0x4d, 0x93, 0xc3, 0x3e, 0x2d,
-	0x09, 0xad, 0xc4, 0x42, 0xb4, 0x01, 0xd4, 0x6d, 0xa4, 0x81, 0x9c, 0x6f, 0x70, 0x3d, 0xd7, 0x7c,
-	0x9a, 0x76, 0x11, 0x92, 0x90, 0x81, 0x6a, 0x3f, 0xbe, 0x6d, 0x71, 0xc8, 0x25, 0xb4, 0x18, 0x7f,
-	0x0f, 0xbb, 0xce, 0xbf, 0x8e, 0x87, 0x1e, 0xc5, 0xae, 0xaf, 0x78, 0x99, 0xbb, 0x88, 0xa8, 0xcb,
-	0xf8, 0x09, 0xd4, 0x6c, 0xa4, 0x33, 0xe9, 0xad, 0x89, 0x9e, 0xe5, 0x2f, 0x95, 0xe7, 0xa9, 0xe7,
-	0x0d, 0x16, 0xe3, 0xaf, 0xe1, 0x91, 0x93, 0xb4, 0xc9, 0x30, 0x6e, 0x99, 0x4a, 0xe6, 0xbf, 0x85,
-	0xba, 0x83, 0xe4, 0x60, 0xa0, 0xe4, 0x7a, 0x85, 0xa6, 0xe6, 0x4c, 0xb5, 0x92, 0xf8, 0x39, 0x34,
-	0x6c, 0xa4, 0x8b, 0x98, 0xc2, 0x98, 0xd6, 0x1b, 0x74, 0x34, 0xab, 0x2e, 0x66, 0x4b, 0x34, 0x0b,
-	0x3c, 0x56, 0x86, 0x93, 0x3e, 0x8b, 0x71, 0x52, 0xed, 0xbf, 0x38, 0xce, 0x5c, 0x90, 0x77, 0x55,
-	0x82, 0xa3, 0x8b, 0xc5, 0x38, 0xa9, 0x67, 0x8d, 0x93, 0x3e, 0x4b, 0xae, 0x93, 0x68, 0x25, 0x38,
-	0xaf, 0xe0, 0xe1, 0xea, 0x0f, 0xeb, 0x4b, 0x6f, 0xca, 0x0b, 0x1c, 0xb9, 0x54, 0xe2, 0xb3, 0xd8,
-	0xd1, 0xe9, 0xcf, 0xa5, 0xc1, 0x7e, 0x2d, 0x0d, 0xf6, 0x7b, 0x69, 0xb0, 0xef, 0x7f, 0x8c, 0x3b,
-	0x5f, 0x5e, 0x4c, 0x04, 0x5d, 0xc5, 0x23, 0xd3, 0x93, 0xd7, 0xbd, 0x2c, 0xd1, 0x3b, 0x5a, 0xfd,
-	0x38, 0x47, 0xea, 0xb9, 0xa1, 0x50, 0xbd, 0x59, 0xff, 0x47, 0xa5, 0x9e, 0x95, 0xcc, 0xc3, 0x50,
-	0x28, 0xf3, 0x53, 0x7f, 0x74, 0x3f, 0xf9, 0x4e, 0xbd, 0xfc, 0x1b, 0x00, 0x00, 0xff, 0xff, 0x8f,
-	0x16, 0x88, 0xb2, 0xd6, 0x04, 0x00, 0x00,
+	// 513 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x54, 0x41, 0x6e, 0xd3, 0x40,
+	0x14, 0x65, 0x82, 0x04, 0xcd, 0x54, 0x34, 0xc9, 0x07, 0xda, 0x60, 0x55, 0x56, 0x09, 0x5d, 0x64,
+	0xe5, 0x38, 0xc0, 0x82, 0x15, 0x28, 0x6d, 0x4a, 0xa8, 0x54, 0x51, 0x88, 0x25, 0x90, 0xba, 0x73,
+	0x9c, 0xdf, 0x76, 0x14, 0xd7, 0x63, 0x66, 0xc6, 0x89, 0x72, 0x13, 0xce, 0xc0, 0x19, 0x38, 0x00,
+	0x4b, 0x8e, 0x80, 0xc2, 0x45, 0x50, 0xec, 0x3a, 0x74, 0x9c, 0x71, 0x76, 0xd6, 0x7f, 0xff, 0xcf,
+	0x7f, 0xf3, 0xde, 0x1b, 0xd3, 0x46, 0xc8, 0x03, 0x3f, 0x9c, 0x71, 0x31, 0x41, 0xe1, 0xc4, 0x82,
+	0x2b, 0x0e, 0xdb, 0x23, 0x16, 0x4d, 0xe6, 0x11, 0x2a, 0x67, 0xda, 0xb5, 0xb6, 0xd5, 0x3c, 0x46,
+	0x99, 0x21, 0xad, 0x06, 0xad, 0xf5, 0x51, 0x06, 0x82, 0x8d, 0x70, 0x88, 0xdf, 0x12, 0x94, 0xaa,
+	0xd5, 0xa4, 0xbb, 0x7d, 0x26, 0x03, 0x3e, 0x45, 0xd1, 0xc7, 0x29, 0x0b, 0x50, 0xe6, 0xc8, 0x09,
+	0x7d, 0xba, 0x86, 0xc8, 0x24, 0x54, 0xb0, 0x43, 0x2b, 0x6c, 0xdc, 0x24, 0x07, 0xa4, 0x5d, 0x1d,
+	0x56, 0xd8, 0x18, 0xf6, 0x69, 0xd5, 0x1f, 0x8f, 0x05, 0x4a, 0x89, 0xb2, 0x59, 0x39, 0xb8, 0xdf,
+	0xae, 0x0e, 0xff, 0x17, 0x96, 0x0b, 0x06, 0xa8, 0x3e, 0xf1, 0x19, 0x8a, 0x5e, 0xa0, 0x12, 0x3f,
+	0x5c, 0x2d, 0xd8, 0xa5, 0x4f, 0x06, 0xa8, 0xce, 0x78, 0x50, 0xa8, 0x3f, 0xa3, 0x7b, 0x03, 0x54,
+	0x1e, 0x46, 0x92, 0x0b, 0x23, 0x74, 0x9e, 0xa8, 0x38, 0x51, 0xe6, 0xa9, 0x19, 0x53, 0xc1, 0xb5,
+	0x0e, 0xbd, 0xfc, 0xf9, 0x90, 0xc2, 0xd9, 0x52, 0xa6, 0xaf, 0xa9, 0x4c, 0x1e, 0x8a, 0xe5, 0x75,
+	0xe0, 0x03, 0xdd, 0xca, 0xd5, 0x80, 0x7d, 0xe7, 0x8e, 0x68, 0x4e, 0x41, 0x24, 0x4b, 0x47, 0xef,
+	0x1c, 0x75, 0x1a, 0x5d, 0x72, 0x97, 0xc0, 0x3b, 0x5a, 0x3d, 0xe6, 0xd1, 0x25, 0xbb, 0x4a, 0x04,
+	0x82, 0x5d, 0xd6, 0x9c, 0xb5, 0x58, 0xa0, 0xe1, 0x27, 0x37, 0xb1, 0x9a, 0xc3, 0x05, 0xad, 0x15,
+	0xb4, 0x86, 0x17, 0x3a, 0x23, 0xa3, 0x47, 0x56, 0x6b, 0x73, 0x53, 0x6a, 0x57, 0x8f, 0xd6, 0xbd,
+	0x5b, 0x03, 0x6e, 0xc7, 0x24, 0xec, 0x69, 0x73, 0x29, 0xe6, 0x29, 0x5f, 0xa1, 0x89, 0x5c, 0x9b,
+	0xc0, 0x67, 0x5a, 0x2b, 0x78, 0x58, 0xa0, 0x67, 0x76, 0xd8, 0x2a, 0x5b, 0xe3, 0x12, 0x78, 0x43,
+	0x77, 0xbc, 0xd4, 0xfc, 0x15, 0xa7, 0x7a, 0x51, 0xb7, 0x12, 0x32, 0xef, 0xe9, 0x23, 0x2d, 0x36,
+	0xf0, 0xbc, 0x48, 0x65, 0x2d, 0x52, 0xd6, 0xda, 0xd9, 0x2e, 0x81, 0x73, 0x5a, 0x2f, 0xc6, 0x0c,
+	0x0e, 0x8b, 0x47, 0x99, 0x52, 0x68, 0x3d, 0xd6, 0xba, 0xb2, 0x16, 0x97, 0xc0, 0x5b, 0xda, 0xf0,
+	0xf2, 0x70, 0xae, 0x6e, 0xa5, 0xf7, 0x66, 0x60, 0xc9, 0xc5, 0x32, 0x42, 0x5a, 0xb8, 0xd7, 0x09,
+	0x99, 0xb2, 0x6f, 0x99, 0x96, 0xac, 0x08, 0x65, 0x4f, 0xa2, 0x84, 0x50, 0x06, 0x6e, 0x24, 0xa4,
+	0x3d, 0x29, 0x83, 0x42, 0x86, 0x17, 0x67, 0x99, 0x96, 0xb8, 0x04, 0x5e, 0xd3, 0x2d, 0x0f, 0xd5,
+	0x71, 0xc8, 0x83, 0x09, 0xe8, 0x2b, 0xd3, 0x9a, 0x99, 0xc6, 0xd1, 0xe9, 0xaf, 0x85, 0x4d, 0x7e,
+	0x2f, 0x6c, 0xf2, 0x67, 0x61, 0x93, 0xef, 0x7f, 0xed, 0x7b, 0x17, 0x87, 0x57, 0x4c, 0x5d, 0x27,
+	0x23, 0x27, 0xe0, 0x37, 0x9d, 0x7c, 0xa2, 0x73, 0xb4, 0xfc, 0xf8, 0x88, 0xaa, 0xe3, 0xc7, 0x4c,
+	0x76, 0xa6, 0xdd, 0x1f, 0x95, 0x7a, 0x5e, 0x72, 0x7a, 0x31, 0x93, 0xce, 0x97, 0xee, 0xe8, 0x41,
+	0xfa, 0x1f, 0x7c, 0xf5, 0x2f, 0x00, 0x00, 0xff, 0xff, 0xa1, 0x88, 0x5c, 0x33, 0x36, 0x05, 0x00,
+	0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -175,178 +423,65 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// LocalWorkerConfigServiceClient is the client API for LocalWorkerConfigService service.
+// LocalWorkerServiceClient is the client API for LocalWorkerService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type LocalWorkerConfigServiceClient interface {
-	// GetConfig is used to fetch the configuration for a local worker.
-	GetConfig(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (LocalWorkerConfigService_GetConfigClient, error)
-}
-
-type localWorkerConfigServiceClient struct {
-	cc *grpc.ClientConn
-}
-
-func NewLocalWorkerConfigServiceClient(cc *grpc.ClientConn) LocalWorkerConfigServiceClient {
-	return &localWorkerConfigServiceClient{cc}
-}
-
-func (c *localWorkerConfigServiceClient) GetConfig(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (LocalWorkerConfigService_GetConfigClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerConfigService_serviceDesc.Streams[0], "/binkynet.v1.LocalWorkerConfigService/GetConfig", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &localWorkerConfigServiceGetConfigClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type LocalWorkerConfigService_GetConfigClient interface {
-	Recv() (*LocalWorkerConfig, error)
-	grpc.ClientStream
-}
-
-type localWorkerConfigServiceGetConfigClient struct {
-	grpc.ClientStream
-}
-
-func (x *localWorkerConfigServiceGetConfigClient) Recv() (*LocalWorkerConfig, error) {
-	m := new(LocalWorkerConfig)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-// LocalWorkerConfigServiceServer is the server API for LocalWorkerConfigService service.
-type LocalWorkerConfigServiceServer interface {
-	// GetConfig is used to fetch the configuration for a local worker.
-	GetConfig(*LocalWorkerInfo, LocalWorkerConfigService_GetConfigServer) error
-}
-
-// UnimplementedLocalWorkerConfigServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedLocalWorkerConfigServiceServer struct {
-}
-
-func (*UnimplementedLocalWorkerConfigServiceServer) GetConfig(req *LocalWorkerInfo, srv LocalWorkerConfigService_GetConfigServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetConfig not implemented")
-}
-
-func RegisterLocalWorkerConfigServiceServer(s *grpc.Server, srv LocalWorkerConfigServiceServer) {
-	s.RegisterService(&_LocalWorkerConfigService_serviceDesc, srv)
-}
-
-func _LocalWorkerConfigService_GetConfig_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(LocalWorkerInfo)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(LocalWorkerConfigServiceServer).GetConfig(m, &localWorkerConfigServiceGetConfigServer{stream})
-}
-
-type LocalWorkerConfigService_GetConfigServer interface {
-	Send(*LocalWorkerConfig) error
-	grpc.ServerStream
-}
-
-type localWorkerConfigServiceGetConfigServer struct {
-	grpc.ServerStream
-}
-
-func (x *localWorkerConfigServiceGetConfigServer) Send(m *LocalWorkerConfig) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-var _LocalWorkerConfigService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "binkynet.v1.LocalWorkerConfigService",
-	HandlerType: (*LocalWorkerConfigServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
-	Streams: []grpc.StreamDesc{
-		{
-			StreamName:    "GetConfig",
-			Handler:       _LocalWorkerConfigService_GetConfig_Handler,
-			ServerStreams: true,
-		},
-	},
-	Metadata: "localworker.proto",
-}
-
-// LocalWorkerControlServiceClient is the client API for LocalWorkerControlService service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type LocalWorkerControlServiceClient interface {
-	// Ping messages are send at regular intervals by local workers
-	// as a heartbeat notification, as well as providing information about
-	// versions.
-	Ping(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (*Empty, error)
-	// GetDiscoverRequests is used to allow the netmanager to request a discovery by
+type LocalWorkerServiceClient interface {
+	// Describe is used to fetch the a stream if identyable information of a local worker.
+	Describe(ctx context.Context, in *DescribeRequest, opts ...grpc.CallOption) (LocalWorkerService_DescribeClient, error)
+	// Configure is used to configure a local worker.
+	Configure(ctx context.Context, in *LocalWorkerConfig, opts ...grpc.CallOption) (*Empty, error)
+	// DiscoverDevices is used by the netmanager to request a discovery by
 	// the local worker.
-	// The local worker in turn responds with a SetDiscoverResult call.
-	GetDiscoverRequests(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (LocalWorkerControlService_GetDiscoverRequestsClient, error)
-	// SetDiscoverResult is called by the local worker in response to discover requests.
-	SetDiscoverResult(ctx context.Context, in *DiscoverResult, opts ...grpc.CallOption) (*Empty, error)
-	// GetPowerRequests is used to get a stream of power requests from the network
-	// master.
-	GetPowerRequests(ctx context.Context, in *PowerRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetPowerRequestsClient, error)
-	// SetPowerActuals is used to send a stream of actual power statuses to
-	// the network master.
-	SetPowerActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetPowerActualsClient, error)
-	// GetLocRequests is used to get a stream of loc requests from the network
-	// master.
+	// The local worker in turn responds the found devices.
+	DiscoverDevices(ctx context.Context, in *DiscoverDevicesRequest, opts ...grpc.CallOption) (*DiscoverDevicesResult, error)
+	// SetPowerRequests is used to change the power state of the local worker.
+	SetPowerRequests(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetPowerRequestsClient, error)
+	// GetPowerActuals is used to fetch a stream of actual power statuses
+	// from the local workers, to the network master.
+	GetPowerActuals(ctx context.Context, in *GetPowerActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetPowerActualsClient, error)
+	// SetLocRequests is used to send a stream of loc requests from the network
+	// master to the local worker.
 	// Note: Loc.actual field is not set.
-	GetLocRequests(ctx context.Context, in *LocRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetLocRequestsClient, error)
-	// SetLocActuals is used to send a stream of actual loc statuses to
-	// the network master.
+	SetLocRequests(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetLocRequestsClient, error)
+	// GetLocActuals is used to send a stream of actual loc statuses from
+	// the local worker to the network master.
 	// Note: Loc.request field must be set to the latest request.
-	SetLocActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetLocActualsClient, error)
-	// SetSensorActuals is used to send a stream of actual sensor statuses to
-	// the network master.
-	SetSensorActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetSensorActualsClient, error)
-	// GetOutputRequests is used to get a stream of output requests from the network
-	// master.
-	GetOutputRequests(ctx context.Context, in *OutputRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetOutputRequestsClient, error)
-	// SetOutputActuals is used to send a stream of actual output statuses to
-	// the network master.
-	SetOutputActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetOutputActualsClient, error)
-	// GetSwitchRequests is used to get a stream of switch requests from the network
-	// master.
-	GetSwitchRequests(ctx context.Context, in *SwitchRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetSwitchRequestsClient, error)
-	// SetSwitchActuals is used to send a stream of actual switch statuses to
-	// the network master.
-	SetSwitchActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetSwitchActualsClient, error)
-	// GetClock is used to get a stream of switch current time of day from the network
-	// master.
-	GetClock(ctx context.Context, in *Empty, opts ...grpc.CallOption) (LocalWorkerControlService_GetClockClient, error)
+	GetLocActuals(ctx context.Context, in *GetLocActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetLocActualsClient, error)
+	// GetSensorActuals is used to send a stream of actual sensor statuses
+	// from the local worker to the network master.
+	GetSensorActuals(ctx context.Context, in *GetSensorActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetSensorActualsClient, error)
+	// SetOutputRequests is used to get a stream of output requests from the network
+	// master to the local worker.
+	SetOutputRequests(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetOutputRequestsClient, error)
+	// GetOutputActuals is used to send a stream of actual output statuses from
+	// the local worker to the network master.
+	GetOutputActuals(ctx context.Context, in *GetOutputActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetOutputActualsClient, error)
+	// SetSwitchRequests is used to get a stream of switch requests from the network
+	// master to the local worker.
+	SetSwitchRequests(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetSwitchRequestsClient, error)
+	// GetSwitchActuals is used to send a stream of actual switch statuses from
+	// the local worker to the network master.
+	GetSwitchActuals(ctx context.Context, in *GetSwitchActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetSwitchActualsClient, error)
+	// SetClock is used to send a stream of current time of day from the network
+	// master to the local worker.
+	SetClock(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetClockClient, error)
 }
 
-type localWorkerControlServiceClient struct {
+type localWorkerServiceClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewLocalWorkerControlServiceClient(cc *grpc.ClientConn) LocalWorkerControlServiceClient {
-	return &localWorkerControlServiceClient{cc}
+func NewLocalWorkerServiceClient(cc *grpc.ClientConn) LocalWorkerServiceClient {
+	return &localWorkerServiceClient{cc}
 }
 
-func (c *localWorkerControlServiceClient) Ping(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerControlService/Ping", in, out, opts...)
+func (c *localWorkerServiceClient) Describe(ctx context.Context, in *DescribeRequest, opts ...grpc.CallOption) (LocalWorkerService_DescribeClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[0], "/binkynet.v1.LocalWorkerService/Describe", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
-}
-
-func (c *localWorkerControlServiceClient) GetDiscoverRequests(ctx context.Context, in *LocalWorkerInfo, opts ...grpc.CallOption) (LocalWorkerControlService_GetDiscoverRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[0], "/binkynet.v1.LocalWorkerControlService/GetDiscoverRequests", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &localWorkerControlServiceGetDiscoverRequestsClient{stream}
+	x := &localWorkerServiceDescribeClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -356,38 +491,81 @@ func (c *localWorkerControlServiceClient) GetDiscoverRequests(ctx context.Contex
 	return x, nil
 }
 
-type LocalWorkerControlService_GetDiscoverRequestsClient interface {
-	Recv() (*DiscoverRequest, error)
+type LocalWorkerService_DescribeClient interface {
+	Recv() (*LocalWorkerInfo, error)
 	grpc.ClientStream
 }
 
-type localWorkerControlServiceGetDiscoverRequestsClient struct {
+type localWorkerServiceDescribeClient struct {
 	grpc.ClientStream
 }
 
-func (x *localWorkerControlServiceGetDiscoverRequestsClient) Recv() (*DiscoverRequest, error) {
-	m := new(DiscoverRequest)
+func (x *localWorkerServiceDescribeClient) Recv() (*LocalWorkerInfo, error) {
+	m := new(LocalWorkerInfo)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func (c *localWorkerControlServiceClient) SetDiscoverResult(ctx context.Context, in *DiscoverResult, opts ...grpc.CallOption) (*Empty, error) {
+func (c *localWorkerServiceClient) Configure(ctx context.Context, in *LocalWorkerConfig, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerControlService/SetDiscoverResult", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerService/Configure", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *localWorkerControlServiceClient) GetPowerRequests(ctx context.Context, in *PowerRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetPowerRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[1], "/binkynet.v1.LocalWorkerControlService/GetPowerRequests", opts...)
+func (c *localWorkerServiceClient) DiscoverDevices(ctx context.Context, in *DiscoverDevicesRequest, opts ...grpc.CallOption) (*DiscoverDevicesResult, error) {
+	out := new(DiscoverDevicesResult)
+	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerService/DiscoverDevices", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &localWorkerControlServiceGetPowerRequestsClient{stream}
+	return out, nil
+}
+
+func (c *localWorkerServiceClient) SetPowerRequests(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetPowerRequestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[1], "/binkynet.v1.LocalWorkerService/SetPowerRequests", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerServiceSetPowerRequestsClient{stream}
+	return x, nil
+}
+
+type LocalWorkerService_SetPowerRequestsClient interface {
+	Send(*PowerState) error
+	CloseAndRecv() (*Empty, error)
+	grpc.ClientStream
+}
+
+type localWorkerServiceSetPowerRequestsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerServiceSetPowerRequestsClient) Send(m *PowerState) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *localWorkerServiceSetPowerRequestsClient) CloseAndRecv() (*Empty, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(Empty)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerServiceClient) GetPowerActuals(ctx context.Context, in *GetPowerActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetPowerActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[2], "/binkynet.v1.LocalWorkerService/GetPowerActuals", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerServiceGetPowerActualsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -397,16 +575,16 @@ func (c *localWorkerControlServiceClient) GetPowerRequests(ctx context.Context, 
 	return x, nil
 }
 
-type LocalWorkerControlService_GetPowerRequestsClient interface {
+type LocalWorkerService_GetPowerActualsClient interface {
 	Recv() (*PowerState, error)
 	grpc.ClientStream
 }
 
-type localWorkerControlServiceGetPowerRequestsClient struct {
+type localWorkerServiceGetPowerActualsClient struct {
 	grpc.ClientStream
 }
 
-func (x *localWorkerControlServiceGetPowerRequestsClient) Recv() (*PowerState, error) {
+func (x *localWorkerServiceGetPowerActualsClient) Recv() (*PowerState, error) {
 	m := new(PowerState)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -414,30 +592,30 @@ func (x *localWorkerControlServiceGetPowerRequestsClient) Recv() (*PowerState, e
 	return m, nil
 }
 
-func (c *localWorkerControlServiceClient) SetPowerActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetPowerActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[2], "/binkynet.v1.LocalWorkerControlService/SetPowerActuals", opts...)
+func (c *localWorkerServiceClient) SetLocRequests(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetLocRequestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[3], "/binkynet.v1.LocalWorkerService/SetLocRequests", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &localWorkerControlServiceSetPowerActualsClient{stream}
+	x := &localWorkerServiceSetLocRequestsClient{stream}
 	return x, nil
 }
 
-type LocalWorkerControlService_SetPowerActualsClient interface {
-	Send(*PowerState) error
+type LocalWorkerService_SetLocRequestsClient interface {
+	Send(*Loc) error
 	CloseAndRecv() (*Empty, error)
 	grpc.ClientStream
 }
 
-type localWorkerControlServiceSetPowerActualsClient struct {
+type localWorkerServiceSetLocRequestsClient struct {
 	grpc.ClientStream
 }
 
-func (x *localWorkerControlServiceSetPowerActualsClient) Send(m *PowerState) error {
+func (x *localWorkerServiceSetLocRequestsClient) Send(m *Loc) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *localWorkerControlServiceSetPowerActualsClient) CloseAndRecv() (*Empty, error) {
+func (x *localWorkerServiceSetLocRequestsClient) CloseAndRecv() (*Empty, error) {
 	if err := x.ClientStream.CloseSend(); err != nil {
 		return nil, err
 	}
@@ -448,12 +626,12 @@ func (x *localWorkerControlServiceSetPowerActualsClient) CloseAndRecv() (*Empty,
 	return m, nil
 }
 
-func (c *localWorkerControlServiceClient) GetLocRequests(ctx context.Context, in *LocRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetLocRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[3], "/binkynet.v1.LocalWorkerControlService/GetLocRequests", opts...)
+func (c *localWorkerServiceClient) GetLocActuals(ctx context.Context, in *GetLocActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetLocActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[4], "/binkynet.v1.LocalWorkerService/GetLocActuals", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &localWorkerControlServiceGetLocRequestsClient{stream}
+	x := &localWorkerServiceGetLocActualsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -463,16 +641,16 @@ func (c *localWorkerControlServiceClient) GetLocRequests(ctx context.Context, in
 	return x, nil
 }
 
-type LocalWorkerControlService_GetLocRequestsClient interface {
+type LocalWorkerService_GetLocActualsClient interface {
 	Recv() (*Loc, error)
 	grpc.ClientStream
 }
 
-type localWorkerControlServiceGetLocRequestsClient struct {
+type localWorkerServiceGetLocActualsClient struct {
 	grpc.ClientStream
 }
 
-func (x *localWorkerControlServiceGetLocRequestsClient) Recv() (*Loc, error) {
+func (x *localWorkerServiceGetLocActualsClient) Recv() (*Loc, error) {
 	m := new(Loc)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -480,80 +658,12 @@ func (x *localWorkerControlServiceGetLocRequestsClient) Recv() (*Loc, error) {
 	return m, nil
 }
 
-func (c *localWorkerControlServiceClient) SetLocActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetLocActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[4], "/binkynet.v1.LocalWorkerControlService/SetLocActuals", opts...)
+func (c *localWorkerServiceClient) GetSensorActuals(ctx context.Context, in *GetSensorActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetSensorActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[5], "/binkynet.v1.LocalWorkerService/GetSensorActuals", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &localWorkerControlServiceSetLocActualsClient{stream}
-	return x, nil
-}
-
-type LocalWorkerControlService_SetLocActualsClient interface {
-	Send(*Loc) error
-	CloseAndRecv() (*Empty, error)
-	grpc.ClientStream
-}
-
-type localWorkerControlServiceSetLocActualsClient struct {
-	grpc.ClientStream
-}
-
-func (x *localWorkerControlServiceSetLocActualsClient) Send(m *Loc) error {
-	return x.ClientStream.SendMsg(m)
-}
-
-func (x *localWorkerControlServiceSetLocActualsClient) CloseAndRecv() (*Empty, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(Empty)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *localWorkerControlServiceClient) SetSensorActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetSensorActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[5], "/binkynet.v1.LocalWorkerControlService/SetSensorActuals", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &localWorkerControlServiceSetSensorActualsClient{stream}
-	return x, nil
-}
-
-type LocalWorkerControlService_SetSensorActualsClient interface {
-	Send(*Sensor) error
-	CloseAndRecv() (*Empty, error)
-	grpc.ClientStream
-}
-
-type localWorkerControlServiceSetSensorActualsClient struct {
-	grpc.ClientStream
-}
-
-func (x *localWorkerControlServiceSetSensorActualsClient) Send(m *Sensor) error {
-	return x.ClientStream.SendMsg(m)
-}
-
-func (x *localWorkerControlServiceSetSensorActualsClient) CloseAndRecv() (*Empty, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(Empty)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *localWorkerControlServiceClient) GetOutputRequests(ctx context.Context, in *OutputRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetOutputRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[6], "/binkynet.v1.LocalWorkerControlService/GetOutputRequests", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &localWorkerControlServiceGetOutputRequestsClient{stream}
+	x := &localWorkerServiceGetSensorActualsClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -563,466 +673,471 @@ func (c *localWorkerControlServiceClient) GetOutputRequests(ctx context.Context,
 	return x, nil
 }
 
-type LocalWorkerControlService_GetOutputRequestsClient interface {
-	Recv() (*Output, error)
-	grpc.ClientStream
-}
-
-type localWorkerControlServiceGetOutputRequestsClient struct {
-	grpc.ClientStream
-}
-
-func (x *localWorkerControlServiceGetOutputRequestsClient) Recv() (*Output, error) {
-	m := new(Output)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *localWorkerControlServiceClient) SetOutputActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetOutputActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[7], "/binkynet.v1.LocalWorkerControlService/SetOutputActuals", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &localWorkerControlServiceSetOutputActualsClient{stream}
-	return x, nil
-}
-
-type LocalWorkerControlService_SetOutputActualsClient interface {
-	Send(*Output) error
-	CloseAndRecv() (*Empty, error)
-	grpc.ClientStream
-}
-
-type localWorkerControlServiceSetOutputActualsClient struct {
-	grpc.ClientStream
-}
-
-func (x *localWorkerControlServiceSetOutputActualsClient) Send(m *Output) error {
-	return x.ClientStream.SendMsg(m)
-}
-
-func (x *localWorkerControlServiceSetOutputActualsClient) CloseAndRecv() (*Empty, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(Empty)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *localWorkerControlServiceClient) GetSwitchRequests(ctx context.Context, in *SwitchRequestsOptions, opts ...grpc.CallOption) (LocalWorkerControlService_GetSwitchRequestsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[8], "/binkynet.v1.LocalWorkerControlService/GetSwitchRequests", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &localWorkerControlServiceGetSwitchRequestsClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type LocalWorkerControlService_GetSwitchRequestsClient interface {
-	Recv() (*Switch, error)
-	grpc.ClientStream
-}
-
-type localWorkerControlServiceGetSwitchRequestsClient struct {
-	grpc.ClientStream
-}
-
-func (x *localWorkerControlServiceGetSwitchRequestsClient) Recv() (*Switch, error) {
-	m := new(Switch)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *localWorkerControlServiceClient) SetSwitchActuals(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerControlService_SetSwitchActualsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[9], "/binkynet.v1.LocalWorkerControlService/SetSwitchActuals", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &localWorkerControlServiceSetSwitchActualsClient{stream}
-	return x, nil
-}
-
-type LocalWorkerControlService_SetSwitchActualsClient interface {
-	Send(*Switch) error
-	CloseAndRecv() (*Empty, error)
-	grpc.ClientStream
-}
-
-type localWorkerControlServiceSetSwitchActualsClient struct {
-	grpc.ClientStream
-}
-
-func (x *localWorkerControlServiceSetSwitchActualsClient) Send(m *Switch) error {
-	return x.ClientStream.SendMsg(m)
-}
-
-func (x *localWorkerControlServiceSetSwitchActualsClient) CloseAndRecv() (*Empty, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(Empty)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *localWorkerControlServiceClient) GetClock(ctx context.Context, in *Empty, opts ...grpc.CallOption) (LocalWorkerControlService_GetClockClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_LocalWorkerControlService_serviceDesc.Streams[10], "/binkynet.v1.LocalWorkerControlService/GetClock", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &localWorkerControlServiceGetClockClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type LocalWorkerControlService_GetClockClient interface {
-	Recv() (*Clock, error)
-	grpc.ClientStream
-}
-
-type localWorkerControlServiceGetClockClient struct {
-	grpc.ClientStream
-}
-
-func (x *localWorkerControlServiceGetClockClient) Recv() (*Clock, error) {
-	m := new(Clock)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-// LocalWorkerControlServiceServer is the server API for LocalWorkerControlService service.
-type LocalWorkerControlServiceServer interface {
-	// Ping messages are send at regular intervals by local workers
-	// as a heartbeat notification, as well as providing information about
-	// versions.
-	Ping(context.Context, *LocalWorkerInfo) (*Empty, error)
-	// GetDiscoverRequests is used to allow the netmanager to request a discovery by
-	// the local worker.
-	// The local worker in turn responds with a SetDiscoverResult call.
-	GetDiscoverRequests(*LocalWorkerInfo, LocalWorkerControlService_GetDiscoverRequestsServer) error
-	// SetDiscoverResult is called by the local worker in response to discover requests.
-	SetDiscoverResult(context.Context, *DiscoverResult) (*Empty, error)
-	// GetPowerRequests is used to get a stream of power requests from the network
-	// master.
-	GetPowerRequests(*PowerRequestsOptions, LocalWorkerControlService_GetPowerRequestsServer) error
-	// SetPowerActuals is used to send a stream of actual power statuses to
-	// the network master.
-	SetPowerActuals(LocalWorkerControlService_SetPowerActualsServer) error
-	// GetLocRequests is used to get a stream of loc requests from the network
-	// master.
-	// Note: Loc.actual field is not set.
-	GetLocRequests(*LocRequestsOptions, LocalWorkerControlService_GetLocRequestsServer) error
-	// SetLocActuals is used to send a stream of actual loc statuses to
-	// the network master.
-	// Note: Loc.request field must be set to the latest request.
-	SetLocActuals(LocalWorkerControlService_SetLocActualsServer) error
-	// SetSensorActuals is used to send a stream of actual sensor statuses to
-	// the network master.
-	SetSensorActuals(LocalWorkerControlService_SetSensorActualsServer) error
-	// GetOutputRequests is used to get a stream of output requests from the network
-	// master.
-	GetOutputRequests(*OutputRequestsOptions, LocalWorkerControlService_GetOutputRequestsServer) error
-	// SetOutputActuals is used to send a stream of actual output statuses to
-	// the network master.
-	SetOutputActuals(LocalWorkerControlService_SetOutputActualsServer) error
-	// GetSwitchRequests is used to get a stream of switch requests from the network
-	// master.
-	GetSwitchRequests(*SwitchRequestsOptions, LocalWorkerControlService_GetSwitchRequestsServer) error
-	// SetSwitchActuals is used to send a stream of actual switch statuses to
-	// the network master.
-	SetSwitchActuals(LocalWorkerControlService_SetSwitchActualsServer) error
-	// GetClock is used to get a stream of switch current time of day from the network
-	// master.
-	GetClock(*Empty, LocalWorkerControlService_GetClockServer) error
-}
-
-// UnimplementedLocalWorkerControlServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedLocalWorkerControlServiceServer struct {
-}
-
-func (*UnimplementedLocalWorkerControlServiceServer) Ping(ctx context.Context, req *LocalWorkerInfo) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) GetDiscoverRequests(req *LocalWorkerInfo, srv LocalWorkerControlService_GetDiscoverRequestsServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetDiscoverRequests not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) SetDiscoverResult(ctx context.Context, req *DiscoverResult) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetDiscoverResult not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) GetPowerRequests(req *PowerRequestsOptions, srv LocalWorkerControlService_GetPowerRequestsServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetPowerRequests not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) SetPowerActuals(srv LocalWorkerControlService_SetPowerActualsServer) error {
-	return status.Errorf(codes.Unimplemented, "method SetPowerActuals not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) GetLocRequests(req *LocRequestsOptions, srv LocalWorkerControlService_GetLocRequestsServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetLocRequests not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) SetLocActuals(srv LocalWorkerControlService_SetLocActualsServer) error {
-	return status.Errorf(codes.Unimplemented, "method SetLocActuals not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) SetSensorActuals(srv LocalWorkerControlService_SetSensorActualsServer) error {
-	return status.Errorf(codes.Unimplemented, "method SetSensorActuals not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) GetOutputRequests(req *OutputRequestsOptions, srv LocalWorkerControlService_GetOutputRequestsServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetOutputRequests not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) SetOutputActuals(srv LocalWorkerControlService_SetOutputActualsServer) error {
-	return status.Errorf(codes.Unimplemented, "method SetOutputActuals not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) GetSwitchRequests(req *SwitchRequestsOptions, srv LocalWorkerControlService_GetSwitchRequestsServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetSwitchRequests not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) SetSwitchActuals(srv LocalWorkerControlService_SetSwitchActualsServer) error {
-	return status.Errorf(codes.Unimplemented, "method SetSwitchActuals not implemented")
-}
-func (*UnimplementedLocalWorkerControlServiceServer) GetClock(req *Empty, srv LocalWorkerControlService_GetClockServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetClock not implemented")
-}
-
-func RegisterLocalWorkerControlServiceServer(s *grpc.Server, srv LocalWorkerControlServiceServer) {
-	s.RegisterService(&_LocalWorkerControlService_serviceDesc, srv)
-}
-
-func _LocalWorkerControlService_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LocalWorkerInfo)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LocalWorkerControlServiceServer).Ping(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/binkynet.v1.LocalWorkerControlService/Ping",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LocalWorkerControlServiceServer).Ping(ctx, req.(*LocalWorkerInfo))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LocalWorkerControlService_GetDiscoverRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(LocalWorkerInfo)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(LocalWorkerControlServiceServer).GetDiscoverRequests(m, &localWorkerControlServiceGetDiscoverRequestsServer{stream})
-}
-
-type LocalWorkerControlService_GetDiscoverRequestsServer interface {
-	Send(*DiscoverRequest) error
-	grpc.ServerStream
-}
-
-type localWorkerControlServiceGetDiscoverRequestsServer struct {
-	grpc.ServerStream
-}
-
-func (x *localWorkerControlServiceGetDiscoverRequestsServer) Send(m *DiscoverRequest) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _LocalWorkerControlService_SetDiscoverResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DiscoverResult)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LocalWorkerControlServiceServer).SetDiscoverResult(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/binkynet.v1.LocalWorkerControlService/SetDiscoverResult",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LocalWorkerControlServiceServer).SetDiscoverResult(ctx, req.(*DiscoverResult))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LocalWorkerControlService_GetPowerRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(PowerRequestsOptions)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(LocalWorkerControlServiceServer).GetPowerRequests(m, &localWorkerControlServiceGetPowerRequestsServer{stream})
-}
-
-type LocalWorkerControlService_GetPowerRequestsServer interface {
-	Send(*PowerState) error
-	grpc.ServerStream
-}
-
-type localWorkerControlServiceGetPowerRequestsServer struct {
-	grpc.ServerStream
-}
-
-func (x *localWorkerControlServiceGetPowerRequestsServer) Send(m *PowerState) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _LocalWorkerControlService_SetPowerActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LocalWorkerControlServiceServer).SetPowerActuals(&localWorkerControlServiceSetPowerActualsServer{stream})
-}
-
-type LocalWorkerControlService_SetPowerActualsServer interface {
-	SendAndClose(*Empty) error
-	Recv() (*PowerState, error)
-	grpc.ServerStream
-}
-
-type localWorkerControlServiceSetPowerActualsServer struct {
-	grpc.ServerStream
-}
-
-func (x *localWorkerControlServiceSetPowerActualsServer) SendAndClose(m *Empty) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func (x *localWorkerControlServiceSetPowerActualsServer) Recv() (*PowerState, error) {
-	m := new(PowerState)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func _LocalWorkerControlService_GetLocRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(LocRequestsOptions)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(LocalWorkerControlServiceServer).GetLocRequests(m, &localWorkerControlServiceGetLocRequestsServer{stream})
-}
-
-type LocalWorkerControlService_GetLocRequestsServer interface {
-	Send(*Loc) error
-	grpc.ServerStream
-}
-
-type localWorkerControlServiceGetLocRequestsServer struct {
-	grpc.ServerStream
-}
-
-func (x *localWorkerControlServiceGetLocRequestsServer) Send(m *Loc) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _LocalWorkerControlService_SetLocActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LocalWorkerControlServiceServer).SetLocActuals(&localWorkerControlServiceSetLocActualsServer{stream})
-}
-
-type LocalWorkerControlService_SetLocActualsServer interface {
-	SendAndClose(*Empty) error
-	Recv() (*Loc, error)
-	grpc.ServerStream
-}
-
-type localWorkerControlServiceSetLocActualsServer struct {
-	grpc.ServerStream
-}
-
-func (x *localWorkerControlServiceSetLocActualsServer) SendAndClose(m *Empty) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func (x *localWorkerControlServiceSetLocActualsServer) Recv() (*Loc, error) {
-	m := new(Loc)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func _LocalWorkerControlService_SetSensorActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LocalWorkerControlServiceServer).SetSensorActuals(&localWorkerControlServiceSetSensorActualsServer{stream})
-}
-
-type LocalWorkerControlService_SetSensorActualsServer interface {
-	SendAndClose(*Empty) error
+type LocalWorkerService_GetSensorActualsClient interface {
 	Recv() (*Sensor, error)
+	grpc.ClientStream
+}
+
+type localWorkerServiceGetSensorActualsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerServiceGetSensorActualsClient) Recv() (*Sensor, error) {
+	m := new(Sensor)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerServiceClient) SetOutputRequests(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetOutputRequestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[6], "/binkynet.v1.LocalWorkerService/SetOutputRequests", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerServiceSetOutputRequestsClient{stream}
+	return x, nil
+}
+
+type LocalWorkerService_SetOutputRequestsClient interface {
+	Send(*Output) error
+	CloseAndRecv() (*Empty, error)
+	grpc.ClientStream
+}
+
+type localWorkerServiceSetOutputRequestsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerServiceSetOutputRequestsClient) Send(m *Output) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *localWorkerServiceSetOutputRequestsClient) CloseAndRecv() (*Empty, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(Empty)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerServiceClient) GetOutputActuals(ctx context.Context, in *GetOutputActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetOutputActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[7], "/binkynet.v1.LocalWorkerService/GetOutputActuals", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerServiceGetOutputActualsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type LocalWorkerService_GetOutputActualsClient interface {
+	Recv() (*Output, error)
+	grpc.ClientStream
+}
+
+type localWorkerServiceGetOutputActualsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerServiceGetOutputActualsClient) Recv() (*Output, error) {
+	m := new(Output)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerServiceClient) SetSwitchRequests(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetSwitchRequestsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[8], "/binkynet.v1.LocalWorkerService/SetSwitchRequests", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerServiceSetSwitchRequestsClient{stream}
+	return x, nil
+}
+
+type LocalWorkerService_SetSwitchRequestsClient interface {
+	Send(*Switch) error
+	CloseAndRecv() (*Empty, error)
+	grpc.ClientStream
+}
+
+type localWorkerServiceSetSwitchRequestsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerServiceSetSwitchRequestsClient) Send(m *Switch) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *localWorkerServiceSetSwitchRequestsClient) CloseAndRecv() (*Empty, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(Empty)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerServiceClient) GetSwitchActuals(ctx context.Context, in *GetSwitchActualsRequest, opts ...grpc.CallOption) (LocalWorkerService_GetSwitchActualsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[9], "/binkynet.v1.LocalWorkerService/GetSwitchActuals", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerServiceGetSwitchActualsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type LocalWorkerService_GetSwitchActualsClient interface {
+	Recv() (*Switch, error)
+	grpc.ClientStream
+}
+
+type localWorkerServiceGetSwitchActualsClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerServiceGetSwitchActualsClient) Recv() (*Switch, error) {
+	m := new(Switch)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *localWorkerServiceClient) SetClock(ctx context.Context, opts ...grpc.CallOption) (LocalWorkerService_SetClockClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_LocalWorkerService_serviceDesc.Streams[10], "/binkynet.v1.LocalWorkerService/SetClock", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &localWorkerServiceSetClockClient{stream}
+	return x, nil
+}
+
+type LocalWorkerService_SetClockClient interface {
+	Send(*Clock) error
+	CloseAndRecv() (*Empty, error)
+	grpc.ClientStream
+}
+
+type localWorkerServiceSetClockClient struct {
+	grpc.ClientStream
+}
+
+func (x *localWorkerServiceSetClockClient) Send(m *Clock) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *localWorkerServiceSetClockClient) CloseAndRecv() (*Empty, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(Empty)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+// LocalWorkerServiceServer is the server API for LocalWorkerService service.
+type LocalWorkerServiceServer interface {
+	// Describe is used to fetch the a stream if identyable information of a local worker.
+	Describe(*DescribeRequest, LocalWorkerService_DescribeServer) error
+	// Configure is used to configure a local worker.
+	Configure(context.Context, *LocalWorkerConfig) (*Empty, error)
+	// DiscoverDevices is used by the netmanager to request a discovery by
+	// the local worker.
+	// The local worker in turn responds the found devices.
+	DiscoverDevices(context.Context, *DiscoverDevicesRequest) (*DiscoverDevicesResult, error)
+	// SetPowerRequests is used to change the power state of the local worker.
+	SetPowerRequests(LocalWorkerService_SetPowerRequestsServer) error
+	// GetPowerActuals is used to fetch a stream of actual power statuses
+	// from the local workers, to the network master.
+	GetPowerActuals(*GetPowerActualsRequest, LocalWorkerService_GetPowerActualsServer) error
+	// SetLocRequests is used to send a stream of loc requests from the network
+	// master to the local worker.
+	// Note: Loc.actual field is not set.
+	SetLocRequests(LocalWorkerService_SetLocRequestsServer) error
+	// GetLocActuals is used to send a stream of actual loc statuses from
+	// the local worker to the network master.
+	// Note: Loc.request field must be set to the latest request.
+	GetLocActuals(*GetLocActualsRequest, LocalWorkerService_GetLocActualsServer) error
+	// GetSensorActuals is used to send a stream of actual sensor statuses
+	// from the local worker to the network master.
+	GetSensorActuals(*GetSensorActualsRequest, LocalWorkerService_GetSensorActualsServer) error
+	// SetOutputRequests is used to get a stream of output requests from the network
+	// master to the local worker.
+	SetOutputRequests(LocalWorkerService_SetOutputRequestsServer) error
+	// GetOutputActuals is used to send a stream of actual output statuses from
+	// the local worker to the network master.
+	GetOutputActuals(*GetOutputActualsRequest, LocalWorkerService_GetOutputActualsServer) error
+	// SetSwitchRequests is used to get a stream of switch requests from the network
+	// master to the local worker.
+	SetSwitchRequests(LocalWorkerService_SetSwitchRequestsServer) error
+	// GetSwitchActuals is used to send a stream of actual switch statuses from
+	// the local worker to the network master.
+	GetSwitchActuals(*GetSwitchActualsRequest, LocalWorkerService_GetSwitchActualsServer) error
+	// SetClock is used to send a stream of current time of day from the network
+	// master to the local worker.
+	SetClock(LocalWorkerService_SetClockServer) error
+}
+
+// UnimplementedLocalWorkerServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedLocalWorkerServiceServer struct {
+}
+
+func (*UnimplementedLocalWorkerServiceServer) Describe(req *DescribeRequest, srv LocalWorkerService_DescribeServer) error {
+	return status.Errorf(codes.Unimplemented, "method Describe not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) Configure(ctx context.Context, req *LocalWorkerConfig) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Configure not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) DiscoverDevices(ctx context.Context, req *DiscoverDevicesRequest) (*DiscoverDevicesResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DiscoverDevices not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetPowerRequests(srv LocalWorkerService_SetPowerRequestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetPowerRequests not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) GetPowerActuals(req *GetPowerActualsRequest, srv LocalWorkerService_GetPowerActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetPowerActuals not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetLocRequests(srv LocalWorkerService_SetLocRequestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetLocRequests not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) GetLocActuals(req *GetLocActualsRequest, srv LocalWorkerService_GetLocActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetLocActuals not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) GetSensorActuals(req *GetSensorActualsRequest, srv LocalWorkerService_GetSensorActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetSensorActuals not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetOutputRequests(srv LocalWorkerService_SetOutputRequestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetOutputRequests not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) GetOutputActuals(req *GetOutputActualsRequest, srv LocalWorkerService_GetOutputActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetOutputActuals not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetSwitchRequests(srv LocalWorkerService_SetSwitchRequestsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetSwitchRequests not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) GetSwitchActuals(req *GetSwitchActualsRequest, srv LocalWorkerService_GetSwitchActualsServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetSwitchActuals not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetClock(srv LocalWorkerService_SetClockServer) error {
+	return status.Errorf(codes.Unimplemented, "method SetClock not implemented")
+}
+
+func RegisterLocalWorkerServiceServer(s *grpc.Server, srv LocalWorkerServiceServer) {
+	s.RegisterService(&_LocalWorkerService_serviceDesc, srv)
+}
+
+func _LocalWorkerService_Describe_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(DescribeRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(LocalWorkerServiceServer).Describe(m, &localWorkerServiceDescribeServer{stream})
+}
+
+type LocalWorkerService_DescribeServer interface {
+	Send(*LocalWorkerInfo) error
 	grpc.ServerStream
 }
 
-type localWorkerControlServiceSetSensorActualsServer struct {
+type localWorkerServiceDescribeServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerControlServiceSetSensorActualsServer) SendAndClose(m *Empty) error {
+func (x *localWorkerServiceDescribeServer) Send(m *LocalWorkerInfo) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *localWorkerControlServiceSetSensorActualsServer) Recv() (*Sensor, error) {
-	m := new(Sensor)
+func _LocalWorkerService_Configure_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LocalWorkerConfig)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalWorkerServiceServer).Configure(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/binkynet.v1.LocalWorkerService/Configure",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalWorkerServiceServer).Configure(ctx, req.(*LocalWorkerConfig))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalWorkerService_DiscoverDevices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DiscoverDevicesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalWorkerServiceServer).DiscoverDevices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/binkynet.v1.LocalWorkerService/DiscoverDevices",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalWorkerServiceServer).DiscoverDevices(ctx, req.(*DiscoverDevicesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalWorkerService_SetPowerRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerServiceServer).SetPowerRequests(&localWorkerServiceSetPowerRequestsServer{stream})
+}
+
+type LocalWorkerService_SetPowerRequestsServer interface {
+	SendAndClose(*Empty) error
+	Recv() (*PowerState, error)
+	grpc.ServerStream
+}
+
+type localWorkerServiceSetPowerRequestsServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerServiceSetPowerRequestsServer) SendAndClose(m *Empty) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *localWorkerServiceSetPowerRequestsServer) Recv() (*PowerState, error) {
+	m := new(PowerState)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func _LocalWorkerControlService_GetOutputRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(OutputRequestsOptions)
+func _LocalWorkerService_GetPowerActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetPowerActualsRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LocalWorkerControlServiceServer).GetOutputRequests(m, &localWorkerControlServiceGetOutputRequestsServer{stream})
+	return srv.(LocalWorkerServiceServer).GetPowerActuals(m, &localWorkerServiceGetPowerActualsServer{stream})
 }
 
-type LocalWorkerControlService_GetOutputRequestsServer interface {
-	Send(*Output) error
+type LocalWorkerService_GetPowerActualsServer interface {
+	Send(*PowerState) error
 	grpc.ServerStream
 }
 
-type localWorkerControlServiceGetOutputRequestsServer struct {
+type localWorkerServiceGetPowerActualsServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerControlServiceGetOutputRequestsServer) Send(m *Output) error {
+func (x *localWorkerServiceGetPowerActualsServer) Send(m *PowerState) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _LocalWorkerControlService_SetOutputActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LocalWorkerControlServiceServer).SetOutputActuals(&localWorkerControlServiceSetOutputActualsServer{stream})
+func _LocalWorkerService_SetLocRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerServiceServer).SetLocRequests(&localWorkerServiceSetLocRequestsServer{stream})
 }
 
-type LocalWorkerControlService_SetOutputActualsServer interface {
+type LocalWorkerService_SetLocRequestsServer interface {
+	SendAndClose(*Empty) error
+	Recv() (*Loc, error)
+	grpc.ServerStream
+}
+
+type localWorkerServiceSetLocRequestsServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerServiceSetLocRequestsServer) SendAndClose(m *Empty) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *localWorkerServiceSetLocRequestsServer) Recv() (*Loc, error) {
+	m := new(Loc)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func _LocalWorkerService_GetLocActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetLocActualsRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(LocalWorkerServiceServer).GetLocActuals(m, &localWorkerServiceGetLocActualsServer{stream})
+}
+
+type LocalWorkerService_GetLocActualsServer interface {
+	Send(*Loc) error
+	grpc.ServerStream
+}
+
+type localWorkerServiceGetLocActualsServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerServiceGetLocActualsServer) Send(m *Loc) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _LocalWorkerService_GetSensorActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetSensorActualsRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(LocalWorkerServiceServer).GetSensorActuals(m, &localWorkerServiceGetSensorActualsServer{stream})
+}
+
+type LocalWorkerService_GetSensorActualsServer interface {
+	Send(*Sensor) error
+	grpc.ServerStream
+}
+
+type localWorkerServiceGetSensorActualsServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerServiceGetSensorActualsServer) Send(m *Sensor) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _LocalWorkerService_SetOutputRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerServiceServer).SetOutputRequests(&localWorkerServiceSetOutputRequestsServer{stream})
+}
+
+type LocalWorkerService_SetOutputRequestsServer interface {
 	SendAndClose(*Empty) error
 	Recv() (*Output, error)
 	grpc.ServerStream
 }
 
-type localWorkerControlServiceSetOutputActualsServer struct {
+type localWorkerServiceSetOutputRequestsServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerControlServiceSetOutputActualsServer) SendAndClose(m *Empty) error {
+func (x *localWorkerServiceSetOutputRequestsServer) SendAndClose(m *Empty) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *localWorkerControlServiceSetOutputActualsServer) Recv() (*Output, error) {
+func (x *localWorkerServiceSetOutputRequestsServer) Recv() (*Output, error) {
 	m := new(Output)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -1030,46 +1145,46 @@ func (x *localWorkerControlServiceSetOutputActualsServer) Recv() (*Output, error
 	return m, nil
 }
 
-func _LocalWorkerControlService_GetSwitchRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(SwitchRequestsOptions)
+func _LocalWorkerService_GetOutputActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetOutputActualsRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LocalWorkerControlServiceServer).GetSwitchRequests(m, &localWorkerControlServiceGetSwitchRequestsServer{stream})
+	return srv.(LocalWorkerServiceServer).GetOutputActuals(m, &localWorkerServiceGetOutputActualsServer{stream})
 }
 
-type LocalWorkerControlService_GetSwitchRequestsServer interface {
-	Send(*Switch) error
+type LocalWorkerService_GetOutputActualsServer interface {
+	Send(*Output) error
 	grpc.ServerStream
 }
 
-type localWorkerControlServiceGetSwitchRequestsServer struct {
+type localWorkerServiceGetOutputActualsServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerControlServiceGetSwitchRequestsServer) Send(m *Switch) error {
+func (x *localWorkerServiceGetOutputActualsServer) Send(m *Output) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _LocalWorkerControlService_SetSwitchActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LocalWorkerControlServiceServer).SetSwitchActuals(&localWorkerControlServiceSetSwitchActualsServer{stream})
+func _LocalWorkerService_SetSwitchRequests_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerServiceServer).SetSwitchRequests(&localWorkerServiceSetSwitchRequestsServer{stream})
 }
 
-type LocalWorkerControlService_SetSwitchActualsServer interface {
+type LocalWorkerService_SetSwitchRequestsServer interface {
 	SendAndClose(*Empty) error
 	Recv() (*Switch, error)
 	grpc.ServerStream
 }
 
-type localWorkerControlServiceSetSwitchActualsServer struct {
+type localWorkerServiceSetSwitchRequestsServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerControlServiceSetSwitchActualsServer) SendAndClose(m *Empty) error {
+func (x *localWorkerServiceSetSwitchRequestsServer) SendAndClose(m *Empty) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *localWorkerControlServiceSetSwitchActualsServer) Recv() (*Switch, error) {
+func (x *localWorkerServiceSetSwitchRequestsServer) Recv() (*Switch, error) {
 	m := new(Switch)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -1077,101 +1192,127 @@ func (x *localWorkerControlServiceSetSwitchActualsServer) Recv() (*Switch, error
 	return m, nil
 }
 
-func _LocalWorkerControlService_GetClock_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(Empty)
+func _LocalWorkerService_GetSwitchActuals_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetSwitchActualsRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LocalWorkerControlServiceServer).GetClock(m, &localWorkerControlServiceGetClockServer{stream})
+	return srv.(LocalWorkerServiceServer).GetSwitchActuals(m, &localWorkerServiceGetSwitchActualsServer{stream})
 }
 
-type LocalWorkerControlService_GetClockServer interface {
-	Send(*Clock) error
+type LocalWorkerService_GetSwitchActualsServer interface {
+	Send(*Switch) error
 	grpc.ServerStream
 }
 
-type localWorkerControlServiceGetClockServer struct {
+type localWorkerServiceGetSwitchActualsServer struct {
 	grpc.ServerStream
 }
 
-func (x *localWorkerControlServiceGetClockServer) Send(m *Clock) error {
+func (x *localWorkerServiceGetSwitchActualsServer) Send(m *Switch) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-var _LocalWorkerControlService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "binkynet.v1.LocalWorkerControlService",
-	HandlerType: (*LocalWorkerControlServiceServer)(nil),
+func _LocalWorkerService_SetClock_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(LocalWorkerServiceServer).SetClock(&localWorkerServiceSetClockServer{stream})
+}
+
+type LocalWorkerService_SetClockServer interface {
+	SendAndClose(*Empty) error
+	Recv() (*Clock, error)
+	grpc.ServerStream
+}
+
+type localWorkerServiceSetClockServer struct {
+	grpc.ServerStream
+}
+
+func (x *localWorkerServiceSetClockServer) SendAndClose(m *Empty) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *localWorkerServiceSetClockServer) Recv() (*Clock, error) {
+	m := new(Clock)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+var _LocalWorkerService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "binkynet.v1.LocalWorkerService",
+	HandlerType: (*LocalWorkerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Ping",
-			Handler:    _LocalWorkerControlService_Ping_Handler,
+			MethodName: "Configure",
+			Handler:    _LocalWorkerService_Configure_Handler,
 		},
 		{
-			MethodName: "SetDiscoverResult",
-			Handler:    _LocalWorkerControlService_SetDiscoverResult_Handler,
+			MethodName: "DiscoverDevices",
+			Handler:    _LocalWorkerService_DiscoverDevices_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "GetDiscoverRequests",
-			Handler:       _LocalWorkerControlService_GetDiscoverRequests_Handler,
+			StreamName:    "Describe",
+			Handler:       _LocalWorkerService_Describe_Handler,
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "GetPowerRequests",
-			Handler:       _LocalWorkerControlService_GetPowerRequests_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "SetPowerActuals",
-			Handler:       _LocalWorkerControlService_SetPowerActuals_Handler,
+			StreamName:    "SetPowerRequests",
+			Handler:       _LocalWorkerService_SetPowerRequests_Handler,
 			ClientStreams: true,
 		},
 		{
-			StreamName:    "GetLocRequests",
-			Handler:       _LocalWorkerControlService_GetLocRequests_Handler,
+			StreamName:    "GetPowerActuals",
+			Handler:       _LocalWorkerService_GetPowerActuals_Handler,
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "SetLocActuals",
-			Handler:       _LocalWorkerControlService_SetLocActuals_Handler,
+			StreamName:    "SetLocRequests",
+			Handler:       _LocalWorkerService_SetLocRequests_Handler,
 			ClientStreams: true,
 		},
 		{
-			StreamName:    "SetSensorActuals",
-			Handler:       _LocalWorkerControlService_SetSensorActuals_Handler,
-			ClientStreams: true,
-		},
-		{
-			StreamName:    "GetOutputRequests",
-			Handler:       _LocalWorkerControlService_GetOutputRequests_Handler,
+			StreamName:    "GetLocActuals",
+			Handler:       _LocalWorkerService_GetLocActuals_Handler,
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "SetOutputActuals",
-			Handler:       _LocalWorkerControlService_SetOutputActuals_Handler,
-			ClientStreams: true,
-		},
-		{
-			StreamName:    "GetSwitchRequests",
-			Handler:       _LocalWorkerControlService_GetSwitchRequests_Handler,
+			StreamName:    "GetSensorActuals",
+			Handler:       _LocalWorkerService_GetSensorActuals_Handler,
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "SetSwitchActuals",
-			Handler:       _LocalWorkerControlService_SetSwitchActuals_Handler,
+			StreamName:    "SetOutputRequests",
+			Handler:       _LocalWorkerService_SetOutputRequests_Handler,
 			ClientStreams: true,
 		},
 		{
-			StreamName:    "GetClock",
-			Handler:       _LocalWorkerControlService_GetClock_Handler,
+			StreamName:    "GetOutputActuals",
+			Handler:       _LocalWorkerService_GetOutputActuals_Handler,
 			ServerStreams: true,
+		},
+		{
+			StreamName:    "SetSwitchRequests",
+			Handler:       _LocalWorkerService_SetSwitchRequests_Handler,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "GetSwitchActuals",
+			Handler:       _LocalWorkerService_GetSwitchActuals_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SetClock",
+			Handler:       _LocalWorkerService_SetClock_Handler,
+			ClientStreams: true,
 		},
 	},
 	Metadata: "localworker.proto",
 }
 
-func (m *DiscoverRequest) Marshal() (dAtA []byte, err error) {
+func (m *DescribeRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1181,12 +1322,12 @@ func (m *DiscoverRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *DiscoverRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *DescribeRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *DiscoverRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *DescribeRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1198,7 +1339,7 @@ func (m *DiscoverRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *DiscoverResult) Marshal() (dAtA []byte, err error) {
+func (m *DiscoverDevicesRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1208,12 +1349,39 @@ func (m *DiscoverResult) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *DiscoverResult) MarshalTo(dAtA []byte) (int, error) {
+func (m *DiscoverDevicesRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *DiscoverResult) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *DiscoverDevicesRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *DiscoverDevicesResult) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *DiscoverDevicesResult) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *DiscoverDevicesResult) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1241,6 +1409,141 @@ func (m *DiscoverResult) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *GetPowerActualsRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetPowerActualsRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetPowerActualsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *GetLocActualsRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetLocActualsRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetLocActualsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *GetSensorActualsRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetSensorActualsRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetSensorActualsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *GetOutputActualsRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetOutputActualsRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetOutputActualsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *GetSwitchActualsRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *GetSwitchActualsRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *GetSwitchActualsRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintLocalworker(dAtA []byte, offset int, v uint64) int {
 	offset -= sovLocalworker(v)
 	base := offset
@@ -1252,7 +1555,7 @@ func encodeVarintLocalworker(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *DiscoverRequest) Size() (n int) {
+func (m *DescribeRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1264,7 +1567,19 @@ func (m *DiscoverRequest) Size() (n int) {
 	return n
 }
 
-func (m *DiscoverResult) Size() (n int) {
+func (m *DiscoverDevicesRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *DiscoverDevicesResult) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1286,13 +1601,73 @@ func (m *DiscoverResult) Size() (n int) {
 	return n
 }
 
+func (m *GetPowerActualsRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetLocActualsRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetSensorActualsRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetOutputActualsRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *GetSwitchActualsRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
 func sovLocalworker(x uint64) (n int) {
 	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozLocalworker(x uint64) (n int) {
 	return sovLocalworker(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *DiscoverRequest) Unmarshal(dAtA []byte) error {
+func (m *DescribeRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1315,10 +1690,10 @@ func (m *DiscoverRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: DiscoverRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: DescribeRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: DiscoverRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: DescribeRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
@@ -1343,7 +1718,7 @@ func (m *DiscoverRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *DiscoverResult) Unmarshal(dAtA []byte) error {
+func (m *DiscoverDevicesRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1366,10 +1741,61 @@ func (m *DiscoverResult) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: DiscoverResult: wiretype end group for non-group")
+			return fmt.Errorf("proto: DiscoverDevicesRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: DiscoverResult: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: DiscoverDevicesRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipLocalworker(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthLocalworker
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *DiscoverDevicesResult) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowLocalworker
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: DiscoverDevicesResult: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: DiscoverDevicesResult: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1436,6 +1862,261 @@ func (m *DiscoverResult) Unmarshal(dAtA []byte) error {
 			}
 			m.Addresses = append(m.Addresses, string(dAtA[iNdEx:postIndex]))
 			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipLocalworker(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthLocalworker
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetPowerActualsRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowLocalworker
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetPowerActualsRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetPowerActualsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipLocalworker(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthLocalworker
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetLocActualsRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowLocalworker
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetLocActualsRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetLocActualsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipLocalworker(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthLocalworker
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetSensorActualsRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowLocalworker
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetSensorActualsRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetSensorActualsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipLocalworker(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthLocalworker
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetOutputActualsRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowLocalworker
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetOutputActualsRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetOutputActualsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipLocalworker(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthLocalworker
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *GetSwitchActualsRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowLocalworker
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: GetSwitchActualsRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: GetSwitchActualsRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
 		default:
 			iNdEx = preIndex
 			skippy, err := skipLocalworker(dAtA[iNdEx:])
