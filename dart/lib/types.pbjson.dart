@@ -337,3 +337,36 @@ const LocalWorker$json = const {
 
 /// Descriptor for `LocalWorker`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List localWorkerDescriptor = $convert.base64Decode('CgtMb2NhbFdvcmtlchIOCgJpZBgBIAEoCVICaWQSOAoHcmVxdWVzdBgCIAEoCzIeLmJpbmt5bmV0LnYxLkxvY2FsV29ya2VyQ29uZmlnUgdyZXF1ZXN0EjQKBmFjdHVhbBgDIAEoCzIcLmJpbmt5bmV0LnYxLkxvY2FsV29ya2VySW5mb1IGYWN0dWFs');
+@$core.Deprecated('Use deviceDiscoveryDescriptor instead')
+const DeviceDiscovery$json = const {
+  '1': 'DeviceDiscovery',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'request', '3': 2, '4': 1, '5': 11, '6': '.binkynet.v1.DiscoverRequest', '10': 'request'},
+    const {'1': 'actual', '3': 3, '4': 1, '5': 11, '6': '.binkynet.v1.DiscoverResult', '10': 'actual'},
+  ],
+};
+
+/// Descriptor for `DeviceDiscovery`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deviceDiscoveryDescriptor = $convert.base64Decode('Cg9EZXZpY2VEaXNjb3ZlcnkSDgoCaWQYASABKAlSAmlkEjYKB3JlcXVlc3QYAiABKAsyHC5iaW5reW5ldC52MS5EaXNjb3ZlclJlcXVlc3RSB3JlcXVlc3QSMwoGYWN0dWFsGAMgASgLMhsuYmlua3luZXQudjEuRGlzY292ZXJSZXN1bHRSBmFjdHVhbA==');
+@$core.Deprecated('Use discoverRequestDescriptor instead')
+const DiscoverRequest$json = const {
+  '1': 'DiscoverRequest',
+  '2': const [
+    const {'1': 'request_id', '3': 1, '4': 1, '5': 5, '10': 'requestId'},
+  ],
+};
+
+/// Descriptor for `DiscoverRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List discoverRequestDescriptor = $convert.base64Decode('Cg9EaXNjb3ZlclJlcXVlc3QSHQoKcmVxdWVzdF9pZBgBIAEoBVIJcmVxdWVzdElk');
+@$core.Deprecated('Use discoverResultDescriptor instead')
+const DiscoverResult$json = const {
+  '1': 'DiscoverResult',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'addresses', '3': 2, '4': 3, '5': 9, '10': 'addresses'},
+  ],
+};
+
+/// Descriptor for `DiscoverResult`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List discoverResultDescriptor = $convert.base64Decode('Cg5EaXNjb3ZlclJlc3VsdBIOCgJpZBgBIAEoCVICaWQSHAoJYWRkcmVzc2VzGAIgAygJUglhZGRyZXNzZXM=');

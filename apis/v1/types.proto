@@ -272,3 +272,28 @@ message LocalWorker {
   // Actual state of the local worker 
   LocalWorkerInfo actual = 3;
 }
+
+// Request to discover devices on a local worker
+message DeviceDiscovery {
+  // ID of the module to perform the request on
+  string id = 1;
+  // Requested state of the discovery
+  DiscoverRequest request = 2;
+  // Actual state of the discovery
+  DiscoverResult actual = 3;
+}
+
+// DiscoverRequest is sent when the netmanager wants to local worker to
+// probe its locally attached devices.
+message DiscoverRequest {
+  // Unique ID of the request
+  int32 request_id = 1;
+}
+
+// DiscoverResult is returned in a response to a discover request by the netmanager.
+message DiscoverResult {
+  // ID of local worker
+  string id = 1;
+  // The addresses that were found
+  repeated string addresses = 2;
+}

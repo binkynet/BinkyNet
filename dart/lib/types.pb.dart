@@ -1600,3 +1600,184 @@ class LocalWorker extends $pb.GeneratedMessage {
   LocalWorkerInfo ensureActual() => $_ensure(2);
 }
 
+class DeviceDiscovery extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeviceDiscovery', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOM<DiscoverRequest>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'request', subBuilder: DiscoverRequest.create)
+    ..aOM<DiscoverResult>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'actual', subBuilder: DiscoverResult.create)
+    ..hasRequiredFields = false
+  ;
+
+  DeviceDiscovery._() : super();
+  factory DeviceDiscovery({
+    $core.String? id,
+    DiscoverRequest? request,
+    DiscoverResult? actual,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (request != null) {
+      _result.request = request;
+    }
+    if (actual != null) {
+      _result.actual = actual;
+    }
+    return _result;
+  }
+  factory DeviceDiscovery.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DeviceDiscovery.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DeviceDiscovery clone() => DeviceDiscovery()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DeviceDiscovery copyWith(void Function(DeviceDiscovery) updates) => super.copyWith((message) => updates(message as DeviceDiscovery)) as DeviceDiscovery; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DeviceDiscovery create() => DeviceDiscovery._();
+  DeviceDiscovery createEmptyInstance() => create();
+  static $pb.PbList<DeviceDiscovery> createRepeated() => $pb.PbList<DeviceDiscovery>();
+  @$core.pragma('dart2js:noInline')
+  static DeviceDiscovery getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DeviceDiscovery>(create);
+  static DeviceDiscovery? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  DiscoverRequest get request => $_getN(1);
+  @$pb.TagNumber(2)
+  set request(DiscoverRequest v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRequest() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRequest() => clearField(2);
+  @$pb.TagNumber(2)
+  DiscoverRequest ensureRequest() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  DiscoverResult get actual => $_getN(2);
+  @$pb.TagNumber(3)
+  set actual(DiscoverResult v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasActual() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearActual() => clearField(3);
+  @$pb.TagNumber(3)
+  DiscoverResult ensureActual() => $_ensure(2);
+}
+
+class DiscoverRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DiscoverRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestId', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  DiscoverRequest._() : super();
+  factory DiscoverRequest({
+    $core.int? requestId,
+  }) {
+    final _result = create();
+    if (requestId != null) {
+      _result.requestId = requestId;
+    }
+    return _result;
+  }
+  factory DiscoverRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DiscoverRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DiscoverRequest clone() => DiscoverRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DiscoverRequest copyWith(void Function(DiscoverRequest) updates) => super.copyWith((message) => updates(message as DiscoverRequest)) as DiscoverRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DiscoverRequest create() => DiscoverRequest._();
+  DiscoverRequest createEmptyInstance() => create();
+  static $pb.PbList<DiscoverRequest> createRepeated() => $pb.PbList<DiscoverRequest>();
+  @$core.pragma('dart2js:noInline')
+  static DiscoverRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverRequest>(create);
+  static DiscoverRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get requestId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set requestId($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRequestId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRequestId() => clearField(1);
+}
+
+class DiscoverResult extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DiscoverResult', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'addresses')
+    ..hasRequiredFields = false
+  ;
+
+  DiscoverResult._() : super();
+  factory DiscoverResult({
+    $core.String? id,
+    $core.Iterable<$core.String>? addresses,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (addresses != null) {
+      _result.addresses.addAll(addresses);
+    }
+    return _result;
+  }
+  factory DiscoverResult.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DiscoverResult.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DiscoverResult clone() => DiscoverResult()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DiscoverResult copyWith(void Function(DiscoverResult) updates) => super.copyWith((message) => updates(message as DiscoverResult)) as DiscoverResult; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DiscoverResult create() => DiscoverResult._();
+  DiscoverResult createEmptyInstance() => create();
+  static $pb.PbList<DiscoverResult> createRepeated() => $pb.PbList<DiscoverResult>();
+  @$core.pragma('dart2js:noInline')
+  static DiscoverResult getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverResult>(create);
+  static DiscoverResult? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get addresses => $_getList(1);
+}
+

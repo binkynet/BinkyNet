@@ -8,21 +8,3 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use discoverRequestDescriptor instead')
-const DiscoverRequest$json = const {
-  '1': 'DiscoverRequest',
-};
-
-/// Descriptor for `DiscoverRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List discoverRequestDescriptor = $convert.base64Decode('Cg9EaXNjb3ZlclJlcXVlc3Q=');
-@$core.Deprecated('Use discoverResultDescriptor instead')
-const DiscoverResult$json = const {
-  '1': 'DiscoverResult',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    const {'1': 'addresses', '3': 2, '4': 3, '5': 9, '10': 'addresses'},
-  ],
-};
-
-/// Descriptor for `DiscoverResult`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List discoverResultDescriptor = $convert.base64Decode('Cg5EaXNjb3ZlclJlc3VsdBIOCgJpZBgBIAEoCVICaWQSHAoJYWRkcmVzc2VzGAIgAygJUglhZGRyZXNzZXM=');

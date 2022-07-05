@@ -35,6 +35,13 @@ service NetworkControlService {
   // Watch local worker changes
   rpc WatchLocalWorkers(WatchOptions) returns (stream LocalWorker);
 
+  // Set a requested device discovery state
+  rpc SetDeviceDiscoveryRequest(DeviceDiscovery) returns (Empty);
+  // Set an actual device discovery state
+  rpc SetDeviceDiscoveryActual(DeviceDiscovery) returns (Empty);
+  // Watch device discovery changes
+  rpc WatchDeviceDiscoveries(WatchOptions) returns (stream DeviceDiscovery);
+
   // Set the requested power state
   rpc SetPowerRequest(PowerState) returns (Empty);
   // Set the actual power state

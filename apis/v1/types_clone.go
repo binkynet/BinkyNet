@@ -213,3 +213,33 @@ func (s *Clock) Clone() *Clock {
 	clone := *s
 	return &clone
 }
+
+// Clone the entire object
+func (s *DeviceDiscovery) Clone() *DeviceDiscovery {
+	if s == nil {
+		return nil
+	}
+	clone := *s
+	clone.Request = s.GetRequest().Clone()
+	clone.Actual = s.GetActual().Clone()
+	return &clone
+}
+
+// Clone the entire object
+func (s *DiscoverRequest) Clone() *DiscoverRequest {
+	if s == nil {
+		return nil
+	}
+	clone := *s
+	return &clone
+}
+
+// Clone the entire object
+func (s *DiscoverResult) Clone() *DiscoverResult {
+	if s == nil {
+		return nil
+	}
+	clone := *s
+	clone.Addresses = append([]string{}, s.GetAddresses()...)
+	return &clone
+}

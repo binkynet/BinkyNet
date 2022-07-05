@@ -11,7 +11,6 @@ import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
 import 'types.pb.dart' as $0;
-import 'localworker.pb.dart' as $1;
 export 'localworker.pb.dart';
 
 class LocalWorkerConfigServiceClient extends $grpc.Client {
@@ -64,15 +63,15 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
       ($0.LocalWorkerInfo value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$getDiscoverRequests =
-      $grpc.ClientMethod<$0.LocalWorkerInfo, $1.DiscoverRequest>(
+      $grpc.ClientMethod<$0.LocalWorkerInfo, $0.DiscoverRequest>(
           '/binkynet.v1.LocalWorkerControlService/GetDiscoverRequests',
           ($0.LocalWorkerInfo value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.DiscoverRequest.fromBuffer(value));
+              $0.DiscoverRequest.fromBuffer(value));
   static final _$setDiscoverResult =
-      $grpc.ClientMethod<$1.DiscoverResult, $0.Empty>(
+      $grpc.ClientMethod<$0.DiscoverResult, $0.Empty>(
           '/binkynet.v1.LocalWorkerControlService/SetDiscoverResult',
-          ($1.DiscoverResult value) => value.writeToBuffer(),
+          ($0.DiscoverResult value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$getPowerRequests =
       $grpc.ClientMethod<$0.PowerRequestsOptions, $0.PowerState>(
@@ -129,7 +128,7 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
     return $createUnaryCall(_$ping, request, options: options);
   }
 
-  $grpc.ResponseStream<$1.DiscoverRequest> getDiscoverRequests(
+  $grpc.ResponseStream<$0.DiscoverRequest> getDiscoverRequests(
       $0.LocalWorkerInfo request,
       {$grpc.CallOptions? options}) {
     return $createStreamingCall(
@@ -137,7 +136,7 @@ class LocalWorkerControlServiceClient extends $grpc.Client {
         options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> setDiscoverResult($1.DiscoverResult request,
+  $grpc.ResponseFuture<$0.Empty> setDiscoverResult($0.DiscoverResult request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$setDiscoverResult, request, options: options);
   }
@@ -226,19 +225,19 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.LocalWorkerInfo.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.LocalWorkerInfo, $1.DiscoverRequest>(
+    $addMethod($grpc.ServiceMethod<$0.LocalWorkerInfo, $0.DiscoverRequest>(
         'GetDiscoverRequests',
         getDiscoverRequests_Pre,
         false,
         true,
         ($core.List<$core.int> value) => $0.LocalWorkerInfo.fromBuffer(value),
-        ($1.DiscoverRequest value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.DiscoverResult, $0.Empty>(
+        ($0.DiscoverRequest value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.DiscoverResult, $0.Empty>(
         'SetDiscoverResult',
         setDiscoverResult_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.DiscoverResult.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.DiscoverResult.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.PowerRequestsOptions, $0.PowerState>(
         'GetPowerRequests',
@@ -321,14 +320,14 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
     return ping(call, await request);
   }
 
-  $async.Stream<$1.DiscoverRequest> getDiscoverRequests_Pre(
+  $async.Stream<$0.DiscoverRequest> getDiscoverRequests_Pre(
       $grpc.ServiceCall call,
       $async.Future<$0.LocalWorkerInfo> request) async* {
     yield* getDiscoverRequests(call, await request);
   }
 
   $async.Future<$0.Empty> setDiscoverResult_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.DiscoverResult> request) async {
+      $grpc.ServiceCall call, $async.Future<$0.DiscoverResult> request) async {
     return setDiscoverResult(call, await request);
   }
 
@@ -359,10 +358,10 @@ abstract class LocalWorkerControlServiceBase extends $grpc.Service {
 
   $async.Future<$0.Empty> ping(
       $grpc.ServiceCall call, $0.LocalWorkerInfo request);
-  $async.Stream<$1.DiscoverRequest> getDiscoverRequests(
+  $async.Stream<$0.DiscoverRequest> getDiscoverRequests(
       $grpc.ServiceCall call, $0.LocalWorkerInfo request);
   $async.Future<$0.Empty> setDiscoverResult(
-      $grpc.ServiceCall call, $1.DiscoverResult request);
+      $grpc.ServiceCall call, $0.DiscoverResult request);
   $async.Stream<$0.PowerState> getPowerRequests(
       $grpc.ServiceCall call, $0.PowerRequestsOptions request);
   $async.Future<$0.Empty> setPowerActuals(
