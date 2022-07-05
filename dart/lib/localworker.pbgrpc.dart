@@ -15,6 +15,11 @@ import 'types.pb.dart' as $0;
 export 'localworker.pb.dart';
 
 class LocalWorkerServiceClient extends $grpc.Client {
+  static final _$getFeatures =
+      $grpc.ClientMethod<$1.GetFeaturesRequest, $1.Features>(
+          '/binkynet.v1.LocalWorkerService/GetFeatures',
+          ($1.GetFeaturesRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.Features.fromBuffer(value));
   static final _$describe =
       $grpc.ClientMethod<$1.DescribeRequest, $0.LocalWorkerInfo>(
           '/binkynet.v1.LocalWorkerService/Describe',
@@ -81,6 +86,11 @@ class LocalWorkerServiceClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
+
+  $grpc.ResponseFuture<$1.Features> getFeatures($1.GetFeaturesRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getFeatures, request, options: options);
+  }
 
   $grpc.ResponseStream<$0.LocalWorkerInfo> describe($1.DescribeRequest request,
       {$grpc.CallOptions? options}) {
@@ -176,6 +186,14 @@ abstract class LocalWorkerServiceBase extends $grpc.Service {
   $core.String get $name => 'binkynet.v1.LocalWorkerService';
 
   LocalWorkerServiceBase() {
+    $addMethod($grpc.ServiceMethod<$1.GetFeaturesRequest, $1.Features>(
+        'GetFeatures',
+        getFeatures_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $1.GetFeaturesRequest.fromBuffer(value),
+        ($1.Features value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.DescribeRequest, $0.LocalWorkerInfo>(
         'Describe',
         describe_Pre,
@@ -276,6 +294,11 @@ abstract class LocalWorkerServiceBase extends $grpc.Service {
         ($0.Empty value) => value.writeToBuffer()));
   }
 
+  $async.Future<$1.Features> getFeatures_Pre($grpc.ServiceCall call,
+      $async.Future<$1.GetFeaturesRequest> request) async {
+    return getFeatures(call, await request);
+  }
+
   $async.Stream<$0.LocalWorkerInfo> describe_Pre($grpc.ServiceCall call,
       $async.Future<$1.DescribeRequest> request) async* {
     yield* describe(call, await request);
@@ -317,6 +340,8 @@ abstract class LocalWorkerServiceBase extends $grpc.Service {
     yield* getSwitchActuals(call, await request);
   }
 
+  $async.Future<$1.Features> getFeatures(
+      $grpc.ServiceCall call, $1.GetFeaturesRequest request);
   $async.Stream<$0.LocalWorkerInfo> describe(
       $grpc.ServiceCall call, $1.DescribeRequest request);
   $async.Future<$0.Empty> configure(

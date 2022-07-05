@@ -8,6 +8,28 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use getFeaturesRequestDescriptor instead')
+const GetFeaturesRequest$json = const {
+  '1': 'GetFeaturesRequest',
+};
+
+/// Descriptor for `GetFeaturesRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getFeaturesRequestDescriptor = $convert.base64Decode('ChJHZXRGZWF0dXJlc1JlcXVlc3Q=');
+@$core.Deprecated('Use featuresDescriptor instead')
+const Features$json = const {
+  '1': 'Features',
+  '2': const [
+    const {'1': 'power', '3': 1, '4': 1, '5': 8, '10': 'power'},
+    const {'1': 'locs', '3': 2, '4': 1, '5': 8, '10': 'locs'},
+    const {'1': 'outputs', '3': 3, '4': 1, '5': 8, '10': 'outputs'},
+    const {'1': 'sensors', '3': 4, '4': 1, '5': 8, '10': 'sensors'},
+    const {'1': 'switches', '3': 5, '4': 1, '5': 8, '10': 'switches'},
+    const {'1': 'clock', '3': 6, '4': 1, '5': 8, '10': 'clock'},
+  ],
+};
+
+/// Descriptor for `Features`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List featuresDescriptor = $convert.base64Decode('CghGZWF0dXJlcxIUCgVwb3dlchgBIAEoCFIFcG93ZXISEgoEbG9jcxgCIAEoCFIEbG9jcxIYCgdvdXRwdXRzGAMgASgIUgdvdXRwdXRzEhgKB3NlbnNvcnMYBCABKAhSB3NlbnNvcnMSGgoIc3dpdGNoZXMYBSABKAhSCHN3aXRjaGVzEhQKBWNsb2NrGAYgASgIUgVjbG9jaw==');
 @$core.Deprecated('Use describeRequestDescriptor instead')
 const DescribeRequest$json = const {
   '1': 'DescribeRequest',

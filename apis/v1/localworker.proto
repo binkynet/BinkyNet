@@ -28,6 +28,8 @@ import "types.proto";
 // the network controller to push configuration & state.
 // Local workers make themselves available in mDNS under service type "_lw._binkynet._tcp".
 service LocalWorkerService {
+  // Gets the features supported by this local worker
+  rpc GetFeatures(GetFeaturesRequest) returns (Features);
   // Describe is used to fetch the a stream if identyable information of a local worker.
   rpc Describe(DescribeRequest) returns (stream LocalWorkerInfo);
   // Configure is used to configure a local worker.
@@ -74,6 +76,27 @@ service LocalWorkerService {
   // SetClock is used to send a stream of current time of day from the network
   // master to the local worker.
   rpc SetClock(stream Clock) returns (Empty);
+}
+
+// Request arguments for GetFeatures
+message GetFeaturesRequest {
+  // Nothing yet 
+}
+
+// Response for GetFeatures
+message Features {
+  // This local worker supports controlling power
+  bool power = 1;
+  // This local worker supports controlling locs
+  bool locs = 2;
+  // This local worker supports controlling outputs
+  bool outputs = 3;
+  // This local worker supports controlling sensors
+  bool sensors = 4;
+  // This local worker supports controlling switches
+  bool switches = 5;
+  // This local worker supports receiving a clock signal
+  bool clock = 6;
 }
 
 // Arguments of Describe request.

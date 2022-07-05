@@ -9,6 +9,152 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class GetFeaturesRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetFeaturesRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  GetFeaturesRequest._() : super();
+  factory GetFeaturesRequest() => create();
+  factory GetFeaturesRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetFeaturesRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetFeaturesRequest clone() => GetFeaturesRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetFeaturesRequest copyWith(void Function(GetFeaturesRequest) updates) => super.copyWith((message) => updates(message as GetFeaturesRequest)) as GetFeaturesRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetFeaturesRequest create() => GetFeaturesRequest._();
+  GetFeaturesRequest createEmptyInstance() => create();
+  static $pb.PbList<GetFeaturesRequest> createRepeated() => $pb.PbList<GetFeaturesRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetFeaturesRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetFeaturesRequest>(create);
+  static GetFeaturesRequest? _defaultInstance;
+}
+
+class Features extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Features', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'power')
+    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'locs')
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'outputs')
+    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sensors')
+    ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'switches')
+    ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'clock')
+    ..hasRequiredFields = false
+  ;
+
+  Features._() : super();
+  factory Features({
+    $core.bool? power,
+    $core.bool? locs,
+    $core.bool? outputs,
+    $core.bool? sensors,
+    $core.bool? switches,
+    $core.bool? clock,
+  }) {
+    final _result = create();
+    if (power != null) {
+      _result.power = power;
+    }
+    if (locs != null) {
+      _result.locs = locs;
+    }
+    if (outputs != null) {
+      _result.outputs = outputs;
+    }
+    if (sensors != null) {
+      _result.sensors = sensors;
+    }
+    if (switches != null) {
+      _result.switches = switches;
+    }
+    if (clock != null) {
+      _result.clock = clock;
+    }
+    return _result;
+  }
+  factory Features.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Features.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Features clone() => Features()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Features copyWith(void Function(Features) updates) => super.copyWith((message) => updates(message as Features)) as Features; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Features create() => Features._();
+  Features createEmptyInstance() => create();
+  static $pb.PbList<Features> createRepeated() => $pb.PbList<Features>();
+  @$core.pragma('dart2js:noInline')
+  static Features getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Features>(create);
+  static Features? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get power => $_getBF(0);
+  @$pb.TagNumber(1)
+  set power($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPower() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPower() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.bool get locs => $_getBF(1);
+  @$pb.TagNumber(2)
+  set locs($core.bool v) { $_setBool(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLocs() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLocs() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get outputs => $_getBF(2);
+  @$pb.TagNumber(3)
+  set outputs($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasOutputs() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOutputs() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.bool get sensors => $_getBF(3);
+  @$pb.TagNumber(4)
+  set sensors($core.bool v) { $_setBool(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasSensors() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSensors() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.bool get switches => $_getBF(4);
+  @$pb.TagNumber(5)
+  set switches($core.bool v) { $_setBool(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasSwitches() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearSwitches() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.bool get clock => $_getBF(5);
+  @$pb.TagNumber(6)
+  set clock($core.bool v) { $_setBool(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasClock() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearClock() => clearField(6);
+}
+
 class DescribeRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DescribeRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
     ..hasRequiredFields = false
