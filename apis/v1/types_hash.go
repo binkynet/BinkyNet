@@ -22,6 +22,7 @@ import (
 	fmt "fmt"
 	"hash"
 	"io"
+	"sort"
 	"strconv"
 )
 
@@ -47,9 +48,14 @@ func (s *Connection) HashTo(h hash.Hash) {
 	for _, pin := range s.GetPins() {
 		pin.HashTo(h)
 	}
-	for k, v := range s.GetConfiguration() {
-		io.WriteString(h, string(k))
-		io.WriteString(h, v)
+	configKeys := make([]string, 0, len(s.GetConfiguration()))
+	for k := range s.GetConfiguration() {
+		configKeys = append(configKeys, string(k))
+	}
+	sort.Strings(configKeys)
+	for _, k := range configKeys {
+		io.WriteString(h, k)
+		io.WriteString(h, s.GetConfiguration()[ConfigKey(k)])
 	}
 }
 
