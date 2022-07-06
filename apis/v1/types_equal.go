@@ -91,7 +91,8 @@ func (s *Switch) Equal(o *Switch) bool {
 func (s *Clock) Equal(o *Clock) bool {
 	return s.GetPeriod() == o.GetPeriod() &&
 		s.GetHours() == o.GetHours() &&
-		s.GetMinutes() == o.GetMinutes()
+		s.GetMinutes() == o.GetMinutes() &&
+		s.GetUnixtime() == o.GetUnixtime()
 }
 
 // Equal returns true when both objects have the same values.

@@ -51,6 +51,8 @@ message LocalWorkerInfo {
   string version = 3;
   // Uptime of the local worker in seconds.
   int64 uptime = 4;
+  // Hash of the current configuration
+  string config_hash = 5;
 }
 
 // Request arguments for GetPowerRequests
@@ -203,6 +205,8 @@ message Clock {
   int32 hours = 2;
   // Current minutes (0..59)
   int32 minutes = 3;
+  // Current realworld time in seconds elapsed since January 1, 1970 UTC
+  int64 unixtime = 4;
 }
 
 // Device represents a hardware device such as a I2C chip.
@@ -257,4 +261,41 @@ message LocalWorkerConfig {
   repeated Object objects = 3;
   // Timestamp of network manager in seconds since 1970.
   int64 unixtime = 4;
+  // Hash of the configuration (excluding unixtime)
+  string hash = 5;
+}
+
+// Requested & actual state of a local worker
+message LocalWorker {
+  // Unique identifier of the local worker
+  string id = 1;
+  // Requested configuration of the local worker
+  LocalWorkerConfig request = 2;
+  // Actual state of the local worker 
+  LocalWorkerInfo actual = 3;
+}
+
+// Request to discover devices on a local worker
+message DeviceDiscovery {
+  // ID of the module to perform the request on
+  string id = 1;
+  // Requested state of the discovery
+  DiscoverRequest request = 2;
+  // Actual state of the discovery
+  DiscoverResult actual = 3;
+}
+
+// DiscoverRequest is sent when the netmanager wants to local worker to
+// probe its locally attached devices.
+message DiscoverRequest {
+  // Unique ID of the request
+  int32 request_id = 1;
+}
+
+// DiscoverResult is returned in a response to a discover request by the netmanager.
+message DiscoverResult {
+  // ID of local worker
+  string id = 1;
+  // The addresses that were found
+  repeated string addresses = 2;
 }

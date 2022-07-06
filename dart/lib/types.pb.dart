@@ -138,6 +138,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uptime')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configHash')
     ..hasRequiredFields = false
   ;
 
@@ -147,6 +148,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.String? description,
     $core.String? version,
     $fixnum.Int64? uptime,
+    $core.String? configHash,
   }) {
     final _result = create();
     if (id != null) {
@@ -160,6 +162,9 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (uptime != null) {
       _result.uptime = uptime;
+    }
+    if (configHash != null) {
+      _result.configHash = configHash;
     }
     return _result;
   }
@@ -219,6 +224,15 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
   $core.bool hasUptime() => $_has(3);
   @$pb.TagNumber(4)
   void clearUptime() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get configHash => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set configHash($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasConfigHash() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearConfigHash() => clearField(5);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {
@@ -1078,6 +1092,7 @@ class Clock extends $pb.GeneratedMessage {
     ..e<TimePeriod>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'period', $pb.PbFieldType.OE, defaultOrMaker: TimePeriod.MORNING, valueOf: TimePeriod.valueOf, enumValues: TimePeriod.values)
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hours', $pb.PbFieldType.O3)
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'minutes', $pb.PbFieldType.O3)
+    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unixtime')
     ..hasRequiredFields = false
   ;
 
@@ -1086,6 +1101,7 @@ class Clock extends $pb.GeneratedMessage {
     TimePeriod? period,
     $core.int? hours,
     $core.int? minutes,
+    $fixnum.Int64? unixtime,
   }) {
     final _result = create();
     if (period != null) {
@@ -1096,6 +1112,9 @@ class Clock extends $pb.GeneratedMessage {
     }
     if (minutes != null) {
       _result.minutes = minutes;
+    }
+    if (unixtime != null) {
+      _result.unixtime = unixtime;
     }
     return _result;
   }
@@ -1146,6 +1165,15 @@ class Clock extends $pb.GeneratedMessage {
   $core.bool hasMinutes() => $_has(2);
   @$pb.TagNumber(3)
   void clearMinutes() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get unixtime => $_getI64(3);
+  @$pb.TagNumber(4)
+  set unixtime($fixnum.Int64 v) { $_setInt64(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUnixtime() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUnixtime() => clearField(4);
 }
 
 class Device extends $pb.GeneratedMessage {
@@ -1422,6 +1450,7 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     ..pc<Device>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'devices', $pb.PbFieldType.PM, subBuilder: Device.create)
     ..pc<Object>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'objects', $pb.PbFieldType.PM, subBuilder: Object.create)
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unixtime')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
     ..hasRequiredFields = false
   ;
 
@@ -1431,6 +1460,7 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     $core.Iterable<Device>? devices,
     $core.Iterable<Object>? objects,
     $fixnum.Int64? unixtime,
+    $core.String? hash,
   }) {
     final _result = create();
     if (alias != null) {
@@ -1444,6 +1474,9 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     }
     if (unixtime != null) {
       _result.unixtime = unixtime;
+    }
+    if (hash != null) {
+      _result.hash = hash;
     }
     return _result;
   }
@@ -1491,5 +1524,274 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
   $core.bool hasUnixtime() => $_has(3);
   @$pb.TagNumber(4)
   void clearUnixtime() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get hash => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set hash($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasHash() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearHash() => clearField(5);
+}
+
+class LocalWorker extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LocalWorker', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOM<LocalWorkerConfig>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'request', subBuilder: LocalWorkerConfig.create)
+    ..aOM<LocalWorkerInfo>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'actual', subBuilder: LocalWorkerInfo.create)
+    ..hasRequiredFields = false
+  ;
+
+  LocalWorker._() : super();
+  factory LocalWorker({
+    $core.String? id,
+    LocalWorkerConfig? request,
+    LocalWorkerInfo? actual,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (request != null) {
+      _result.request = request;
+    }
+    if (actual != null) {
+      _result.actual = actual;
+    }
+    return _result;
+  }
+  factory LocalWorker.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LocalWorker.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LocalWorker clone() => LocalWorker()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LocalWorker copyWith(void Function(LocalWorker) updates) => super.copyWith((message) => updates(message as LocalWorker)) as LocalWorker; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static LocalWorker create() => LocalWorker._();
+  LocalWorker createEmptyInstance() => create();
+  static $pb.PbList<LocalWorker> createRepeated() => $pb.PbList<LocalWorker>();
+  @$core.pragma('dart2js:noInline')
+  static LocalWorker getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LocalWorker>(create);
+  static LocalWorker? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  LocalWorkerConfig get request => $_getN(1);
+  @$pb.TagNumber(2)
+  set request(LocalWorkerConfig v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRequest() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRequest() => clearField(2);
+  @$pb.TagNumber(2)
+  LocalWorkerConfig ensureRequest() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  LocalWorkerInfo get actual => $_getN(2);
+  @$pb.TagNumber(3)
+  set actual(LocalWorkerInfo v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasActual() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearActual() => clearField(3);
+  @$pb.TagNumber(3)
+  LocalWorkerInfo ensureActual() => $_ensure(2);
+}
+
+class DeviceDiscovery extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeviceDiscovery', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOM<DiscoverRequest>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'request', subBuilder: DiscoverRequest.create)
+    ..aOM<DiscoverResult>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'actual', subBuilder: DiscoverResult.create)
+    ..hasRequiredFields = false
+  ;
+
+  DeviceDiscovery._() : super();
+  factory DeviceDiscovery({
+    $core.String? id,
+    DiscoverRequest? request,
+    DiscoverResult? actual,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (request != null) {
+      _result.request = request;
+    }
+    if (actual != null) {
+      _result.actual = actual;
+    }
+    return _result;
+  }
+  factory DeviceDiscovery.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DeviceDiscovery.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DeviceDiscovery clone() => DeviceDiscovery()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DeviceDiscovery copyWith(void Function(DeviceDiscovery) updates) => super.copyWith((message) => updates(message as DeviceDiscovery)) as DeviceDiscovery; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DeviceDiscovery create() => DeviceDiscovery._();
+  DeviceDiscovery createEmptyInstance() => create();
+  static $pb.PbList<DeviceDiscovery> createRepeated() => $pb.PbList<DeviceDiscovery>();
+  @$core.pragma('dart2js:noInline')
+  static DeviceDiscovery getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DeviceDiscovery>(create);
+  static DeviceDiscovery? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  DiscoverRequest get request => $_getN(1);
+  @$pb.TagNumber(2)
+  set request(DiscoverRequest v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRequest() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRequest() => clearField(2);
+  @$pb.TagNumber(2)
+  DiscoverRequest ensureRequest() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  DiscoverResult get actual => $_getN(2);
+  @$pb.TagNumber(3)
+  set actual(DiscoverResult v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasActual() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearActual() => clearField(3);
+  @$pb.TagNumber(3)
+  DiscoverResult ensureActual() => $_ensure(2);
+}
+
+class DiscoverRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DiscoverRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestId', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  DiscoverRequest._() : super();
+  factory DiscoverRequest({
+    $core.int? requestId,
+  }) {
+    final _result = create();
+    if (requestId != null) {
+      _result.requestId = requestId;
+    }
+    return _result;
+  }
+  factory DiscoverRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DiscoverRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DiscoverRequest clone() => DiscoverRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DiscoverRequest copyWith(void Function(DiscoverRequest) updates) => super.copyWith((message) => updates(message as DiscoverRequest)) as DiscoverRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DiscoverRequest create() => DiscoverRequest._();
+  DiscoverRequest createEmptyInstance() => create();
+  static $pb.PbList<DiscoverRequest> createRepeated() => $pb.PbList<DiscoverRequest>();
+  @$core.pragma('dart2js:noInline')
+  static DiscoverRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverRequest>(create);
+  static DiscoverRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get requestId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set requestId($core.int v) { $_setSignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRequestId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRequestId() => clearField(1);
+}
+
+class DiscoverResult extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DiscoverResult', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'addresses')
+    ..hasRequiredFields = false
+  ;
+
+  DiscoverResult._() : super();
+  factory DiscoverResult({
+    $core.String? id,
+    $core.Iterable<$core.String>? addresses,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (addresses != null) {
+      _result.addresses.addAll(addresses);
+    }
+    return _result;
+  }
+  factory DiscoverResult.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DiscoverResult.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DiscoverResult clone() => DiscoverResult()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DiscoverResult copyWith(void Function(DiscoverResult) updates) => super.copyWith((message) => updates(message as DiscoverResult)) as DiscoverResult; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DiscoverResult create() => DiscoverResult._();
+  DiscoverResult createEmptyInstance() => create();
+  static $pb.PbList<DiscoverResult> createRepeated() => $pb.PbList<DiscoverResult>();
+  @$core.pragma('dart2js:noInline')
+  static DiscoverResult getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DiscoverResult>(create);
+  static DiscoverResult? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get addresses => $_getList(1);
 }
 
