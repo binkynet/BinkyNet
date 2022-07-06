@@ -1,4 +1,4 @@
-// Copyright 2020 Ewout Prangsma
+// Copyright 2020-2022 Ewout Prangsma
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,10 +18,8 @@
 package v1
 
 const (
-	ServiceTypeCommandStation     = "_cs._binkynet._tcp"
-	ServiceTypeLocalWorkerControl = "_lwctrl._binkynet._tcp"
-	ServiceTypeLocalWorkerConfig  = "_lwcfg._binkynet._tcp"
-	ServiceTypeLogProvider        = "_lp._binkynet._tcp"
-	ServiceTypeLokiProvider       = "_lokip._binkynet._tcp"
-	ServiceTypeNetworkControl     = "_nwctrl._binkynet._tcp"
+	ServiceTypeCommandStation = "_cs._binkynet._tcp"
+	ServiceTypeLogProvider    = "_lp._binkynet._tcp"
+	ServiceTypeLokiProvider   = "_lokip._binkynet._tcp"
+	ServiceTypeNetworkControl = "_nwctrl._binkynet._tcp"
 )
