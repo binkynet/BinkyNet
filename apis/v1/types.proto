@@ -205,6 +205,8 @@ message Clock {
   int32 hours = 2;
   // Current minutes (0..59)
   int32 minutes = 3;
+  // Current realworld time in seconds elapsed since January 1, 1970 UTC
+  int64 unixtime = 4;
 }
 
 // Device represents a hardware device such as a I2C chip.

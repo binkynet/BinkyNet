@@ -248,11 +248,12 @@ const Clock$json = const {
     const {'1': 'period', '3': 1, '4': 1, '5': 14, '6': '.binkynet.v1.TimePeriod', '10': 'period'},
     const {'1': 'hours', '3': 2, '4': 1, '5': 5, '10': 'hours'},
     const {'1': 'minutes', '3': 3, '4': 1, '5': 5, '10': 'minutes'},
+    const {'1': 'unixtime', '3': 4, '4': 1, '5': 3, '10': 'unixtime'},
   ],
 };
 
 /// Descriptor for `Clock`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List clockDescriptor = $convert.base64Decode('CgVDbG9jaxIvCgZwZXJpb2QYASABKA4yFy5iaW5reW5ldC52MS5UaW1lUGVyaW9kUgZwZXJpb2QSFAoFaG91cnMYAiABKAVSBWhvdXJzEhgKB21pbnV0ZXMYAyABKAVSB21pbnV0ZXM=');
+final $typed_data.Uint8List clockDescriptor = $convert.base64Decode('CgVDbG9jaxIvCgZwZXJpb2QYASABKA4yFy5iaW5reW5ldC52MS5UaW1lUGVyaW9kUgZwZXJpb2QSFAoFaG91cnMYAiABKAVSBWhvdXJzEhgKB21pbnV0ZXMYAyABKAVSB21pbnV0ZXMSGgoIdW5peHRpbWUYBCABKANSCHVuaXh0aW1l');
 @$core.Deprecated('Use deviceDescriptor instead')
 const Device$json = const {
   '1': 'Device',

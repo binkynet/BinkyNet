@@ -1092,6 +1092,7 @@ class Clock extends $pb.GeneratedMessage {
     ..e<TimePeriod>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'period', $pb.PbFieldType.OE, defaultOrMaker: TimePeriod.MORNING, valueOf: TimePeriod.valueOf, enumValues: TimePeriod.values)
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hours', $pb.PbFieldType.O3)
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'minutes', $pb.PbFieldType.O3)
+    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unixtime')
     ..hasRequiredFields = false
   ;
 
@@ -1100,6 +1101,7 @@ class Clock extends $pb.GeneratedMessage {
     TimePeriod? period,
     $core.int? hours,
     $core.int? minutes,
+    $fixnum.Int64? unixtime,
   }) {
     final _result = create();
     if (period != null) {
@@ -1110,6 +1112,9 @@ class Clock extends $pb.GeneratedMessage {
     }
     if (minutes != null) {
       _result.minutes = minutes;
+    }
+    if (unixtime != null) {
+      _result.unixtime = unixtime;
     }
     return _result;
   }
@@ -1160,6 +1165,15 @@ class Clock extends $pb.GeneratedMessage {
   $core.bool hasMinutes() => $_has(2);
   @$pb.TagNumber(3)
   void clearMinutes() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get unixtime => $_getI64(3);
+  @$pb.TagNumber(4)
+  set unixtime($fixnum.Int64 v) { $_setInt64(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUnixtime() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUnixtime() => clearField(4);
 }
 
 class Device extends $pb.GeneratedMessage {
