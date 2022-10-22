@@ -29,13 +29,15 @@ const (
 	DeviceTypePCA9685 DeviceType = "pca9685"
 	// DeviceTypePCF8574 is the device type of a General Purpose I/O
 	DeviceTypePCF8574 DeviceType = "pcf8574"
+	// DeviceTypeADS1115 is the device type of a A/D conversion
+	DeviceTypeADS1115 DeviceType = "ads1115"
 )
 
 // Validate the given type, returning nil on ok,
 // or an error upon validation issues.
 func (t DeviceType) Validate() error {
 	switch t {
-	case DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574:
+	case DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574, DeviceTypeADS1115:
 		return nil
 	default:
 		return InvalidArgument("invalid device type '%s'", string(t))
@@ -44,5 +46,5 @@ func (t DeviceType) Validate() error {
 
 // AllDeviceTypes returns all possible device types.
 func AllDeviceTypes() []DeviceType {
-	return []DeviceType{DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574}
+	return []DeviceType{DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574, DeviceTypeADS1115}
 }

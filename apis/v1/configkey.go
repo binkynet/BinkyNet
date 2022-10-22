@@ -19,6 +19,7 @@ package v1
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 )
 
@@ -37,6 +38,9 @@ const (
 	ConfigKeyInvert ConfigKey = "invert"
 	// ConfigKeyPulse configures the length of the pulse (for relays) in ms.
 	ConfigKeyPulse ConfigKey = "pulse"
+	// ConfigKeyAnalogSensorThreshold configures the threshold for measured analog values
+	// above which a sensor is considered "on".
+	ConfigKeyAnalogSensorThreshold ConfigKey = "threshold"
 )
 
 // DefaultValue returns the default value for a given configuration key.
@@ -52,6 +56,8 @@ func (key ConfigKey) DefaultValue() string {
 		return "false"
 	case ConfigKeyPulse:
 		return "1000"
+	case ConfigKeyAnalogSensorThreshold:
+		return "128"
 	default:
 		return ""
 	}
@@ -84,6 +90,14 @@ func (key ConfigKey) ValidateValue(value string) error {
 		} else if x > 5000 {
 			return fmt.Errorf("too large")
 		}
+	case ConfigKeyAnalogSensorThreshold:
+		if x, err := strconv.Atoi(value); err != nil {
+			return fmt.Errorf("not a valid number")
+		} else if x <= 0 {
+			return fmt.Errorf("too small")
+		} else if x > math.MaxUint16 {
+			return fmt.Errorf("too large")
+		}
 	}
 	return nil
 }
@@ -94,5 +108,6 @@ func AllConfigKeys() []ConfigKey {
 		ConfigKeyServoOff,
 		ConfigKeyServoStep,
 		ConfigKeyInvert,
+		ConfigKeyAnalogSensorThreshold,
 	}
 }

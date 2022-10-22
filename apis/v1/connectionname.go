@@ -64,7 +64,7 @@ func (name ConnectionName) ExpectedPins() int {
 func (ot ConnectionName) ExpectedConfigurations() ([]ConfigKey, []ConfigKey) {
 	switch ot {
 	case ConnectionNameSensor:
-		return nil, []ConfigKey{ConfigKeyInvert}
+		return nil, []ConfigKey{ConfigKeyInvert, ConfigKeyAnalogSensorThreshold}
 	case ConnectionNameOutput:
 		return nil, []ConfigKey{ConfigKeyInvert}
 	case ConnectionNameStraightRelay, ConnectionNameOffRelay:

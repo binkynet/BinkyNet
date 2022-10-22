@@ -21,6 +21,8 @@ package v1
 type ObjectType string
 
 const (
+	// ObjectTypeAnalogSensor is the object type of an analog, single-input on/off sensor
+	ObjectTypeAnalogSensor ObjectType = "analog-sensor"
 	// ObjectTypeBinarySensor is the object type of a single-bit on/off sensor
 	ObjectTypeBinarySensor ObjectType = "binary-sensor"
 	// ObjectTypeBinaryOutput is the object type of a single-bit on/off output
@@ -38,6 +40,8 @@ const (
 // Returns: Required connections, Optional connections
 func (ot ObjectType) ExpectedConnections() ([]ConnectionName, []ConnectionName) {
 	switch ot {
+	case ObjectTypeAnalogSensor:
+		return []ConnectionName{ConnectionNameSensor}, nil
 	case ObjectTypeBinarySensor:
 		return []ConnectionName{ConnectionNameSensor}, nil
 	case ObjectTypeBinaryOutput:
@@ -55,5 +59,5 @@ func (ot ObjectType) ExpectedConnections() ([]ConnectionName, []ConnectionName) 
 
 // AllObjectTypes returns all possible object types.
 func AllObjectTypes() []ObjectType {
-	return []ObjectType{ObjectTypeBinarySensor, ObjectTypeBinaryOutput, ObjectTypeServoSwitch, ObjectTypeRelaySwitch, ObjectTypeTrackInverter}
+	return []ObjectType{ObjectTypeAnalogSensor, ObjectTypeBinarySensor, ObjectTypeBinaryOutput, ObjectTypeServoSwitch, ObjectTypeRelaySwitch, ObjectTypeTrackInverter}
 }
