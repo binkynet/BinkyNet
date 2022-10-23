@@ -61,7 +61,7 @@ func (key ConfigKey) DefaultValue() string {
 		return "false"
 	case ConfigKeyPulse:
 		return "1000"
-	case ConfigKeyAnalogSensorThreshold:
+	case ConfigKeyThreshold:
 		return "128"
 	default:
 		return ""
@@ -95,7 +95,7 @@ func (key ConfigKey) ValidateValue(value string) error {
 		} else if x > 5000 {
 			return fmt.Errorf("too large")
 		}
-	case ConfigKeyAnalogSensorThreshold:
+	case ConfigKeyThreshold:
 		if x, err := strconv.Atoi(value); err != nil {
 			return fmt.Errorf("not a valid number")
 		} else if x <= 0 {
@@ -114,6 +114,6 @@ func AllConfigKeys() []ConfigKey {
 		ConfigKeyServoOff,
 		ConfigKeyServoStep,
 		ConfigKeyInvert,
-		ConfigKeyAnalogSensorThreshold,
+		ConfigKeyThreshold,
 	}
 }
