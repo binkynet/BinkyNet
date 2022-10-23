@@ -41,9 +41,9 @@ const (
 	ConfigKeyInvert ConfigKey = "invert"
 	// ConfigKeyPulse configures the length of the pulse (for relays) in ms.
 	ConfigKeyPulse ConfigKey = "pulse"
-	// ConfigKeyAnalogSensorThreshold configures the threshold for measured analog values
+	// ConfigKeyThreshold configures the threshold for measured analog values
 	// above which a sensor is considered "on".
-	ConfigKeyAnalogSensorThreshold ConfigKey = "threshold"
+	ConfigKeyThreshold ConfigKey = "threshold"
 )
 
 // DefaultValue returns the default value for a given configuration key.
