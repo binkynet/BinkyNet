@@ -27,6 +27,9 @@ import (
 type ConfigKey string
 
 const (
+	// ConfigKeyDebug turns on/off debugging information for a specific object.
+	// Values are true|false|0|1.
+	ConfigKeyDebug ConfigKey = "debug"
 	// ConfigKeyServoStraight configures the servo value for the "straight" switch position.
 	ConfigKeyServoStraight ConfigKey = "straight"
 	// ConfigKeyServoOff configures the servo value for the "off" switch position.
@@ -46,6 +49,8 @@ const (
 // DefaultValue returns the default value for a given configuration key.
 func (key ConfigKey) DefaultValue() string {
 	switch key {
+	case ConfigKeyDebug:
+		return "false"
 	case ConfigKeyServoStraight:
 		return "300"
 	case ConfigKeyServoOff:
@@ -78,7 +83,7 @@ func (key ConfigKey) ValidateValue(value string) error {
 		} else if x > 900 {
 			return fmt.Errorf("too large")
 		}
-	case ConfigKeyInvert:
+	case ConfigKeyDebug, ConfigKeyInvert:
 		if _, err := strconv.ParseBool(value); err != nil {
 			return fmt.Errorf("not a boolean")
 		}
@@ -104,6 +109,7 @@ func (key ConfigKey) ValidateValue(value string) error {
 
 func AllConfigKeys() []ConfigKey {
 	return []ConfigKey{
+		ConfigKeyDebug,
 		ConfigKeyServoStraight,
 		ConfigKeyServoOff,
 		ConfigKeyServoStep,

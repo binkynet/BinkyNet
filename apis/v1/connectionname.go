@@ -64,17 +64,17 @@ func (name ConnectionName) ExpectedPins() int {
 func (ot ConnectionName) ExpectedConfigurations() ([]ConfigKey, []ConfigKey) {
 	switch ot {
 	case ConnectionNameSensor:
-		return nil, []ConfigKey{ConfigKeyInvert, ConfigKeyAnalogSensorThreshold}
+		return nil, []ConfigKey{ConfigKeyDebug, ConfigKeyInvert, ConfigKeyAnalogSensorThreshold}
 	case ConnectionNameOutput:
-		return nil, []ConfigKey{ConfigKeyInvert}
+		return nil, []ConfigKey{ConfigKeyDebug, ConfigKeyInvert}
 	case ConnectionNameStraightRelay, ConnectionNameOffRelay:
-		return nil, []ConfigKey{ConfigKeyInvert, ConfigKeyPulse}
+		return nil, []ConfigKey{ConfigKeyDebug, ConfigKeyInvert, ConfigKeyPulse}
 	case ConnectionNamePhaseStraightRelay, ConnectionNamePhaseOffRelay:
-		return nil, []ConfigKey{ConfigKeyInvert}
+		return nil, []ConfigKey{ConfigKeyDebug, ConfigKeyInvert}
 	case ConnectionNameRelayOutAInA, ConnectionNameRelayOutAInB, ConnectionNameRelayOutBInA, ConnectionNameRelayOutBInB:
-		return nil, []ConfigKey{ConfigKeyInvert}
+		return nil, []ConfigKey{ConfigKeyDebug, ConfigKeyInvert}
 	case ConnectionNameServo:
-		return nil, []ConfigKey{ConfigKeyServoStraight, ConfigKeyServoOff, ConfigKeyServoStep}
+		return nil, []ConfigKey{ConfigKeyDebug, ConfigKeyServoStraight, ConfigKeyServoOff, ConfigKeyServoStep}
 	default:
 		return nil, nil
 	}
