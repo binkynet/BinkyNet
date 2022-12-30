@@ -139,6 +139,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uptime')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configHash')
+    ..pPS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configuredDeviceIds')
+    ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configuredObjectIds')
     ..hasRequiredFields = false
   ;
 
@@ -149,6 +151,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.String? version,
     $fixnum.Int64? uptime,
     $core.String? configHash,
+    $core.Iterable<$core.String>? configuredDeviceIds,
+    $core.Iterable<$core.String>? configuredObjectIds,
   }) {
     final _result = create();
     if (id != null) {
@@ -165,6 +169,12 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (configHash != null) {
       _result.configHash = configHash;
+    }
+    if (configuredDeviceIds != null) {
+      _result.configuredDeviceIds.addAll(configuredDeviceIds);
+    }
+    if (configuredObjectIds != null) {
+      _result.configuredObjectIds.addAll(configuredObjectIds);
     }
     return _result;
   }
@@ -233,6 +243,12 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
   $core.bool hasConfigHash() => $_has(4);
   @$pb.TagNumber(5)
   void clearConfigHash() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.List<$core.String> get configuredDeviceIds => $_getList(5);
+
+  @$pb.TagNumber(7)
+  $core.List<$core.String> get configuredObjectIds => $_getList(6);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {

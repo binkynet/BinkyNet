@@ -53,6 +53,10 @@ message LocalWorkerInfo {
   int64 uptime = 4;
   // Hash of the current configuration
   string config_hash = 5;
+  // IDs of all configured devices
+  repeated string configured_device_ids = 6;
+  // IDs of all configured objects
+  repeated string configured_object_ids = 7;
 }
 
 // Request arguments for GetPowerRequests
