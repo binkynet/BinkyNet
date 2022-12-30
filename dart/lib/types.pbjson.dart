@@ -74,11 +74,13 @@ const LocalWorkerInfo$json = const {
     const {'1': 'config_hash', '3': 5, '4': 1, '5': 9, '10': 'configHash'},
     const {'1': 'configured_device_ids', '3': 6, '4': 3, '5': 9, '10': 'configuredDeviceIds'},
     const {'1': 'configured_object_ids', '3': 7, '4': 3, '5': 9, '10': 'configuredObjectIds'},
+    const {'1': 'unconfigured_device_ids', '3': 8, '4': 3, '5': 9, '10': 'unconfiguredDeviceIds'},
+    const {'1': 'unconfigured_object_ids', '3': 9, '4': 3, '5': 9, '10': 'unconfiguredObjectIds'},
   ],
 };
 
 /// Descriptor for `LocalWorkerInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List localWorkerInfoDescriptor = $convert.base64Decode('Cg9Mb2NhbFdvcmtlckluZm8SDgoCaWQYASABKAlSAmlkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIYCgd2ZXJzaW9uGAMgASgJUgd2ZXJzaW9uEhYKBnVwdGltZRgEIAEoA1IGdXB0aW1lEh8KC2NvbmZpZ19oYXNoGAUgASgJUgpjb25maWdIYXNoEjIKFWNvbmZpZ3VyZWRfZGV2aWNlX2lkcxgGIAMoCVITY29uZmlndXJlZERldmljZUlkcxIyChVjb25maWd1cmVkX29iamVjdF9pZHMYByADKAlSE2NvbmZpZ3VyZWRPYmplY3RJZHM=');
+final $typed_data.Uint8List localWorkerInfoDescriptor = $convert.base64Decode('Cg9Mb2NhbFdvcmtlckluZm8SDgoCaWQYASABKAlSAmlkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIYCgd2ZXJzaW9uGAMgASgJUgd2ZXJzaW9uEhYKBnVwdGltZRgEIAEoA1IGdXB0aW1lEh8KC2NvbmZpZ19oYXNoGAUgASgJUgpjb25maWdIYXNoEjIKFWNvbmZpZ3VyZWRfZGV2aWNlX2lkcxgGIAMoCVITY29uZmlndXJlZERldmljZUlkcxIyChVjb25maWd1cmVkX29iamVjdF9pZHMYByADKAlSE2NvbmZpZ3VyZWRPYmplY3RJZHMSNgoXdW5jb25maWd1cmVkX2RldmljZV9pZHMYCCADKAlSFXVuY29uZmlndXJlZERldmljZUlkcxI2Chd1bmNvbmZpZ3VyZWRfb2JqZWN0X2lkcxgJIAMoCVIVdW5jb25maWd1cmVkT2JqZWN0SWRz');
 @$core.Deprecated('Use powerRequestsOptionsDescriptor instead')
 const PowerRequestsOptions$json = const {
   '1': 'PowerRequestsOptions',

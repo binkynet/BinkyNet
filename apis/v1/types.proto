@@ -57,6 +57,10 @@ message LocalWorkerInfo {
   repeated string configured_device_ids = 6;
   // IDs of all configured objects
   repeated string configured_object_ids = 7;
+  // IDs of all unconfigured devices
+  repeated string unconfigured_device_ids = 8;
+  // IDs of all unconfigured objects
+  repeated string unconfigured_object_ids = 9;
 }
 
 // Request arguments for GetPowerRequests

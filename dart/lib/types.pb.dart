@@ -141,6 +141,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configHash')
     ..pPS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configuredDeviceIds')
     ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configuredObjectIds')
+    ..pPS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unconfiguredDeviceIds')
+    ..pPS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unconfiguredObjectIds')
     ..hasRequiredFields = false
   ;
 
@@ -153,6 +155,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.String? configHash,
     $core.Iterable<$core.String>? configuredDeviceIds,
     $core.Iterable<$core.String>? configuredObjectIds,
+    $core.Iterable<$core.String>? unconfiguredDeviceIds,
+    $core.Iterable<$core.String>? unconfiguredObjectIds,
   }) {
     final _result = create();
     if (id != null) {
@@ -175,6 +179,12 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (configuredObjectIds != null) {
       _result.configuredObjectIds.addAll(configuredObjectIds);
+    }
+    if (unconfiguredDeviceIds != null) {
+      _result.unconfiguredDeviceIds.addAll(unconfiguredDeviceIds);
+    }
+    if (unconfiguredObjectIds != null) {
+      _result.unconfiguredObjectIds.addAll(unconfiguredObjectIds);
     }
     return _result;
   }
@@ -249,6 +259,12 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(7)
   $core.List<$core.String> get configuredObjectIds => $_getList(6);
+
+  @$pb.TagNumber(8)
+  $core.List<$core.String> get unconfiguredDeviceIds => $_getList(7);
+
+  @$pb.TagNumber(9)
+  $core.List<$core.String> get unconfiguredObjectIds => $_getList(8);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {
