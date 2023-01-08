@@ -109,7 +109,7 @@ func RegisterServiceEntry(ctx context.Context, serviceType string, info ServiceI
 				}
 			}
 		}
-		if len(selectedIFaces) == 0 {
+		if len(selectedIFaces) == 0 && host != "0.0.0.0" {
 			return fmt.Errorf("Did not find interface with address '%s'", host)
 		}
 		ifaces = selectedIFaces
