@@ -131,6 +131,7 @@ func (c *LokiLogger) run() {
 			}
 			batch = append(batch, []string{
 				strconv.FormatInt(ts.UnixNano(), 10),
+				entry.Level.String(),
 				formatEntry(entry.Line),
 			})
 			batchSize++
@@ -188,9 +189,6 @@ func formatEntry(line string) string {
 		return line
 	}
 	var buf bytes.Buffer
-	if v, ok := evt[zerolog.MessageFieldName]; ok {
-		buf.WriteString(fmt.Sprintf("%s", v))
-	}
 	keys := make([]string, 0, len(evt))
 	for k := range evt {
 		switch k {
@@ -201,6 +199,9 @@ func formatEntry(line string) string {
 		}
 	}
 	sort.Strings(keys)
+	if v, ok := evt[zerolog.MessageFieldName]; ok {
+		buf.WriteString(fmt.Sprintf("%s", v))
+	}
 	for _, k := range keys {
 		buf.WriteByte(' ')
 		buf.WriteString(k)
