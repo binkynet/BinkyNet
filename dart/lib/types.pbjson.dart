@@ -3,7 +3,7 @@
 //  source: types.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
@@ -76,11 +76,13 @@ const LocalWorkerInfo$json = const {
     const {'1': 'configured_object_ids', '3': 7, '4': 3, '5': 9, '10': 'configuredObjectIds'},
     const {'1': 'unconfigured_device_ids', '3': 8, '4': 3, '5': 9, '10': 'unconfiguredDeviceIds'},
     const {'1': 'unconfigured_object_ids', '3': 9, '4': 3, '5': 9, '10': 'unconfiguredObjectIds'},
+    const {'1': 'metrics_port', '3': 10, '4': 1, '5': 5, '10': 'metricsPort'},
+    const {'1': 'metrics_secure', '3': 11, '4': 1, '5': 8, '10': 'metricsSecure'},
   ],
 };
 
 /// Descriptor for `LocalWorkerInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List localWorkerInfoDescriptor = $convert.base64Decode('Cg9Mb2NhbFdvcmtlckluZm8SDgoCaWQYASABKAlSAmlkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIYCgd2ZXJzaW9uGAMgASgJUgd2ZXJzaW9uEhYKBnVwdGltZRgEIAEoA1IGdXB0aW1lEh8KC2NvbmZpZ19oYXNoGAUgASgJUgpjb25maWdIYXNoEjIKFWNvbmZpZ3VyZWRfZGV2aWNlX2lkcxgGIAMoCVITY29uZmlndXJlZERldmljZUlkcxIyChVjb25maWd1cmVkX29iamVjdF9pZHMYByADKAlSE2NvbmZpZ3VyZWRPYmplY3RJZHMSNgoXdW5jb25maWd1cmVkX2RldmljZV9pZHMYCCADKAlSFXVuY29uZmlndXJlZERldmljZUlkcxI2Chd1bmNvbmZpZ3VyZWRfb2JqZWN0X2lkcxgJIAMoCVIVdW5jb25maWd1cmVkT2JqZWN0SWRz');
+final $typed_data.Uint8List localWorkerInfoDescriptor = $convert.base64Decode('Cg9Mb2NhbFdvcmtlckluZm8SDgoCaWQYASABKAlSAmlkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIYCgd2ZXJzaW9uGAMgASgJUgd2ZXJzaW9uEhYKBnVwdGltZRgEIAEoA1IGdXB0aW1lEh8KC2NvbmZpZ19oYXNoGAUgASgJUgpjb25maWdIYXNoEjIKFWNvbmZpZ3VyZWRfZGV2aWNlX2lkcxgGIAMoCVITY29uZmlndXJlZERldmljZUlkcxIyChVjb25maWd1cmVkX29iamVjdF9pZHMYByADKAlSE2NvbmZpZ3VyZWRPYmplY3RJZHMSNgoXdW5jb25maWd1cmVkX2RldmljZV9pZHMYCCADKAlSFXVuY29uZmlndXJlZERldmljZUlkcxI2Chd1bmNvbmZpZ3VyZWRfb2JqZWN0X2lkcxgJIAMoCVIVdW5jb25maWd1cmVkT2JqZWN0SWRzEiEKDG1ldHJpY3NfcG9ydBgKIAEoBVILbWV0cmljc1BvcnQSJQoObWV0cmljc19zZWN1cmUYCyABKAhSDW1ldHJpY3NTZWN1cmU=');
 @$core.Deprecated('Use powerRequestsOptionsDescriptor instead')
 const PowerRequestsOptions$json = const {
   '1': 'PowerRequestsOptions',

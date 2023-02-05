@@ -3,7 +3,7 @@
 //  source: types.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
@@ -143,6 +143,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configuredObjectIds')
     ..pPS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unconfiguredDeviceIds')
     ..pPS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unconfiguredObjectIds')
+    ..a<$core.int>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metricsPort', $pb.PbFieldType.O3)
+    ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metricsSecure')
     ..hasRequiredFields = false
   ;
 
@@ -157,6 +159,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.Iterable<$core.String>? configuredObjectIds,
     $core.Iterable<$core.String>? unconfiguredDeviceIds,
     $core.Iterable<$core.String>? unconfiguredObjectIds,
+    $core.int? metricsPort,
+    $core.bool? metricsSecure,
   }) {
     final _result = create();
     if (id != null) {
@@ -185,6 +189,12 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (unconfiguredObjectIds != null) {
       _result.unconfiguredObjectIds.addAll(unconfiguredObjectIds);
+    }
+    if (metricsPort != null) {
+      _result.metricsPort = metricsPort;
+    }
+    if (metricsSecure != null) {
+      _result.metricsSecure = metricsSecure;
     }
     return _result;
   }
@@ -265,6 +275,24 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(9)
   $core.List<$core.String> get unconfiguredObjectIds => $_getList(8);
+
+  @$pb.TagNumber(10)
+  $core.int get metricsPort => $_getIZ(9);
+  @$pb.TagNumber(10)
+  set metricsPort($core.int v) { $_setSignedInt32(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasMetricsPort() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearMetricsPort() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.bool get metricsSecure => $_getBF(10);
+  @$pb.TagNumber(11)
+  set metricsSecure($core.bool v) { $_setBool(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasMetricsSecure() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearMetricsSecure() => clearField(11);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {

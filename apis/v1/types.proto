@@ -61,6 +61,10 @@ message LocalWorkerInfo {
   repeated string unconfigured_device_ids = 8;
   // IDs of all unconfigured objects
   repeated string unconfigured_object_ids = 9;
+  // HTTP(s) port to serve metrics on
+  int32 metrics_port = 10;
+  // If set to true, metrics are served over HTTPS, otherwise HTTP
+  bool metrics_secure = 11;
 }
 
 // Request arguments for GetPowerRequests
