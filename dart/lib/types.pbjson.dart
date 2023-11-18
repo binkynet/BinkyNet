@@ -242,11 +242,12 @@ const SwitchState$json = const {
   '1': 'SwitchState',
   '2': const [
     const {'1': 'direction', '3': 1, '4': 1, '5': 14, '6': '.binkynet.v1.SwitchDirection', '10': 'direction'},
+    const {'1': 'is_used', '3': 2, '4': 1, '5': 8, '10': 'isUsed'},
   ],
 };
 
 /// Descriptor for `SwitchState`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List switchStateDescriptor = $convert.base64Decode('CgtTd2l0Y2hTdGF0ZRI6CglkaXJlY3Rpb24YASABKA4yHC5iaW5reW5ldC52MS5Td2l0Y2hEaXJlY3Rpb25SCWRpcmVjdGlvbg==');
+final $typed_data.Uint8List switchStateDescriptor = $convert.base64Decode('CgtTd2l0Y2hTdGF0ZRI6CglkaXJlY3Rpb24YASABKA4yHC5iaW5reW5ldC52MS5Td2l0Y2hEaXJlY3Rpb25SCWRpcmVjdGlvbhIXCgdpc191c2VkGAIgASgIUgZpc1VzZWQ=');
 @$core.Deprecated('Use clockDescriptor instead')
 const Clock$json = const {
   '1': 'Clock',

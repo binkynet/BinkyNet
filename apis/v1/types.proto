@@ -199,6 +199,9 @@ message Switch {
 message SwitchState {
 	// Requested/current direction of the switch
 	SwitchDirection direction = 1;
+  // Set if the switch is currently in use. 
+  // This can be used to power down a switch if it is not in use.
+  bool is_used = 2;
 }
 
 // TimePeriod indicates time of day in 4 periods.

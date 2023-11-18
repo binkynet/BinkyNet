@@ -1103,16 +1103,21 @@ class Switch extends $pb.GeneratedMessage {
 class SwitchState extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SwitchState', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
     ..e<SwitchDirection>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: SwitchDirection.STRAIGHT, valueOf: SwitchDirection.valueOf, enumValues: SwitchDirection.values)
+    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isUsed')
     ..hasRequiredFields = false
   ;
 
   SwitchState._() : super();
   factory SwitchState({
     SwitchDirection? direction,
+    $core.bool? isUsed,
   }) {
     final _result = create();
     if (direction != null) {
       _result.direction = direction;
+    }
+    if (isUsed != null) {
+      _result.isUsed = isUsed;
     }
     return _result;
   }
@@ -1145,6 +1150,15 @@ class SwitchState extends $pb.GeneratedMessage {
   $core.bool hasDirection() => $_has(0);
   @$pb.TagNumber(1)
   void clearDirection() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.bool get isUsed => $_getBF(1);
+  @$pb.TagNumber(2)
+  set isUsed($core.bool v) { $_setBool(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasIsUsed() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearIsUsed() => clearField(2);
 }
 
 class Clock extends $pb.GeneratedMessage {
