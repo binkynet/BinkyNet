@@ -32,6 +32,10 @@ const (
 	ConnectionNameRelayOutBInA       ConnectionName = "relay-out-b-in-a"
 	ConnectionNameRelayOutAInB       ConnectionName = "relay-out-a-in-b"
 	ConnectionNameRelayOutBInB       ConnectionName = "relay-out-b-in-b"
+	ConnectionNameMagneticStraightA  ConnectionName = "magnetic-straight-a"
+	ConnectionNameMagneticStraightB  ConnectionName = "magnetic-straight-b"
+	ConnectionNameMagneticOffA       ConnectionName = "magnetic-off-a"
+	ConnectionNameMagneticOffB       ConnectionName = "magnetic-off-b"
 )
 
 func AllConnectionNames() []ConnectionName {
@@ -47,6 +51,10 @@ func AllConnectionNames() []ConnectionName {
 		ConnectionNameRelayOutAInA,
 		ConnectionNameRelayOutAInB,
 		ConnectionNameRelayOutBInB,
+		ConnectionNameMagneticStraightA,
+		ConnectionNameMagneticStraightB,
+		ConnectionNameMagneticOffA,
+		ConnectionNameMagneticOffB,
 	}
 }
 
@@ -75,6 +83,8 @@ func (ot ConnectionName) ExpectedConfigurations() ([]ConfigKey, []ConfigKey) {
 		return nil, []ConfigKey{ConfigKeyDebug, ConfigKeyInvert}
 	case ConnectionNameServo:
 		return nil, []ConfigKey{ConfigKeyDebug, ConfigKeyServoStraight, ConfigKeyServoOff, ConfigKeyServoStep}
+	case ConnectionNameMagneticStraightA, ConnectionNameMagneticStraightB, ConnectionNameMagneticOffA, ConnectionNameMagneticOffB:
+		return nil, []ConfigKey{ConfigKeyDebug, ConfigKeyInvert}
 	default:
 		return nil, nil
 	}

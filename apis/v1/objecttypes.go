@@ -25,6 +25,9 @@ const (
 	ObjectTypeBinarySensor ObjectType = "binary-sensor"
 	// ObjectTypeBinaryOutput is the object type of a single-bit on/off output
 	ObjectTypeBinaryOutput ObjectType = "binary-output"
+	// ObjectTypeMagneticSwitch is the object type of switch that a single magnetic coil per direction.
+	// The coil has to stay activated.
+	ObjectTypeMagneticSwitch ObjectType = "magnetic-switch"
 	// ObjectTypeServoSwitch is the object type of a servo driven switch, with an option phase switching relay.
 	ObjectTypeServoSwitch ObjectType = "servo-switch"
 	// ObjectTypeRelaySwitch is the object type of a double relay driven switch, with an option phase switching relay.
@@ -42,6 +45,8 @@ func (ot ObjectType) ExpectedConnections() ([]ConnectionName, []ConnectionName) 
 		return []ConnectionName{ConnectionNameSensor}, nil
 	case ObjectTypeBinaryOutput:
 		return []ConnectionName{ConnectionNameOutput}, nil
+	case ObjectTypeMagneticSwitch:
+		return []ConnectionName{ConnectionNameMagneticStraightA, ConnectionNameMagneticStraightB, ConnectionNameMagneticOffA, ConnectionNameMagneticOffB}, nil
 	case ObjectTypeServoSwitch:
 		return []ConnectionName{ConnectionNameServo}, []ConnectionName{ConnectionNamePhaseStraightRelay, ConnectionNamePhaseOffRelay}
 	case ObjectTypeRelaySwitch:
@@ -55,5 +60,5 @@ func (ot ObjectType) ExpectedConnections() ([]ConnectionName, []ConnectionName) 
 
 // AllObjectTypes returns all possible object types.
 func AllObjectTypes() []ObjectType {
-	return []ObjectType{ObjectTypeBinarySensor, ObjectTypeBinaryOutput, ObjectTypeServoSwitch, ObjectTypeRelaySwitch, ObjectTypeTrackInverter}
+	return []ObjectType{ObjectTypeBinarySensor, ObjectTypeBinaryOutput, ObjectTypeMagneticSwitch, ObjectTypeServoSwitch, ObjectTypeRelaySwitch, ObjectTypeTrackInverter}
 }
