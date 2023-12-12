@@ -17,6 +17,8 @@
 
 package v1
 
+import "strconv"
+
 // ObjectTypeInfo holds builtin information for a type of objects.
 type ObjectTypeInfo struct {
 	// Type of the object
@@ -147,4 +149,40 @@ func (o Object) Validate() error {
 		}
 	}
 	return nil
+}
+
+// GetStringConfig returns the configuration value for the given key.
+// If not found, the default value for the key is returned.
+func (o Object) GetStringConfig(key ObjectConfigKey) string {
+	value, found := o.Configuration[key]
+	if found {
+		return value
+	}
+	return key.DefaultValue()
+}
+
+// GetBoolConfig returns the bool-typed configuration value for the given key.
+// If not found or not an int, the default value for the key is returned.
+func (o Object) GetBoolConfig(key ObjectConfigKey) bool {
+	value, found := o.Configuration[key]
+	if !found {
+		value = key.DefaultValue()
+	}
+	if tValue, err := strconv.ParseBool(value); err == nil {
+		return tValue
+	}
+	return false
+}
+
+// GetIntConfig returns the int-typed configuration value for the given key.
+// If not found or not an int, the default value for the key is returned.
+func (o Object) GetIntConfig(key ObjectConfigKey) int {
+	value, found := o.Configuration[key]
+	if !found {
+		value = key.DefaultValue()
+	}
+	if tValue, err := strconv.Atoi(value); err == nil {
+		return tValue
+	}
+	return 0
 }
