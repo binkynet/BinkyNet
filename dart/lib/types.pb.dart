@@ -1330,6 +1330,7 @@ class Object extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type')
     ..pc<Connection>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'connections', $pb.PbFieldType.PM, subBuilder: Connection.create)
+    ..m<$core.String, $core.String>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'configuration', entryClassName: 'Object.ConfigurationEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('binkynet.v1'))
     ..hasRequiredFields = false
   ;
 
@@ -1338,6 +1339,7 @@ class Object extends $pb.GeneratedMessage {
     $core.String? id,
     $core.String? type,
     $core.Iterable<Connection>? connections,
+    $core.Map<$core.String, $core.String>? configuration,
   }) {
     final _result = create();
     if (id != null) {
@@ -1348,6 +1350,9 @@ class Object extends $pb.GeneratedMessage {
     }
     if (connections != null) {
       _result.connections.addAll(connections);
+    }
+    if (configuration != null) {
+      _result.configuration.addAll(configuration);
     }
     return _result;
   }
@@ -1392,6 +1397,9 @@ class Object extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(3)
   $core.List<Connection> get connections => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $core.Map<$core.String, $core.String> get configuration => $_getMap(3);
 }
 
 class Connection extends $pb.GeneratedMessage {

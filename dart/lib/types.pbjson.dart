@@ -280,11 +280,23 @@ const Object$json = const {
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'id'},
     const {'1': 'type', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'type'},
     const {'1': 'connections', '3': 3, '4': 3, '5': 11, '6': '.binkynet.v1.Connection', '10': 'connections'},
+    const {'1': 'configuration', '3': 4, '4': 3, '5': 11, '6': '.binkynet.v1.Object.ConfigurationEntry', '8': const {}, '10': 'configuration'},
   ],
+  '3': const [Object_ConfigurationEntry$json],
+};
+
+@$core.Deprecated('Use objectDescriptor instead')
+const Object_ConfigurationEntry$json = const {
+  '1': 'ConfigurationEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `Object`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List objectDescriptor = $convert.base64Decode('CgZPYmplY3QSIAoCaWQYASABKAlCENreHwhPYmplY3RJRMjeHwBSAmlkEiYKBHR5cGUYAiABKAlCEtreHwpPYmplY3RUeXBlyN4fAFIEdHlwZRI5Cgtjb25uZWN0aW9ucxgDIAMoCzIXLmJpbmt5bmV0LnYxLkNvbm5lY3Rpb25SC2Nvbm5lY3Rpb25z');
+final $typed_data.Uint8List objectDescriptor = $convert.base64Decode('CgZPYmplY3QSIAoCaWQYASABKAlCENreHwhPYmplY3RJRMjeHwBSAmlkEiYKBHR5cGUYAiABKAlCEtreHwpPYmplY3RUeXBlyN4fAFIEdHlwZRI5Cgtjb25uZWN0aW9ucxgDIAMoCzIXLmJpbmt5bmV0LnYxLkNvbm5lY3Rpb25SC2Nvbm5lY3Rpb25zEmEKDWNvbmZpZ3VyYXRpb24YBCADKAsyJi5iaW5reW5ldC52MS5PYmplY3QuQ29uZmlndXJhdGlvbkVudHJ5QhOC3x8PT2JqZWN0Q29uZmlnS2V5Ug1jb25maWd1cmF0aW9uGkAKEkNvbmZpZ3VyYXRpb25FbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
 @$core.Deprecated('Use connectionDescriptor instead')
 const Connection$json = const {
   '1': 'Connection',

@@ -245,6 +245,9 @@ message Object {
 	// Connections to devices used by this object
 	// The keys used in this map are specific to the type of object.
   repeated Connection connections = 3;
+	// Optional configuration for this object.
+	// Keys & values are specific to the object type.
+	map<string, string> configuration = 4 [(gogoproto.castkey) = "ObjectConfigKey"];
 }
 
 // Connection from an Object to a Device.

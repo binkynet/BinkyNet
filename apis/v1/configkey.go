@@ -23,7 +23,8 @@ import (
 	"strconv"
 )
 
-// ConfigKey is a strongly typed well known key of a configuration entry of an object type.
+// ConfigKey is a strongly typed well known key of a configuration entry of
+// a connection of an object type.
 type ConfigKey string
 
 const (

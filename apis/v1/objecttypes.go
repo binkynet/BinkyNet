@@ -58,6 +58,43 @@ func (ot ObjectType) ExpectedConnections() ([]ConnectionName, []ConnectionName) 
 	}
 }
 
+// ExpectedConfigurations returns the possible configuration keys that are supported
+// for an object of given type.
+// Returns: Supported configuration keys
+func (ot ObjectType) ExpectedConfigurations() []ObjectConfigKey {
+	switch ot {
+	case ObjectTypeBinarySensor:
+		return []ObjectConfigKey{
+			ObjectConfigKeyDebug,
+		}
+	case ObjectTypeBinaryOutput:
+		return []ObjectConfigKey{
+			ObjectConfigKeyDebug,
+		}
+	case ObjectTypeMagneticSwitch:
+		return []ObjectConfigKey{
+			ObjectConfigKeyDebug,
+			ObjectConfigKeyMagneticAlwaysEnabled,
+			ObjectConfigKeyMagneticStraightInvert,
+			ObjectConfigKeyMagneticOffInvert,
+		}
+	case ObjectTypeServoSwitch:
+		return []ObjectConfigKey{
+			ObjectConfigKeyDebug,
+		}
+	case ObjectTypeRelaySwitch:
+		return []ObjectConfigKey{
+			ObjectConfigKeyDebug,
+		}
+	case ObjectTypeTrackInverter:
+		return []ObjectConfigKey{
+			ObjectConfigKeyDebug,
+		}
+	default:
+		return nil
+	}
+}
+
 // AllObjectTypes returns all possible object types.
 func AllObjectTypes() []ObjectType {
 	return []ObjectType{ObjectTypeBinarySensor, ObjectTypeBinaryOutput, ObjectTypeMagneticSwitch, ObjectTypeServoSwitch, ObjectTypeRelaySwitch, ObjectTypeTrackInverter}
