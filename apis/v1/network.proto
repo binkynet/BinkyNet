@@ -79,33 +79,6 @@ service NetworkControlService {
   rpc SetClockActual(binkynet.v1.Clock) returns (Empty);
   // Watch clock changes
   rpc WatchClock(WatchOptions) returns (stream binkynet.v1.Clock);
-  
-  // Power is used to send power requests and receive power request & actual changes.
-  // Deprecated
-  rpc Power(stream PowerState) returns (stream binkynet.v1.Power);
-
-  // Locs is used to control locs and get changes in loc requests & actual state back.
-  // Note: Loc.actual on incoming objects is ignored.
-  // Deprecated
-  rpc Locs(stream Loc) returns (stream Loc);
-
-  // Sensors is used to receive a stream of actual sensor states.
-  // Deprecated
-  rpc Sensors(Empty) returns (stream Sensor);
-
-  // Outputs is used to control outputs and get changes in output requests & actual state back.
-  // Note: Output.actual on incoming objects is ignored.
-  // Deprecated
-  rpc Outputs(stream Output) returns (stream Output);
-
-  // Switches is used to control switches and get changes in switch requests & actual state back.
-  // Note: Switche.actual on incoming objects is ignored.
-  // Deprecated
-  rpc Switches(stream Switch) returns (stream Switch);
-
-  // Clock is used to send clock requests and receive clock changes.
-  // Deprecated
-  rpc Clock(stream binkynet.v1.Clock) returns (stream binkynet.v1.Clock);
 }
 
 message WatchOptions {
