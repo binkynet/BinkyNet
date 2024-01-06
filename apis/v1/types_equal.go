@@ -106,7 +106,8 @@ func (s *Device) Equal(o *Device) bool {
 func (s *Object) Equal(o *Object) bool {
 	return s.GetId() == o.GetId() &&
 		s.GetType() == o.GetType() &&
-		s.equalConnections(o)
+		s.equalConnections(o) &&
+		s.equalConfiguration(o)
 }
 
 // equalConnections returns true when Connections in both objects have the same values.
@@ -117,6 +118,21 @@ func (s *Object) equalConnections(o *Object) bool {
 	ocs := o.GetConnections()
 	for i, sc := range s.GetConnections() {
 		if !sc.Equal(ocs[i]) {
+			return false
+		}
+	}
+	return true
+}
+
+// equalConfiguration returns true when Object in both objects have the same values.
+func (s *Object) equalConfiguration(o *Object) bool {
+	if len(s.GetConfiguration()) != len(o.GetConfiguration()) {
+		return false
+	}
+	ocs := o.GetConfiguration()
+	for k, sv := range s.GetConfiguration() {
+		ov := ocs[k]
+		if sv != ov {
 			return false
 		}
 	}

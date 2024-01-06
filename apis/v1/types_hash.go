@@ -40,6 +40,15 @@ func (s *Object) HashTo(h hash.Hash) {
 	for _, conn := range s.GetConnections() {
 		conn.HashTo(h)
 	}
+	configKeys := make([]string, 0, len(s.GetConfiguration()))
+	for k := range s.GetConfiguration() {
+		configKeys = append(configKeys, string(k))
+	}
+	sort.Strings(configKeys)
+	for _, k := range configKeys {
+		io.WriteString(h, k)
+		io.WriteString(h, s.GetConfiguration()[ObjectConfigKey(k)])
+	}
 }
 
 // HashTo appends the connection into to the given hash.
