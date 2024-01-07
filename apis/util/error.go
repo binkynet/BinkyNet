@@ -17,10 +17,31 @@
 
 package util
 
-import "io"
+import (
+	"context"
+	"fmt"
+	"io"
+)
 
 // IsStreamClosed returns true when the error indicates
 // a normal closing of a GRPC stream.
 func IsStreamClosed(err error) bool {
 	return err == io.EOF
+}
+
+// ContextCanceledOrUnexpected is used in errgroup.Go functions
+// to ensure that an error is returned when a "Runner" function
+// ended unexpectedly.
+// Returns:
+// - if ctx.Err() != nil -> ctx.Err()
+// - if err != nil -> wrap(err, "component returned an unexpected error")
+// - otherwise -> "component ended unexpectedly"
+func ContextCanceledOrUnexpected(ctx context.Context, err error, component string) error {
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	if err != nil {
+		return fmt.Errorf("%s returned an unexpected error: %w", component, err)
+	}
+	return fmt.Errorf("%s ended unexpectedly", component)
 }
