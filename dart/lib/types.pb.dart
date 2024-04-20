@@ -1533,6 +1533,7 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     ..pc<Object>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'objects', $pb.PbFieldType.PM, subBuilder: Object.create)
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unixtime')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
+    ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reset')
     ..hasRequiredFields = false
   ;
 
@@ -1543,6 +1544,7 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     $core.Iterable<Object>? objects,
     $fixnum.Int64? unixtime,
     $core.String? hash,
+    $core.bool? reset,
   }) {
     final _result = create();
     if (alias != null) {
@@ -1559,6 +1561,9 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     }
     if (hash != null) {
       _result.hash = hash;
+    }
+    if (reset != null) {
+      _result.reset = reset;
     }
     return _result;
   }
@@ -1615,6 +1620,15 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
   $core.bool hasHash() => $_has(4);
   @$pb.TagNumber(5)
   void clearHash() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.bool get reset => $_getBF(5);
+  @$pb.TagNumber(6)
+  set reset($core.bool v) { $_setBool(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasReset() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearReset() => clearField(6);
 }
 
 class LocalWorker extends $pb.GeneratedMessage {

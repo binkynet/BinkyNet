@@ -53,21 +53,21 @@ compile: $(SOURCES)
 # Build docker builder image
 .PHONY: build-image
 build-image:
-	docker buildx uninstall
+	#docker buildx uninstall
 	docker build \
 		-t $(BUILDIMAGE) \
 		-f apis/Dockerfile.build apis 
 
 .PHONY: $(CACHEVOL)
 $(CACHEVOL):
-	@docker volume create $(CACHEVOL)
+	@docker volume create $(CACHEVOL) || true
 	docker run -it 	--rm -v $(CACHEVOL):/usr/gocache \
 		$(BUILDIMAGE) \
 		chown -R $(shell id -u):$(shell id -g) /usr/gocache
 
 .PHONY: $(MODVOL)
 $(MODVOL):
-	@docker volume create $(MODVOL)
+	@docker volume create $(MODVOL) || true
 	docker run -it 	--rm -v $(MODVOL):/go/pkg/mod \
 		$(BUILDIMAGE) \
 		chown -R $(shell id -u):$(shell id -g) /go/pkg/mod

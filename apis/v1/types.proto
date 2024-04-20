@@ -281,6 +281,8 @@ message LocalWorkerConfig {
   int64 unixtime = 4;
   // Hash of the configuration (excluding unixtime)
   string hash = 5;
+  // Set when a reset of the worker is requested.
+  bool reset = 6;
 }
 
 // Requested & actual state of a local worker

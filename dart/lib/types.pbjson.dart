@@ -340,11 +340,12 @@ const LocalWorkerConfig$json = const {
     const {'1': 'objects', '3': 3, '4': 3, '5': 11, '6': '.binkynet.v1.Object', '10': 'objects'},
     const {'1': 'unixtime', '3': 4, '4': 1, '5': 3, '10': 'unixtime'},
     const {'1': 'hash', '3': 5, '4': 1, '5': 9, '10': 'hash'},
+    const {'1': 'reset', '3': 6, '4': 1, '5': 8, '10': 'reset'},
   ],
 };
 
 /// Descriptor for `LocalWorkerConfig`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List localWorkerConfigDescriptor = $convert.base64Decode('ChFMb2NhbFdvcmtlckNvbmZpZxIUCgVhbGlhcxgBIAEoCVIFYWxpYXMSLQoHZGV2aWNlcxgCIAMoCzITLmJpbmt5bmV0LnYxLkRldmljZVIHZGV2aWNlcxItCgdvYmplY3RzGAMgAygLMhMuYmlua3luZXQudjEuT2JqZWN0UgdvYmplY3RzEhoKCHVuaXh0aW1lGAQgASgDUgh1bml4dGltZRISCgRoYXNoGAUgASgJUgRoYXNo');
+final $typed_data.Uint8List localWorkerConfigDescriptor = $convert.base64Decode('ChFMb2NhbFdvcmtlckNvbmZpZxIUCgVhbGlhcxgBIAEoCVIFYWxpYXMSLQoHZGV2aWNlcxgCIAMoCzITLmJpbmt5bmV0LnYxLkRldmljZVIHZGV2aWNlcxItCgdvYmplY3RzGAMgAygLMhMuYmlua3luZXQudjEuT2JqZWN0UgdvYmplY3RzEhoKCHVuaXh0aW1lGAQgASgDUgh1bml4dGltZRISCgRoYXNoGAUgASgJUgRoYXNoEhQKBXJlc2V0GAYgASgIUgVyZXNldA==');
 @$core.Deprecated('Use localWorkerDescriptor instead')
 const LocalWorker$json = const {
   '1': 'LocalWorker',
