@@ -27,18 +27,24 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 func init() { proto.RegisterFile("localworker.proto", fileDescriptor_4d9116c22e0c2dd1) }
 
 var fileDescriptor_4d9116c22e0c2dd1 = []byte{
-	// 172 bytes of a gzipped FileDescriptorProto
+	// 259 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xcc, 0xc9, 0x4f, 0x4e,
 	0xcc, 0x29, 0xcf, 0x2f, 0xca, 0x4e, 0x2d, 0xd2, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4e,
 	0xca, 0xcc, 0xcb, 0xae, 0xcc, 0x4b, 0x2d, 0xd1, 0x2b, 0x33, 0x94, 0xe2, 0x2e, 0xa9, 0x2c, 0x48,
-	0x2d, 0x86, 0xc8, 0x18, 0xb9, 0x72, 0x09, 0xf9, 0x80, 0x94, 0x87, 0x83, 0x95, 0x07, 0xa7, 0x16,
-	0x95, 0x65, 0x26, 0xa7, 0x0a, 0xe9, 0x73, 0xb1, 0x06, 0xa5, 0x16, 0xa7, 0x96, 0x08, 0x09, 0xe9,
-	0x21, 0xe9, 0xd4, 0x73, 0xcd, 0x2d, 0x28, 0xa9, 0x94, 0xc2, 0x22, 0xe6, 0xe4, 0x79, 0xe2, 0x91,
-	0x1c, 0xe3, 0x85, 0x47, 0x72, 0x8c, 0x0f, 0x1e, 0xc9, 0x31, 0xce, 0x78, 0x2c, 0xc7, 0x10, 0xa5,
-	0x92, 0x9e, 0x59, 0x92, 0x51, 0x9a, 0xa4, 0x97, 0x9c, 0x9f, 0xab, 0x0f, 0x53, 0xaf, 0xef, 0x04,
-	0x62, 0xf8, 0xa5, 0x96, 0xe8, 0x27, 0x16, 0x64, 0x16, 0xeb, 0x97, 0x19, 0xae, 0x62, 0x12, 0x80,
-	0x09, 0xe9, 0x39, 0x16, 0x64, 0x16, 0xeb, 0x85, 0x19, 0x26, 0xb1, 0x81, 0x1d, 0x66, 0x0c, 0x08,
-	0x00, 0x00, 0xff, 0xff, 0x99, 0x87, 0xc9, 0x72, 0xc7, 0x00, 0x00, 0x00,
+	0x2d, 0x86, 0xc8, 0x18, 0x6d, 0x63, 0xe2, 0x12, 0xf2, 0x01, 0xa9, 0x0f, 0x07, 0xab, 0x0f, 0x4e,
+	0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0x15, 0xd2, 0xe7, 0x62, 0x0d, 0x4a, 0x2d, 0x4e, 0x2d, 0x11, 0x12,
+	0xd2, 0x43, 0xd2, 0xaa, 0xe7, 0x9a, 0x5b, 0x50, 0x52, 0x29, 0x85, 0x45, 0x4c, 0xc8, 0x94, 0x8b,
+	0x37, 0x38, 0xb5, 0xc4, 0x27, 0x3f, 0x39, 0x28, 0xb5, 0xb0, 0x34, 0xb5, 0xb8, 0x44, 0x48, 0x00,
+	0x45, 0x91, 0x4f, 0x7e, 0x32, 0x56, 0x6d, 0x76, 0x5c, 0xfc, 0xc1, 0xa9, 0x25, 0x01, 0xf9, 0xe5,
+	0xa9, 0x45, 0x30, 0x8d, 0xe2, 0x28, 0xca, 0xc0, 0x52, 0xc1, 0x25, 0x89, 0x25, 0xa9, 0x58, 0xf5,
+	0x5b, 0x73, 0x09, 0x04, 0xa7, 0x96, 0xf8, 0x97, 0x96, 0x14, 0x94, 0x96, 0xc0, 0x0c, 0x10, 0x46,
+	0x51, 0x07, 0x91, 0xc3, 0xa3, 0x39, 0xb8, 0x3c, 0xb3, 0x24, 0x39, 0x03, 0xbb, 0x66, 0x88, 0x1c,
+	0x36, 0xcd, 0x4e, 0x9e, 0x27, 0x1e, 0xc9, 0x31, 0x5e, 0x78, 0x24, 0xc7, 0xf8, 0xe0, 0x91, 0x1c,
+	0xe3, 0x8c, 0xc7, 0x72, 0x0c, 0x51, 0x2a, 0xe9, 0x99, 0x25, 0x19, 0xa5, 0x49, 0x7a, 0xc9, 0xf9,
+	0xb9, 0xfa, 0x30, 0xf5, 0xfa, 0x4e, 0x20, 0x86, 0x5f, 0x6a, 0x89, 0x7e, 0x62, 0x41, 0x66, 0xb1,
+	0x7e, 0x99, 0xe1, 0x2a, 0x26, 0x01, 0x98, 0x90, 0x9e, 0x63, 0x41, 0x66, 0xb1, 0x5e, 0x98, 0x61,
+	0x12, 0x1b, 0x38, 0x2a, 0x8c, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0xdd, 0x8f, 0x6d, 0x78, 0xb9,
+	0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -55,6 +61,14 @@ const _ = grpc.SupportPackageIsVersion4
 type LocalWorkerServiceClient interface {
 	// Reset the local worker
 	Reset(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
+	// Set a requested loc state
+	SetLocRequest(ctx context.Context, in *Loc, opts ...grpc.CallOption) (*Empty, error)
+	// Set the requested power state
+	SetPowerRequest(ctx context.Context, in *PowerState, opts ...grpc.CallOption) (*Empty, error)
+	// Set a requested output state
+	SetOutputRequest(ctx context.Context, in *Output, opts ...grpc.CallOption) (*Empty, error)
+	// Set a requested switch state
+	SetSwitchRequest(ctx context.Context, in *Switch, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type localWorkerServiceClient struct {
@@ -74,10 +88,54 @@ func (c *localWorkerServiceClient) Reset(ctx context.Context, in *Empty, opts ..
 	return out, nil
 }
 
+func (c *localWorkerServiceClient) SetLocRequest(ctx context.Context, in *Loc, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerService/SetLocRequest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localWorkerServiceClient) SetPowerRequest(ctx context.Context, in *PowerState, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerService/SetPowerRequest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localWorkerServiceClient) SetOutputRequest(ctx context.Context, in *Output, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerService/SetOutputRequest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localWorkerServiceClient) SetSwitchRequest(ctx context.Context, in *Switch, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/binkynet.v1.LocalWorkerService/SetSwitchRequest", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // LocalWorkerServiceServer is the server API for LocalWorkerService service.
 type LocalWorkerServiceServer interface {
 	// Reset the local worker
 	Reset(context.Context, *Empty) (*Empty, error)
+	// Set a requested loc state
+	SetLocRequest(context.Context, *Loc) (*Empty, error)
+	// Set the requested power state
+	SetPowerRequest(context.Context, *PowerState) (*Empty, error)
+	// Set a requested output state
+	SetOutputRequest(context.Context, *Output) (*Empty, error)
+	// Set a requested switch state
+	SetSwitchRequest(context.Context, *Switch) (*Empty, error)
 }
 
 // UnimplementedLocalWorkerServiceServer can be embedded to have forward compatible implementations.
@@ -86,6 +144,18 @@ type UnimplementedLocalWorkerServiceServer struct {
 
 func (*UnimplementedLocalWorkerServiceServer) Reset(ctx context.Context, req *Empty) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Reset not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetLocRequest(ctx context.Context, req *Loc) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetLocRequest not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetPowerRequest(ctx context.Context, req *PowerState) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetPowerRequest not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetOutputRequest(ctx context.Context, req *Output) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetOutputRequest not implemented")
+}
+func (*UnimplementedLocalWorkerServiceServer) SetSwitchRequest(ctx context.Context, req *Switch) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetSwitchRequest not implemented")
 }
 
 func RegisterLocalWorkerServiceServer(s *grpc.Server, srv LocalWorkerServiceServer) {
@@ -110,6 +180,78 @@ func _LocalWorkerService_Reset_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _LocalWorkerService_SetLocRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Loc)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalWorkerServiceServer).SetLocRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/binkynet.v1.LocalWorkerService/SetLocRequest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalWorkerServiceServer).SetLocRequest(ctx, req.(*Loc))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalWorkerService_SetPowerRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PowerState)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalWorkerServiceServer).SetPowerRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/binkynet.v1.LocalWorkerService/SetPowerRequest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalWorkerServiceServer).SetPowerRequest(ctx, req.(*PowerState))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalWorkerService_SetOutputRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Output)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalWorkerServiceServer).SetOutputRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/binkynet.v1.LocalWorkerService/SetOutputRequest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalWorkerServiceServer).SetOutputRequest(ctx, req.(*Output))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalWorkerService_SetSwitchRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Switch)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalWorkerServiceServer).SetSwitchRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/binkynet.v1.LocalWorkerService/SetSwitchRequest",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalWorkerServiceServer).SetSwitchRequest(ctx, req.(*Switch))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _LocalWorkerService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "binkynet.v1.LocalWorkerService",
 	HandlerType: (*LocalWorkerServiceServer)(nil),
@@ -117,6 +259,22 @@ var _LocalWorkerService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Reset",
 			Handler:    _LocalWorkerService_Reset_Handler,
+		},
+		{
+			MethodName: "SetLocRequest",
+			Handler:    _LocalWorkerService_SetLocRequest_Handler,
+		},
+		{
+			MethodName: "SetPowerRequest",
+			Handler:    _LocalWorkerService_SetPowerRequest_Handler,
+		},
+		{
+			MethodName: "SetOutputRequest",
+			Handler:    _LocalWorkerService_SetOutputRequest_Handler,
+		},
+		{
+			MethodName: "SetSwitchRequest",
+			Handler:    _LocalWorkerService_SetSwitchRequest_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

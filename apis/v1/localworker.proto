@@ -28,4 +28,13 @@ import "types.proto";
 service LocalWorkerService {
   // Reset the local worker
   rpc Reset(Empty) returns (Empty);
+
+  // Set a requested loc state
+  rpc SetLocRequest(Loc) returns (Empty);
+  // Set the requested power state
+  rpc SetPowerRequest(PowerState) returns (Empty);
+  // Set a requested output state
+  rpc SetOutputRequest(Output) returns (Empty);  
+  // Set a requested switch state
+  rpc SetSwitchRequest(Switch) returns (Empty);
 }
