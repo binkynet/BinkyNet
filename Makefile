@@ -39,7 +39,7 @@ APIGENSOURCES := $(shell find apis -name '*.go')
 
 .PHONY: all clean deps compile
 
-all: compile
+all: generate compile
 
 clean:
 	rm -Rf $(BIN) $(GOBUILDDIR)

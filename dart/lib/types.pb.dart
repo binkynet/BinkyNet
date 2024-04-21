@@ -145,6 +145,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..pPS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unconfiguredObjectIds')
     ..a<$core.int>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metricsPort', $pb.PbFieldType.O3)
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metricsSecure')
+    ..a<$core.int>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'localWorkerServicePort', $pb.PbFieldType.O3)
+    ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'localWorkerServiceSecure')
     ..hasRequiredFields = false
   ;
 
@@ -161,6 +163,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.Iterable<$core.String>? unconfiguredObjectIds,
     $core.int? metricsPort,
     $core.bool? metricsSecure,
+    $core.int? localWorkerServicePort,
+    $core.bool? localWorkerServiceSecure,
   }) {
     final _result = create();
     if (id != null) {
@@ -195,6 +199,12 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (metricsSecure != null) {
       _result.metricsSecure = metricsSecure;
+    }
+    if (localWorkerServicePort != null) {
+      _result.localWorkerServicePort = localWorkerServicePort;
+    }
+    if (localWorkerServiceSecure != null) {
+      _result.localWorkerServiceSecure = localWorkerServiceSecure;
     }
     return _result;
   }
@@ -293,6 +303,24 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
   $core.bool hasMetricsSecure() => $_has(10);
   @$pb.TagNumber(11)
   void clearMetricsSecure() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.int get localWorkerServicePort => $_getIZ(11);
+  @$pb.TagNumber(12)
+  set localWorkerServicePort($core.int v) { $_setSignedInt32(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasLocalWorkerServicePort() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearLocalWorkerServicePort() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.bool get localWorkerServiceSecure => $_getBF(12);
+  @$pb.TagNumber(13)
+  set localWorkerServiceSecure($core.bool v) { $_setBool(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasLocalWorkerServiceSecure() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearLocalWorkerServiceSecure() => clearField(13);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {
@@ -1533,7 +1561,6 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     ..pc<Object>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'objects', $pb.PbFieldType.PM, subBuilder: Object.create)
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unixtime')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
-    ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'reset')
     ..hasRequiredFields = false
   ;
 
@@ -1544,7 +1571,6 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     $core.Iterable<Object>? objects,
     $fixnum.Int64? unixtime,
     $core.String? hash,
-    $core.bool? reset,
   }) {
     final _result = create();
     if (alias != null) {
@@ -1561,9 +1587,6 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
     }
     if (hash != null) {
       _result.hash = hash;
-    }
-    if (reset != null) {
-      _result.reset = reset;
     }
     return _result;
   }
@@ -1620,15 +1643,6 @@ class LocalWorkerConfig extends $pb.GeneratedMessage {
   $core.bool hasHash() => $_has(4);
   @$pb.TagNumber(5)
   void clearHash() => clearField(5);
-
-  @$pb.TagNumber(6)
-  $core.bool get reset => $_getBF(5);
-  @$pb.TagNumber(6)
-  set reset($core.bool v) { $_setBool(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasReset() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearReset() => clearField(6);
 }
 
 class LocalWorker extends $pb.GeneratedMessage {
