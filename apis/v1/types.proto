@@ -65,6 +65,10 @@ message LocalWorkerInfo {
   int32 metrics_port = 10;
   // If set to true, metrics are served over HTTPS, otherwise HTTP
   bool metrics_secure = 11;
+  // Port this local worker is serving the LocalWorkerService on.
+  int32 local_worker_service_port = 12;
+  // If set, LocalWorkerService is served over TLS.
+  bool local_worker_service_secure = 13;
 }
 
 // Request arguments for GetPowerRequests
@@ -281,8 +285,6 @@ message LocalWorkerConfig {
   int64 unixtime = 4;
   // Hash of the configuration (excluding unixtime)
   string hash = 5;
-  // Set when a reset of the worker is requested.
-  bool reset = 6;
 }
 
 // Requested & actual state of a local worker
