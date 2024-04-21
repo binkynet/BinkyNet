@@ -99,43 +99,37 @@ func init() {
 func init() { proto.RegisterFile("network.proto", fileDescriptor_8571034d60397816) }
 
 var fileDescriptor_8571034d60397816 = []byte{
-	// 568 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x55, 0xd1, 0x6e, 0xd2, 0x50,
-	0x18, 0xf6, 0xcc, 0xc4, 0x8c, 0x9f, 0xe1, 0xf0, 0x6c, 0x28, 0x43, 0x43, 0x16, 0xe3, 0xc5, 0xae,
-	0x4a, 0x99, 0x9a, 0x98, 0x19, 0x8d, 0x0c, 0x76, 0x31, 0x33, 0x37, 0x43, 0x13, 0x97, 0x78, 0x43,
-	0x4a, 0xf9, 0x33, 0x1a, 0xa0, 0xa7, 0xb6, 0x7f, 0x21, 0x3c, 0x86, 0x77, 0x3e, 0x83, 0x2f, 0xe0,
-	0x2b, 0x78, 0xe9, 0x23, 0x18, 0x7c, 0x11, 0xc3, 0x39, 0x2d, 0xa3, 0x50, 0x9a, 0xf5, 0x0e, 0xfa,
-	0x7d, 0xdf, 0xff, 0x7f, 0xdf, 0xd7, 0x9e, 0x16, 0x0a, 0x0e, 0xd2, 0x44, 0x78, 0x03, 0xcd, 0xf5,
-	0x04, 0x09, 0x9e, 0xef, 0xda, 0xce, 0x60, 0xea, 0x20, 0x69, 0xe3, 0x7a, 0x25, 0x4f, 0x53, 0x17,
-	0x7d, 0x85, 0x3c, 0xff, 0xce, 0x60, 0xe7, 0xda, 0x24, 0xab, 0x7f, 0xe5, 0x92, 0x2d, 0x1c, 0x9f,
-	0x1f, 0x43, 0x69, 0x32, 0xff, 0xdf, 0xf1, 0xf0, 0x5b, 0x80, 0x3e, 0x75, 0xac, 0xbe, 0xe9, 0xdc,
-	0xa0, 0x5f, 0x66, 0x87, 0xec, 0x68, 0xbb, 0xbd, 0x27, 0xc1, 0xb6, 0xc2, 0x9a, 0x0a, 0xe2, 0x3a,
-	0xec, 0x2b, 0x8d, 0x69, 0x51, 0x60, 0x0e, 0x17, 0x92, 0x2d, 0x29, 0xe1, 0x12, 0x6b, 0x48, 0x28,
-	0x52, 0x3c, 0x85, 0xdc, 0x48, 0xf4, 0x82, 0x21, 0x76, 0xec, 0x5e, 0xf9, 0xfe, 0x21, 0x3b, 0xca,
-	0xb5, 0xb7, 0xd5, 0x85, 0xf3, 0xde, 0xf1, 0xaf, 0x3c, 0x94, 0x2e, 0x95, 0xff, 0xa6, 0x70, 0xc8,
-	0x13, 0x43, 0x03, 0xbd, 0xb1, 0x6d, 0x21, 0x3f, 0x83, 0x92, 0x81, 0x74, 0x21, 0x2c, 0x73, 0x78,
-	0x2d, 0xbc, 0x01, 0x7a, 0xa1, 0x11, 0x5e, 0xd6, 0x96, 0x12, 0x6a, 0x4b, 0x84, 0x0a, 0x8f, 0x21,
-	0x67, 0x23, 0x97, 0xa6, 0xbc, 0x05, 0xfb, 0xf1, 0x31, 0xca, 0x5c, 0xc6, 0x29, 0x1f, 0xe1, 0x91,
-	0x6c, 0x6e, 0x89, 0xe7, 0xf3, 0x83, 0x18, 0x71, 0xb9, 0xd9, 0xca, 0xc6, 0xe9, 0x3a, 0xe3, 0x9f,
-	0xe0, 0xc0, 0x40, 0x6a, 0xe1, 0x3c, 0x65, 0xcb, 0xf6, 0x2d, 0x31, 0x46, 0x6f, 0x1a, 0x85, 0x7b,
-	0x16, 0x13, 0xae, 0x90, 0x12, 0xad, 0x5d, 0x40, 0x79, 0x7d, 0x5c, 0x18, 0x32, 0xfb, 0x34, 0x03,
-	0x1e, 0xcb, 0x20, 0x71, 0xae, 0x8d, 0xa9, 0x69, 0x53, 0xd7, 0xe8, 0x8c, 0xbf, 0x87, 0x5d, 0x03,
-	0xe9, 0xb3, 0x98, 0xdc, 0xde, 0xc4, 0x27, 0x31, 0x89, 0x84, 0x0c, 0x32, 0x09, 0x13, 0x4d, 0xbd,
-	0x83, 0x87, 0x91, 0x3e, 0x0c, 0x96, 0x51, 0x0e, 0xd2, 0xae, 0xa4, 0xa5, 0xe5, 0xe0, 0xeb, 0x53,
-	0x75, 0xc6, 0x5f, 0x43, 0x41, 0x3d, 0x41, 0x91, 0xf7, 0xe2, 0xea, 0xcd, 0x4d, 0xdc, 0xfa, 0x0a,
-	0x76, 0x94, 0x2c, 0xb4, 0x7c, 0x37, 0xd5, 0x09, 0xe4, 0xa2, 0x07, 0x2d, 0xb5, 0xf2, 0xb5, 0x69,
-	0x3a, 0xe3, 0x27, 0xb2, 0x66, 0x03, 0x1d, 0x5f, 0x44, 0x3d, 0xed, 0xc5, 0x68, 0x0a, 0x4a, 0xdc,
-	0xfb, 0x21, 0x7c, 0x35, 0x28, 0x4a, 0xea, 0xea, 0xa4, 0x99, 0x3a, 0xe3, 0x6f, 0xa1, 0x68, 0x20,
-	0x5d, 0x05, 0xe4, 0x06, 0x14, 0x35, 0x15, 0xa7, 0x2a, 0x6c, 0x43, 0xec, 0xdd, 0x85, 0x38, 0xd1,
-	0x7a, 0x8a, 0x36, 0xb2, 0xae, 0x28, 0x19, 0xac, 0x2b, 0xc1, 0xc2, 0xba, 0x31, 0xb1, 0x6f, 0x5f,
-	0x77, 0xab, 0xcd, 0x49, 0x2c, 0xc5, 0xba, 0x22, 0x24, 0xb7, 0xbe, 0x59, 0xdb, 0x80, 0x82, 0x6a,
-	0x5d, 0x52, 0x30, 0x4b, 0xed, 0x52, 0xa1, 0x33, 0xfe, 0x46, 0x9e, 0x8d, 0xe6, 0x50, 0x58, 0x83,
-	0x70, 0x7b, 0x7c, 0x91, 0x44, 0x52, 0x8f, 0x85, 0x64, 0xdc, 0xfd, 0x58, 0x48, 0xba, 0xce, 0x4e,
-	0xcf, 0x7f, 0xcf, 0xaa, 0xec, 0xcf, 0xac, 0xca, 0xfe, 0xce, 0xaa, 0xec, 0xc7, 0xbf, 0xea, 0xbd,
-	0xaf, 0x2f, 0x6e, 0x6c, 0xea, 0x07, 0x5d, 0xcd, 0x12, 0xa3, 0x5a, 0xa4, 0xa8, 0x9d, 0xce, 0x7f,
-	0x5c, 0x22, 0xd5, 0x4c, 0xd7, 0xf6, 0x6b, 0xe3, 0xfa, 0xcf, 0xad, 0x62, 0x74, 0x49, 0x6b, 0xb8,
-	0xb6, 0xaf, 0x7d, 0xa9, 0x77, 0x1f, 0xc8, 0xef, 0xd3, 0xcb, 0xff, 0x01, 0x00, 0x00, 0xff, 0xff,
-	0x25, 0x0c, 0x8e, 0x2b, 0xca, 0x06, 0x00, 0x00,
+	// 477 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0xc1, 0x6e, 0xd3, 0x40,
+	0x10, 0x86, 0xd9, 0x22, 0x41, 0x3b, 0x2d, 0x50, 0xb6, 0x0d, 0xa4, 0x01, 0x45, 0x15, 0xe2, 0xd0,
+	0x93, 0x93, 0x14, 0x0e, 0x08, 0xa9, 0x87, 0x36, 0xe9, 0xa1, 0xa8, 0xb4, 0x28, 0x96, 0xa8, 0xc4,
+	0x25, 0x72, 0x9c, 0x51, 0xb3, 0x8a, 0xe3, 0x35, 0xbb, 0xe3, 0x44, 0xb9, 0xf3, 0x02, 0xdc, 0x78,
+	0x06, 0x9e, 0x84, 0x23, 0x8f, 0x80, 0xc2, 0x8b, 0xa0, 0xec, 0xc6, 0x51, 0x36, 0xb8, 0x96, 0x72,
+	0xb3, 0xf7, 0xff, 0xbf, 0x99, 0xf9, 0x67, 0x65, 0xc3, 0xa3, 0x18, 0x69, 0x2c, 0xd5, 0xc0, 0x4b,
+	0x94, 0x24, 0xc9, 0xb7, 0xbb, 0x22, 0x1e, 0x4c, 0x62, 0x24, 0x6f, 0xd4, 0xa8, 0x6c, 0xd3, 0x24,
+	0x41, 0x6d, 0x95, 0x57, 0xdf, 0x19, 0xec, 0xdc, 0x04, 0x14, 0xf6, 0xaf, 0x13, 0x12, 0x32, 0xd6,
+	0xfc, 0x18, 0x4a, 0xe3, 0xd9, 0x7b, 0x47, 0xe1, 0xd7, 0x14, 0x35, 0x75, 0xc2, 0x7e, 0x10, 0xdf,
+	0xa2, 0x2e, 0xb3, 0x43, 0x76, 0xb4, 0xd9, 0xde, 0x33, 0x62, 0xdb, 0x6a, 0x4d, 0x2b, 0xf1, 0x3a,
+	0xec, 0x5b, 0x26, 0x08, 0x29, 0x0d, 0xa2, 0x05, 0xb2, 0x61, 0x10, 0x6e, 0xb4, 0x53, 0x23, 0x65,
+	0xc4, 0x0b, 0xd8, 0x1a, 0xca, 0x5e, 0x1a, 0x61, 0x47, 0xf4, 0xca, 0xf7, 0x0f, 0xd9, 0xd1, 0x56,
+	0x7b, 0xd3, 0x1e, 0x5c, 0xf4, 0x8e, 0xbf, 0x3d, 0x84, 0xd2, 0x95, 0x9d, 0xbf, 0x29, 0x63, 0x52,
+	0x32, 0xf2, 0x51, 0x8d, 0x44, 0x88, 0xfc, 0x1c, 0x4a, 0x3e, 0xd2, 0xa5, 0x0c, 0x83, 0xe8, 0x46,
+	0xaa, 0x01, 0xaa, 0xf9, 0x20, 0xbc, 0xec, 0x2d, 0x25, 0xf4, 0x96, 0x0c, 0x15, 0xee, 0x28, 0xe7,
+	0xc3, 0x84, 0x26, 0xbc, 0x05, 0xfb, 0x6e, 0x19, 0x3b, 0xdc, 0x9a, 0x55, 0x3e, 0xc0, 0x53, 0xb3,
+	0xb9, 0x25, 0x9f, 0xe6, 0x07, 0x8e, 0x71, 0x79, 0xb3, 0x95, 0x3b, 0xab, 0xd7, 0x19, 0xff, 0x08,
+	0x07, 0x3e, 0x52, 0x0b, 0x67, 0x29, 0x5b, 0x42, 0x87, 0x72, 0x84, 0x6a, 0x92, 0x85, 0x7b, 0xe9,
+	0x80, 0x2b, 0xa6, 0xdc, 0xd1, 0x2e, 0xa1, 0xfc, 0x7f, 0xb9, 0x79, 0xc8, 0xf5, 0xab, 0xf9, 0xf0,
+	0xcc, 0x04, 0x71, 0xbd, 0x02, 0x0b, 0xd3, 0x16, 0xb6, 0xa9, 0x33, 0x7e, 0x02, 0x8f, 0x7d, 0xa4,
+	0x4f, 0x72, 0xbc, 0xd8, 0xfe, 0x73, 0x87, 0x30, 0x8a, 0x4f, 0x01, 0x61, 0xee, 0x4c, 0x6f, 0x61,
+	0xc7, 0x5e, 0xe1, 0x1c, 0xde, 0x5d, 0x5d, 0x6e, 0x2e, 0xf5, 0x1e, 0x9e, 0xf8, 0x48, 0x3e, 0xc6,
+	0x5a, 0x66, 0x5d, 0xf7, 0x1c, 0x9b, 0x95, 0x0a, 0xd8, 0xeb, 0x94, 0x92, 0x94, 0x72, 0x59, 0x2b,
+	0x15, 0xf5, 0x1d, 0x8b, 0xc5, 0x87, 0xb0, 0xda, 0xd7, 0x48, 0xb9, 0xec, 0x3b, 0xb3, 0xa8, 0x66,
+	0x24, 0xc3, 0xc1, 0x1c, 0x75, 0x5d, 0x46, 0xc9, 0x25, 0x4f, 0x00, 0xcc, 0x95, 0x18, 0x47, 0xd1,
+	0x5d, 0xe5, 0x14, 0xac, 0xb3, 0xb3, 0x8b, 0x5f, 0xd3, 0x2a, 0xfb, 0x3d, 0xad, 0xb2, 0x3f, 0xd3,
+	0x2a, 0xfb, 0xf1, 0xb7, 0x7a, 0xef, 0xcb, 0xeb, 0x5b, 0x41, 0xfd, 0xb4, 0xeb, 0x85, 0x72, 0x58,
+	0xcb, 0x88, 0xda, 0xd9, 0xec, 0xe1, 0x0a, 0xa9, 0x16, 0x24, 0x42, 0xd7, 0x46, 0x8d, 0x9f, 0x1b,
+	0xbb, 0xd9, 0x91, 0x77, 0x9a, 0x08, 0xed, 0x7d, 0x6e, 0x74, 0x1f, 0x98, 0x9f, 0xcd, 0x9b, 0x7f,
+	0x01, 0x00, 0x00, 0xff, 0xff, 0x2d, 0xd2, 0x4a, 0x7a, 0x97, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -162,34 +156,16 @@ type NetworkControlServiceClient interface {
 	SetDeviceDiscoveryActual(ctx context.Context, in *DeviceDiscovery, opts ...grpc.CallOption) (*Empty, error)
 	// Watch device discovery changes
 	WatchDeviceDiscoveries(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchDeviceDiscoveriesClient, error)
-	// Set the requested power state
-	SetPowerRequest(ctx context.Context, in *PowerState, opts ...grpc.CallOption) (*Empty, error)
 	// Set the actual power state
 	SetPowerActual(ctx context.Context, in *PowerState, opts ...grpc.CallOption) (*Empty, error)
-	// Watch power changes
-	WatchPower(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchPowerClient, error)
-	// Set a requested loc state
-	SetLocRequest(ctx context.Context, in *Loc, opts ...grpc.CallOption) (*Empty, error)
 	// Set an actual loc state
 	SetLocActual(ctx context.Context, in *Loc, opts ...grpc.CallOption) (*Empty, error)
-	// Watch loc changes
-	WatchLocs(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchLocsClient, error)
 	// Set an actual sensor state
 	SetSensorActual(ctx context.Context, in *Sensor, opts ...grpc.CallOption) (*Empty, error)
-	// Watch sensor changes
-	WatchSensors(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchSensorsClient, error)
-	// Set a requested output state
-	SetOutputRequest(ctx context.Context, in *Output, opts ...grpc.CallOption) (*Empty, error)
 	// Set an actual output state
 	SetOutputActual(ctx context.Context, in *Output, opts ...grpc.CallOption) (*Empty, error)
-	// Watch output changes
-	WatchOutputs(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchOutputsClient, error)
-	// Set a requested switch state
-	SetSwitchRequest(ctx context.Context, in *Switch, opts ...grpc.CallOption) (*Empty, error)
 	// Set an actual switch state
 	SetSwitchActual(ctx context.Context, in *Switch, opts ...grpc.CallOption) (*Empty, error)
-	// Watch switch changes
-	WatchSwitches(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchSwitchesClient, error)
 	// Set an actual clock state
 	SetClockActual(ctx context.Context, in *Clock, opts ...grpc.CallOption) (*Empty, error)
 	// Watch clock changes
@@ -304,59 +280,9 @@ func (x *networkControlServiceWatchDeviceDiscoveriesClient) Recv() (*DeviceDisco
 	return m, nil
 }
 
-func (c *networkControlServiceClient) SetPowerRequest(ctx context.Context, in *PowerState, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/binkynet.v1.NetworkControlService/SetPowerRequest", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *networkControlServiceClient) SetPowerActual(ctx context.Context, in *PowerState, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/binkynet.v1.NetworkControlService/SetPowerActual", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkControlServiceClient) WatchPower(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchPowerClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_NetworkControlService_serviceDesc.Streams[2], "/binkynet.v1.NetworkControlService/WatchPower", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &networkControlServiceWatchPowerClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type NetworkControlService_WatchPowerClient interface {
-	Recv() (*Power, error)
-	grpc.ClientStream
-}
-
-type networkControlServiceWatchPowerClient struct {
-	grpc.ClientStream
-}
-
-func (x *networkControlServiceWatchPowerClient) Recv() (*Power, error) {
-	m := new(Power)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *networkControlServiceClient) SetLocRequest(ctx context.Context, in *Loc, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/binkynet.v1.NetworkControlService/SetLocRequest", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -372,82 +298,9 @@ func (c *networkControlServiceClient) SetLocActual(ctx context.Context, in *Loc,
 	return out, nil
 }
 
-func (c *networkControlServiceClient) WatchLocs(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchLocsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_NetworkControlService_serviceDesc.Streams[3], "/binkynet.v1.NetworkControlService/WatchLocs", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &networkControlServiceWatchLocsClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type NetworkControlService_WatchLocsClient interface {
-	Recv() (*Loc, error)
-	grpc.ClientStream
-}
-
-type networkControlServiceWatchLocsClient struct {
-	grpc.ClientStream
-}
-
-func (x *networkControlServiceWatchLocsClient) Recv() (*Loc, error) {
-	m := new(Loc)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 func (c *networkControlServiceClient) SetSensorActual(ctx context.Context, in *Sensor, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/binkynet.v1.NetworkControlService/SetSensorActual", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *networkControlServiceClient) WatchSensors(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchSensorsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_NetworkControlService_serviceDesc.Streams[4], "/binkynet.v1.NetworkControlService/WatchSensors", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &networkControlServiceWatchSensorsClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type NetworkControlService_WatchSensorsClient interface {
-	Recv() (*Sensor, error)
-	grpc.ClientStream
-}
-
-type networkControlServiceWatchSensorsClient struct {
-	grpc.ClientStream
-}
-
-func (x *networkControlServiceWatchSensorsClient) Recv() (*Sensor, error) {
-	m := new(Sensor)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *networkControlServiceClient) SetOutputRequest(ctx context.Context, in *Output, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/binkynet.v1.NetworkControlService/SetOutputRequest", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -463,47 +316,6 @@ func (c *networkControlServiceClient) SetOutputActual(ctx context.Context, in *O
 	return out, nil
 }
 
-func (c *networkControlServiceClient) WatchOutputs(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchOutputsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_NetworkControlService_serviceDesc.Streams[5], "/binkynet.v1.NetworkControlService/WatchOutputs", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &networkControlServiceWatchOutputsClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type NetworkControlService_WatchOutputsClient interface {
-	Recv() (*Output, error)
-	grpc.ClientStream
-}
-
-type networkControlServiceWatchOutputsClient struct {
-	grpc.ClientStream
-}
-
-func (x *networkControlServiceWatchOutputsClient) Recv() (*Output, error) {
-	m := new(Output)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *networkControlServiceClient) SetSwitchRequest(ctx context.Context, in *Switch, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/binkynet.v1.NetworkControlService/SetSwitchRequest", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *networkControlServiceClient) SetSwitchActual(ctx context.Context, in *Switch, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
 	err := c.cc.Invoke(ctx, "/binkynet.v1.NetworkControlService/SetSwitchActual", in, out, opts...)
@@ -511,38 +323,6 @@ func (c *networkControlServiceClient) SetSwitchActual(ctx context.Context, in *S
 		return nil, err
 	}
 	return out, nil
-}
-
-func (c *networkControlServiceClient) WatchSwitches(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchSwitchesClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_NetworkControlService_serviceDesc.Streams[6], "/binkynet.v1.NetworkControlService/WatchSwitches", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &networkControlServiceWatchSwitchesClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type NetworkControlService_WatchSwitchesClient interface {
-	Recv() (*Switch, error)
-	grpc.ClientStream
-}
-
-type networkControlServiceWatchSwitchesClient struct {
-	grpc.ClientStream
-}
-
-func (x *networkControlServiceWatchSwitchesClient) Recv() (*Switch, error) {
-	m := new(Switch)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
 }
 
 func (c *networkControlServiceClient) SetClockActual(ctx context.Context, in *Clock, opts ...grpc.CallOption) (*Empty, error) {
@@ -555,7 +335,7 @@ func (c *networkControlServiceClient) SetClockActual(ctx context.Context, in *Cl
 }
 
 func (c *networkControlServiceClient) WatchClock(ctx context.Context, in *WatchOptions, opts ...grpc.CallOption) (NetworkControlService_WatchClockClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_NetworkControlService_serviceDesc.Streams[7], "/binkynet.v1.NetworkControlService/WatchClock", opts...)
+	stream, err := c.cc.NewStream(ctx, &_NetworkControlService_serviceDesc.Streams[2], "/binkynet.v1.NetworkControlService/WatchClock", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -600,34 +380,16 @@ type NetworkControlServiceServer interface {
 	SetDeviceDiscoveryActual(context.Context, *DeviceDiscovery) (*Empty, error)
 	// Watch device discovery changes
 	WatchDeviceDiscoveries(*WatchOptions, NetworkControlService_WatchDeviceDiscoveriesServer) error
-	// Set the requested power state
-	SetPowerRequest(context.Context, *PowerState) (*Empty, error)
 	// Set the actual power state
 	SetPowerActual(context.Context, *PowerState) (*Empty, error)
-	// Watch power changes
-	WatchPower(*WatchOptions, NetworkControlService_WatchPowerServer) error
-	// Set a requested loc state
-	SetLocRequest(context.Context, *Loc) (*Empty, error)
 	// Set an actual loc state
 	SetLocActual(context.Context, *Loc) (*Empty, error)
-	// Watch loc changes
-	WatchLocs(*WatchOptions, NetworkControlService_WatchLocsServer) error
 	// Set an actual sensor state
 	SetSensorActual(context.Context, *Sensor) (*Empty, error)
-	// Watch sensor changes
-	WatchSensors(*WatchOptions, NetworkControlService_WatchSensorsServer) error
-	// Set a requested output state
-	SetOutputRequest(context.Context, *Output) (*Empty, error)
 	// Set an actual output state
 	SetOutputActual(context.Context, *Output) (*Empty, error)
-	// Watch output changes
-	WatchOutputs(*WatchOptions, NetworkControlService_WatchOutputsServer) error
-	// Set a requested switch state
-	SetSwitchRequest(context.Context, *Switch) (*Empty, error)
 	// Set an actual switch state
 	SetSwitchActual(context.Context, *Switch) (*Empty, error)
-	// Watch switch changes
-	WatchSwitches(*WatchOptions, NetworkControlService_WatchSwitchesServer) error
 	// Set an actual clock state
 	SetClockActual(context.Context, *Clock) (*Empty, error)
 	// Watch clock changes
@@ -656,47 +418,20 @@ func (*UnimplementedNetworkControlServiceServer) SetDeviceDiscoveryActual(ctx co
 func (*UnimplementedNetworkControlServiceServer) WatchDeviceDiscoveries(req *WatchOptions, srv NetworkControlService_WatchDeviceDiscoveriesServer) error {
 	return status.Errorf(codes.Unimplemented, "method WatchDeviceDiscoveries not implemented")
 }
-func (*UnimplementedNetworkControlServiceServer) SetPowerRequest(ctx context.Context, req *PowerState) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetPowerRequest not implemented")
-}
 func (*UnimplementedNetworkControlServiceServer) SetPowerActual(ctx context.Context, req *PowerState) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetPowerActual not implemented")
-}
-func (*UnimplementedNetworkControlServiceServer) WatchPower(req *WatchOptions, srv NetworkControlService_WatchPowerServer) error {
-	return status.Errorf(codes.Unimplemented, "method WatchPower not implemented")
-}
-func (*UnimplementedNetworkControlServiceServer) SetLocRequest(ctx context.Context, req *Loc) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetLocRequest not implemented")
 }
 func (*UnimplementedNetworkControlServiceServer) SetLocActual(ctx context.Context, req *Loc) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetLocActual not implemented")
 }
-func (*UnimplementedNetworkControlServiceServer) WatchLocs(req *WatchOptions, srv NetworkControlService_WatchLocsServer) error {
-	return status.Errorf(codes.Unimplemented, "method WatchLocs not implemented")
-}
 func (*UnimplementedNetworkControlServiceServer) SetSensorActual(ctx context.Context, req *Sensor) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetSensorActual not implemented")
-}
-func (*UnimplementedNetworkControlServiceServer) WatchSensors(req *WatchOptions, srv NetworkControlService_WatchSensorsServer) error {
-	return status.Errorf(codes.Unimplemented, "method WatchSensors not implemented")
-}
-func (*UnimplementedNetworkControlServiceServer) SetOutputRequest(ctx context.Context, req *Output) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetOutputRequest not implemented")
 }
 func (*UnimplementedNetworkControlServiceServer) SetOutputActual(ctx context.Context, req *Output) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetOutputActual not implemented")
 }
-func (*UnimplementedNetworkControlServiceServer) WatchOutputs(req *WatchOptions, srv NetworkControlService_WatchOutputsServer) error {
-	return status.Errorf(codes.Unimplemented, "method WatchOutputs not implemented")
-}
-func (*UnimplementedNetworkControlServiceServer) SetSwitchRequest(ctx context.Context, req *Switch) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetSwitchRequest not implemented")
-}
 func (*UnimplementedNetworkControlServiceServer) SetSwitchActual(ctx context.Context, req *Switch) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetSwitchActual not implemented")
-}
-func (*UnimplementedNetworkControlServiceServer) WatchSwitches(req *WatchOptions, srv NetworkControlService_WatchSwitchesServer) error {
-	return status.Errorf(codes.Unimplemented, "method WatchSwitches not implemented")
 }
 func (*UnimplementedNetworkControlServiceServer) SetClockActual(ctx context.Context, req *Clock) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetClockActual not implemented")
@@ -823,24 +558,6 @@ func (x *networkControlServiceWatchDeviceDiscoveriesServer) Send(m *DeviceDiscov
 	return x.ServerStream.SendMsg(m)
 }
 
-func _NetworkControlService_SetPowerRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PowerState)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkControlServiceServer).SetPowerRequest(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/binkynet.v1.NetworkControlService/SetPowerRequest",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkControlServiceServer).SetPowerRequest(ctx, req.(*PowerState))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _NetworkControlService_SetPowerActual_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PowerState)
 	if err := dec(in); err != nil {
@@ -855,45 +572,6 @@ func _NetworkControlService_SetPowerActual_Handler(srv interface{}, ctx context.
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NetworkControlServiceServer).SetPowerActual(ctx, req.(*PowerState))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkControlService_WatchPower_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(WatchOptions)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(NetworkControlServiceServer).WatchPower(m, &networkControlServiceWatchPowerServer{stream})
-}
-
-type NetworkControlService_WatchPowerServer interface {
-	Send(*Power) error
-	grpc.ServerStream
-}
-
-type networkControlServiceWatchPowerServer struct {
-	grpc.ServerStream
-}
-
-func (x *networkControlServiceWatchPowerServer) Send(m *Power) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _NetworkControlService_SetLocRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Loc)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkControlServiceServer).SetLocRequest(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/binkynet.v1.NetworkControlService/SetLocRequest",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkControlServiceServer).SetLocRequest(ctx, req.(*Loc))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -916,27 +594,6 @@ func _NetworkControlService_SetLocActual_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkControlService_WatchLocs_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(WatchOptions)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(NetworkControlServiceServer).WatchLocs(m, &networkControlServiceWatchLocsServer{stream})
-}
-
-type NetworkControlService_WatchLocsServer interface {
-	Send(*Loc) error
-	grpc.ServerStream
-}
-
-type networkControlServiceWatchLocsServer struct {
-	grpc.ServerStream
-}
-
-func (x *networkControlServiceWatchLocsServer) Send(m *Loc) error {
-	return x.ServerStream.SendMsg(m)
-}
-
 func _NetworkControlService_SetSensorActual_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Sensor)
 	if err := dec(in); err != nil {
@@ -951,45 +608,6 @@ func _NetworkControlService_SetSensorActual_Handler(srv interface{}, ctx context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NetworkControlServiceServer).SetSensorActual(ctx, req.(*Sensor))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkControlService_WatchSensors_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(WatchOptions)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(NetworkControlServiceServer).WatchSensors(m, &networkControlServiceWatchSensorsServer{stream})
-}
-
-type NetworkControlService_WatchSensorsServer interface {
-	Send(*Sensor) error
-	grpc.ServerStream
-}
-
-type networkControlServiceWatchSensorsServer struct {
-	grpc.ServerStream
-}
-
-func (x *networkControlServiceWatchSensorsServer) Send(m *Sensor) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _NetworkControlService_SetOutputRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Output)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkControlServiceServer).SetOutputRequest(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/binkynet.v1.NetworkControlService/SetOutputRequest",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkControlServiceServer).SetOutputRequest(ctx, req.(*Output))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1012,45 +630,6 @@ func _NetworkControlService_SetOutputActual_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NetworkControlService_WatchOutputs_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(WatchOptions)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(NetworkControlServiceServer).WatchOutputs(m, &networkControlServiceWatchOutputsServer{stream})
-}
-
-type NetworkControlService_WatchOutputsServer interface {
-	Send(*Output) error
-	grpc.ServerStream
-}
-
-type networkControlServiceWatchOutputsServer struct {
-	grpc.ServerStream
-}
-
-func (x *networkControlServiceWatchOutputsServer) Send(m *Output) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _NetworkControlService_SetSwitchRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Switch)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(NetworkControlServiceServer).SetSwitchRequest(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/binkynet.v1.NetworkControlService/SetSwitchRequest",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkControlServiceServer).SetSwitchRequest(ctx, req.(*Switch))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _NetworkControlService_SetSwitchActual_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Switch)
 	if err := dec(in); err != nil {
@@ -1067,27 +646,6 @@ func _NetworkControlService_SetSwitchActual_Handler(srv interface{}, ctx context
 		return srv.(NetworkControlServiceServer).SetSwitchActual(ctx, req.(*Switch))
 	}
 	return interceptor(ctx, in, info, handler)
-}
-
-func _NetworkControlService_WatchSwitches_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(WatchOptions)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(NetworkControlServiceServer).WatchSwitches(m, &networkControlServiceWatchSwitchesServer{stream})
-}
-
-type NetworkControlService_WatchSwitchesServer interface {
-	Send(*Switch) error
-	grpc.ServerStream
-}
-
-type networkControlServiceWatchSwitchesServer struct {
-	grpc.ServerStream
-}
-
-func (x *networkControlServiceWatchSwitchesServer) Send(m *Switch) error {
-	return x.ServerStream.SendMsg(m)
 }
 
 func _NetworkControlService_SetClockActual_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -1150,16 +708,8 @@ var _NetworkControlService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _NetworkControlService_SetDeviceDiscoveryActual_Handler,
 		},
 		{
-			MethodName: "SetPowerRequest",
-			Handler:    _NetworkControlService_SetPowerRequest_Handler,
-		},
-		{
 			MethodName: "SetPowerActual",
 			Handler:    _NetworkControlService_SetPowerActual_Handler,
-		},
-		{
-			MethodName: "SetLocRequest",
-			Handler:    _NetworkControlService_SetLocRequest_Handler,
 		},
 		{
 			MethodName: "SetLocActual",
@@ -1170,16 +720,8 @@ var _NetworkControlService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _NetworkControlService_SetSensorActual_Handler,
 		},
 		{
-			MethodName: "SetOutputRequest",
-			Handler:    _NetworkControlService_SetOutputRequest_Handler,
-		},
-		{
 			MethodName: "SetOutputActual",
 			Handler:    _NetworkControlService_SetOutputActual_Handler,
-		},
-		{
-			MethodName: "SetSwitchRequest",
-			Handler:    _NetworkControlService_SetSwitchRequest_Handler,
 		},
 		{
 			MethodName: "SetSwitchActual",
@@ -1199,31 +741,6 @@ var _NetworkControlService_serviceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "WatchDeviceDiscoveries",
 			Handler:       _NetworkControlService_WatchDeviceDiscoveries_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "WatchPower",
-			Handler:       _NetworkControlService_WatchPower_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "WatchLocs",
-			Handler:       _NetworkControlService_WatchLocs_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "WatchSensors",
-			Handler:       _NetworkControlService_WatchSensors_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "WatchOutputs",
-			Handler:       _NetworkControlService_WatchOutputs_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "WatchSwitches",
-			Handler:       _NetworkControlService_WatchSwitches_Handler,
 			ServerStreams: true,
 		},
 		{

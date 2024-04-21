@@ -42,38 +42,20 @@ service NetworkControlService {
   // Watch device discovery changes
   rpc WatchDeviceDiscoveries(WatchOptions) returns (stream DeviceDiscovery);
 
-  // Set the requested power state
-  rpc SetPowerRequest(PowerState) returns (Empty);
   // Set the actual power state
   rpc SetPowerActual(PowerState) returns (Empty);
-  // Watch power changes
-  rpc WatchPower(WatchOptions) returns (stream binkynet.v1.Power);
 
-  // Set a requested loc state
-  rpc SetLocRequest(Loc) returns (Empty);
   // Set an actual loc state
   rpc SetLocActual(Loc) returns (Empty);
-  // Watch loc changes
-  rpc WatchLocs(WatchOptions) returns (stream Loc);
 
   // Set an actual sensor state
   rpc SetSensorActual(Sensor) returns (Empty);
-  // Watch sensor changes
-  rpc WatchSensors(WatchOptions) returns (stream Sensor);
 
-  // Set a requested output state
-  rpc SetOutputRequest(Output) returns (Empty);
   // Set an actual output state
   rpc SetOutputActual(Output) returns (Empty);
-  // Watch output changes
-  rpc WatchOutputs(WatchOptions) returns (stream Output);
 
-  // Set a requested switch state
-  rpc SetSwitchRequest(Switch) returns (Empty);
   // Set an actual switch state
   rpc SetSwitchActual(Switch) returns (Empty);
-  // Watch switch changes
-  rpc WatchSwitches(WatchOptions) returns (stream Switch);
 
   // Set an actual clock state
   rpc SetClockActual(binkynet.v1.Clock) returns (Empty);
