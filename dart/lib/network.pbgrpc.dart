@@ -30,22 +30,11 @@ class NetworkControlServiceClient extends $grpc.Client {
           '/binkynet.v1.NetworkControlService/WatchLocalWorkers',
           ($2.WatchOptions value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.LocalWorker.fromBuffer(value));
-  static final _$setDeviceDiscoveryRequest =
-      $grpc.ClientMethod<$0.DeviceDiscovery, $0.Empty>(
-          '/binkynet.v1.NetworkControlService/SetDeviceDiscoveryRequest',
-          ($0.DeviceDiscovery value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$setDeviceDiscoveryActual =
       $grpc.ClientMethod<$0.DeviceDiscovery, $0.Empty>(
           '/binkynet.v1.NetworkControlService/SetDeviceDiscoveryActual',
           ($0.DeviceDiscovery value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$watchDeviceDiscoveries =
-      $grpc.ClientMethod<$2.WatchOptions, $0.DeviceDiscovery>(
-          '/binkynet.v1.NetworkControlService/WatchDeviceDiscoveries',
-          ($2.WatchOptions value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $0.DeviceDiscovery.fromBuffer(value));
   static final _$setPowerActual = $grpc.ClientMethod<$0.PowerState, $0.Empty>(
       '/binkynet.v1.NetworkControlService/SetPowerActual',
       ($0.PowerState value) => value.writeToBuffer(),
@@ -98,25 +87,10 @@ class NetworkControlServiceClient extends $grpc.Client {
         options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> setDeviceDiscoveryRequest(
-      $0.DeviceDiscovery request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$setDeviceDiscoveryRequest, request,
-        options: options);
-  }
-
   $grpc.ResponseFuture<$0.Empty> setDeviceDiscoveryActual(
       $0.DeviceDiscovery request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$setDeviceDiscoveryActual, request,
-        options: options);
-  }
-
-  $grpc.ResponseStream<$0.DeviceDiscovery> watchDeviceDiscoveries(
-      $2.WatchOptions request,
-      {$grpc.CallOptions? options}) {
-    return $createStreamingCall(
-        _$watchDeviceDiscoveries, $async.Stream.fromIterable([request]),
         options: options);
   }
 
@@ -184,26 +158,12 @@ abstract class NetworkControlServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $2.WatchOptions.fromBuffer(value),
         ($0.LocalWorker value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.DeviceDiscovery, $0.Empty>(
-        'SetDeviceDiscoveryRequest',
-        setDeviceDiscoveryRequest_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $0.DeviceDiscovery.fromBuffer(value),
-        ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.DeviceDiscovery, $0.Empty>(
         'SetDeviceDiscoveryActual',
         setDeviceDiscoveryActual_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.DeviceDiscovery.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.WatchOptions, $0.DeviceDiscovery>(
-        'WatchDeviceDiscoveries',
-        watchDeviceDiscoveries_Pre,
-        false,
-        true,
-        ($core.List<$core.int> value) => $2.WatchOptions.fromBuffer(value),
-        ($0.DeviceDiscovery value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.PowerState, $0.Empty>(
         'SetPowerActual',
         setPowerActual_Pre,
@@ -270,19 +230,9 @@ abstract class NetworkControlServiceBase extends $grpc.Service {
     yield* watchLocalWorkers(call, await request);
   }
 
-  $async.Future<$0.Empty> setDeviceDiscoveryRequest_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.DeviceDiscovery> request) async {
-    return setDeviceDiscoveryRequest(call, await request);
-  }
-
   $async.Future<$0.Empty> setDeviceDiscoveryActual_Pre(
       $grpc.ServiceCall call, $async.Future<$0.DeviceDiscovery> request) async {
     return setDeviceDiscoveryActual(call, await request);
-  }
-
-  $async.Stream<$0.DeviceDiscovery> watchDeviceDiscoveries_Pre(
-      $grpc.ServiceCall call, $async.Future<$2.WatchOptions> request) async* {
-    yield* watchDeviceDiscoveries(call, await request);
   }
 
   $async.Future<$0.Empty> setPowerActual_Pre(
@@ -326,12 +276,8 @@ abstract class NetworkControlServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.LocalWorker request);
   $async.Stream<$0.LocalWorker> watchLocalWorkers(
       $grpc.ServiceCall call, $2.WatchOptions request);
-  $async.Future<$0.Empty> setDeviceDiscoveryRequest(
-      $grpc.ServiceCall call, $0.DeviceDiscovery request);
   $async.Future<$0.Empty> setDeviceDiscoveryActual(
       $grpc.ServiceCall call, $0.DeviceDiscovery request);
-  $async.Stream<$0.DeviceDiscovery> watchDeviceDiscoveries(
-      $grpc.ServiceCall call, $2.WatchOptions request);
   $async.Future<$0.Empty> setPowerActual(
       $grpc.ServiceCall call, $0.PowerState request);
   $async.Future<$0.Empty> setLocActual($grpc.ServiceCall call, $0.Loc request);

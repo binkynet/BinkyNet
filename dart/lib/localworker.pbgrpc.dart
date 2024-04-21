@@ -34,6 +34,11 @@ class LocalWorkerServiceClient extends $grpc.Client {
       '/binkynet.v1.LocalWorkerService/SetSwitchRequest',
       ($0.Switch value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$setDeviceDiscoveryRequest =
+      $grpc.ClientMethod<$0.DeviceDiscovery, $0.Empty>(
+          '/binkynet.v1.LocalWorkerService/SetDeviceDiscoveryRequest',
+          ($0.DeviceDiscovery value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
 
   LocalWorkerServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -63,6 +68,13 @@ class LocalWorkerServiceClient extends $grpc.Client {
   $grpc.ResponseFuture<$0.Empty> setSwitchRequest($0.Switch request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$setSwitchRequest, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> setDeviceDiscoveryRequest(
+      $0.DeviceDiscovery request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$setDeviceDiscoveryRequest, request,
+        options: options);
   }
 }
 
@@ -105,6 +117,13 @@ abstract class LocalWorkerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Switch.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.DeviceDiscovery, $0.Empty>(
+        'SetDeviceDiscoveryRequest',
+        setDeviceDiscoveryRequest_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.DeviceDiscovery.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Empty> reset_Pre(
@@ -132,6 +151,11 @@ abstract class LocalWorkerServiceBase extends $grpc.Service {
     return setSwitchRequest(call, await request);
   }
 
+  $async.Future<$0.Empty> setDeviceDiscoveryRequest_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.DeviceDiscovery> request) async {
+    return setDeviceDiscoveryRequest(call, await request);
+  }
+
   $async.Future<$0.Empty> reset($grpc.ServiceCall call, $0.Empty request);
   $async.Future<$0.Empty> setLocRequest($grpc.ServiceCall call, $0.Loc request);
   $async.Future<$0.Empty> setPowerRequest(
@@ -140,4 +164,6 @@ abstract class LocalWorkerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.Output request);
   $async.Future<$0.Empty> setSwitchRequest(
       $grpc.ServiceCall call, $0.Switch request);
+  $async.Future<$0.Empty> setDeviceDiscoveryRequest(
+      $grpc.ServiceCall call, $0.DeviceDiscovery request);
 }

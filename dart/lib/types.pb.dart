@@ -152,6 +152,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..aOB(103, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetPowerRequest')
     ..aOB(104, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetOutputRequest')
     ..aOB(105, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetSwitchRequest')
+    ..aOB(106, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetDeviceDiscoveryRequest')
     ..hasRequiredFields = false
   ;
 
@@ -175,6 +176,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.bool? supportsSetPowerRequest,
     $core.bool? supportsSetOutputRequest,
     $core.bool? supportsSetSwitchRequest,
+    $core.bool? supportsSetDeviceDiscoveryRequest,
   }) {
     final _result = create();
     if (id != null) {
@@ -230,6 +232,9 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (supportsSetSwitchRequest != null) {
       _result.supportsSetSwitchRequest = supportsSetSwitchRequest;
+    }
+    if (supportsSetDeviceDiscoveryRequest != null) {
+      _result.supportsSetDeviceDiscoveryRequest = supportsSetDeviceDiscoveryRequest;
     }
     return _result;
   }
@@ -391,6 +396,15 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
   $core.bool hasSupportsSetSwitchRequest() => $_has(17);
   @$pb.TagNumber(105)
   void clearSupportsSetSwitchRequest() => clearField(105);
+
+  @$pb.TagNumber(106)
+  $core.bool get supportsSetDeviceDiscoveryRequest => $_getBF(18);
+  @$pb.TagNumber(106)
+  set supportsSetDeviceDiscoveryRequest($core.bool v) { $_setBool(18, v); }
+  @$pb.TagNumber(106)
+  $core.bool hasSupportsSetDeviceDiscoveryRequest() => $_has(18);
+  @$pb.TagNumber(106)
+  void clearSupportsSetDeviceDiscoveryRequest() => clearField(106);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {
