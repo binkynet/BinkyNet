@@ -69,6 +69,17 @@ message LocalWorkerInfo {
   int32 local_worker_service_port = 12;
   // If set, LocalWorkerService is served over TLS.
   bool local_worker_service_secure = 13;
+
+  // If set, local worker implements LocalWorkerService.Reset
+  bool supports_reset = 101;
+  // If set, local worker implements LocalWorkerService.SetLocRequest
+  bool supports_set_loc_request = 102;
+  // If set, local worker implements LocalWorkerService.SetPowerRequest
+  bool supports_set_power_request = 103;
+  // If set, local worker implements LocalWorkerService.SetOutputRequest
+  bool supports_set_output_request = 104;
+  // If set, local worker implements LocalWorkerService.SetSwitchRequest
+  bool supports_set_switch_request = 105;
 }
 
 // Request arguments for GetPowerRequests

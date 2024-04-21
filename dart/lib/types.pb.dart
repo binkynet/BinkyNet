@@ -147,6 +147,11 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metricsSecure')
     ..a<$core.int>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'localWorkerServicePort', $pb.PbFieldType.O3)
     ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'localWorkerServiceSecure')
+    ..aOB(101, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsReset')
+    ..aOB(102, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetLocRequest')
+    ..aOB(103, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetPowerRequest')
+    ..aOB(104, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetOutputRequest')
+    ..aOB(105, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetSwitchRequest')
     ..hasRequiredFields = false
   ;
 
@@ -165,6 +170,11 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.bool? metricsSecure,
     $core.int? localWorkerServicePort,
     $core.bool? localWorkerServiceSecure,
+    $core.bool? supportsReset,
+    $core.bool? supportsSetLocRequest,
+    $core.bool? supportsSetPowerRequest,
+    $core.bool? supportsSetOutputRequest,
+    $core.bool? supportsSetSwitchRequest,
   }) {
     final _result = create();
     if (id != null) {
@@ -205,6 +215,21 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (localWorkerServiceSecure != null) {
       _result.localWorkerServiceSecure = localWorkerServiceSecure;
+    }
+    if (supportsReset != null) {
+      _result.supportsReset = supportsReset;
+    }
+    if (supportsSetLocRequest != null) {
+      _result.supportsSetLocRequest = supportsSetLocRequest;
+    }
+    if (supportsSetPowerRequest != null) {
+      _result.supportsSetPowerRequest = supportsSetPowerRequest;
+    }
+    if (supportsSetOutputRequest != null) {
+      _result.supportsSetOutputRequest = supportsSetOutputRequest;
+    }
+    if (supportsSetSwitchRequest != null) {
+      _result.supportsSetSwitchRequest = supportsSetSwitchRequest;
     }
     return _result;
   }
@@ -321,6 +346,51 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
   $core.bool hasLocalWorkerServiceSecure() => $_has(12);
   @$pb.TagNumber(13)
   void clearLocalWorkerServiceSecure() => clearField(13);
+
+  @$pb.TagNumber(101)
+  $core.bool get supportsReset => $_getBF(13);
+  @$pb.TagNumber(101)
+  set supportsReset($core.bool v) { $_setBool(13, v); }
+  @$pb.TagNumber(101)
+  $core.bool hasSupportsReset() => $_has(13);
+  @$pb.TagNumber(101)
+  void clearSupportsReset() => clearField(101);
+
+  @$pb.TagNumber(102)
+  $core.bool get supportsSetLocRequest => $_getBF(14);
+  @$pb.TagNumber(102)
+  set supportsSetLocRequest($core.bool v) { $_setBool(14, v); }
+  @$pb.TagNumber(102)
+  $core.bool hasSupportsSetLocRequest() => $_has(14);
+  @$pb.TagNumber(102)
+  void clearSupportsSetLocRequest() => clearField(102);
+
+  @$pb.TagNumber(103)
+  $core.bool get supportsSetPowerRequest => $_getBF(15);
+  @$pb.TagNumber(103)
+  set supportsSetPowerRequest($core.bool v) { $_setBool(15, v); }
+  @$pb.TagNumber(103)
+  $core.bool hasSupportsSetPowerRequest() => $_has(15);
+  @$pb.TagNumber(103)
+  void clearSupportsSetPowerRequest() => clearField(103);
+
+  @$pb.TagNumber(104)
+  $core.bool get supportsSetOutputRequest => $_getBF(16);
+  @$pb.TagNumber(104)
+  set supportsSetOutputRequest($core.bool v) { $_setBool(16, v); }
+  @$pb.TagNumber(104)
+  $core.bool hasSupportsSetOutputRequest() => $_has(16);
+  @$pb.TagNumber(104)
+  void clearSupportsSetOutputRequest() => clearField(104);
+
+  @$pb.TagNumber(105)
+  $core.bool get supportsSetSwitchRequest => $_getBF(17);
+  @$pb.TagNumber(105)
+  set supportsSetSwitchRequest($core.bool v) { $_setBool(17, v); }
+  @$pb.TagNumber(105)
+  $core.bool hasSupportsSetSwitchRequest() => $_has(17);
+  @$pb.TagNumber(105)
+  void clearSupportsSetSwitchRequest() => clearField(105);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {
