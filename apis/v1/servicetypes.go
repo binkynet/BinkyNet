@@ -18,8 +18,15 @@
 package v1
 
 const (
+	// Following service types are well known constants exposing
+	// services over mDNS (zeroconf).
+
+	// Service type for implementations of the GRPC CommandStationService service.
 	ServiceTypeCommandStation = "_cs._binkynet._tcp"
-	ServiceTypeLogProvider    = "_lp._binkynet._tcp"
-	ServiceTypeLokiProvider   = "_lokip._binkynet._tcp"
+	// Service type for implementations of the GRPC LogProviderService service.
+	ServiceTypeLogProvider = "_lp._binkynet._tcp"
+	// Service type for implementations of the Loki log receiver protocol.
+	ServiceTypeLokiProvider = "_lokip._binkynet._tcp"
+	// Service type for implementations of the GRPC NetworkControlService service.
 	ServiceTypeNetworkControl = "_nwctrl._binkynet._tcp"
 )

@@ -22,7 +22,7 @@ package binkynet.v1;
 option go_package = "github.com/binkynet/BinkyNet/apis/v1";
 option csharp_namespace = "BinkyNet.Apis.V1";
 
-// LogProviderService is served by all services that provider some form of logging.
+// LogProviderService is served by all services that provide some form of logging.
 // Log provider services make themselves available in mDNS under service type "_logprovider._binkynet._tcp".
 service LogProviderService {
   // Record a log message.
