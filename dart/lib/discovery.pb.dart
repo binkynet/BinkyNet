@@ -16,6 +16,7 @@ class ServiceInfo extends $pb.GeneratedMessage {
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'apiPort', $pb.PbFieldType.O3)
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'apiAddress')
     ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'secure')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'providerName')
     ..hasRequiredFields = false
   ;
 
@@ -26,6 +27,7 @@ class ServiceInfo extends $pb.GeneratedMessage {
     $core.int? apiPort,
     $core.String? apiAddress,
     $core.bool? secure,
+    $core.String? providerName,
   }) {
     final _result = create();
     if (apiVersion != null) {
@@ -42,6 +44,9 @@ class ServiceInfo extends $pb.GeneratedMessage {
     }
     if (secure != null) {
       _result.secure = secure;
+    }
+    if (providerName != null) {
+      _result.providerName = providerName;
     }
     return _result;
   }
@@ -110,5 +115,14 @@ class ServiceInfo extends $pb.GeneratedMessage {
   $core.bool hasSecure() => $_has(4);
   @$pb.TagNumber(5)
   void clearSecure() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get providerName => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set providerName($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasProviderName() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearProviderName() => clearField(6);
 }
 

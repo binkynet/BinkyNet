@@ -17,8 +17,9 @@ const ServiceInfo$json = const {
     const {'1': 'api_port', '3': 3, '4': 1, '5': 5, '10': 'apiPort'},
     const {'1': 'api_address', '3': 4, '4': 1, '5': 9, '10': 'apiAddress'},
     const {'1': 'secure', '3': 5, '4': 1, '5': 8, '10': 'secure'},
+    const {'1': 'provider_name', '3': 6, '4': 1, '5': 9, '10': 'providerName'},
   ],
 };
 
 /// Descriptor for `ServiceInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List serviceInfoDescriptor = $convert.base64Decode('CgtTZXJ2aWNlSW5mbxIfCgthcGlfdmVyc2lvbhgBIAEoCVIKYXBpVmVyc2lvbhIYCgd2ZXJzaW9uGAIgASgJUgd2ZXJzaW9uEhkKCGFwaV9wb3J0GAMgASgFUgdhcGlQb3J0Eh8KC2FwaV9hZGRyZXNzGAQgASgJUgphcGlBZGRyZXNzEhYKBnNlY3VyZRgFIAEoCFIGc2VjdXJl');
+final $typed_data.Uint8List serviceInfoDescriptor = $convert.base64Decode('CgtTZXJ2aWNlSW5mbxIfCgthcGlfdmVyc2lvbhgBIAEoCVIKYXBpVmVyc2lvbhIYCgd2ZXJzaW9uGAIgASgJUgd2ZXJzaW9uEhkKCGFwaV9wb3J0GAMgASgFUgdhcGlQb3J0Eh8KC2FwaV9hZGRyZXNzGAQgASgJUgphcGlBZGRyZXNzEhYKBnNlY3VyZRgFIAEoCFIGc2VjdXJlEiMKDXByb3ZpZGVyX25hbWUYBiABKAlSDHByb3ZpZGVyTmFtZQ==');

@@ -32,9 +32,10 @@ import (
 )
 
 const (
-	textVersion    = "version"
-	textAPIVersion = "api_version"
-	textSecure     = "secure"
+	textVersion      = "version"
+	textAPIVersion   = "api_version"
+	textProviderName = "provider_name"
+	textSecure       = "secure"
 )
 
 // ParseServiceInfo parses a ServiceEntry into a ServiceInfo message.
@@ -63,6 +64,8 @@ func ParseServiceInfo(se *zeroconf.ServiceEntry) (*ServiceInfo, error) {
 			if b, err := strconv.ParseBool(parts[1]); err == nil {
 				result.Secure = b
 			}
+		case textProviderName:
+			result.ProviderName = parts[1]
 		}
 	}
 	return result, nil
@@ -112,6 +115,7 @@ func registerServiceEntryOnInterfaces(ctx context.Context, serviceType string, i
 		textVersion + "=" + info.GetVersion(),
 		textAPIVersion + "=" + info.GetApiVersion(),
 		textSecure + "=" + strconv.FormatBool(info.GetSecure()),
+		textProviderName + "=" + info.GetProviderName(),
 	}
 	instance, err := os.Hostname()
 	if err != nil {

@@ -41,4 +41,6 @@ message ServiceInfo {
   // If set, the API is served over TLS.
   // This is mapped to text field "secure" in the zeroconf service entry.
   bool secure = 5;
+  // If set, contains name of the provider of the API.
+  string provider_name = 6;
 }
