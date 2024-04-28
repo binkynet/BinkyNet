@@ -60,13 +60,13 @@ type logEntry struct {
 }
 
 const (
-	lokiPushPath = "/loki/api/v1/push"
+	LokiPushPath = "/loki/api/v1/push"
 )
 
 func NewLokiLogger(rootUrl, job string, timeOffset int64) (*LokiLogger, error) {
 	pushURL := ""
 	if rootUrl != "" {
-		pushURL = strings.TrimSuffix(rootUrl, "/") + lokiPushPath
+		pushURL = strings.TrimSuffix(rootUrl, "/") + LokiPushPath
 	}
 	conf := &clientConfig{
 		PushURL:            pushURL,
@@ -117,7 +117,7 @@ func (c *LokiLogger) SetLokiServer(host string, port int, secure bool) {
 		if secure {
 			scheme = "https"
 		}
-		pushURL := fmt.Sprintf("%s://%s:%d%s", scheme, host, port, lokiPushPath)
+		pushURL := fmt.Sprintf("%s://%s:%d%s", scheme, host, port, LokiPushPath)
 		c.config.PushURL = pushURL
 	}
 }
