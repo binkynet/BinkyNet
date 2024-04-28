@@ -19,6 +19,7 @@ package loki
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -28,6 +29,8 @@ import (
 	"sync"
 	"time"
 
+	api "github.com/binkynet/BinkyNet/apis/v1"
+	"github.com/binkynet/BinkyNet/discovery"
 	"github.com/rs/zerolog"
 )
 
@@ -56,9 +59,17 @@ type logEntry struct {
 	Level     zerolog.Level
 }
 
+const (
+	lokiPushPath = "/loki/api/v1/push"
+)
+
 func NewLokiLogger(rootUrl, job string, timeOffset int64) (*LokiLogger, error) {
+	pushURL := ""
+	if rootUrl != "" {
+		pushURL = strings.TrimSuffix(rootUrl, "/") + lokiPushPath
+	}
 	conf := &clientConfig{
-		PushURL:            strings.TrimSuffix(rootUrl, "/") + "/loki/api/v1/push",
+		PushURL:            pushURL,
 		BatchWait:          time.Second * 2,
 		BatchEntriesNumber: 1024,
 		Labels: map[string]string{
@@ -95,6 +106,35 @@ func (l *LokiLogger) WriteLevel(level zerolog.Level, p []byte) (n int, err error
 		Level:     level,
 	}
 	return len(p), nil
+}
+
+// SetLokiServer updates the URL to push logs to.
+func (c *LokiLogger) SetLokiServer(host string, port int, secure bool) {
+	if host == "" {
+		c.config.PushURL = ""
+	} else {
+		scheme := "http"
+		if secure {
+			scheme = "https"
+		}
+		pushURL := fmt.Sprintf("%s://%s:%d%s", scheme, host, port, lokiPushPath)
+		c.config.PushURL = pushURL
+	}
+}
+
+// DiscoverLokiServer automatically updates Loki URL when loki service
+// on mDNS changes.
+// Runs until context is canceled.
+func (c *LokiLogger) DiscoverLokiServer(ctx context.Context, log zerolog.Logger) error {
+	l := discovery.NewServiceListener(log, api.ServiceTypeLokiProvider, true, func(info api.ServiceInfo) {
+		log.Info().
+			Str("server", info.GetApiAddress()).
+			Int32("port", info.GetApiPort()).
+			Bool("secure", info.GetSecure()).
+			Msg("New Loki server detected")
+		c.SetLokiServer(info.GetApiAddress(), int(info.GetApiPort()), info.GetSecure())
+	})
+	return l.Run(ctx)
 }
 
 func (c *LokiLogger) Shutdown() {
@@ -152,6 +192,11 @@ func (c *LokiLogger) run() {
 }
 
 func (c *LokiLogger) send(entries [][]string) {
+	pushURL := c.config.PushURL
+	if pushURL == "" {
+		// Do nothing
+		return
+	}
 	req := PushRequest{
 		Streams: []StreamAdapter{
 			{
@@ -167,7 +212,7 @@ func (c *LokiLogger) send(entries [][]string) {
 		return
 	}
 
-	resp, body, err := c.client.sendJsonReq("POST", c.config.PushURL, "application/json", buf)
+	resp, body, err := c.client.sendJsonReq("POST", pushURL, "application/json", buf)
 	if err != nil {
 		log.Printf("promtail.ClientProto: unable to send an HTTP request: %s\n", err)
 		return
