@@ -25,8 +25,11 @@ const (
 	ServiceTypeCommandStation = "_cs._binkynet._tcp"
 	// Service type for implementations of the GRPC LogProviderService service.
 	ServiceTypeLogProvider = "_lp._binkynet._tcp"
-	// Service type for implementations of the Loki log receiver protocol.
-	ServiceTypeLokiProvider = "_lokip._binkynet._tcp"
 	// Service type for implementations of the GRPC NetworkControlService service.
 	ServiceTypeNetworkControl = "_nwctrl._binkynet._tcp"
+
+	// Service type for implementations of the Loki log receiver protocol.
+	ServiceTypeLokiProvider = "_lokip._binkynet._tcp"
+	// Service type for implementations of the Prometheus metrics protocol.
+	ServiceTypePrometheusProvider = "_prometheusp._binkynet._tcp"
 )

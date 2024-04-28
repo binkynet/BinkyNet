@@ -21,7 +21,6 @@ import (
 	context "context"
 	"crypto/sha1"
 	fmt "fmt"
-	"io/ioutil"
 	"net"
 	"os"
 	"runtime"
@@ -72,19 +71,6 @@ func ParseServiceInfo(se *zeroconf.ServiceEntry) (*ServiceInfo, error) {
 // RegisterServiceEntry runs a registration service for the given service entry
 // until the given context is canceled.
 func RegisterServiceEntry(ctx context.Context, serviceType string, info ServiceInfo) error {
-	text := []string{
-		textVersion + "=" + info.GetVersion(),
-		textAPIVersion + "=" + info.GetApiVersion(),
-		textSecure + "=" + strconv.FormatBool(info.GetSecure()),
-	}
-	instance, err := os.Hostname()
-	if err != nil {
-		instance, err = CreateHostID()
-		if err != nil {
-			return err
-		}
-	}
-
 	var ifaces []net.Interface
 	if host, found := GetServiceInfoHost(ctx); found && host != "" {
 		// Find interfaces with given IP
@@ -115,10 +101,31 @@ func RegisterServiceEntry(ctx context.Context, serviceType string, info ServiceI
 		ifaces = selectedIFaces
 	}
 
-	srv, err := zeroconf.Register(instance, serviceType, "local.", int(info.GetApiPort()), text, ifaces)
+	return registerServiceEntryOnInterfaces(ctx, serviceType, info, ifaces)
+}
+
+// registerServiceEntryOnInterfaces runs a registration service for the given service entry
+// on the given interfaces until the given context is canceled.
+func registerServiceEntryOnInterfaces(ctx context.Context, serviceType string, info ServiceInfo,
+	intfs []net.Interface) error {
+	text := []string{
+		textVersion + "=" + info.GetVersion(),
+		textAPIVersion + "=" + info.GetApiVersion(),
+		textSecure + "=" + strconv.FormatBool(info.GetSecure()),
+	}
+	instance, err := os.Hostname()
+	if err != nil {
+		instance, err = CreateHostID()
+		if err != nil {
+			return err
+		}
+	}
+
+	srv, err := zeroconf.Register(instance, serviceType, "local.", int(info.GetApiPort()), text, intfs)
 	if err != nil {
 		return err
 	}
+	srv.TTL(30)
 	<-ctx.Done()
 	srv.Shutdown()
 	return nil
@@ -126,7 +133,7 @@ func RegisterServiceEntry(ctx context.Context, serviceType string, info ServiceI
 
 // CreateHostID creates a host ID based on network hardware addresses.
 func CreateHostID() (string, error) {
-	if content, err := ioutil.ReadFile("/etc/machine-id"); err == nil {
+	if content, err := os.ReadFile("/etc/machine-id"); err == nil {
 		content = []byte(strings.TrimSpace(string(content)))
 		id := fmt.Sprintf("%x", sha1.Sum(content))
 		return id[:10], nil
