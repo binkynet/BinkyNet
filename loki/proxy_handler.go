@@ -22,26 +22,44 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"net"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/rs/zerolog"
 )
 
 type LokiProxy struct {
-	pushURL string
-	client  httpClient
+	pushURL      string
+	client       httpClient
+	log          zerolog.Logger
+	sourceStates map[string]*sourceState
+}
+
+// sourceState maintains a state per source of logs,
+// based on IP address of the source.
+type sourceState struct {
+	// Timestamp in nano seconds of the first entry
+	// we got for this source.
+	startUptimeNanos int64
+	// Timestamp on server of the first received
+	// log request of this source.
+	startUptime time.Time
 }
 
 // NewLokiProxy constructs a new loki proxy that
 // forwards loki push requests to the given host:port.
-func NewLokiProxy(host string, port int, secure bool) *LokiProxy {
+func NewLokiProxy(log zerolog.Logger, host string, port int, secure bool) *LokiProxy {
 	scheme := "http"
 	if secure {
 		scheme = "https"
 	}
 	pushURL := fmt.Sprintf("%s://%s:%d%s", scheme, host, port, LokiPushPath)
 	return &LokiProxy{
-		pushURL: pushURL,
+		pushURL:      pushURL,
+		log:          log,
+		sourceStates: make(map[string]*sourceState),
 	}
 }
 
@@ -65,11 +83,47 @@ func (lp *LokiProxy) HandlePushRequest(resp http.ResponseWriter, req *http.Reque
 		return
 	}
 
-	// Change timestamp
-	ts := strconv.FormatInt(time.Now().UnixNano(), 10)
+	// Get state of the source of the logs
+	ip, _, _ := net.SplitHostPort(req.RemoteAddr)
+	source := lp.sourceStates[ip]
+	if source == nil {
+		source = &sourceState{
+			startUptime: time.Now(),
+		}
+		lp.sourceStates[ip] = source
+	}
+
+	// Detect a change in uptime
+	// If any of the timestamps in the logs are lower
+	// than the state we recorded, we decide that the uptime
+	// has changed.
+	maxTS := int64(0)
 	for _, stream := range pushReq.Streams {
 		for _, values := range stream.Values {
-			values[0] = ts
+			if ts, err := strconv.ParseInt(values[0], 10, 64); err == nil {
+				// We have a valid timestamp
+				maxTS = max(maxTS, ts)
+			}
+		}
+	}
+	if source.startUptimeNanos == 0 || maxTS < source.startUptimeNanos {
+		source.startUptimeNanos = maxTS
+		source.startUptime = time.Now()
+		lp.log.Info().
+			Str("source", ip).
+			Msg("Detected change in uptime for source of logs")
+	}
+
+	// Change timestamp
+	for _, stream := range pushReq.Streams {
+		for _, values := range stream.Values {
+			// Parse timestamp
+			if ts, err := strconv.ParseInt(values[0], 10, 64); err == nil {
+				// We have a valid timestamp
+				ts -= source.startUptimeNanos
+				ts += source.startUptime.UnixNano()
+				values[0] = strconv.FormatInt(ts, 10)
+			}
 		}
 	}
 
