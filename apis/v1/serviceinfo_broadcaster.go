@@ -219,7 +219,7 @@ func selectInterfaces(hostMask string) ([]net.Interface, error) {
 		if addrs, err := intf.Addrs(); err == nil {
 			for _, addr := range addrs {
 				if ip, _, err := net.ParseCIDR(addr.String()); err == nil && ip != nil && ip.To4() != nil {
-					if matchesHostIP(ip) {
+					if !ip.IsLinkLocalUnicast() && matchesHostIP(ip) {
 						selectedIFaces = append(selectedIFaces, intf)
 						break
 					}
