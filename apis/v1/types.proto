@@ -69,6 +69,8 @@ message LocalWorkerInfo {
   int32 local_worker_service_port = 12;
   // If set, LocalWorkerService is served over TLS.
   bool local_worker_service_secure = 13;
+  // SSH port (if any)
+  int32 ssh_port = 14;
 
   // If set, local worker implements LocalWorkerService.Reset
   bool supports_reset = 101;

@@ -147,6 +147,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metricsSecure')
     ..a<$core.int>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'localWorkerServicePort', $pb.PbFieldType.O3)
     ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'localWorkerServiceSecure')
+    ..a<$core.int>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sshPort', $pb.PbFieldType.O3)
     ..aOB(101, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsReset')
     ..aOB(102, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetLocRequest')
     ..aOB(103, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetPowerRequest')
@@ -171,6 +172,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.bool? metricsSecure,
     $core.int? localWorkerServicePort,
     $core.bool? localWorkerServiceSecure,
+    $core.int? sshPort,
     $core.bool? supportsReset,
     $core.bool? supportsSetLocRequest,
     $core.bool? supportsSetPowerRequest,
@@ -217,6 +219,9 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (localWorkerServiceSecure != null) {
       _result.localWorkerServiceSecure = localWorkerServiceSecure;
+    }
+    if (sshPort != null) {
+      _result.sshPort = sshPort;
     }
     if (supportsReset != null) {
       _result.supportsReset = supportsReset;
@@ -352,57 +357,66 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(13)
   void clearLocalWorkerServiceSecure() => clearField(13);
 
+  @$pb.TagNumber(14)
+  $core.int get sshPort => $_getIZ(13);
+  @$pb.TagNumber(14)
+  set sshPort($core.int v) { $_setSignedInt32(13, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasSshPort() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearSshPort() => clearField(14);
+
   @$pb.TagNumber(101)
-  $core.bool get supportsReset => $_getBF(13);
+  $core.bool get supportsReset => $_getBF(14);
   @$pb.TagNumber(101)
-  set supportsReset($core.bool v) { $_setBool(13, v); }
+  set supportsReset($core.bool v) { $_setBool(14, v); }
   @$pb.TagNumber(101)
-  $core.bool hasSupportsReset() => $_has(13);
+  $core.bool hasSupportsReset() => $_has(14);
   @$pb.TagNumber(101)
   void clearSupportsReset() => clearField(101);
 
   @$pb.TagNumber(102)
-  $core.bool get supportsSetLocRequest => $_getBF(14);
+  $core.bool get supportsSetLocRequest => $_getBF(15);
   @$pb.TagNumber(102)
-  set supportsSetLocRequest($core.bool v) { $_setBool(14, v); }
+  set supportsSetLocRequest($core.bool v) { $_setBool(15, v); }
   @$pb.TagNumber(102)
-  $core.bool hasSupportsSetLocRequest() => $_has(14);
+  $core.bool hasSupportsSetLocRequest() => $_has(15);
   @$pb.TagNumber(102)
   void clearSupportsSetLocRequest() => clearField(102);
 
   @$pb.TagNumber(103)
-  $core.bool get supportsSetPowerRequest => $_getBF(15);
+  $core.bool get supportsSetPowerRequest => $_getBF(16);
   @$pb.TagNumber(103)
-  set supportsSetPowerRequest($core.bool v) { $_setBool(15, v); }
+  set supportsSetPowerRequest($core.bool v) { $_setBool(16, v); }
   @$pb.TagNumber(103)
-  $core.bool hasSupportsSetPowerRequest() => $_has(15);
+  $core.bool hasSupportsSetPowerRequest() => $_has(16);
   @$pb.TagNumber(103)
   void clearSupportsSetPowerRequest() => clearField(103);
 
   @$pb.TagNumber(104)
-  $core.bool get supportsSetOutputRequest => $_getBF(16);
+  $core.bool get supportsSetOutputRequest => $_getBF(17);
   @$pb.TagNumber(104)
-  set supportsSetOutputRequest($core.bool v) { $_setBool(16, v); }
+  set supportsSetOutputRequest($core.bool v) { $_setBool(17, v); }
   @$pb.TagNumber(104)
-  $core.bool hasSupportsSetOutputRequest() => $_has(16);
+  $core.bool hasSupportsSetOutputRequest() => $_has(17);
   @$pb.TagNumber(104)
   void clearSupportsSetOutputRequest() => clearField(104);
 
   @$pb.TagNumber(105)
-  $core.bool get supportsSetSwitchRequest => $_getBF(17);
+  $core.bool get supportsSetSwitchRequest => $_getBF(18);
   @$pb.TagNumber(105)
-  set supportsSetSwitchRequest($core.bool v) { $_setBool(17, v); }
+  set supportsSetSwitchRequest($core.bool v) { $_setBool(18, v); }
   @$pb.TagNumber(105)
-  $core.bool hasSupportsSetSwitchRequest() => $_has(17);
+  $core.bool hasSupportsSetSwitchRequest() => $_has(18);
   @$pb.TagNumber(105)
   void clearSupportsSetSwitchRequest() => clearField(105);
 
   @$pb.TagNumber(106)
-  $core.bool get supportsSetDeviceDiscoveryRequest => $_getBF(18);
+  $core.bool get supportsSetDeviceDiscoveryRequest => $_getBF(19);
   @$pb.TagNumber(106)
-  set supportsSetDeviceDiscoveryRequest($core.bool v) { $_setBool(18, v); }
+  set supportsSetDeviceDiscoveryRequest($core.bool v) { $_setBool(19, v); }
   @$pb.TagNumber(106)
-  $core.bool hasSupportsSetDeviceDiscoveryRequest() => $_has(18);
+  $core.bool hasSupportsSetDeviceDiscoveryRequest() => $_has(19);
   @$pb.TagNumber(106)
   void clearSupportsSetDeviceDiscoveryRequest() => clearField(106);
 }
