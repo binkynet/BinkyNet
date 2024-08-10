@@ -34,13 +34,15 @@ const (
 	// DeviceTypeBinkyCarSensor is the device type of a BinkyCar sensor
 	// https://easyeda.com/editor?from=oshwlab#id=4b79ca953a7e4ea8971153b438ae1339|5964111c75b2459481dac75f8581f77e
 	DeviceTypeBinkyCarSensor DeviceType = "binkyCarSensor"
+	// DeviceTypeMQTT is the device type of an MQTT bridge
+	DeviceTypeMQTT DeviceType = "mqtt"
 )
 
 // Validate the given type, returning nil on ok,
 // or an error upon validation issues.
 func (t DeviceType) Validate() error {
 	switch t {
-	case DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574, DeviceTypeADS1115, DeviceTypeBinkyCarSensor:
+	case DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574, DeviceTypeADS1115, DeviceTypeBinkyCarSensor, DeviceTypeMQTT:
 		return nil
 	default:
 		return InvalidArgument("invalid device type '%s'", string(t))
@@ -49,5 +51,5 @@ func (t DeviceType) Validate() error {
 
 // AllDeviceTypes returns all possible device types.
 func AllDeviceTypes() []DeviceType {
-	return []DeviceType{DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574, DeviceTypeADS1115, DeviceTypeBinkyCarSensor}
+	return []DeviceType{DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574, DeviceTypeADS1115, DeviceTypeBinkyCarSensor, DeviceTypeMQTT}
 }
