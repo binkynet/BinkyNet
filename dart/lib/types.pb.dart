@@ -154,6 +154,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     ..aOB(104, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetOutputRequest')
     ..aOB(105, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetSwitchRequest')
     ..aOB(106, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsSetDeviceDiscoveryRequest')
+    ..pc<RouterInfo>(201, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'onlineRouters', $pb.PbFieldType.PM, subBuilder: RouterInfo.create)
+    ..pc<RouterInfo>(202, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'offlineRouters', $pb.PbFieldType.PM, subBuilder: RouterInfo.create)
     ..hasRequiredFields = false
   ;
 
@@ -179,6 +181,8 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     $core.bool? supportsSetOutputRequest,
     $core.bool? supportsSetSwitchRequest,
     $core.bool? supportsSetDeviceDiscoveryRequest,
+    $core.Iterable<RouterInfo>? onlineRouters,
+    $core.Iterable<RouterInfo>? offlineRouters,
   }) {
     final _result = create();
     if (id != null) {
@@ -240,6 +244,12 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
     }
     if (supportsSetDeviceDiscoveryRequest != null) {
       _result.supportsSetDeviceDiscoveryRequest = supportsSetDeviceDiscoveryRequest;
+    }
+    if (onlineRouters != null) {
+      _result.onlineRouters.addAll(onlineRouters);
+    }
+    if (offlineRouters != null) {
+      _result.offlineRouters.addAll(offlineRouters);
     }
     return _result;
   }
@@ -419,6 +429,157 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
   $core.bool hasSupportsSetDeviceDiscoveryRequest() => $_has(19);
   @$pb.TagNumber(106)
   void clearSupportsSetDeviceDiscoveryRequest() => clearField(106);
+
+  @$pb.TagNumber(201)
+  $core.List<RouterInfo> get onlineRouters => $_getList(20);
+
+  @$pb.TagNumber(202)
+  $core.List<RouterInfo> get offlineRouters => $_getList(21);
+}
+
+class RouterInfo extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RouterInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
+    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uptime')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ipAddress')
+    ..a<$core.int>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metricsPort', $pb.PbFieldType.O3)
+    ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metricsSecure')
+    ..aOB(101, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportsReset')
+    ..hasRequiredFields = false
+  ;
+
+  RouterInfo._() : super();
+  factory RouterInfo({
+    $core.String? id,
+    $core.String? description,
+    $core.String? version,
+    $fixnum.Int64? uptime,
+    $core.String? ipAddress,
+    $core.int? metricsPort,
+    $core.bool? metricsSecure,
+    $core.bool? supportsReset,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (description != null) {
+      _result.description = description;
+    }
+    if (version != null) {
+      _result.version = version;
+    }
+    if (uptime != null) {
+      _result.uptime = uptime;
+    }
+    if (ipAddress != null) {
+      _result.ipAddress = ipAddress;
+    }
+    if (metricsPort != null) {
+      _result.metricsPort = metricsPort;
+    }
+    if (metricsSecure != null) {
+      _result.metricsSecure = metricsSecure;
+    }
+    if (supportsReset != null) {
+      _result.supportsReset = supportsReset;
+    }
+    return _result;
+  }
+  factory RouterInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RouterInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  RouterInfo clone() => RouterInfo()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  RouterInfo copyWith(void Function(RouterInfo) updates) => super.copyWith((message) => updates(message as RouterInfo)) as RouterInfo; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RouterInfo create() => RouterInfo._();
+  RouterInfo createEmptyInstance() => create();
+  static $pb.PbList<RouterInfo> createRepeated() => $pb.PbList<RouterInfo>();
+  @$core.pragma('dart2js:noInline')
+  static RouterInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RouterInfo>(create);
+  static RouterInfo? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get description => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set description($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDescription() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDescription() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get version => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set version($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasVersion() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearVersion() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get uptime => $_getI64(3);
+  @$pb.TagNumber(4)
+  set uptime($fixnum.Int64 v) { $_setInt64(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUptime() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUptime() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get ipAddress => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set ipAddress($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasIpAddress() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearIpAddress() => clearField(5);
+
+  @$pb.TagNumber(10)
+  $core.int get metricsPort => $_getIZ(5);
+  @$pb.TagNumber(10)
+  set metricsPort($core.int v) { $_setSignedInt32(5, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasMetricsPort() => $_has(5);
+  @$pb.TagNumber(10)
+  void clearMetricsPort() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.bool get metricsSecure => $_getBF(6);
+  @$pb.TagNumber(11)
+  set metricsSecure($core.bool v) { $_setBool(6, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasMetricsSecure() => $_has(6);
+  @$pb.TagNumber(11)
+  void clearMetricsSecure() => clearField(11);
+
+  @$pb.TagNumber(101)
+  $core.bool get supportsReset => $_getBF(7);
+  @$pb.TagNumber(101)
+  set supportsReset($core.bool v) { $_setBool(7, v); }
+  @$pb.TagNumber(101)
+  $core.bool hasSupportsReset() => $_has(7);
+  @$pb.TagNumber(101)
+  void clearSupportsReset() => clearField(101);
 }
 
 class PowerRequestsOptions extends $pb.GeneratedMessage {

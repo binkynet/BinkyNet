@@ -87,11 +87,30 @@ const LocalWorkerInfo$json = const {
     const {'1': 'supports_set_output_request', '3': 104, '4': 1, '5': 8, '10': 'supportsSetOutputRequest'},
     const {'1': 'supports_set_switch_request', '3': 105, '4': 1, '5': 8, '10': 'supportsSetSwitchRequest'},
     const {'1': 'supports_set_device_discovery_request', '3': 106, '4': 1, '5': 8, '10': 'supportsSetDeviceDiscoveryRequest'},
+    const {'1': 'online_routers', '3': 201, '4': 3, '5': 11, '6': '.binkynet.v1.RouterInfo', '10': 'onlineRouters'},
+    const {'1': 'offline_routers', '3': 202, '4': 3, '5': 11, '6': '.binkynet.v1.RouterInfo', '10': 'offlineRouters'},
   ],
 };
 
 /// Descriptor for `LocalWorkerInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List localWorkerInfoDescriptor = $convert.base64Decode('Cg9Mb2NhbFdvcmtlckluZm8SDgoCaWQYASABKAlSAmlkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIYCgd2ZXJzaW9uGAMgASgJUgd2ZXJzaW9uEhYKBnVwdGltZRgEIAEoA1IGdXB0aW1lEh8KC2NvbmZpZ19oYXNoGAUgASgJUgpjb25maWdIYXNoEjIKFWNvbmZpZ3VyZWRfZGV2aWNlX2lkcxgGIAMoCVITY29uZmlndXJlZERldmljZUlkcxIyChVjb25maWd1cmVkX29iamVjdF9pZHMYByADKAlSE2NvbmZpZ3VyZWRPYmplY3RJZHMSNgoXdW5jb25maWd1cmVkX2RldmljZV9pZHMYCCADKAlSFXVuY29uZmlndXJlZERldmljZUlkcxI2Chd1bmNvbmZpZ3VyZWRfb2JqZWN0X2lkcxgJIAMoCVIVdW5jb25maWd1cmVkT2JqZWN0SWRzEiEKDG1ldHJpY3NfcG9ydBgKIAEoBVILbWV0cmljc1BvcnQSJQoObWV0cmljc19zZWN1cmUYCyABKAhSDW1ldHJpY3NTZWN1cmUSOQoZbG9jYWxfd29ya2VyX3NlcnZpY2VfcG9ydBgMIAEoBVIWbG9jYWxXb3JrZXJTZXJ2aWNlUG9ydBI9Chtsb2NhbF93b3JrZXJfc2VydmljZV9zZWN1cmUYDSABKAhSGGxvY2FsV29ya2VyU2VydmljZVNlY3VyZRIZCghzc2hfcG9ydBgOIAEoBVIHc3NoUG9ydBIlCg5zdXBwb3J0c19yZXNldBhlIAEoCFINc3VwcG9ydHNSZXNldBI3ChhzdXBwb3J0c19zZXRfbG9jX3JlcXVlc3QYZiABKAhSFXN1cHBvcnRzU2V0TG9jUmVxdWVzdBI7ChpzdXBwb3J0c19zZXRfcG93ZXJfcmVxdWVzdBhnIAEoCFIXc3VwcG9ydHNTZXRQb3dlclJlcXVlc3QSPQobc3VwcG9ydHNfc2V0X291dHB1dF9yZXF1ZXN0GGggASgIUhhzdXBwb3J0c1NldE91dHB1dFJlcXVlc3QSPQobc3VwcG9ydHNfc2V0X3N3aXRjaF9yZXF1ZXN0GGkgASgIUhhzdXBwb3J0c1NldFN3aXRjaFJlcXVlc3QSUAolc3VwcG9ydHNfc2V0X2RldmljZV9kaXNjb3ZlcnlfcmVxdWVzdBhqIAEoCFIhc3VwcG9ydHNTZXREZXZpY2VEaXNjb3ZlcnlSZXF1ZXN0');
+final $typed_data.Uint8List localWorkerInfoDescriptor = $convert.base64Decode('Cg9Mb2NhbFdvcmtlckluZm8SDgoCaWQYASABKAlSAmlkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIYCgd2ZXJzaW9uGAMgASgJUgd2ZXJzaW9uEhYKBnVwdGltZRgEIAEoA1IGdXB0aW1lEh8KC2NvbmZpZ19oYXNoGAUgASgJUgpjb25maWdIYXNoEjIKFWNvbmZpZ3VyZWRfZGV2aWNlX2lkcxgGIAMoCVITY29uZmlndXJlZERldmljZUlkcxIyChVjb25maWd1cmVkX29iamVjdF9pZHMYByADKAlSE2NvbmZpZ3VyZWRPYmplY3RJZHMSNgoXdW5jb25maWd1cmVkX2RldmljZV9pZHMYCCADKAlSFXVuY29uZmlndXJlZERldmljZUlkcxI2Chd1bmNvbmZpZ3VyZWRfb2JqZWN0X2lkcxgJIAMoCVIVdW5jb25maWd1cmVkT2JqZWN0SWRzEiEKDG1ldHJpY3NfcG9ydBgKIAEoBVILbWV0cmljc1BvcnQSJQoObWV0cmljc19zZWN1cmUYCyABKAhSDW1ldHJpY3NTZWN1cmUSOQoZbG9jYWxfd29ya2VyX3NlcnZpY2VfcG9ydBgMIAEoBVIWbG9jYWxXb3JrZXJTZXJ2aWNlUG9ydBI9Chtsb2NhbF93b3JrZXJfc2VydmljZV9zZWN1cmUYDSABKAhSGGxvY2FsV29ya2VyU2VydmljZVNlY3VyZRIZCghzc2hfcG9ydBgOIAEoBVIHc3NoUG9ydBIlCg5zdXBwb3J0c19yZXNldBhlIAEoCFINc3VwcG9ydHNSZXNldBI3ChhzdXBwb3J0c19zZXRfbG9jX3JlcXVlc3QYZiABKAhSFXN1cHBvcnRzU2V0TG9jUmVxdWVzdBI7ChpzdXBwb3J0c19zZXRfcG93ZXJfcmVxdWVzdBhnIAEoCFIXc3VwcG9ydHNTZXRQb3dlclJlcXVlc3QSPQobc3VwcG9ydHNfc2V0X291dHB1dF9yZXF1ZXN0GGggASgIUhhzdXBwb3J0c1NldE91dHB1dFJlcXVlc3QSPQobc3VwcG9ydHNfc2V0X3N3aXRjaF9yZXF1ZXN0GGkgASgIUhhzdXBwb3J0c1NldFN3aXRjaFJlcXVlc3QSUAolc3VwcG9ydHNfc2V0X2RldmljZV9kaXNjb3ZlcnlfcmVxdWVzdBhqIAEoCFIhc3VwcG9ydHNTZXREZXZpY2VEaXNjb3ZlcnlSZXF1ZXN0Ej8KDm9ubGluZV9yb3V0ZXJzGMkBIAMoCzIXLmJpbmt5bmV0LnYxLlJvdXRlckluZm9SDW9ubGluZVJvdXRlcnMSQQoPb2ZmbGluZV9yb3V0ZXJzGMoBIAMoCzIXLmJpbmt5bmV0LnYxLlJvdXRlckluZm9SDm9mZmxpbmVSb3V0ZXJz');
+@$core.Deprecated('Use routerInfoDescriptor instead')
+const RouterInfo$json = const {
+  '1': 'RouterInfo',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
+    const {'1': 'version', '3': 3, '4': 1, '5': 9, '10': 'version'},
+    const {'1': 'uptime', '3': 4, '4': 1, '5': 3, '10': 'uptime'},
+    const {'1': 'ip_address', '3': 5, '4': 1, '5': 9, '10': 'ipAddress'},
+    const {'1': 'metrics_port', '3': 10, '4': 1, '5': 5, '10': 'metricsPort'},
+    const {'1': 'metrics_secure', '3': 11, '4': 1, '5': 8, '10': 'metricsSecure'},
+    const {'1': 'supports_reset', '3': 101, '4': 1, '5': 8, '10': 'supportsReset'},
+  ],
+};
+
+/// Descriptor for `RouterInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List routerInfoDescriptor = $convert.base64Decode('CgpSb3V0ZXJJbmZvEg4KAmlkGAEgASgJUgJpZBIgCgtkZXNjcmlwdGlvbhgCIAEoCVILZGVzY3JpcHRpb24SGAoHdmVyc2lvbhgDIAEoCVIHdmVyc2lvbhIWCgZ1cHRpbWUYBCABKANSBnVwdGltZRIdCgppcF9hZGRyZXNzGAUgASgJUglpcEFkZHJlc3MSIQoMbWV0cmljc19wb3J0GAogASgFUgttZXRyaWNzUG9ydBIlCg5tZXRyaWNzX3NlY3VyZRgLIAEoCFINbWV0cmljc1NlY3VyZRIlCg5zdXBwb3J0c19yZXNldBhlIAEoCFINc3VwcG9ydHNSZXNldA==');
 @$core.Deprecated('Use powerRequestsOptionsDescriptor instead')
 const PowerRequestsOptions$json = const {
   '1': 'PowerRequestsOptions',

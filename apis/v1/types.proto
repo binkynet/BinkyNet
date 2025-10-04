@@ -11,9 +11,9 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 // Author Ewout Prangsma
-// 
+//
 
 syntax = "proto3";
 
@@ -84,6 +84,33 @@ message LocalWorkerInfo {
   bool supports_set_switch_request = 105;
   // If set, local worker implements LocalWorkerService.SetDeviceDiscoveryRequest
   bool supports_set_device_discovery_request = 106;
+
+  // Information about all routers that are currently online
+  repeated RouterInfo online_routers = 201;
+  // Information about all routers that are currently offline
+  repeated RouterInfo offline_routers = 202;
+}
+
+// Information about a router
+message RouterInfo {
+  // Unique identifier of the router
+  string id = 1;
+  // Human readable description of the router
+  string description = 2;
+  // Version of the router in semantic versioning format.
+  // E.g. 1.0.4
+  string version = 3;
+  // Uptime of the router in seconds.
+  int64 uptime = 4;
+  // IP address of this router
+  string ip_address = 5;
+  // HTTP(s) port to serve metrics on (if any)
+  int32 metrics_port = 10;
+  // If set to true, metrics are served over HTTPS, otherwise HTTP
+  bool metrics_secure = 11;
+
+  // If set, router implements LocalWorkerService.Reset
+  bool supports_reset = 101;
 }
 
 // Request arguments for GetPowerRequests
@@ -97,7 +124,7 @@ message PowerRequestsOptions {
 
 // Power message contains the requested & actual state of the power on the track.
 message Power {
-  // Requested power state 
+  // Requested power state
   PowerState request = 1;
   // Actual power state
   PowerState actual = 2;
@@ -218,7 +245,7 @@ message Switch {
 message SwitchState {
 	// Requested/current direction of the switch
 	SwitchDirection direction = 1;
-  // Set if the switch is currently in use. 
+  // Set if the switch is currently in use.
   // This can be used to power down a switch if it is not in use.
   bool is_used = 2;
 }
@@ -308,7 +335,7 @@ message LocalWorker {
   string id = 1;
   // Requested configuration of the local worker
   LocalWorkerConfig request = 2;
-  // Actual state of the local worker 
+  // Actual state of the local worker
   LocalWorkerInfo actual = 3;
 }
 
