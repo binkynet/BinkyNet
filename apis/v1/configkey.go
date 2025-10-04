@@ -45,6 +45,10 @@ const (
 	// ConfigKeyThreshold configures the threshold for measured analog values
 	// above which a sensor is considered "on".
 	ConfigKeyThreshold ConfigKey = "threshold"
+	// MQTT topic use for state messages
+	ConfigKeyMQTTStateTopic ConfigKey = "mqtt-state-topic"
+	// MQTT topic use for command messages
+	ConfigKeyMQTTCommandTopic ConfigKey = "mqtt-command-topic"
 )
 
 // DefaultValue returns the default value for a given configuration key.
