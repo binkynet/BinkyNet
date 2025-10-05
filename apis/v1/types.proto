@@ -94,7 +94,7 @@ message LocalWorkerInfo {
 // Information about a router
 message RouterInfo {
   // Unique identifier of the router
-  string id = 1;
+  string module_id = 1;
   // Human readable description of the router
   string description = 2;
   // Version of the router in semantic versioning format.

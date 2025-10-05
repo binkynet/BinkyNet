@@ -439,7 +439,7 @@ class LocalWorkerInfo extends $pb.GeneratedMessage {
 
 class RouterInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RouterInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'binkynet.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'moduleId')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uptime')
@@ -452,7 +452,7 @@ class RouterInfo extends $pb.GeneratedMessage {
 
   RouterInfo._() : super();
   factory RouterInfo({
-    $core.String? id,
+    $core.String? moduleId,
     $core.String? description,
     $core.String? version,
     $fixnum.Int64? uptime,
@@ -462,8 +462,8 @@ class RouterInfo extends $pb.GeneratedMessage {
     $core.bool? supportsReset,
   }) {
     final _result = create();
-    if (id != null) {
-      _result.id = id;
+    if (moduleId != null) {
+      _result.moduleId = moduleId;
     }
     if (description != null) {
       _result.description = description;
@@ -510,13 +510,13 @@ class RouterInfo extends $pb.GeneratedMessage {
   static RouterInfo? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.String get moduleId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set moduleId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
+  $core.bool hasModuleId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  void clearModuleId() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get description => $_getSZ(1);
