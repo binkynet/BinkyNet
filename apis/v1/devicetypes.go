@@ -21,6 +21,8 @@ package v1
 type DeviceType string
 
 const (
+	// DeviceTypeGPIO is the device type of a General Purpose I/O on the localworker / router
+	DeviceTypeGPIO DeviceType = "gpio"
 	// DeviceTypeMCP23008 is the device type of a General Purpose I/O
 	DeviceTypeMCP23008 DeviceType = "mcp23008"
 	// DeviceTypeMCP23017 is the device type of a General Purpose I/O
@@ -44,7 +46,7 @@ const (
 // or an error upon validation issues.
 func (t DeviceType) Validate() error {
 	switch t {
-	case DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574,
+	case DeviceTypeGPIO, DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574,
 		DeviceTypeADS1115, DeviceTypeBinkyCarSensor, DeviceTypeMQTTGPIO, DeviceTypeMQTTServo:
 		return nil
 	default:
@@ -54,6 +56,6 @@ func (t DeviceType) Validate() error {
 
 // AllDeviceTypes returns all possible device types.
 func AllDeviceTypes() []DeviceType {
-	return []DeviceType{DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574,
+	return []DeviceType{DeviceTypeGPIO, DeviceTypeMCP23008, DeviceTypeMCP23017, DeviceTypePCA9685, DeviceTypePCF8574,
 		DeviceTypeADS1115, DeviceTypeBinkyCarSensor, DeviceTypeMQTTGPIO, DeviceTypeMQTTServo}
 }
